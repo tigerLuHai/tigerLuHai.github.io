@@ -460,9 +460,9 @@ FastDFS分布式文件系统安装使用教程使用场景分布式文件系统�
                 <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=479553545&auto=1&height=66"></iframe></div>
 
 <h1 id="FastDFS分布式文件系统安装使用教程"><a href="#FastDFS分布式文件系统安装使用教程" class="headerlink" title="FastDFS分布式文件系统安装使用教程"></a>FastDFS分布式文件系统安装使用教程</h1><h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>分布式文件系统用于<strong>海量</strong>文件存储及传输访问的瓶颈问题，对海量视频的管理、对<strong>海量</strong>图片的管理等,FastDFS与其他分布式文件系统相比的一个显著优点就是特别<strong>适合大量小文件(图片等)的存储,因为它在存储时没有对文件切片分割.</strong></p>
-<h3 id="主流的分布式文件系统"><a href="#主流的分布式文件系统" class="headerlink" title="主流的分布式文件系统"></a>主流的分布式文件系统</h3><h4 id="①NFS"><a href="#①NFS" class="headerlink" title="①NFS"></a>①NFS</h4><p><img src="/http://tigerLuHai.github.io/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/1577523021175.png" alt="1577523021175"></p>
-<h4 id="②GFS"><a href="#②GFS" class="headerlink" title="②GFS"></a>②GFS</h4><p><img src="/http://tigerLuHai.github.io/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/D:%5CMyBlot%5Cbolt%5Csource_posts%5CFastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577523108700.png" alt="1577523108700"></p>
-<h4 id="③HDFS"><a href="#③HDFS" class="headerlink" title="③HDFS"></a>③HDFS</h4><p><img src="/http://tigerLuHai.github.io/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/D:%5CMyBlot%5Cbolt%5Csource_posts%5CFastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577523192987.png" alt="1577523192987"></p>
+<h3 id="主流的分布式文件系统"><a href="#主流的分布式文件系统" class="headerlink" title="主流的分布式文件系统"></a>主流的分布式文件系统</h3><h4 id="①NFS"><a href="#①NFS" class="headerlink" title="①NFS"></a>①NFS</h4><p><img src="/1577523021175.png" alt="1577523021175"></p>
+<h4 id="②GFS"><a href="#②GFS" class="headerlink" title="②GFS"></a>②GFS</h4><p><img src="/D:%5CMyBlot%5Cbolt%5Csource_posts%5CFastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577523108700.png" alt="1577523108700"></p>
+<h4 id="③HDFS"><a href="#③HDFS" class="headerlink" title="③HDFS"></a>③HDFS</h4><p><img src="/D:%5CMyBlot%5Cbolt%5Csource_posts%5CFastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577523192987.png" alt="1577523192987"></p>
 <h4 id="④FastDFS"><a href="#④FastDFS" class="headerlink" title="④FastDFS"></a>④FastDFS</h4><p>FastDFS是用c语言编写的一款开源的分布式文件系统，它是由淘宝资深架构师余庆编写并开源。FastDFS专为互联 网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用FastDFS很 容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。</p>
 <p><strong>FastDFS架构包括 Tracker server和Storageserver。客户端请求Tracker server进行文件上传、下载，通过Tracker server调度最终由Storage server完成文件上传和下载。</strong> </p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="服务器环境"><a href="#服务器环境" class="headerlink" title="服务器环境"></a>服务器环境</h4><ul>
@@ -481,7 +481,7 @@ cd libfastcommon-1.0.7
 ./make.sh
 ./make.sh install</code></pre><p>注意：<strong>libfastcommon 安装好后会自动将库文件拷贝至/usr/lib64 下，由于 FastDFS 程序引用 usr/lib 目录所以需要将/usr/lib64 下的库文件拷贝至/usr/lib 下。</strong></p>
 <p>需要拷贝的文件</p>
-<p><img src="/http://tigerLuHai.github.io/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/D:%5CMyBlot%5Cbolt%5Csource_posts%5CFastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577524769079.png" alt="1577524769079"></p>
+<p><img src="/D:%5CMyBlot%5Cbolt%5Csource_posts%5CFastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577524769079.png" alt="1577524769079"></p>
 <h4 id="tracker-编译安装"><a href="#tracker-编译安装" class="headerlink" title="tracker 编译安装"></a>tracker 编译安装</h4><pre class="line-numbers language-将"><code class="language-将">将 FastDFS_v5.05.tar.gz 拷贝至/usr/local/下
 tar -zxvf FastDFS_v5.05.tar.gz
 cd FastDFS
@@ -489,14 +489,14 @@ cd FastDFS
 ./make.sh install 安装<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>安装成功将安装目录下的 conf 下的文件拷贝到/etc/fdfs/下。</p>
 <pre><code>cp -r /usr/local/FastDFS/conf/ /etc/fdfs/</code></pre><h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><p>安装成功后进入/etc/fdfs目录</p>
-<p><img src="/http://tigerLuHai.github.io/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/D:%5CMyBlot%5Cbolt%5Csource_posts%5CFastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577525471795.png" alt="1577525471795"></p>
+<p><img src="/D:%5CMyBlot%5Cbolt%5Csource_posts%5CFastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577525471795.png" alt="1577525471795"></p>
 <p>拷贝一份新的 tracker 配置文件：</p>
 <pre><code>cp tracker.conf.sample tracker.conf</code></pre><p>修改 tracker.conf</p>
 <pre><code>vi tracker.conf
 
 base_path=/home/yuqing/FastDFS #数据(日志等)存储路径,自己设置
 http.server_port=80 #配置 http 端口：</code></pre><h5 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h5><pre><code>/usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf start</code></pre><p>查看端口</p>
-<pre><code>netstat -nltp</code></pre><p><img src="/http://tigerLuHai.github.io/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/D:%5CMyBlot%5Cbolt%5Csource_posts%5CFastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577535905825.png" alt="1577535905825"></p>
+<pre><code>netstat -nltp</code></pre><p><img src="/D:%5CMyBlot%5Cbolt%5Csource_posts%5CFastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577535905825.png" alt="1577535905825"></p>
 <h4 id="storage-安装"><a href="#storage-安装" class="headerlink" title="storage 安装"></a>storage 安装</h4><ul>
 <li>安装 libevent</li>
 <li>安装 libfastcommon</li>
@@ -567,7 +567,7 @@ file crc32=2977689730</code></pre><p><a href="http://192.168.1.24/group1/M00/00/
 <pre><code>cd /usr/local
 tar -zxvf FastDFS-nginx-module_v1.16.tar.gz
 cd FastDFS-nginx-module/src
-vi config</code></pre><p><img src="/http://tigerLuHai.github.io/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/D:%5CMyBlot%5Cbolt%5Csource_posts%5CFastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577536510714.png" alt="1577536510714"></p>
+vi config</code></pre><p><img src="/D:%5CMyBlot%5Cbolt%5Csource_posts%5CFastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577536510714.png" alt="1577536510714"></p>
 <p>将/usr/local修改为/usr，注意这里有三场，不要改漏了。</p>
 <p>将 FastDFS-nginx-module/src 下的 mod_FastDFS.conf 拷贝至/etc/fdfs/下</p>
 <pre><code>cp mod_FastDFS.conf /etc/fdfs/
@@ -618,7 +618,7 @@ proxy_set_header X-Real-IP $remote_addr;
 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 proxy_pass http://storage_server_group2; } }</code></pre><h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p>使用浏览器 http 访问文件，这里访问上传图片测试的文件：</p>
 <p>访问 storage：<a href="http://192.168.1.24/group1/M00/00/00/wKgBGF4HRs6AOwJJAAId77F78II587.png" target="_blank" rel="noopener">http://192.168.1.24/group1/M00/00/00/wKgBGF4HRs6AOwJJAAId77F78II587.png</a></p>
-<p><img src="/http://tigerLuHai.github.io/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/D:%5CMyBlot%5Cbolt%5Csource_posts%5CFastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577537632508.png" alt="1577537632508"></p>
+<p><img src="/D:%5CMyBlot%5Cbolt%5Csource_posts%5CFastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577537632508.png" alt="1577537632508"></p>
 <p>ip 地址改为 192.168.1.24也可以访问到文件，因为同一个分组的 storage 文件互相同步。</p>
 <h3 id="编写java代码上传下载文件"><a href="#编写java代码上传下载文件" class="headerlink" title="编写java代码上传下载文件"></a>编写java代码上传下载文件</h3><p><strong>SpringBoot测试方案</strong></p>
 <p>引入依赖</p>
@@ -676,7 +676,7 @@ fastdfs.tracker_servers = 192.168.1.21:22122</code></pre><p>运行upload得到�
 <pre><code>group1/M00/00/00/wKgBGF4HUZiAOKLgAB7xNcvo_Vw00..png
 根据自己配置的路径可以得到访问的http协议路径为:
 http://192.168.1.21/group1/M00/00/00/wKgBGF4HUZiAOKLgAB7xNcvo_Vw00..png</code></pre><p>效果如下</p>
-<p><img src="/http://tigerLuHai.github.io/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/D:%5CMyBlot%5Cbolt%5Csource_posts%5CFastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577538377340.png" alt="1577538377340"></p>
+<p><img src="/D:%5CMyBlot%5Cbolt%5Csource_posts%5CFastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577538377340.png" alt="1577538377340"></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><strong>FastDFS相对于HDFS等分布式文件的优势在于它不切分文件,所以下载文件的时候没有拼装文件的过程,而且可以锁定一台机器进行网络I/O,所以速度很快.不过正所谓这也是它的缺点,这导致它不能用于存储大文件.所以FastDFS适合存储大量图片小视频之类的文件.</strong></p>
 <h3 id="安装过程遇到的一些问题"><a href="#安装过程遇到的一些问题" class="headerlink" title="安装过程遇到的一些问题"></a>安装过程遇到的一些问题</h3><p>①安装nginx No rule to make target “/usr/local/fastdfs-nginx-module/src/ngx_http_fastdfs_module.c”, needed by objs/addon/src/ngx_http_fastdfs_module.o . Stop. 修改fastdfs-nginx-module/src/config文件中的路径,删除local(注意一共有三个)</p>
 <p>②nginx安装cp: <code>conf/koi-win&#39; and</code>/usr/local/nginx/conf/koi-win’ are the same file 解决 将./configure –prefix=/usr/local/nginx 改为 ./configure –prefix=/usr/local/nginx –conf-path=/usr/local/nginx/nginx.conf</p>
