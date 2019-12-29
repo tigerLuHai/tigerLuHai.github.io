@@ -4,13 +4,18 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="FastDFS分布式文件系统安装使用教程, LuHai Java后台开发 大数据开发">
+    <meta name="keywords" content="hexo博文包含图片的坑, LuHai Java后台开发 大数据开发">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
     <meta name="description" content="
 
-FastDFS分布式文件系统安装使用教程使用场景分布式文件系统用于海量文件存储及传输访问的瓶颈问题，对海量视频的管理、对海量图片的管理等,FastDFS与其他分布式文件系统相比的一个显著优点就是特别适合大量小文件(图片等)的存储,因为它">
+hexo博文包含图片的坑网上有很多关于这个的教程,主要的总结如下
+①修改博客目录下的_config_yml的post_asset_folder为true
+
+post_asset_folder: true
+
+②安装hexo-asset-i">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +23,7 @@ FastDFS分布式文件系统安装使用教程使用场景分布式文件系统�
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>FastDFS分布式文件系统安装使用教程 | 卢海的博客</title>
+    <title>hexo博文包含图片的坑 | 卢海的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -292,13 +297,13 @@ FastDFS分布式文件系统安装使用教程使用场景分布式文件系统�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        FastDFS分布式文件系统安装使用教程
+                        hexo博文包含图片的坑
                     </div>
                 </div>
             </div>
@@ -414,13 +419,22 @@ FastDFS分布式文件系统安装使用教程使用场景分布式文件系统�
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                        <a href="/categories/tool/" class="post-category" target="_blank">
+                            tool
+                        </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-28
+                    2019-12-29
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -434,14 +448,14 @@ FastDFS分布式文件系统安装使用教程使用场景分布式文件系统�
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    790
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    4 分
                 </div>
                 
                 
@@ -457,230 +471,107 @@ FastDFS分布式文件系统安装使用教程使用场景分布式文件系统�
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=479553545&auto=1&height=66"></iframe></div>
+                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=414414&auto=0&height=66"></iframe></div>
 
-<h1 id="FastDFS分布式文件系统安装使用教程"><a href="#FastDFS分布式文件系统安装使用教程" class="headerlink" title="FastDFS分布式文件系统安装使用教程"></a>FastDFS分布式文件系统安装使用教程</h1><h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>分布式文件系统用于<strong>海量</strong>文件存储及传输访问的瓶颈问题，对海量视频的管理、对<strong>海量</strong>图片的管理等,FastDFS与其他分布式文件系统相比的一个显著优点就是特别<strong>适合大量小文件(图片等)的存储,因为它在存储时没有对文件切片分割.</strong></p>
-<h3 id="主流的分布式文件系统"><a href="#主流的分布式文件系统" class="headerlink" title="主流的分布式文件系统"></a>主流的分布式文件系统</h3><h4 id="①NFS"><a href="#①NFS" class="headerlink" title="①NFS"></a>①NFS</h4><p><img src="/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/1577523021175.png" alt="1577523021175"></p>
-<h4 id="②GFS"><a href="#②GFS" class="headerlink" title="②GFS"></a>②GFS</h4><p><img src="/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/1577523108700.png" alt="1577523108700"></p>
-<h4 id="③HDFS"><a href="#③HDFS" class="headerlink" title="③HDFS"></a>③HDFS</h4><p><img src="/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/1577523192987.png" alt="1577523192987"></p>
-<h4 id="④FastDFS"><a href="#④FastDFS" class="headerlink" title="④FastDFS"></a>④FastDFS</h4><p>FastDFS是用c语言编写的一款开源的分布式文件系统，它是由淘宝资深架构师余庆编写并开源。FastDFS专为互联 网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用FastDFS很 容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。</p>
-<p><strong>FastDFS架构包括 Tracker server和Storageserver。客户端请求Tracker server进行文件上传、下载，通过Tracker server调度最终由Storage server完成文件上传和下载。</strong> </p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="服务器环境"><a href="#服务器环境" class="headerlink" title="服务器环境"></a>服务器环境</h4><ul>
-<li>CentOS6.9(CenttOS安装过程一致)</li>
+<h1 id="hexo博文包含图片的坑"><a href="#hexo博文包含图片的坑" class="headerlink" title="hexo博文包含图片的坑"></a>hexo博文包含图片的坑</h1><h3 id="网上有很多关于这个的教程-主要的总结如下"><a href="#网上有很多关于这个的教程-主要的总结如下" class="headerlink" title="网上有很多关于这个的教程,主要的总结如下"></a>网上有很多关于这个的教程,主要的总结如下</h3><ul>
+<li>①修改博客目录下的_config_yml的post_asset_folder为true</li>
 </ul>
+<pre class="line-numbers language-java"><code class="language-java">post_asset_folder<span class="token operator">:</span> <span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
-<li>IP: 192.168.1.21,192.168.1.23,192.168.1.24,192.168.1.25</li>
+<li>②安装hexo-asset-image插件</li>
 </ul>
-<h4 id="安装Linux基本环境"><a href="#安装Linux基本环境" class="headerlink" title="安装Linux基本环境"></a>安装Linux基本环境</h4><p>参见Hadoop的安装使用教程中Linux环境搭建</p>
-<h4 id="安装gcc环境-FastDFS是由c语言编写"><a href="#安装gcc环境-FastDFS是由c语言编写" class="headerlink" title="安装gcc环境(FastDFS是由c语言编写)"></a>安装gcc环境(FastDFS是由c语言编写)</h4><pre class="line-numbers language-linux"><code class="language-linux">yum install gcc-c++<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="安装-libevent"><a href="#安装-libevent" class="headerlink" title="安装 libevent"></a>安装 libevent</h4><pre class="line-numbers language-yum"><code class="language-yum">yum -y install libevent<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="安装-libfastcommon"><a href="#安装-libfastcommon" class="headerlink" title="安装 libfastcommon"></a>安装 libfastcommon</h4><pre><code>将 libfastcommonV1.0.7.tar.gz 拷贝至/usr/local/下
-cd /usr/local
-tar -zxvf libfastcommonV1.0.7.tar.gz
-cd libfastcommon-1.0.7
-./make.sh
-./make.sh install</code></pre><p>注意：<strong>libfastcommon 安装好后会自动将库文件拷贝至/usr/lib64 下，由于 FastDFS 程序引用 usr/lib 目录所以需要将/usr/lib64 下的库文件拷贝至/usr/lib 下。</strong></p>
-<p>需要拷贝的文件</p>
-<p><img src="/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/FastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577524769079.png" alt="1577524769079"></p>
-<h4 id="tracker-编译安装"><a href="#tracker-编译安装" class="headerlink" title="tracker 编译安装"></a>tracker 编译安装</h4><pre class="line-numbers language-将"><code class="language-将">将 FastDFS_v5.05.tar.gz 拷贝至/usr/local/下
-tar -zxvf FastDFS_v5.05.tar.gz
-cd FastDFS
-./make.sh 编译
-./make.sh install 安装<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>安装成功将安装目录下的 conf 下的文件拷贝到/etc/fdfs/下。</p>
-<pre><code>cp -r /usr/local/FastDFS/conf/ /etc/fdfs/</code></pre><h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><p>安装成功后进入/etc/fdfs目录</p>
-<p><img src="/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/FastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577525471795.png" alt="1577525471795"></p>
-<p>拷贝一份新的 tracker 配置文件：</p>
-<pre><code>cp tracker.conf.sample tracker.conf</code></pre><p>修改 tracker.conf</p>
-<pre><code>vi tracker.conf
-
-base_path=/home/yuqing/FastDFS #数据(日志等)存储路径,自己设置
-http.server_port=80 #配置 http 端口：</code></pre><h5 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h5><pre><code>/usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf start</code></pre><p>查看端口</p>
-<pre><code>netstat -nltp</code></pre><p><img src="/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/FastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577535905825.png" alt="1577535905825"></p>
-<h4 id="storage-安装"><a href="#storage-安装" class="headerlink" title="storage 安装"></a>storage 安装</h4><ul>
-<li>安装 libevent</li>
-<li>安装 libfastcommon</li>
-<li>编译安装(与tracker相同)</li>
+<pre><code>npm install hexo-asset-image --save</code></pre><ul>
+<li>③hexo new  file_name 时会在source/_post/下生成file_name的文件夹,将需要使用的图片放置在里面,然后使用相对路径引入</li>
 </ul>
-<h5 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h5><pre><code>vi storage.conf
-
-group_name=group1 #分组,同一分组为设置冗余防止宕机不可用
-base_path=/home/yuqing/FastDFS #数据存储路径,自己设置
-store_path0=/home/yuqing/FastDFS #文件存储路径,自己设置
-tracker_server=192.168.101.3:22122 #配置 tracker 服务器:IP
-tracker_server=192.168.1.21:22122 #如果有多个则配置多个 tracker
-http.server_port=80</code></pre><h5 id="启动-1"><a href="#启动-1" class="headerlink" title="启动"></a>启动</h5><pre><code>/usr/bin/fdfs_storaged /etc/fdfs/storage.conf start</code></pre><h5 id="分发配置"><a href="#分发配置" class="headerlink" title="分发配置"></a>分发配置</h5><p>将FastDFS分发到各个节点,并修改配置,分发脚本如下</p>
-<pre><code>#!/bin/bash
-pcount=$#
-if((pcount=0));then
-echo no args;
-exit;
-fi
-p1=$1
-fname=`basename $p1`
-echo fname=$fname
-pdir=`cd -P $(dirname $p1);pwd`
-echo pdir=$pdir
-
-user=`whoami`
-echo user=$user
-for((host=1;host&lt;4;host++));do
-echo ------------salve$host-------------
-rsync -rvl $pdir/$fname $user@slave$host:$pdir
-done</code></pre><h3 id="利用可通过-usr-bin-fdfs-test-程序测试"><a href="#利用可通过-usr-bin-fdfs-test-程序测试" class="headerlink" title="利用可通过/usr/bin/fdfs_test 程序测试"></a>利用可通过/usr/bin/fdfs_test 程序测试</h3><p>修改/etc/fdfs/client.conf</p>
-<p>tracker_server 根据自己部署虚拟机的情况配置</p>
-<pre><code>base_path = /home/yuqing/fastdfs
-tracker-server=192.168.1.21:22122</code></pre><p>使用格式：</p>
-<pre><code>/usr/bin/fdfs_test 客户端配置文件地址 upload 上传文件</code></pre><p>比如将/home 下的图片上传到 FastDFS 中：</p>
-<pre><code>/usr/bin/fdfs_test /etc/fdfs/client.conf upload /home/tomcat.png</code></pre><p>打印日志如下:</p>
-<pre><code>This is FastDFS client test program v5.05
-
-Copyright (C) 2008, Happy Fish / YuQing
-
-FastDFS may be copied only under the terms of the GNU General
-Public License V3, which may be found in the FastDFS source kit.
-Please visit the FastDFS Home Page http://www.csource.org/ 
-for more detail.
-
-[2019-12-28 20:13:02] DEBUG - base_path=/home/fastdfs, connect_timeout=30, network_timeout=60, tracker_server_count=1, anti_steal_token=0, anti_steal_secret_key length=0, use_connection_pool=0, g_connection_pool_max_idle_time=3600s, use_storage_id=0, storage server id count: 0
-
-tracker_query_storage_store_list_without_group: 
-        server 1. group_name=, ip_addr=192.168.1.24, port=23000
-
-group_name=group1, ip_addr=192.168.1.24, port=23000
-storage_upload_by_filename
-group_name=group1, remote_filename=M00/00/00/wKgBGF4HRs6AOwJJAAId77F78II587.png
-source ip address: 192.168.1.24
-file timestamp=2019-12-28 20:13:02
-file size=138735
-file crc32=2977689730
-example file url: http://192.168.1.24/group1/M00/00/00/wKgBGF4HRs6AOwJJAAId77F78II587.png
-storage_upload_slave_by_filename
-group_name=group1, remote_filename=M00/00/00/wKgBGF4HRs6AOwJJAAId77F78II587_big.png
-source ip address: 192.168.1.24
-file timestamp=2019-12-28 20:13:02
-file size=138735
-file crc32=2977689730</code></pre><p><a href="http://192.168.1.24/group1/M00/00/00/wKgBGF4HRs6AOwJJAAId77F78II587.png" target="_blank" rel="noopener">http://192.168.1.24/group1/M00/00/00/wKgBGF4HRs6AOwJJAAId77F78II587.png</a><br>就是文件的下载路径。对应服务器的base_path/fdfs_storage/data/00/00/wKgBGF4HRs6AOwJJAAId77F78II587.png文件</p>
-<p>现在还没有和 nginx 整合无法使用 http 下载。</p>
-<h3 id="Nginx整合FastDFS"><a href="#Nginx整合FastDFS" class="headerlink" title="Nginx整合FastDFS"></a>Nginx整合FastDFS</h3><h4 id="FastDFS-nginx-module"><a href="#FastDFS-nginx-module" class="headerlink" title="FastDFS-nginx-module"></a>FastDFS-nginx-module</h4><p>将 FastDFS-nginx-module_v1.16.tar.gz 传 至 fastDFS 的 storage 服 务 器 的</p>
-<p>/usr/local/下，执行如下命令：</p>
-<pre><code>cd /usr/local
-tar -zxvf FastDFS-nginx-module_v1.16.tar.gz
-cd FastDFS-nginx-module/src
-vi config</code></pre><p><img src="/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/FastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577536510714.png" alt="1577536510714"></p>
-<p>将/usr/local修改为/usr，注意这里有三场，不要改漏了。</p>
-<p>将 FastDFS-nginx-module/src 下的 mod_FastDFS.conf 拷贝至/etc/fdfs/下</p>
-<pre><code>cp mod_FastDFS.conf /etc/fdfs/
-vi /etc/fdfs/mod_FastDFS.conf
-
-base_path=/home/FastDFS # 保持和之前安装时一致
-tracker_server=192.168.1.21:22122
-url_have_group_name=true #url 中包含 group 名称
-store_path0=/home/fastdfs/fdfs_storage #指定文件存储路径,和之前一致</code></pre><p>将 libfdfsclient.so 拷贝至/usr/lib 下</p>
-<pre><code>cp /usr/lib64/libfdfsclient.so /usr/lib/</code></pre><p>创建 nginx/client 目录</p>
-<pre><code>mkdir -p /var/temp/nginx/client</code></pre><h4 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h4><p>详细教程可见nginx使用感悟</p>
-<p>将 nginx-1.8.0.tar.gz 拷贝到/usr/local 下</p>
-<p>解压 nginx-1.8.0.tar.gz</p>
-<p>进入 nginx-1.8.0 目录，执行如下配置命令：</p>
-<pre><code>./configure --add-module=/usr/local/FastDFS-nginx-module/src
-make make install</code></pre><p>在nginx中增加如下虚拟机配置:</p>
-<p>storage配置:</p>
-<pre><code>server {
- listen 80;
- server_name 192.168.1.23; 本机ip
- location /group1/M00/{
- root /home/FastDFS/fdfs_storage/data;  #以自己配置的地址为准
- ngx_FastDFS_module;
- } }</code></pre><p>tracker配置:</p>
-<pre><code>#storage 群 group1 组
-upstream storage_server_group1{
- server 192.168.1.23:80 weight=10;
-server 192.168.1.24:80 weight=10;
- }
- #storage 群 group2 组
-upstream storage_server_group2{
- server 192.168.1.25:80 weight=10;
- }
- server {
-listen 80;
-server_name ccc.test.com;
-location /group1{
-proxy_redirect off;
-proxy_set_header Host $host;
-proxy_set_header X-Real-IP $remote_addr;
-proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-proxy_pass http://storage_server_group1;
+<pre><code>![用于图片加载失败时显示的内容](/file_name/image_name)</code></pre><ul>
+<li>如此博客中的图片最后会和.md文件一起生成到public\2019\12\27\file_name中,这样在hexe g 时,可以看到命令窗口会打印修改后的路径,如下</li>
+</ul>
+<pre><code>Start processing
+update link as:--&gt;/2019/12/27/first/1577523021175.png
+update link as:--&gt;/2019/12/27/first/1577523021175.png</code></pre><h3 id="我遇到的问题"><a href="#我遇到的问题" class="headerlink" title="我遇到的问题"></a>我遇到的问题</h3><pre><code>Start processing
+update link as:--&gt;.io//2019/12/27/first/1577523021175.png
+update link as:--&gt;.io//2019/12/27/first/1577523021175.png</code></pre><ul>
+<li>经过一番搜寻,发现hexo-asset-image会将图片的地址修改,具体的源码信息可见\node_modules\hexo-asset-image\index.js,打开后内容如下:</li>
+</ul>
+<pre><code>&#39;use strict&#39;;
+var cheerio = require(&#39;cheerio&#39;);
+function getPosition(str, m, i) {
+  return str.split(m, i).join(m).length;
 }
-location /group2{
-proxy_redirect off;
-proxy_set_header Host $host;
-proxy_set_header X-Real-IP $remote_addr;
-proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-proxy_pass http://storage_server_group2; } }</code></pre><h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p>使用浏览器 http 访问文件，这里访问上传图片测试的文件：</p>
-<p>访问 storage：<a href="http://192.168.1.24/group1/M00/00/00/wKgBGF4HRs6AOwJJAAId77F78II587.png" target="_blank" rel="noopener">http://192.168.1.24/group1/M00/00/00/wKgBGF4HRs6AOwJJAAId77F78II587.png</a></p>
-<p><img src="/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/FastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577537632508.png" alt="1577537632508"></p>
-<p>ip 地址改为 192.168.1.24也可以访问到文件，因为同一个分组的 storage 文件互相同步。</p>
-<h3 id="编写java代码上传下载文件"><a href="#编写java代码上传下载文件" class="headerlink" title="编写java代码上传下载文件"></a>编写java代码上传下载文件</h3><p><strong>SpringBoot测试方案</strong></p>
-<p>引入依赖</p>
-<pre><code>        &lt;dependency&gt;
-            &lt;groupId&gt;net.oschina.zcx7878&lt;/groupId&gt;
-            &lt;artifactId&gt;fastdfs-client-java&lt;/artifactId&gt;
-            &lt;version&gt;1.27.0.0&lt;/version&gt;
-        &lt;/dependency&gt;</code></pre><pre><code>@SpringBootTest
-@RunWith(SpringRunner.class)
-public class TestFastDFS {
 
-    @Test
-    public void upload() throws IOException, MyException {
-        //加载fastdfs-client.properties配置文件
-        ClientGlobal.initByProperties(&quot;config/fastdfs-client.properties&quot;);
-
-        //定义TrackerClient,用于请求TrackerClient
-        TrackerClient trackerClient = new TrackerClient();
-        //创建TrackerServer
-        TrackerServer trackerServer = trackerClient.getConnection();
-        //通过TrackerServer获取storeServer
-        StorageServer storeServer = trackerClient.getStoreStorage(trackerServer);
-        //通过TrackerServer and storeServer 创建storageClient1
-        StorageClient1 storageClient1 = new StorageClient1(trackerServer, storeServer);
-        //fileId group1/M00/00/00/wKgBF13ebJuALXhqAAI6t5YoKLQ94..log
-        String fileId = storageClient1.upload_file1(&quot;C:\\Users\\tiger\\Pictures\\Feedback\\{A687785D-19C3-4B2E-A00A-2667141271EB}\\Capture001.png&quot;, &quot;.png&quot;, null);
-
-        System.out.println(fileId);
-        //获取tracker客户端
+hexo.extend.filter.register(&#39;after_post_render&#39;, function(data){
+  var config = hexo.config;
+  if(config.post_asset_folder){
+    var link = data.permalink;
+    var beginPos = getPosition(link, &#39;/&#39;, 3) + 1;
+    var appendLink = &#39;&#39;;
+    // In hexo 3.1.1, the permalink of &quot;about&quot; page is like &quot;.../about/index.html&quot;.
+    // if not with index.html endpos = link.lastIndexOf(&#39;.&#39;) + 1 support hexo-abbrlink
+    if(/.*\/index\.html$/.test(link)) {
+      // when permalink is end with index.html, for example 2019/02/20/xxtitle/index.html
+      // image in xxtitle/ will go to xxtitle/index/
+      appendLink = &#39;index/&#39;;
+      var endPos = link.lastIndexOf(&#39;/&#39;);
     }
-
-    @Test
-    public void download() throws IOException, MyException {
-        //加载fastdfs-client.properties配置文件
-        ClientGlobal.initByProperties(&quot;config/fastdfs-client.properties&quot;);
-
-        //定义TrackerClient,用于请求TrackerClient
-        TrackerClient trackerClient = new TrackerClient();
-        //创建TrackerServer
-        TrackerServer trackerServer = trackerClient.getConnection();
-        //通过TrackerServer获取storeServer
-        StorageServer storeServer = trackerClient.getStoreStorage(trackerServer);
-        //通过TrackerServer and storeServer 创建storageClient1
-        StorageClient1 storageClient1 = new StorageClient1(trackerServer, storeServer);
-        //fileId group1/M00/00/00/wKgBF13ebJuALXhqAAI6t5YoKLQ94..log
-        byte[] bytes = storageClient1.download_file1(&quot;group1/M00/00/00/wKgBF13ebJuALXhqAAI6t5YoKLQ94..log&quot;);
-        FileOutputStream fos = new FileOutputStream(new File(&quot;hello&quot;));
-        fos.write(bytes);
+    else {
+      var endPos = link.lastIndexOf(&#39;.&#39;) ;
     }
-}</code></pre><p>config/fastdfs-client.properties</p>
-<pre><code>fastdfs.connect_timeout_in_seconds = 5
-fastdfs.network_timeout_in_seconds = 30
-fastdfs.charset = UTF-8
-fastdfs.tracker_servers = 192.168.1.21:22122</code></pre><p>运行upload得到路径</p>
-<pre><code>group1/M00/00/00/wKgBGF4HUZiAOKLgAB7xNcvo_Vw00..png
-根据自己配置的路径可以得到访问的http协议路径为:
-http://192.168.1.21/group1/M00/00/00/wKgBGF4HUZiAOKLgAB7xNcvo_Vw00..png</code></pre><p>效果如下</p>
-<p><img src="/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/FastDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%5C1577538377340.png" alt="1577538377340"></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><strong>FastDFS相对于HDFS等分布式文件的优势在于它不切分文件,所以下载文件的时候没有拼装文件的过程,而且可以锁定一台机器进行网络I/O,所以速度很快.不过正所谓这也是它的缺点,这导致它不能用于存储大文件.所以FastDFS适合存储大量图片小视频之类的文件.</strong></p>
-<h3 id="安装过程遇到的一些问题"><a href="#安装过程遇到的一些问题" class="headerlink" title="安装过程遇到的一些问题"></a>安装过程遇到的一些问题</h3><p>①安装nginx No rule to make target “/usr/local/fastdfs-nginx-module/src/ngx_http_fastdfs_module.c”, needed by objs/addon/src/ngx_http_fastdfs_module.o . Stop. 修改fastdfs-nginx-module/src/config文件中的路径,删除local(注意一共有三个)</p>
-<p>②nginx安装cp: <code>conf/koi-win&#39; and</code>/usr/local/nginx/conf/koi-win’ are the same file 解决 将./configure –prefix=/usr/local/nginx 改为 ./configure –prefix=/usr/local/nginx –conf-path=/usr/local/nginx/nginx.conf</p>
-<p>③nginx编码严格.直接复制会出现nginx: [emerg] unknown directive “ “ in /usr/local/nginx-1.12.0-storage/conf/nginx.conf:49）：所以需要手动输入nginx.conf</p>
+    link = link.substring(beginPos, endPos) + &#39;/&#39; + appendLink;
+
+    var toprocess = [&#39;excerpt&#39;, &#39;more&#39;, &#39;content&#39;];
+    for(var i = 0; i &lt; toprocess.length; i++){
+      var key = toprocess[i];
+
+      var $ = cheerio.load(data[key], {
+        ignoreWhitespace: false,
+        xmlMode: false,
+        lowerCaseTags: false,
+        decodeEntities: false
+      });
+      $(&#39;img&#39;).each(function(){
+        if ($(this).attr(&#39;src&#39;)){
+          // For windows style path, we replace &#39;\&#39; to &#39;/&#39;.
+          var src = $(this).attr(&#39;src&#39;).replace(&#39;\\&#39;, &#39;/&#39;);
+          if(!(/http[s]*.*|\/\/.*/.test(src)
+            || /^\s+\//.test(src)
+            || /^\s*\/uploads|images\//.test(src))) {
+            // For &quot;about&quot; page, the first part of &quot;src&quot; can&#39;t be removed.
+            // In addition, to support multi-level local directory.
+            var linkArray = link.split(&#39;/&#39;).filter(function(elem){
+              return elem != &#39;&#39;;
+            });
+            var srcArray = src.split(&#39;/&#39;).filter(function(elem){
+              return elem != &#39;&#39; &amp;&amp; elem != &#39;.&#39;;
+            });
+            if(srcArray.length &gt; 1)
+            srcArray.shift();
+            src = srcArray.join(&#39;/&#39;);
+
+            $(this).attr(&#39;src&#39;, config.root + link + src);
+            console.info&amp;&amp;console.info(&quot;update link as:--&gt;&quot;+config.root + link + src);
+          }
+        }else{
+          console.info&amp;&amp;console.info(&quot;no src attr, skipped...&quot;);
+          console.info&amp;&amp;console.info($(this));
+        }
+      });
+      data[key] = $.html();
+    }
+  }
+});
+</code></pre><ul>
+<li>通过查看源码发现里面有对生成博客图片的地址修改:</li>
+</ul>
+<pre><code>link = link.substring(beginPos, endPos) + &#39;/&#39; + appendLink;</code></pre><ul>
+<li>通过排查发现图片的路径的endPos为:</li>
+</ul>
+<pre><code>var endPos = link.lastIndexOf(&#39;.&#39;) ;</code></pre><ul>
+<li>我打印data.permalink得到</li>
+</ul>
+<pre><code>http://tigerLuHai.github.io/2019/12/27/first/</code></pre><p>如此在截取字符串的时候就会多出四个字符  <strong>.io/</strong></p>
+<p>最后发现这段代码的作用就是要将data.permalink中路径的<a href="https://tigerLuhai.gituhub.io/去掉,因为在后面部署到github时使用相对路径访问会重新加上这个前缀,如果这里有就会重复,导致地址为https://tigerLuhai.gituhub.io/http://tigerLuHai.github.io/2019/12/27/first/的现象" target="_blank" rel="noopener">https://tigerLuhai.gituhub.io/去掉,因为在后面部署到github时使用相对路径访问会重新加上这个前缀,如果这里有就会重复,导致地址为https://tigerLuhai.gituhub.io/http://tigerLuHai.github.io/2019/12/27/first/的现象</a>.</p>
+<p>明白了需求就可以修改代码为</p>
+<pre><code>var endPos = link.lastIndexOf(&#39;/&#39;) ;</code></pre><p>这样就可以正常部署了.</p>
 
             </div>
             <hr />
@@ -843,7 +734,7 @@ http://192.168.1.21/group1/M00/00/00/wKgBGF4HUZiAOKLgAB7xNcvo_Vw00..png</code></
         repo: 'tigerLuHai.github.io',
         owner: 'tigerLuHai',
         admin: "tigerLuHai",
-        id: '2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/',
+        id: '2019/12/29/hexo-bo-wen-bao-han-tu-pian-de-keng/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1126,9 +1017,10 @@ http://192.168.1.21/group1/M00/00/00/wKgBGF4HUZiAOKLgAB7xNcvo_Vw00..png</code></
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/12/29/hexo-bo-wen-bao-han-tu-pian-de-keng/">
                     <div class="card-image">
@@ -1153,9 +1045,9 @@ post_asset_folder: true
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1168,6 +1060,7 @@ post_asset_folder: true
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -1178,13 +1071,13 @@ post_asset_folder: true
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/27/first/">
+                <a href="/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="first">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="FastDFS分布式文件系统安装使用教程">
                         
-                        <span class="card-title">first</span>
+                        <span class="card-title">FastDFS分布式文件系统安装使用教程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1192,11 +1085,12 @@ post_asset_folder: true
                         
                             
 
+FastDFS分布式文件系统安装使用教程使用场景分布式文件系统用于海量文件存储及传输访问的瓶颈问题，对海量视频的管理、对海量图片的管理等,FastDFS与其他分布式文件系统相比的一个显著优点就是特别适合大量小文件(图片等)的存储,因为它
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-27
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-28
                             </span>
                         <span class="publish-author">
                             

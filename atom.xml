@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tigerLuHai.github.io/"/>
-  <updated>2019-12-28T16:23:36.586Z</updated>
+  <updated>2019-12-29T05:03:19.690Z</updated>
   <id>http://tigerLuHai.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo博文包含图片的坑</title>
+    <link href="http://tigerLuHai.github.io/2019/12/29/hexo-bo-wen-bao-han-tu-pian-de-keng/"/>
+    <id>http://tigerLuHai.github.io/2019/12/29/hexo-bo-wen-bao-han-tu-pian-de-keng/</id>
+    <published>2019-12-29T02:52:53.000Z</published>
+    <updated>2019-12-29T05:03:19.690Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;div align=&quot;middle&quot;&gt;&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;330&quot; height=&quot;86&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="tool" scheme="http://tigerLuHai.github.io/categories/tool/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>FastDFS分布式文件系统安装使用教程</title>
