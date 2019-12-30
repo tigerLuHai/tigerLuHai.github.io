@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tigerLuHai.github.io/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/</loc>
+    
+    <lastmod>2019-12-30T08:07:51.918Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tigerLuHai.github.io/2019/12/29/hexo-bo-wen-bao-han-tu-pian-de-keng/</loc>
     
     <lastmod>2019-12-29T05:03:19.690Z</lastmod>
@@ -44,14 +51,14 @@
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/contact/index.html</loc>
+    <loc>http://tigerLuHai.github.io/friends/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/friends/index.html</loc>
+    <loc>http://tigerLuHai.github.io/categories/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
     
@@ -65,7 +72,7 @@
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/categories/index.html</loc>
+    <loc>http://tigerLuHai.github.io/contact/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
     
