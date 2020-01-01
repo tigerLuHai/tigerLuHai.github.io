@@ -4,18 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="hexo博文包含图片的坑, LuHai Java后台开发 大数据开发">
+    <meta name="keywords" content="LuHai Java后台开发 大数据开发">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="
-
-hexo博文包含图片的坑网上有很多关于这个的教程,主要的总结如下
-①修改博客目录下的_config_yml的post_asset_folder为true
-
-post_asset_folder: true
-
-②安装hexo-asset-i">
+    <meta name="description" content="title: Hadoop集群搭建与简单使用top: falsecover: falsetoc: truemathjax: truedate: 2020-01-01 14:13:08password:summary:tags:categor">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +16,7 @@ post_asset_folder: true
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>hexo博文包含图片的坑 | 卢海的博客</title>
+    <title>卢海的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -297,13 +290,13 @@ post_asset_folder: true
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        hexo博文包含图片的坑
+                        
                     </div>
                 </div>
             </div>
@@ -419,22 +412,13 @@ post_asset_folder: true
                 </div>
                 <div class="col s5 right-align">
                     
-                    <div class="post-cate">
-                        <i class="fa fa-bookmark fa-fw icon-category"></i>
-                        
-                        <a href="/categories/tool/" class="post-category" target="_blank">
-                            tool
-                        </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
 
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-29
+                    2020-01-01
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -448,14 +432,14 @@ post_asset_folder: true
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    790
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    8 分
                 </div>
                 
                 
@@ -471,108 +455,298 @@ post_asset_folder: true
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=414414&auto=0&height=66"></iframe></div>
+                <p>title: Hadoop集群搭建与简单使用<br>top: false<br>cover: false<br>toc: true<br>mathjax: true<br>date: 2020-01-01 14:13:08<br>password:<br>summary:<br>tags:<br>categories:大数据</p>
+<h1 id="Hadoop集群搭建与简单使用"><a href="#Hadoop集群搭建与简单使用" class="headerlink" title="Hadoop集群搭建与简单使用"></a>Hadoop集群搭建与简单使用</h1><p>首先需要搭建一个linux的集群,可以参见我的博客<a href="https://tigerluhai.github.io/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/">linux集群搭建</a></p>
+<blockquote>
+<p>Hadoop的运行是基于java的,所以需要先安装JDK,而且JDK版本必须高于1.7</p>
+</blockquote>
+<h3 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h3><p>（1）查询是否安装Java软件：</p>
+<pre><code> rpm -qa | grep java</code></pre><p>（2）如果安装的版本低于1.7，卸载该JDK：</p>
+<pre><code>sudo rpm -e 软件包</code></pre><p>（3）查看JDK安装路径：</p>
+<pre><code> which(or whereis) java</code></pre><p>（4）解压JDK：</p>
+<pre><code>tar -zxvf 安装包名 -C 目标路径</code></pre><p>（5）配置JDK环境：</p>
+<pre><code>vi /etc/profile
 
-<h1 id="hexo博文包含图片的坑"><a href="#hexo博文包含图片的坑" class="headerlink" title="hexo博文包含图片的坑"></a>hexo博文包含图片的坑</h1><h3 id="网上有很多关于这个的教程-主要的总结如下"><a href="#网上有很多关于这个的教程-主要的总结如下" class="headerlink" title="网上有很多关于这个的教程,主要的总结如下"></a>网上有很多关于这个的教程,主要的总结如下</h3><ul>
-<li>①修改博客目录下的_config_yml的post_asset_folder为true</li>
-</ul>
-<pre class="line-numbers language-java"><code class="language-java">post_asset_folder<span class="token operator">:</span> <span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+在文件末尾加上
+#JAVA_HOME
+export JAVA_HOME=/opt/module/jdk1.8.0_144
+export PATH=$PATH:$JAVA_HOME/bin</code></pre><p><strong>修改后需要立即生效需要运行如下命令:</strong></p>
+<pre><code>source /etc/profile</code></pre><p>（6）测试JDK安装是否成功：</p>
+<pre><code>java -version</code></pre><h3 id="安装Hadoop"><a href="#安装Hadoop" class="headerlink" title="安装Hadoop"></a>安装Hadoop</h3><p>（1）解压hadoop安装包到指定位置</p>
+<pre><code>tar -zxvf 安装包 -C 指定目录</code></pre><p>（2）添加环境变量</p>
+<pre><code>vi /etc/profile
+
+在文件末尾加上
+#HADOOP_HOME
+export HADOOP_HOME=/opt/module/hadoop-3.1.2
+export PATH=$PATH:$HADOOP_HOME/bin
+export PATH=$PATH:$HADOOP_HOME/sbin</code></pre><p>(3)修改配置文件</p>
 <ul>
-<li>②安装hexo-asset-image插件</li>
+<li>集群部署规划</li>
 </ul>
-<pre><code>npm install hexo-asset-image --save</code></pre><ul>
-<li>③hexo new  file_name 时会在source/_post/下生成file_name的文件夹,将需要使用的图片放置在里面,然后使用相对路径引入</li>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>master</th>
+<th>slave1</th>
+<th>slave2</th>
+<th>slave3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HDFS</td>
+<td>NameNodeDataNode</td>
+<td>SecondaryNameNode DataNode</td>
+<td>DataNode</td>
+<td>DataNode</td>
+</tr>
+<tr>
+<td>YARN</td>
+<td>NodeManager</td>
+<td>ResourceManager</td>
+<td>NodeManager</td>
+<td>NodeManager</td>
+</tr>
+</tbody></table>
+<ul>
+<li>核心配置文件</li>
 </ul>
-<pre><code>![用于图片加载失败时显示的内容](/file_name/image_name)</code></pre><ul>
-<li>如此博客中的图片最后会和.md文件一起生成到public\2019\12\27\file_name中,这样在hexe g 时,可以看到命令窗口会打印修改后的路径,如下</li>
-</ul>
-<pre><code>Start processing
-update link as:--&gt;/2019/12/27/first/1577523021175.png
-update link as:--&gt;/2019/12/27/first/1577523021175.png</code></pre><h3 id="我遇到的问题"><a href="#我遇到的问题" class="headerlink" title="我遇到的问题"></a>我遇到的问题</h3><pre><code>Start processing
-update link as:--&gt;.io//2019/12/27/first/1577523021175.png
-update link as:--&gt;.io//2019/12/27/first/1577523021175.png</code></pre><ul>
-<li>经过一番搜寻,发现hexo-asset-image会将图片的地址修改,具体的源码信息可见\node_modules\hexo-asset-image\index.js,打开后内容如下:</li>
-</ul>
-<pre><code>&#39;use strict&#39;;
-var cheerio = require(&#39;cheerio&#39;);
-function getPosition(str, m, i) {
-  return str.split(m, i).join(m).length;
-}
+<p>配置core-site.xml</p>
+<pre><code>vi core-site.xml
 
-hexo.extend.filter.register(&#39;after_post_render&#39;, function(data){
-  var config = hexo.config;
-  if(config.post_asset_folder){
-    var link = data.permalink;
-    var beginPos = getPosition(link, &#39;/&#39;, 3) + 1;
-    var appendLink = &#39;&#39;;
-    // In hexo 3.1.1, the permalink of &quot;about&quot; page is like &quot;.../about/index.html&quot;.
-    // if not with index.html endpos = link.lastIndexOf(&#39;.&#39;) + 1 support hexo-abbrlink
-    if(/.*\/index\.html$/.test(link)) {
-      // when permalink is end with index.html, for example 2019/02/20/xxtitle/index.html
-      // image in xxtitle/ will go to xxtitle/index/
-      appendLink = &#39;index/&#39;;
-      var endPos = link.lastIndexOf(&#39;/&#39;);
+# 在该文件中编写如下配置
+&lt;!-- 指定HDFS中NameNode的地址 --&gt;
+&lt;property&gt;
+    &lt;name&gt;fs.defaultFS&lt;/name&gt;
+    &lt;value&gt;hdfs://master:9000&lt;/value&gt;
+&lt;/property&gt;
+&lt;!-- 指定Hadoop运行时产生文件的存储目录 --&gt;
+&lt;property&gt;
+    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+    &lt;value&gt;/opt/module/hadoop-3.1.2/data/tmp&lt;/value&gt;
+&lt;/property&gt;</code></pre><ul>
+<li>HDFS配置文件</li>
+</ul>
+<p>配置hadoop-env.sh</p>
+<pre><code> vi hadoop-env.sh
+
+export JAVA_HOME=/opt/module/jdk1.8.0_144</code></pre><p>配置hdfs-site.xml</p>
+<pre><code>vi hdfs-site.xml
+
+&lt;!--配置副本数量--&gt;
+&lt;property&gt;
+        &lt;name&gt;dfs.replication&lt;/name&gt;
+        &lt;value&gt;3&lt;/value&gt;
+&lt;/property&gt;
+&lt;!-- 指定Hadoop辅助名称节点主机配置 --&gt;
+&lt;property&gt;
+      &lt;name&gt;dfs.namenode.secondary.http-address&lt;/name&gt;
+      &lt;value&gt;slave1:50090&lt;/value&gt;
+&lt;/property&gt;
+</code></pre><p>注意:文件副本数量不只是dfs.replication决定,而是min(datanode节点数,dfs.replication)</p>
+<ul>
+<li>YARN配置文件</li>
+</ul>
+<p>配置yarn-env.sh</p>
+<pre><code> vi yarn-env.sh
+
+export JAVA_HOME=/opt/module/jdk1.8.0_144</code></pre><ul>
+<li>配置yarn-site.xml</li>
+</ul>
+<pre><code> vi yarn-site.xml
+
+&lt;!-- Reducer获取数据的方式 --&gt;
+&lt;property&gt;
+    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
+    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
+&lt;/property&gt;
+&lt;!-- 指定YARN的ResourceManager的地址 --&gt;
+&lt;property&gt;
+    &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;
+    &lt;value&gt;slave2&lt;/value&gt;
+&lt;/property&gt;</code></pre><ul>
+<li>MapReduce配置文件</li>
+</ul>
+<pre><code>vi mapred-env.sh
+
+export JAVA_HOME=/opt/module/jdk1.8.0_144</code></pre><p><strong>注意：hadoop3之前的版本,mapreduce会继承hadoop的配置,所以可以不用配置这一项,但是3以后的版本必须配置,否则运行mapreduce时会报环境出错。</strong></p>
+<ul>
+<li>配置mapred-site.xml</li>
+</ul>
+<pre><code>cp mapred-site.xml.template mapred-site.xml
+vi mapred-site.xml
+
+&lt;!-- 指定MR运行在Yarn上 --&gt;
+&lt;property&gt;
+        &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
+        &lt;value&gt;yarn&lt;/value&gt;
+&lt;/property&gt;</code></pre><p>（4）在集群上分发配置好的Hadoop配置文件</p>
+<p>编写分发脚本</p>
+<pre><code>vi /usr/local/bin/xsync
+
+#!/bin/bash
+pcount=$#
+if((pcount=0));then
+echo no args;
+exit;
+fi
+p1=$1
+fname=`basename $p1`
+echo fname=$fname
+pdir=`cd -P $(dirname $p1);pwd`
+echo pdir=$pdir
+
+user=`whoami`
+echo user=$user
+for((host=1;host&lt;4;host++));do
+echo ------------salve$host-------------
+rsync -rvl $pdir/$fname $user@slave$host:$pdir
+done</code></pre><pre><code>xsync /opt/module/hadoop-3.1.2/</code></pre><h3 id="集群单节点启动"><a href="#集群单节点启动" class="headerlink" title="集群单节点启动"></a>集群单节点启动</h3><p>（1）如果集群是第一次启动，需要<strong>格式化NameNode</strong></p>
+<pre><code>hadoop namenode -format</code></pre><p>（2）在master上启动NameNode</p>
+<pre><code>hadoop-daemon.sh start namenode</code></pre><p>查看节点启动状态</p>
+<pre><code> jps</code></pre><p><strong>注意:jps用于查看java进程,namenode和datanode都是java进程</strong></p>
+<p>（3）在master,slave1,slave2以及slave3上分别启动DataNode</p>
+<pre><code>hadoop-daemon.sh start datanode</code></pre><pre><code> jps
+
+3461 NameNode
+3608 Jps
+3561 DataNode</code></pre><p>思考：每次都一个一个节点启动，如果节点数太多怎么办？</p>
+<h3 id="群起集群"><a href="#群起集群" class="headerlink" title="群起集群"></a>群起集群</h3><ol>
+<li>配置slaves</li>
+</ol>
+<pre><code>vi /opt/module/hadoop-3.1.2/etc/hadoop/slaves
+
+在该文件中增加如下内容：
+master
+slave1
+slave2
+slave3</code></pre><p><strong>注意：该文件中添加的内容结尾不允许有空格，文件中不允许有空行。</strong></p>
+<p>同步所有节点配置文件</p>
+<pre><code> xsync slaves</code></pre><ol start="2">
+<li>启动集群</li>
+</ol>
+<p>（1）如果集群是第一次启动，需要格式化NameNode（注意格式化之前，一定要先停止上次启动的所有namenode和datanode进程，然后再删除data和log数据）</p>
+<pre><code>hdfs namenode -format</code></pre><p>（2）启动HDFS</p>
+<pre><code>start-dfs.sh</code></pre><p>（3）启动YARN</p>
+<pre><code>start-yarn.sh</code></pre><p><strong>注意：NameNode和ResourceManger如果不是同一台机器，不能在NameNode上启动 YARN，应该在ResouceManager所在的机器上启动YARN。</strong></p>
+<h3 id="集群基本操作"><a href="#集群基本操作" class="headerlink" title="集群基本操作"></a>集群基本操作</h3><ul>
+<li>-ls: 显示目录信息</li>
+</ul>
+<pre><code>hadoop fs -ls /</code></pre><ul>
+<li>mkdir：在HDFS上创建目录</li>
+</ul>
+<pre><code> hadoop fs -mkdir -p /parent/test</code></pre><ul>
+<li>moveFromLocal：从本地剪切粘贴到HDFS</li>
+</ul>
+<pre><code>hadoop fs  -moveFromLocal  ./kongming.txt  /parent/test</code></pre><ul>
+<li>appendToFile：追加一个文件到已经存在的文件末尾</li>
+</ul>
+<pre><code> hadoop fs -appendToFile liubei.txt /parent/test/kongming.txt</code></pre><ul>
+<li>cat：显示文件内容</li>
+</ul>
+<pre><code>hadoop fs -cat /parent/test/kongming.txt</code></pre><ul>
+<li>chgrp 、-chmod、-chown：Linux文件系统中的用法一样，修改文件所属权限</li>
+<li>copyFromLocal：从本地文件系统中拷贝文件到HDFS路径去</li>
+</ul>
+<pre><code> hadoop fs -copyFromLocal README.txt /</code></pre><ul>
+<li>copyToLocal：从HDFS拷贝到本地</li>
+</ul>
+<pre><code> hadoop fs -copyToLocal /parent/test/kongming.txt ./</code></pre><ul>
+<li>cp ：从HDFS的一个路径拷贝到HDFS的另一个路径</li>
+</ul>
+<pre><code>hadoop fs -cp /parent/test/kongming.txt  /zhuge.txt</code></pre><ul>
+<li>mv：在HDFS目录中移动文件</li>
+</ul>
+<pre><code>hadoop fs -mv /zhuge.txt /parent/test/</code></pre><ul>
+<li>get：等同于copyToLocal，就是从HDFS下载文件到本地</li>
+</ul>
+<pre><code>hadoop fs -get /parent/test/kongming.txt ./</code></pre><ul>
+<li>getmerge：合并下载多个文件，比如HDFS的目录 /parent/test//test下有多个文件:log.1, log.2,log.3,…</li>
+</ul>
+<pre><code>hadoop fs -getmerge /parent/test/test/* ./zaiyiqi.txt</code></pre><ul>
+<li>put：等同于copyFromLocal</li>
+</ul>
+<pre><code> hadoop fs -put ./zaiyiqi.txt /</code></pre><ul>
+<li>tail：显示一个文件的末尾</li>
+</ul>
+<ul>
+<li>rm：删除文件或文件夹</li>
+</ul>
+<ul>
+<li>rmdir：删除空目录</li>
+</ul>
+<ul>
+<li>du统计文件夹的大小信息</li>
+</ul>
+<h3 id="JAVA代码操作HDFS"><a href="#JAVA代码操作HDFS" class="headerlink" title="JAVA代码操作HDFS"></a>JAVA代码操作HDFS</h3><pre><code>    Logger logger = LoggerFactory.getLogger(HdfsClient.class);
+
+    FileSystem fileSystem;
+
+    Configuration configuration;
+
+    @Test
+    /**
+     * 测试环境正常
+     */
+    public void HDFS_ENV() throws IOException {
+        Logger logger = LoggerFactory.getLogger(HdfsClient.class);
+        //1.获取hdfs客户端对象
+        Configuration configuration = new Configuration();
+        configuration.set(&quot;fs.defaultFS&quot;,&quot;hdfs://master:9000&quot;);
+        FileSystem fileSystem = FileSystem.get(configuration);
+        //2.在hdfs上执行相关操作
+        boolean mkdirs = fileSystem.mkdirs(new Path(&quot;/client_test_environment&quot;));
+        //3.关闭资源
+        fileSystem.close();
+
+        System.out.println(mkdirs);
     }
-    else {
-      var endPos = link.lastIndexOf(&#39;.&#39;) ;
+
+    @Before
+    /**
+     * 创建fileSystem对象
+     */
+    public void createFileSystem() throws URISyntaxException, IOException, InterruptedException {
+        //1.获取fs对象
+        configuration = new Configuration();
+        fileSystem = FileSystem.get(new URI(&quot;hdfs://master:9000&quot;), configuration, &quot;root&quot;);
     }
-    link = link.substring(beginPos, endPos) + &#39;/&#39; + appendLink;
 
-    var toprocess = [&#39;excerpt&#39;, &#39;more&#39;, &#39;content&#39;];
-    for(var i = 0; i &lt; toprocess.length; i++){
-      var key = toprocess[i];
+    @Test
+    public void copyFromLocalFile() throws IOException{
+        //执行上传操作
+        fileSystem.copyFromLocalFile(new Path(&quot;D:\\logs\\xc.2019-04-29.log&quot;),new Path(&quot;/client_test_environment/&quot;));
+        //关闭资源
+        fileSystem.close();
+    }
 
-      var $ = cheerio.load(data[key], {
-        ignoreWhitespace: false,
-        xmlMode: false,
-        lowerCaseTags: false,
-        decodeEntities: false
-      });
-      $(&#39;img&#39;).each(function(){
-        if ($(this).attr(&#39;src&#39;)){
-          // For windows style path, we replace &#39;\&#39; to &#39;/&#39;.
-          var src = $(this).attr(&#39;src&#39;).replace(&#39;\\&#39;, &#39;/&#39;);
-          if(!(/http[s]*.*|\/\/.*/.test(src)
-            || /^\s+\//.test(src)
-            || /^\s*\/uploads|images\//.test(src))) {
-            // For &quot;about&quot; page, the first part of &quot;src&quot; can&#39;t be removed.
-            // In addition, to support multi-level local directory.
-            var linkArray = link.split(&#39;/&#39;).filter(function(elem){
-              return elem != &#39;&#39;;
-            });
-            var srcArray = src.split(&#39;/&#39;).filter(function(elem){
-              return elem != &#39;&#39; &amp;&amp; elem != &#39;.&#39;;
-            });
-            if(srcArray.length &gt; 1)
-            srcArray.shift();
-            src = srcArray.join(&#39;/&#39;);
 
-            $(this).attr(&#39;src&#39;, config.root + link + src);
-            console.info&amp;&amp;console.info(&quot;update link as:--&gt;&quot;+config.root + link + src);
-          }
-        }else{
-          console.info&amp;&amp;console.info(&quot;no src attr, skipped...&quot;);
-          console.info&amp;&amp;console.info($(this));
+    @Test
+    public void copyToLocalFile() throws IOException{
+        //执行上传操作
+        fileSystem.copyToLocalFile(true,new Path(&quot;/client_test_environment/xc.2019-04-29.log&quot;),new Path(&quot;D:\\logs\\xc.2019-04-29-back.log&quot;),false);
+        //关闭资源
+        fileSystem.close();
+    }
+
+    @Test
+    public void listFiles() throws IOException {
+        //查看文件信息
+        RemoteIterator&lt;LocatedFileStatus&gt; iterator = fileSystem.listFiles(new Path(&quot;/&quot;), true);
+        while (iterator.hasNext()){
+            LocatedFileStatus fileStatus = iterator.next();
+            //获取文件名称，文件权限，文件长度，块信息
+            logger.info(fileStatus.getPath().getName());
+            logger.info(fileStatus.getLen()+&quot;&quot;);
+            logger.info(fileStatus.getPermission()+&quot;&quot;);
+            BlockLocation[] blockLocations = fileStatus.getBlockLocations();
+            for (BlockLocation blockLocation : blockLocations) {
+                logger.info(blockLocation.toString());
+            }
+            logger.info(&quot;----------------                    ----------------------&quot;);
         }
-      });
-      data[key] = $.html();
-    }
-  }
-});
-</code></pre><ul>
-<li>通过查看源码发现里面有对生成博客图片的地址修改:</li>
-</ul>
-<pre><code>link = link.substring(beginPos, endPos) + &#39;/&#39; + appendLink;</code></pre><ul>
-<li>通过排查发现图片的路径的endPos为:</li>
-</ul>
-<pre><code>var endPos = link.lastIndexOf(&#39;.&#39;) ;</code></pre><ul>
-<li>我打印data.permalink得到</li>
-</ul>
-<pre><code>http://tigerLuHai.github.io/2019/12/27/first/</code></pre><p>如此在截取字符串的时候就会多出四个字符  <strong>.io/</strong></p>
-<p>最后发现这段代码的作用就是要将data.permalink中路径的<a href="https://tigerLuhai.gituhub.io/去掉,因为在后面部署到github时使用相对路径访问会重新加上这个前缀,如果这里有就会重复,导致地址为https://tigerLuhai.gituhub.io/http://tigerLuHai.github.io/2019/12/27/first/的现象" target="_blank" rel="noopener">https://tigerLuhai.gituhub.io/去掉,因为在后面部署到github时使用相对路径访问会重新加上这个前缀,如果这里有就会重复,导致地址为https://tigerLuhai.gituhub.io/http://tigerLuHai.github.io/2019/12/27/first/的现象</a>.</p>
-<p>明白了需求就可以修改代码为</p>
-<pre><code>var endPos = link.lastIndexOf(&#39;/&#39;) ;</code></pre><p>这样就可以正常部署了.</p>
-
+    }</code></pre>
             </div>
             <hr />
 
@@ -734,7 +908,7 @@ hexo.extend.filter.register(&#39;after_post_render&#39;, function(data){
         repo: 'tigerLuHai.github.io',
         owner: 'tigerLuHai',
         admin: "tigerLuHai",
-        id: '2019/12/29/hexo-bo-wen-bao-han-tu-pian-de-keng/',
+        id: '2020/01/01/hadoop-ji-qun-da-jian-yu-jian-dan-shi-yong/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1017,9 +1191,45 @@ hexo.extend.filter.register(&#39;after_post_render&#39;, function(data){
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/01/01/hadoop-ji-qun-da-jian-yu-jian-dan-shi-yong/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            title: Hadoop集群搭建与简单使用top: falsecover: falsetoc: truemathjax: truedate: 2020-01-01 14:13:08password:summary:tags:categor
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-01
+                            </span>
+                        <span class="publish-author">
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/">
                     <div class="card-image">
@@ -1039,9 +1249,9 @@ hexo.extend.filter.register(&#39;after_post_render&#39;, function(data){
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1050,42 +1260,6 @@ hexo.extend.filter.register(&#39;after_post_render&#39;, function(data){
                                     大数据
                                 </a>
                             
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="FastDFS分布式文件系统安装使用教程">
-                        
-                        <span class="card-title">FastDFS分布式文件系统安装使用教程</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-
-FastDFS分布式文件系统安装使用教程使用场景分布式文件系统用于海量文件存储及传输访问的瓶颈问题，对海量视频的管理、对海量图片的管理等,FastDFS与其他分布式文件系统相比的一个显著优点就是特别适合大量小文件(图片等)的存储,因为它
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-28
-                            </span>
-                        <span class="publish-author">
                             
                         </span>
                     </div>
@@ -1233,13 +1407,6 @@ FastDFS分布式文件系统安装使用教程使用场景分布式文件系统�
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
 
     <footer class="page-footer bg-color">
     <div class="container row center-align">

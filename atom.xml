@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tigerLuHai.github.io/"/>
-  <updated>2019-12-30T08:07:51.918Z</updated>
+  <updated>2020-01-01T11:22:18.326Z</updated>
   <id>http://tigerLuHai.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://tigerLuHai.github.io/2020/01/01/hadoop-ji-qun-da-jian-yu-jian-dan-shi-yong/"/>
+    <id>http://tigerLuHai.github.io/2020/01/01/hadoop-ji-qun-da-jian-yu-jian-dan-shi-yong/</id>
+    <published>2020-01-01T06:13:08.930Z</published>
+    <updated>2020-01-01T11:22:18.326Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;title: Hadoop集群搭建与简单使用&lt;br&gt;top: false&lt;br&gt;cover: false&lt;br&gt;toc: true&lt;br&gt;mathjax: true&lt;br&gt;date: 2020-01-01
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>使用VMware安装linux虚拟机</title>

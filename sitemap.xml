@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tigerLuHai.github.io/2020/01/01/hadoop-ji-qun-da-jian-yu-jian-dan-shi-yong/</loc>
+    
+    <lastmod>2020-01-01T11:22:18.326Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tigerLuHai.github.io/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/</loc>
     
     <lastmod>2019-12-30T08:07:51.918Z</lastmod>
@@ -44,7 +51,7 @@
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/archives/index.html</loc>
+    <loc>http://tigerLuHai.github.io/contact/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
     
@@ -72,7 +79,7 @@
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/contact/index.html</loc>
+    <loc>http://tigerLuHai.github.io/archives/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
     
