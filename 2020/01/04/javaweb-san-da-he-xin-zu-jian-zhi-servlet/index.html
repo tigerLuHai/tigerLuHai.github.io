@@ -4,13 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="使用VMware安装linux虚拟机, LuHai Java后台开发 大数据开发">
+    <meta name="keywords" content="javaWeb三大核心组件之servlet, LuHai Java后台开发 大数据开发">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="
-
-使用VMware安装linux虚拟机使用背景Linux是一种自由和开放源码的操作系统，存在着许多不同的Linux发行版本，但它们都使用了Linux内核。现在的服务器基本都是使用linux,其中CentOS使用广泛,还有ubuntu也是l">
+    <meta name="description" content="javaWeb三大核心组件之servlet | 卢海的博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>使用VMware安装linux虚拟机 | 卢海的博客</title>
+    <title>javaWeb三大核心组件之servlet | 卢海的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -292,13 +290,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        使用VMware安装linux虚拟机
+                        javaWeb三大核心组件之servlet
                     </div>
                 </div>
             </div>
@@ -414,22 +412,13 @@
                 </div>
                 <div class="col s5 right-align">
                     
-                    <div class="post-cate">
-                        <i class="fa fa-bookmark fa-fw icon-category"></i>
-                        
-                        <a href="/categories/大数据/" class="post-category" target="_blank">
-                            大数据
-                        </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
 
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-29
+                    2020-01-04
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -443,14 +432,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    0
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    1 分
                 </div>
                 
                 
@@ -466,126 +455,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=552192975&auto=0&height=66"></iframe></div>
-
-<h1 id="使用VMware安装linux虚拟机"><a href="#使用VMware安装linux虚拟机" class="headerlink" title="使用VMware安装linux虚拟机"></a>使用VMware安装linux虚拟机</h1><h3 id="使用背景"><a href="#使用背景" class="headerlink" title="使用背景"></a>使用背景</h3><p><em>Linux是一种自由和开放源码的操作系统，存在着许多不同的Linux发行版本，但它们都使用了Linux内核。现在的服务器基本都是使用linux,其中CentOS使用广泛,还有ubuntu也是linux中的佼佼者.业内也说,凡是<strong>java开发,不懂linux均是扯淡.</strong>本文主要为后面搭建基于Hadoop集群的大数据大数据平台打下基础。</em></p>
-<h4 id="linux具有如下优点"><a href="#linux具有如下优点" class="headerlink" title="linux具有如下优点"></a>linux具有如下优点</h4><ul>
-<li>开源</li>
-<li>多用户，多任务，丰富的网络功能，可靠的系统安全，良好的可移植性，具有标准兼容性</li>
-<li>良好的用户界面，出色的速度性能</li>
-<li>服务器不使用图形化界面(图形界面占用资源)</li>
-<li>机房部署方便，无需配置操作界面</li>
-</ul>
-<p><strong>下载地址</strong><a href="http://www.centos.org/" target="_blank" rel="noopener">:http://www.centos.org/</a></p>
-<h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><ul>
-<li>Windows10</li>
-<li>VMware Workstation12</li>
-<li>CentOS7</li>
-</ul>
-<h4 id="VMware-Workstation12安装"><a href="#VMware-Workstation12安装" class="headerlink" title="VMware Workstation12安装"></a>VMware Workstation12安装</h4><p>①双击VMware-workstation-full-版本号.exe</p>
-<p>②点击next</p>
-<p>③选择Typical(你要是想自己配置也可以选custom 不推荐)</p>
-<p>④选择安装目录</p>
-<p>⑤想检查升级就勾上(check for product updates on startup),否则直接下一步</p>
-<p>⑥选择创建快捷方式的位置,然后下一步</p>
-<p>⑦点击continue完成</p>
-<p>⑧Finish完成</p>
-<p><strong>注意:如果你不熟悉就按部就班来,不要有什么骚操作,我记得我开始安装的时候禁用了哪两个网卡,后来哪两个网卡找不到了,我就把这个卸载了重新装,还是不行,这个问题的解决还是因为我一个月后重装了电脑</strong></p>
-<h4 id="CentOS7安装"><a href="#CentOS7安装" class="headerlink" title="CentOS7安装"></a>CentOS7安装</h4><p>①安装VMware Workstation</p>
-<p>②打开VM,点击创建新的虚拟机</p>
-<p>③选择 典型（推荐）→ 下一步 </p>
-<p>④选择稍后安装操作系统再点击下一步</p>
-<p>⑤选择操作系统和版本(linux 64)</p>
-<p>⑥输入虚拟机名称和安装路径</p>
-<p>⑦设置磁盘大小并选中将虚拟磁盘拆成多个文件</p>
-<p>⑧自定义硬件</p>
-<p>⑨选择CentOS安装镜像文件</p>
-<p><img src="/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/D:%5CMyBlot%5Cbolt%5Csource_posts%5C%E4%BD%BF%E7%94%A8VMware%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA%5C1577631145598.png" alt="1577631145598"></p>
-<p>⑩开机启动后选择Install CentOS 7并enter</p>
-<ul>
-<li>弹出如下图形化的安装界面：</li>
-</ul>
-<p><img src="/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/D:%5CMyBlot%5Cbolt%5Csource_posts%5C%E4%BD%BF%E7%94%A8VMware%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA%5Cformat.png" alt="img"></p>
-<ul>
-<li>日期和时间：</li>
-</ul>
-<p><img src="/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/D:%5CMyBlot%5Cbolt%5Csource_posts%5C%E4%BD%BF%E7%94%A8VMware%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA%5Cformat1.png" alt="img"><img src="/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/D:%5CMyBlot%5Cbolt%5Csource_posts%5C%E4%BD%BF%E7%94%A8VMware%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA%5Cformat2.png" alt="img"></p>
-<ul>
-<li>如果你安装的是英文版，需要将时区改为上海。</li>
-</ul>
-<p><img src="/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/D:%5CMyBlot%5Cbolt%5Csource_posts%5C%E4%BD%BF%E7%94%A8VMware%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA%5Cformat3.png" alt="img"><img src="/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/D:%5CMyBlot%5Cbolt%5Csource_posts%5C%E4%BD%BF%E7%94%A8VMware%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA%5Cformat4.png" alt="img"><img src="/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/D:%5CMyBlot%5Cbolt%5Csource_posts%5C%E4%BD%BF%E7%94%A8VMware%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA%5C20171126014938900.png" alt="img"></p>
-<ul>
-<li><strong>网络和主机名</strong></li>
-</ul>
-<p><img src="/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/D:%5CMyBlot%5Cbolt%5Csource_posts%5C%E4%BD%BF%E7%94%A8VMware%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA%5C20171126015037602.png" alt="img"><img src="/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/D:%5CMyBlot%5Cbolt%5Csource_posts%5C%E4%BD%BF%E7%94%A8VMware%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA%5C20171126015051216.png" alt="img"></p>
-<ul>
-<li>然后选择开始安装**</li>
-</ul>
-<p><img src="/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/D:%5CMyBlot%5Cbolt%5Csource_posts%5C%E4%BD%BF%E7%94%A8VMware%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA%5Cformat7.png" alt="img">基本的系统就安装好了</p>
-<h3 id="配置网络"><a href="#配置网络" class="headerlink" title="配置网络"></a>配置网络</h3><ul>
-<li>linu有三种网络模式,分别是Host-Only、NAT、桥接。一般安装好以后会默认选择NAT。</li>
-</ul>
-<ul>
-<li>进入之后修改ip地址信息</li>
-</ul>
-<pre><code>vi /etc/ sysconfig/network-scripts/ifcfg-eth0
-
-DEVICE=eth0 #网卡名称
-HWADDR=08:00:27:8E:9D:25 #MAC地址
-TYPE=Ethernet #网络类型,这里是以太网
-UUID=5f2d815e-bd3b-4995-9009-823542e77304
-ONBOOT=yes 
-NM_CONTROLLED=yes
-BOOTPROTO=static
-STATIC=true
-IPADDR=192.168.1.21 #ip地址
-NETMASK=255.255.255.0 #子网掩码
-GATEWAY=192.168.1.1 #网管
-DNS1=202.202.0.33 #域名解析地址
-DNS2=114.114.114.114
-DNS3=8.8.8.8</code></pre><ul>
-<li>配置好以后重启网络服务</li>
-</ul>
-<pre><code>services network restart</code></pre><ul>
-<li>ifconfig查看IP地址</li>
-</ul>
-<pre><code>ifconfig
-
-eth0      Link encap:Ethernet  HWaddr 08:00:27:8E:9D:25  
-          inet addr:192.168.1.21  Bcast:192.168.1.255  Mask:255.255.255.0
-          inet6 addr: fe80::a00:27ff:fe8e:9d25/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:1756623 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:1952463 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000 
-          RX bytes:1445482120 (1.3 GiB)  TX bytes:1626059931 (1.5 GiB)
-
-lo        Link encap:Local Loopback  
-          inet addr:127.0.0.1  Mask:255.0.0.0
-          inet6 addr: ::1/128 Scope:Host
-          UP LOOPBACK RUNNING  MTU:65536  Metric:1
-          RX packets:2258 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:2258 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:0 
-          RX bytes:590708 (576.8 KiB)  TX bytes:590708 (576.8 KiB)</code></pre><ul>
-<li>ping ip地址测试网络是否配置好</li>
-</ul>
-<pre><code>ping www.baidu.com</code></pre><p><strong>按照以上操作完成安装以后可以直接克隆改虚拟机，然后修改配置就可以生成多台</strong></p>
-<p><strong>在每个主机的/etc/hosts文件设置上每个主机的ip和名字的映射关系</strong></p>
-<pre><code>vi /etc/hosts
-
-192.168.1.21 master
-192.168.1.23 slave1
-192.168.1.24 slave2
-192.168.1.25 slave3</code></pre><p><img src="/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/D:%5CMyBlot%5Cbolt%5Csource_posts%5C%E4%BD%BF%E7%94%A8VMware%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA%5C1577691474359.png" alt="1577691474359"></p>
-<h4 id="配置免密登录"><a href="#配置免密登录" class="headerlink" title="配置免密登录"></a>配置免密登录</h4><ul>
-<li>主要用于两个机器之间相互登录不需要验证</li>
-</ul>
-<p>①在第一台机器使用命令ssh-keygen -t rsa生成私钥和秘钥</p>
-<pre><code>ssh-keygen -t rsa</code></pre><p>②复制到另一台机器</p>
-<pre><code>ssh-copy-id root@slave1</code></pre><p><strong>如此就可以实现slave登录master免密,按照这个做法,每两台机器都配置上。</strong></p>
-<h5 id="科普：免密登录原理"><a href="#科普：免密登录原理" class="headerlink" title="科普：免密登录原理"></a>科普：免密登录原理</h5><p><img src="/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/D:%5CMyBlot%5Cbolt%5Csource_posts%5C%E4%BD%BF%E7%94%A8VMware%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA%5C1577692561419.png" alt="1577692561419"></p>
-
+                
             </div>
             <hr />
 
@@ -747,7 +617,7 @@ lo        Link encap:Local Loopback
         repo: 'tigerLuHai.github.io',
         owner: 'tigerLuHai',
         admin: "tigerLuHai",
-        id: '2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/',
+        id: '2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1030,34 +900,36 @@ lo        Link encap:Local Loopback
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/01/01/hadoop-ji-qun-da-jian-yu-jian-dan-shi-yong/">
+                <a href="/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="javaWeb三大核心组件之servlet">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">javaWeb三大核心组件之servlet</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            title: Hadoop集群搭建与简单使用top: falsecover: falsetoc: truemathjax: truedate: 2020-01-01 14:13:08password:summary:tags:categor
+                            
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-04
+                            </span>
                         <span class="publish-author">
                             
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -1068,40 +940,28 @@ lo        Link encap:Local Loopback
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/29/hexo-bo-wen-bao-han-tu-pian-de-keng/">
+                <a href="/2020/01/04/springmvc-yuan-li/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="hexo博文包含图片的坑">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="SpringMVC原理">
                         
-                        <span class="card-title">hexo博文包含图片的坑</span>
+                        <span class="card-title">SpringMVC原理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-hexo博文包含图片的坑网上有很多关于这个的教程,主要的总结如下
-①修改博客目录下的_config_yml的post_asset_folder为true
-
-post_asset_folder: true
-
-②安装hexo-asset-i
+                            概述spring MVC主要由DispatcherServlet、处理器映射、处理器(控制器)、视图解析器、视图组成。他的两个核心是两个核心：
+处理器映射： 选择使用哪个控制器来处理请求。视图解析器： 选择结果应该如何渲染。
+运行原理下图是
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-29
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-04
                             </span>
                         <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/tool/" class="post-category" target="_blank">
-                                    tool
-                                </a>
-                            
                             
                         </span>
                     </div>
