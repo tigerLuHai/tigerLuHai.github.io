@@ -9,16 +9,9 @@
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/</loc>
+    <loc>http://tigerLuHai.github.io/2020/01/04/web-san-da-he-xin-zu-jian-zhi-servlet/</loc>
     
-    <lastmod>2020-01-04T14:05:03.297Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tigerLuHai.github.io/2020/01/01/hadoop-ji-qun-da-jian-yu-jian-dan-shi-yong/</loc>
-    
-    <lastmod>2020-01-01T11:22:18.326Z</lastmod>
+    <lastmod>2020-01-04T14:03:21.506Z</lastmod>
     
   </url>
   
@@ -65,13 +58,6 @@
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/categories/index.html</loc>
-    
-    <lastmod>2019-12-27T00:54:34.929Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://tigerLuHai.github.io/archives/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
@@ -79,7 +65,7 @@
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/friends/index.html</loc>
+    <loc>http://tigerLuHai.github.io/categories/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
     
@@ -87,6 +73,13 @@
   
   <url>
     <loc>http://tigerLuHai.github.io/tags/index.html</loc>
+    
+    <lastmod>2019-12-27T00:54:34.929Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/friends/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
     
