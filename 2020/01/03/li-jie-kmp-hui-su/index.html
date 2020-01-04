@@ -4,13 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="SpringMVC原理, LuHai Java后台开发 大数据开发">
+    <meta name="keywords" content="理解KMP回溯, LuHai Java后台开发 大数据开发">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="概述spring MVC主要由DispatcherServlet、处理器映射、处理器(控制器)、视图解析器、视图组成。他的两个核心是两个核心：
-处理器映射： 选择使用哪个控制器来处理请求。视图解析器： 选择结果应该如何渲染。
-运行原理下图是">
+    <meta name="description" content="理解KMP回溯相信大家都看过KMP算法，但是对于它的回溯确是难以理解。我们先来看一下KMP中的next数组生成代码：
+    //用于生成next数组
+    private static int[] get_next(String tar">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>SpringMVC原理 | 卢海的博客</title>
+    <title>理解KMP回溯 | 卢海的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -292,13 +292,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        SpringMVC原理
+                        理解KMP回溯
                     </div>
                 </div>
             </div>
@@ -417,8 +417,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/java/" class="post-category" target="_blank">
-                            java
+                        <a href="/categories/数据结构/" class="post-category" target="_blank">
+                            数据结构
                         </a>
                         
                     </div>
@@ -429,7 +429,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-04
+                    2020-01-03
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -443,14 +443,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    621
+                    782
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
                 
@@ -466,51 +466,82 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="http://lib.csdn.net/base/javaee" target="_blank" rel="noopener">spring</a> MVC主要由DispatcherServlet、处理器映射、处理器(控制器)、视图解析器、视图组成。他的两个核心是两个核心：</p>
-<p><strong>处理器映射：</strong> 选择使用哪个控制器来处理请求。<br><strong>视图解析器：</strong> 选择结果应该如何渲染。</p>
-<h2 id="运行原理"><a href="#运行原理" class="headerlink" title="运行原理"></a>运行原理</h2><p>下图是在Spring官网开发手册上找到的，它清晰的诠释了Spring MVC的运行原理</p>
-<p><img src="/2020/01/04/springmvc-yuan-li/D:%5CMyBlot%5Cbolt%5Csource_posts%5CSpringMVC%E5%8E%9F%E7%90%86%5C16b5eb3870589ac4.png" alt="16b5eb3870589ac4"></p>
-<p>①客户端的所有请求都交给前端控制器DispatcherServlet来处理，它会负责调用系统的其他模块来真正处理用户的请求。</p>
-<p>② DispatcherServlet收到请求后，将根据请求的信息（包括URL、HTTP协议方法、请求头、请求参数、Cookie等）以及HandlerMapping的配置找到处理该请求的Handler（任何一个对象都可以作为请求的Handler）。</p>
-<p>③在这个地方Spring会通过HandlerAdapter对该处理器进行封装。</p>
-<p>④ HandlerAdapter是一个适配器，它用统一的接口对各种Handler中的方法进行调用。</p>
-<p>⑤ Handler完成对用户请求的处理后，会返回一个ModelAndView对象给DispatcherServlet，ModelAndView顾名思义，包含了数据模型以及相应的视图的信息。</p>
-<p>⑥ ModelAndView的视图是逻辑视图，DispatcherServlet还要借助ViewResolver完成从逻辑视图到真实视图对象的解析工作。⑦ 当得到真正的视图对象后，DispatcherServlet会利用视图对象对模型数据进行渲染。</p>
-<p>⑧ 客户端得到响应，可能是一个普通的HTML页面，也可以是XML或JSON字符串，还可以是一张图片或者一个PDF文件。</p>
-<p><img src="/2020/01/04/springmvc-yuan-li/D:%5CMyBlot%5Cbolt%5Csource_posts%5CSpringMVC%E5%8E%9F%E7%90%86%5C16b5eb3870589ac4.png" alt="16b5eb3870589ac4"></p>
-<h2 id="接口的解释"><a href="#接口的解释" class="headerlink" title="接口的解释"></a>接口的解释</h2><table>
-<thead>
-<tr>
-<th>接口名称</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>DispatcherServlet</td>
-<td>Spring提供的前端控制器，客户端的所有请求都由DispatcherServlet负责分发，当然在DispatcherServlet分发之前，还需要一个匹配请求的过程，这个由HandlerMapping来完成。</td>
-</tr>
-<tr>
-<td>HandlerMapping</td>
-<td>完成客户端请求到Controller映射的工作</td>
-</tr>
-<tr>
-<td>Controller</td>
-<td>用于处理用户请求，返回处理结果</td>
-</tr>
-<tr>
-<td>ViewResolver</td>
-<td>Web应用中查找View对象，从而将相应结果渲染给客户端</td>
-</tr>
-</tbody></table>
-<h2 id="DispatcherServlet："><a href="#DispatcherServlet：" class="headerlink" title="DispatcherServlet："></a>DispatcherServlet：</h2><p>是整个Spring MVC的核心。它负责接收HTTP请求组织协调Spring MVC的各个组成部分。</p>
-<p>其主要工作有以下三项：</p>
-<ol>
-<li>截获符合特定格式的URL请求。</li>
-<li>初始化DispatcherServlet上下文对应WebApplicationContext，并将其与业务层、持久化层的WebApplicationContext建立关联。</li>
-<li>初始化Spring MVC的各个组成组件，并装配到DispatcherServlet中。</li>
-</ol>
-<h2 id="一个比较好理解的Spring-mvc原理图"><a href="#一个比较好理解的Spring-mvc原理图" class="headerlink" title="一个比较好理解的Spring mvc原理图"></a>一个比较好理解的Spring mvc原理图</h2><p><img src="/2020/01/04/springmvc-yuan-li/D:%5CMyBlot%5Cbolt%5Csource_posts%5CSpringMVC%E5%8E%9F%E7%90%86%5Cb856096cf065baaaabe5884deb4ecfa3.png" alt="b856096cf065baaaabe5884deb4ecfa3"></p>
+                <h4 id="理解KMP回溯"><a href="#理解KMP回溯" class="headerlink" title="理解KMP回溯"></a>理解KMP回溯</h4><p>相信大家都看过KMP算法，但是对于它的回溯确是难以理解。我们先来看一下KMP中的next数组生成代码：</p>
+<pre><code>    //用于生成next数组
+    private static int[] get_next(String target){
+        int[] next = new int[target.length()];
+        next[0] = -1;
+        int i = 0, j = -1;
+        while(i &lt; target.length() - 1){
+            if (j == -1 || target.charAt(i) == target.charAt(j)) {
+                ++i;
+                ++j;
+                next[i] = j;
+            } else {
+                j = next[j];
+            }
+        }
+        return next;
+    }</code></pre><ul>
+<li>其中数组的next中的值计算方式是：</li>
+</ul>
+<p>next[j] = Max{k | 1&lt;k&lt;j,且‘p1p2…pk’=‘p(j-k)…p(j - 1)’}</p>
+<ul>
+<li><h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5></li>
+</ul>
+<p><em>简单来说next[j]表示的就是两个相等的字符串的长度，这两个字符串分别是从头开始记的长度为next[j]的和以next[j]的前一个字符结尾的长度为next[j]。</em></p>
+<ul>
+<li><h5 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h5></li>
+</ul>
+<p>例如：字符串”ababaaaba” next = [-1,0,0,1,2,3,1,1,2]<br>其中的回溯环节就是从next[5] = 3 到 next[6] = 1;</p>
+<p>其中next[5]时：是”ababa”中前缀”aba”与后缀”aba”的长度，当i = 6时，”ababaa”中”a”不等于”b”,所以回溯到j = next[j],其中j为现在next[5]的值。</p>
+<ul>
+<li><h5 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h5></li>
+</ul>
+<p><strong>我开始也是很不明白为什么就可以直接回到j = next[next[5]] = 0处开始向后比较，后来仔细研究发现原因是，通过前面的比较它已经排除了所有的前缀字符串等于后缀字符串的长度大于回溯到当前j的可能 。</strong><br>就拿上面的“ababa”到“ababaa”举例：<br>其实我们想不通的无非就是它是怎么排除“aba”!=”baa”转而直接去判断前缀“ab”是否等于后缀“aa”,后来我仔细分析才发现因为如果前面的“aba” = “baa”要成立，必须有“前缀ab”等于后缀“ba”,而得到next[5]=3的时候已经隐式的得到的第一个“ba”等于第二个“ba”(当时是“aba” = “aba”)<br>从而有“aba”中三个值都应该相等，与前面矛盾。可能你早就看不懂我在说什么了，来一点数学表达式比较实际：</p>
+<ul>
+<li><h5 id="数学证明"><a href="#数学证明" class="headerlink" title="数学证明"></a>数学证明</h5></li>
+</ul>
+<p>②开始有p1p2….pj = pi - j ….pi-1，可以得出pj = pj-1  j = 1,2,…<br>假设 next[j] = k 就有 p1p2…pk = pj-k …pj-1    k = 1,2…<br>若加入pi != pj + 1,则需要回溯到判断pk 是否等于pj;<br>首先证明：pi-j+1…pi ！= p1p2…pj,反证：假设：pi-j+1…pi = p1p2…p，又p1p2….pj = pi - j ….pi-1<br>所以有pi - j ….pi-1 =pi-j+1…pi ,得到pi-j=pi-j+1=…=pi;与前面矛盾，所以有pi-j+1…pi ！= p1p2…pj<br>同理可以得出pi-j+2…pi ！= p1p2…pj-1  。。。。。pi-j+k…pi ！= p1p2…pj-k+1  。。。。。<br>所以可以直接回溯到j = next[j]继续向后判断</p>
+<p>KMP完整代码</p>
+<pre><code>    private static int[] get_next(String target){
+        int[] next = new int[target.length()];
+        next[0] = -1;
+        int i = 0, j = -1;
+        while(i &lt; target.length() - 1){
+            if (j == -1 || target.charAt(i) == target.charAt(j)) {
+                ++i;
+                ++j;
+                next[i] = j;
+            } else {
+                j = next[j];
+            }
+        }
+        return next;
+    }
 
+    int kmp(String s, String pattern) {
+        int i = 0,j = 0;
+        int slen = s.length(), plen = pattern.length();
+        int[] next = get_next(pattern);
+        while (i &lt; slen &amp;&amp; j &lt; plen) {
+            if (s.charAt(i) == pattern.charAt(j)) {
+                i++;
+                j++;
+            } else {
+                if (next[j] == -1) {
+                    i++;
+                    j = 0;
+                } else {
+                    j = next[j];
+                }
+            }
+            if (j == plen) {
+                return i - j;
+            }
+        }
+        return -1;
+    }</code></pre>
             </div>
             <hr />
 
@@ -672,7 +703,7 @@
         repo: 'tigerLuHai.github.io',
         owner: 'tigerLuHai',
         admin: "tigerLuHai",
-        id: '2020/01/04/springmvc-yuan-li/',
+        id: '2020/01/03/li-jie-kmp-hui-su/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -959,19 +990,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/">
+                <a href="/2020/01/04/hui-tou-zai-kan-spring/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="javaWeb三大核心组件之servlet">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="回头再看spring">
                         
-                        <span class="card-title">javaWeb三大核心组件之servlet</span>
+                        <span class="card-title">回头再看spring</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            javaWeb三大核心组件之Servlet什么是ServletJava Servlet 是运行在 Web 服务器或应用服务器上的程序，它是作为来自 Web 浏览器或其他 HTTP 客户端的请求和 HTTP 服务器上的数据库或应用程序之间的中
+                            回头再看Spring什么是SpringSpring是个包含一系列功能的合集，如快速构建微服务的Spring Boot，管理一系列微服务的Spring Cloud，支持认证与鉴权的Spring Security，基于MVC的Web框架Spri
                         
                     </div>
                     <div class="publish-info">
@@ -1000,31 +1031,33 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/04/hui-tou-zai-kan-spring/">
+                <a href="/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="回头再看spring">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="使用VMware安装linux虚拟机">
                         
-                        <span class="card-title">回头再看spring</span>
+                        <span class="card-title">使用VMware安装linux虚拟机</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            回头再看Spring什么是SpringSpring是个包含一系列功能的合集，如快速构建微服务的Spring Boot，管理一系列微服务的Spring Cloud，支持认证与鉴权的Spring Security，基于MVC的Web框架Spri
+                            
+
+使用VMware安装linux虚拟机使用背景Linux是一种自由和开放源码的操作系统，存在着许多不同的Linux发行版本，但它们都使用了Linux内核。现在的服务器基本都是使用linux,其中CentOS使用广泛,还有ubuntu也是l
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-04
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-29
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/java/" class="post-category" target="_blank">
-                                    java
+                            <a href="/categories/大数据/" class="post-category" target="_blank">
+                                    大数据
                                 </a>
                             
                             

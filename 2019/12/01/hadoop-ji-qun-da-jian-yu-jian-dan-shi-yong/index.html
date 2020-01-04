@@ -4,11 +4,16 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="web三大核心组件之servlet, LuHai Java后台开发 大数据开发">
+    <meta name="keywords" content="Hadoop集群搭建与简单使用, LuHai Java后台开发 大数据开发">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="web三大核心组件之servlet | 卢海的博客">
+    <meta name="description" content="Hadoop集群搭建与简单使用首先需要搭建一个linux的集群,可以参见我的博客linux集群搭建
+
+Hadoop的运行是基于java的,所以需要先安装JDK,而且JDK版本必须高于1.7
+
+安装JDK（1）查询是否安装Java软件：
+ r">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +21,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>web三大核心组件之servlet | 卢海的博客</title>
+    <title>Hadoop集群搭建与简单使用 | 卢海的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -290,13 +295,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        web三大核心组件之servlet
+                        Hadoop集群搭建与简单使用
                     </div>
                 </div>
             </div>
@@ -412,13 +417,22 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                        <a href="/categories/大数据/" class="post-category" target="_blank">
+                            大数据
+                        </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-04
+                    2019-12-01
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -432,14 +446,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    7 分
                 </div>
                 
                 
@@ -455,7 +469,297 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="Hadoop集群搭建与简单使用"><a href="#Hadoop集群搭建与简单使用" class="headerlink" title="Hadoop集群搭建与简单使用"></a>Hadoop集群搭建与简单使用</h1><p>首先需要搭建一个linux的集群,可以参见我的博客<a href="https://tigerluhai.github.io/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/">linux集群搭建</a></p>
+<blockquote>
+<p>Hadoop的运行是基于java的,所以需要先安装JDK,而且JDK版本必须高于1.7</p>
+</blockquote>
+<h3 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h3><p>（1）查询是否安装Java软件：</p>
+<pre><code> rpm -qa | grep java</code></pre><p>（2）如果安装的版本低于1.7，卸载该JDK：</p>
+<pre><code>sudo rpm -e 软件包</code></pre><p>（3）查看JDK安装路径：</p>
+<pre><code> which(or whereis) java</code></pre><p>（4）解压JDK：</p>
+<pre><code>tar -zxvf 安装包名 -C 目标路径</code></pre><p>（5）配置JDK环境：</p>
+<pre><code>vi /etc/profile
+
+在文件末尾加上
+#JAVA_HOME
+export JAVA_HOME=/opt/module/jdk1.8.0_144
+export PATH=$PATH:$JAVA_HOME/bin</code></pre><p><strong>修改后需要立即生效需要运行如下命令:</strong></p>
+<pre><code>source /etc/profile</code></pre><p>（6）测试JDK安装是否成功：</p>
+<pre><code>java -version</code></pre><h3 id="安装Hadoop"><a href="#安装Hadoop" class="headerlink" title="安装Hadoop"></a>安装Hadoop</h3><p>（1）解压hadoop安装包到指定位置</p>
+<pre><code>tar -zxvf 安装包 -C 指定目录</code></pre><p>（2）添加环境变量</p>
+<pre><code>vi /etc/profile
+
+在文件末尾加上
+#HADOOP_HOME
+export HADOOP_HOME=/opt/module/hadoop-3.1.2
+export PATH=$PATH:$HADOOP_HOME/bin
+export PATH=$PATH:$HADOOP_HOME/sbin</code></pre><p>(3)修改配置文件</p>
+<ul>
+<li>集群部署规划</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>master</th>
+<th>slave1</th>
+<th>slave2</th>
+<th>slave3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HDFS</td>
+<td>NameNodeDataNode</td>
+<td>SecondaryNameNode DataNode</td>
+<td>DataNode</td>
+<td>DataNode</td>
+</tr>
+<tr>
+<td>YARN</td>
+<td>NodeManager</td>
+<td>ResourceManager</td>
+<td>NodeManager</td>
+<td>NodeManager</td>
+</tr>
+</tbody></table>
+<ul>
+<li>核心配置文件</li>
+</ul>
+<p>配置core-site.xml</p>
+<pre><code>vi core-site.xml
+
+# 在该文件中编写如下配置
+&lt;!-- 指定HDFS中NameNode的地址 --&gt;
+&lt;property&gt;
+    &lt;name&gt;fs.defaultFS&lt;/name&gt;
+    &lt;value&gt;hdfs://master:9000&lt;/value&gt;
+&lt;/property&gt;
+&lt;!-- 指定Hadoop运行时产生文件的存储目录 --&gt;
+&lt;property&gt;
+    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+    &lt;value&gt;/opt/module/hadoop-3.1.2/data/tmp&lt;/value&gt;
+&lt;/property&gt;</code></pre><ul>
+<li>HDFS配置文件</li>
+</ul>
+<p>配置hadoop-env.sh</p>
+<pre><code> vi hadoop-env.sh
+
+export JAVA_HOME=/opt/module/jdk1.8.0_144</code></pre><p>配置hdfs-site.xml</p>
+<pre><code>vi hdfs-site.xml
+
+&lt;!--配置副本数量--&gt;
+&lt;property&gt;
+        &lt;name&gt;dfs.replication&lt;/name&gt;
+        &lt;value&gt;3&lt;/value&gt;
+&lt;/property&gt;
+&lt;!-- 指定Hadoop辅助名称节点主机配置 --&gt;
+&lt;property&gt;
+      &lt;name&gt;dfs.namenode.secondary.http-address&lt;/name&gt;
+      &lt;value&gt;slave1:50090&lt;/value&gt;
+&lt;/property&gt;
+</code></pre><p>注意:文件副本数量不只是dfs.replication决定,而是min(datanode节点数,dfs.replication)</p>
+<ul>
+<li>YARN配置文件</li>
+</ul>
+<p>配置yarn-env.sh</p>
+<pre><code> vi yarn-env.sh
+
+export JAVA_HOME=/opt/module/jdk1.8.0_144</code></pre><ul>
+<li>配置yarn-site.xml</li>
+</ul>
+<pre><code> vi yarn-site.xml
+
+&lt;!-- Reducer获取数据的方式 --&gt;
+&lt;property&gt;
+    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
+    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
+&lt;/property&gt;
+&lt;!-- 指定YARN的ResourceManager的地址 --&gt;
+&lt;property&gt;
+    &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;
+    &lt;value&gt;slave2&lt;/value&gt;
+&lt;/property&gt;</code></pre><ul>
+<li>MapReduce配置文件</li>
+</ul>
+<pre><code>vi mapred-env.sh
+
+export JAVA_HOME=/opt/module/jdk1.8.0_144</code></pre><p><strong>注意：hadoop3之前的版本,mapreduce会继承hadoop的配置,所以可以不用配置这一项,但是3以后的版本必须配置,否则运行mapreduce时会报环境出错。</strong></p>
+<ul>
+<li>配置mapred-site.xml</li>
+</ul>
+<pre><code>cp mapred-site.xml.template mapred-site.xml
+vi mapred-site.xml
+
+&lt;!-- 指定MR运行在Yarn上 --&gt;
+&lt;property&gt;
+        &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
+        &lt;value&gt;yarn&lt;/value&gt;
+&lt;/property&gt;</code></pre><p>（4）在集群上分发配置好的Hadoop配置文件</p>
+<p>编写分发脚本</p>
+<pre><code>vi /usr/local/bin/xsync
+
+#!/bin/bash
+pcount=$#
+if((pcount=0));then
+echo no args;
+exit;
+fi
+p1=$1
+fname=`basename $p1`
+echo fname=$fname
+pdir=`cd -P $(dirname $p1);pwd`
+echo pdir=$pdir
+
+user=`whoami`
+echo user=$user
+for((host=1;host&lt;4;host++));do
+echo ------------salve$host-------------
+rsync -rvl $pdir/$fname $user@slave$host:$pdir
+done</code></pre><pre><code>xsync /opt/module/hadoop-3.1.2/</code></pre><h3 id="集群单节点启动"><a href="#集群单节点启动" class="headerlink" title="集群单节点启动"></a>集群单节点启动</h3><p>（1）如果集群是第一次启动，需要<strong>格式化NameNode</strong></p>
+<pre><code>hadoop namenode -format</code></pre><p>（2）在master上启动NameNode</p>
+<pre><code>hadoop-daemon.sh start namenode</code></pre><p>查看节点启动状态</p>
+<pre><code> jps</code></pre><p><strong>注意:jps用于查看java进程,namenode和datanode都是java进程</strong></p>
+<p>（3）在master,slave1,slave2以及slave3上分别启动DataNode</p>
+<pre><code>hadoop-daemon.sh start datanode</code></pre><pre><code> jps
+
+3461 NameNode
+3608 Jps
+3561 DataNode</code></pre><p>思考：每次都一个一个节点启动，如果节点数太多怎么办？</p>
+<h3 id="群起集群"><a href="#群起集群" class="headerlink" title="群起集群"></a>群起集群</h3><ol>
+<li>配置slaves</li>
+</ol>
+<pre><code>vi /opt/module/hadoop-3.1.2/etc/hadoop/slaves
+
+在该文件中增加如下内容：
+master
+slave1
+slave2
+slave3</code></pre><p><strong>注意：该文件中添加的内容结尾不允许有空格，文件中不允许有空行。</strong></p>
+<p>同步所有节点配置文件</p>
+<pre><code> xsync slaves</code></pre><ol start="2">
+<li>启动集群</li>
+</ol>
+<p>（1）如果集群是第一次启动，需要格式化NameNode（注意格式化之前，一定要先停止上次启动的所有namenode和datanode进程，然后再删除data和log数据）</p>
+<pre><code>hdfs namenode -format</code></pre><p>（2）启动HDFS</p>
+<pre><code>start-dfs.sh</code></pre><p>（3）启动YARN</p>
+<pre><code>start-yarn.sh</code></pre><p><strong>注意：NameNode和ResourceManger如果不是同一台机器，不能在NameNode上启动 YARN，应该在ResouceManager所在的机器上启动YARN。</strong></p>
+<h3 id="集群基本操作"><a href="#集群基本操作" class="headerlink" title="集群基本操作"></a>集群基本操作</h3><ul>
+<li>-ls: 显示目录信息</li>
+</ul>
+<pre><code>hadoop fs -ls /</code></pre><ul>
+<li>mkdir：在HDFS上创建目录</li>
+</ul>
+<pre><code> hadoop fs -mkdir -p /parent/test</code></pre><ul>
+<li>moveFromLocal：从本地剪切粘贴到HDFS</li>
+</ul>
+<pre><code>hadoop fs  -moveFromLocal  ./kongming.txt  /parent/test</code></pre><ul>
+<li>appendToFile：追加一个文件到已经存在的文件末尾</li>
+</ul>
+<pre><code> hadoop fs -appendToFile liubei.txt /parent/test/kongming.txt</code></pre><ul>
+<li>cat：显示文件内容</li>
+</ul>
+<pre><code>hadoop fs -cat /parent/test/kongming.txt</code></pre><ul>
+<li>chgrp 、-chmod、-chown：Linux文件系统中的用法一样，修改文件所属权限</li>
+<li>copyFromLocal：从本地文件系统中拷贝文件到HDFS路径去</li>
+</ul>
+<pre><code> hadoop fs -copyFromLocal README.txt /</code></pre><ul>
+<li>copyToLocal：从HDFS拷贝到本地</li>
+</ul>
+<pre><code> hadoop fs -copyToLocal /parent/test/kongming.txt ./</code></pre><ul>
+<li>cp ：从HDFS的一个路径拷贝到HDFS的另一个路径</li>
+</ul>
+<pre><code>hadoop fs -cp /parent/test/kongming.txt  /zhuge.txt</code></pre><ul>
+<li>mv：在HDFS目录中移动文件</li>
+</ul>
+<pre><code>hadoop fs -mv /zhuge.txt /parent/test/</code></pre><ul>
+<li>get：等同于copyToLocal，就是从HDFS下载文件到本地</li>
+</ul>
+<pre><code>hadoop fs -get /parent/test/kongming.txt ./</code></pre><ul>
+<li>getmerge：合并下载多个文件，比如HDFS的目录 /parent/test//test下有多个文件:log.1, log.2,log.3,…</li>
+</ul>
+<pre><code>hadoop fs -getmerge /parent/test/test/* ./zaiyiqi.txt</code></pre><ul>
+<li>put：等同于copyFromLocal</li>
+</ul>
+<pre><code> hadoop fs -put ./zaiyiqi.txt /</code></pre><ul>
+<li>tail：显示一个文件的末尾</li>
+</ul>
+<ul>
+<li>rm：删除文件或文件夹</li>
+</ul>
+<ul>
+<li>rmdir：删除空目录</li>
+</ul>
+<ul>
+<li>du统计文件夹的大小信息</li>
+</ul>
+<h3 id="JAVA代码操作HDFS"><a href="#JAVA代码操作HDFS" class="headerlink" title="JAVA代码操作HDFS"></a>JAVA代码操作HDFS</h3><pre><code>    Logger logger = LoggerFactory.getLogger(HdfsClient.class);
+
+    FileSystem fileSystem;
+
+    Configuration configuration;
+
+    @Test
+    /**
+     * 测试环境正常
+     */
+    public void HDFS_ENV() throws IOException {
+        Logger logger = LoggerFactory.getLogger(HdfsClient.class);
+        //1.获取hdfs客户端对象
+        Configuration configuration = new Configuration();
+        configuration.set(&quot;fs.defaultFS&quot;,&quot;hdfs://master:9000&quot;);
+        FileSystem fileSystem = FileSystem.get(configuration);
+        //2.在hdfs上执行相关操作
+        boolean mkdirs = fileSystem.mkdirs(new Path(&quot;/client_test_environment&quot;));
+        //3.关闭资源
+        fileSystem.close();
+
+        System.out.println(mkdirs);
+    }
+
+    @Before
+    /**
+     * 创建fileSystem对象
+     */
+    public void createFileSystem() throws URISyntaxException, IOException, InterruptedException {
+        //1.获取fs对象
+        configuration = new Configuration();
+        fileSystem = FileSystem.get(new URI(&quot;hdfs://master:9000&quot;), configuration, &quot;root&quot;);
+    }
+
+    @Test
+    public void copyFromLocalFile() throws IOException{
+        //执行上传操作
+        fileSystem.copyFromLocalFile(new Path(&quot;D:\\logs\\xc.2019-04-29.log&quot;),new Path(&quot;/client_test_environment/&quot;));
+        //关闭资源
+        fileSystem.close();
+    }
+
+
+    @Test
+    public void copyToLocalFile() throws IOException{
+        //执行上传操作
+        fileSystem.copyToLocalFile(true,new Path(&quot;/client_test_environment/xc.2019-04-29.log&quot;),new Path(&quot;D:\\logs\\xc.2019-04-29-back.log&quot;),false);
+        //关闭资源
+        fileSystem.close();
+    }
+
+    @Test
+    public void listFiles() throws IOException {
+        //查看文件信息
+        RemoteIterator&lt;LocatedFileStatus&gt; iterator = fileSystem.listFiles(new Path(&quot;/&quot;), true);
+        while (iterator.hasNext()){
+            LocatedFileStatus fileStatus = iterator.next();
+            //获取文件名称，文件权限，文件长度，块信息
+            logger.info(fileStatus.getPath().getName());
+            logger.info(fileStatus.getLen()+&quot;&quot;);
+            logger.info(fileStatus.getPermission()+&quot;&quot;);
+            BlockLocation[] blockLocations = fileStatus.getBlockLocations();
+            for (BlockLocation blockLocation : blockLocations) {
+                logger.info(blockLocation.toString());
+            }
+            logger.info(&quot;----------------                    ----------------------&quot;);
+        }
+    }</code></pre>
             </div>
             <hr />
 
@@ -617,7 +921,7 @@
         repo: 'tigerLuHai.github.io',
         owner: 'tigerLuHai',
         admin: "tigerLuHai",
-        id: '2020/01/04/web-san-da-he-xin-zu-jian-zhi-servlet/',
+        id: '2019/12/01/hadoop-ji-qun-da-jian-yu-jian-dan-shi-yong/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -900,36 +1204,35 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/01/04/web-san-da-he-xin-zu-jian-zhi-servlet/">
+                <a href="/2019/12/27/first/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="web三大核心组件之servlet">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="first">
                         
-                        <span class="card-title">web三大核心组件之servlet</span>
+                        <span class="card-title">first</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
+
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-04
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-27
+                        </span>
                         <span class="publish-author">
                             
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -937,35 +1240,46 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/04/springmvc-yuan-li/">
+                <a href="/2019/12/01/hadoop-ji-qun-da-jian-yu-jian-dan-shi-yong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="SpringMVC原理">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Hadoop集群搭建与简单使用">
                         
-                        <span class="card-title">SpringMVC原理</span>
+                        <span class="card-title">Hadoop集群搭建与简单使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            概述spring MVC主要由DispatcherServlet、处理器映射、处理器(控制器)、视图解析器、视图组成。他的两个核心是两个核心：
-处理器映射： 选择使用哪个控制器来处理请求。视图解析器： 选择结果应该如何渲染。
-运行原理下图是
+                            Hadoop集群搭建与简单使用首先需要搭建一个linux的集群,可以参见我的博客linux集群搭建
+
+Hadoop的运行是基于java的,所以需要先安装JDK,而且JDK版本必须高于1.7
+
+安装JDK（1）查询是否安装Java软件：
+ r
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-04
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-01
                             </span>
                         <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/大数据/" class="post-category" target="_blank">
+                                    大数据
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -1110,6 +1424,13 @@
 </main>
 
 
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
     <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -1117,7 +1438,7 @@
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">4.6k</span>
+            <span class="white-color">10.9k</span>
             
 
             <br>
