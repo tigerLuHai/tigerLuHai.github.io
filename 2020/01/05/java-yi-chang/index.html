@@ -4,13 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="SpringMVC原理, LuHai Java后台开发 大数据开发">
+    <meta name="keywords" content="java异常, LuHai Java后台开发 大数据开发">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="概述spring MVC主要由DispatcherServlet、处理器映射、处理器(控制器)、视图解析器、视图组成。他的两个核心是两个核心：
-处理器映射： 选择使用哪个控制器来处理请求。视图解析器： 选择结果应该如何渲染。
-运行原理下图是">
+    <meta name="description" content="java异常 | 卢海的博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>SpringMVC原理 | 卢海的博客</title>
+    <title>java异常 | 卢海的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -292,13 +290,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        SpringMVC原理
+                        java异常
                     </div>
                 </div>
             </div>
@@ -414,22 +412,13 @@
                 </div>
                 <div class="col s5 right-align">
                     
-                    <div class="post-cate">
-                        <i class="fa fa-bookmark fa-fw icon-category"></i>
-                        
-                        <a href="/categories/java/" class="post-category" target="_blank">
-                            java
-                        </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
 
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-04
+                    2020-01-05
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -443,14 +432,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    621
+                    0
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
                 
@@ -466,51 +455,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="http://lib.csdn.net/base/javaee" target="_blank" rel="noopener">spring</a> MVC主要由DispatcherServlet、处理器映射、处理器(控制器)、视图解析器、视图组成。他的两个核心是两个核心：</p>
-<p><strong>处理器映射：</strong> 选择使用哪个控制器来处理请求。<br><strong>视图解析器：</strong> 选择结果应该如何渲染。</p>
-<h2 id="运行原理"><a href="#运行原理" class="headerlink" title="运行原理"></a>运行原理</h2><p>下图是在Spring官网开发手册上找到的，它清晰的诠释了Spring MVC的运行原理</p>
-<p><img src="/2020/01/04/springmvc-yuan-li/D:%5CMyBlot%5Cbolt%5Csource_posts%5CSpringMVC%E5%8E%9F%E7%90%86%5C16b5eb3870589ac4.png" alt="16b5eb3870589ac4"></p>
-<p>①客户端的所有请求都交给前端控制器DispatcherServlet来处理，它会负责调用系统的其他模块来真正处理用户的请求。</p>
-<p>② DispatcherServlet收到请求后，将根据请求的信息（包括URL、HTTP协议方法、请求头、请求参数、Cookie等）以及HandlerMapping的配置找到处理该请求的Handler（任何一个对象都可以作为请求的Handler）。</p>
-<p>③在这个地方Spring会通过HandlerAdapter对该处理器进行封装。</p>
-<p>④ HandlerAdapter是一个适配器，它用统一的接口对各种Handler中的方法进行调用。</p>
-<p>⑤ Handler完成对用户请求的处理后，会返回一个ModelAndView对象给DispatcherServlet，ModelAndView顾名思义，包含了数据模型以及相应的视图的信息。</p>
-<p>⑥ ModelAndView的视图是逻辑视图，DispatcherServlet还要借助ViewResolver完成从逻辑视图到真实视图对象的解析工作。⑦ 当得到真正的视图对象后，DispatcherServlet会利用视图对象对模型数据进行渲染。</p>
-<p>⑧ 客户端得到响应，可能是一个普通的HTML页面，也可以是XML或JSON字符串，还可以是一张图片或者一个PDF文件。</p>
-<p><img src="/2020/01/04/springmvc-yuan-li/D:%5CMyBlot%5Cbolt%5Csource_posts%5CSpringMVC%E5%8E%9F%E7%90%86%5C16b5eb3870589ac4.png" alt="16b5eb3870589ac4"></p>
-<h2 id="接口的解释"><a href="#接口的解释" class="headerlink" title="接口的解释"></a>接口的解释</h2><table>
-<thead>
-<tr>
-<th>接口名称</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>DispatcherServlet</td>
-<td>Spring提供的前端控制器，客户端的所有请求都由DispatcherServlet负责分发，当然在DispatcherServlet分发之前，还需要一个匹配请求的过程，这个由HandlerMapping来完成。</td>
-</tr>
-<tr>
-<td>HandlerMapping</td>
-<td>完成客户端请求到Controller映射的工作</td>
-</tr>
-<tr>
-<td>Controller</td>
-<td>用于处理用户请求，返回处理结果</td>
-</tr>
-<tr>
-<td>ViewResolver</td>
-<td>Web应用中查找View对象，从而将相应结果渲染给客户端</td>
-</tr>
-</tbody></table>
-<h2 id="DispatcherServlet："><a href="#DispatcherServlet：" class="headerlink" title="DispatcherServlet："></a>DispatcherServlet：</h2><p>是整个Spring MVC的核心。它负责接收HTTP请求组织协调Spring MVC的各个组成部分。</p>
-<p>其主要工作有以下三项：</p>
-<ol>
-<li>截获符合特定格式的URL请求。</li>
-<li>初始化DispatcherServlet上下文对应WebApplicationContext，并将其与业务层、持久化层的WebApplicationContext建立关联。</li>
-<li>初始化Spring MVC的各个组成组件，并装配到DispatcherServlet中。</li>
-</ol>
-<h2 id="一个比较好理解的Spring-mvc原理图"><a href="#一个比较好理解的Spring-mvc原理图" class="headerlink" title="一个比较好理解的Spring mvc原理图"></a>一个比较好理解的Spring mvc原理图</h2><p><img src="/2020/01/04/springmvc-yuan-li/D:%5CMyBlot%5Cbolt%5Csource_posts%5CSpringMVC%E5%8E%9F%E7%90%86%5Cb856096cf065baaaabe5884deb4ecfa3.png" alt="b856096cf065baaaabe5884deb4ecfa3"></p>
-
+                
             </div>
             <hr />
 
@@ -672,7 +617,7 @@
         repo: 'tigerLuHai.github.io',
         owner: 'tigerLuHai',
         admin: "tigerLuHai",
-        id: '2020/01/04/springmvc-yuan-li/',
+        id: '2020/01/05/java-yi-chang/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -955,9 +900,45 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/01/05/java-yi-chang/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="java异常">
+                        
+                        <span class="card-title">java异常</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-05
+                            </span>
+                        <span class="publish-author">
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/">
                     <div class="card-image">
@@ -972,47 +953,6 @@
                     <div class="summary block-with-text">
                         
                             javaWeb三大核心组件之Servlet什么是ServletJava Servlet 是运行在 Web 服务器或应用服务器上的程序，它是作为来自 Web 浏览器或其他 HTTP 客户端的请求和 HTTP 服务器上的数据库或应用程序之间的中
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-04
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/java/" class="post-category" target="_blank">
-                                    java
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/01/04/hui-tou-zai-kan-spring/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="回头再看spring">
-                        
-                        <span class="card-title">回头再看spring</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            回头再看Spring什么是SpringSpring是个包含一系列功能的合集，如快速构建微服务的Spring Boot，管理一系列微服务的Spring Cloud，支持认证与鉴权的Spring Security，基于MVC的Web框架Spri
                         
                     </div>
                     <div class="publish-info">
