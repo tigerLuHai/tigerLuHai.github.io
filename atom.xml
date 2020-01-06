@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tigerLuHai.github.io/"/>
-  <updated>2020-01-05T14:47:02.237Z</updated>
+  <updated>2020-01-06T13:13:56.936Z</updated>
   <id>http://tigerLuHai.github.io/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>动态代理的实现方式与区别</title>
+    <link href="http://tigerLuHai.github.io/2020/01/06/dong-tai-dai-li-de-shi-xian-fang-shi-yu-qu-bie/"/>
+    <id>http://tigerLuHai.github.io/2020/01/06/dong-tai-dai-li-de-shi-xian-fang-shi-yu-qu-bie/</id>
+    <published>2020-01-06T13:13:56.000Z</published>
+    <updated>2020-01-06T13:13:56.936Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>java异常</title>
