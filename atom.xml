@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tigerLuHai.github.io/"/>
-  <updated>2020-01-06T13:13:56.936Z</updated>
+  <updated>2020-01-07T14:24:27.140Z</updated>
   <id>http://tigerLuHai.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JVM必须知道的基础</title>
+    <link href="http://tigerLuHai.github.io/2020/01/07/jvm-bi-xu-zhi-dao-de-ji-chu/"/>
+    <id>http://tigerLuHai.github.io/2020/01/07/jvm-bi-xu-zhi-dao-de-ji-chu/</id>
+    <published>2020-01-07T12:39:20.000Z</published>
+    <updated>2020-01-07T14:24:27.140Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;运行时数据区域&quot;&gt;&lt;a href=&quot;#运行时数据区域&quot; class=&quot;headerlink&quot; title=&quot;运行时数据区域&quot;&gt;&lt;/a&gt;运行时数据区域&lt;/h2&gt;&lt;p&gt;网上有很多描述JVM内存区的图,我觉得这张能表述内容较多&lt;/p&gt;
+&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://tigerLuHai.github.io/categories/java/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>动态代理的实现方式与区别</title>
