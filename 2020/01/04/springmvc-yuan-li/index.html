@@ -292,7 +292,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/26.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/27.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -469,7 +469,7 @@
                 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="http://lib.csdn.net/base/javaee" target="_blank" rel="noopener">spring</a> MVC主要由DispatcherServlet、处理器映射、处理器(控制器)、视图解析器、视图组成。他的两个核心是两个核心：</p>
 <p><strong>处理器映射：</strong> 选择使用哪个控制器来处理请求。<br><strong>视图解析器：</strong> 选择结果应该如何渲染。</p>
 <h2 id="运行原理"><a href="#运行原理" class="headerlink" title="运行原理"></a>运行原理</h2><p>下图是在Spring官网开发手册上找到的，它清晰的诠释了Spring MVC的运行原理</p>
-<p><img src="/2020/01/04/springmvc-yuan-li/D:%5CMyBlot%5Cbolt%5Csource_posts%5CSpringMVC%E5%8E%9F%E7%90%86%5C16b5eb3870589ac4.png" alt="16b5eb3870589ac4"></p>
+<p><img src="/2020/01/04/springmvc-yuan-li/SpringMVC%E5%8E%9F%E7%90%86%5C16b5eb3870589ac4.png" alt="16b5eb3870589ac4"></p>
 <p>①客户端的所有请求都交给前端控制器DispatcherServlet来处理，它会负责调用系统的其他模块来真正处理用户的请求。</p>
 <p>② DispatcherServlet收到请求后，将根据请求的信息（包括URL、HTTP协议方法、请求头、请求参数、Cookie等）以及HandlerMapping的配置找到处理该请求的Handler（任何一个对象都可以作为请求的Handler）。</p>
 <p>③在这个地方Spring会通过HandlerAdapter对该处理器进行封装。</p>
@@ -477,7 +477,7 @@
 <p>⑤ Handler完成对用户请求的处理后，会返回一个ModelAndView对象给DispatcherServlet，ModelAndView顾名思义，包含了数据模型以及相应的视图的信息。</p>
 <p>⑥ ModelAndView的视图是逻辑视图，DispatcherServlet还要借助ViewResolver完成从逻辑视图到真实视图对象的解析工作。⑦ 当得到真正的视图对象后，DispatcherServlet会利用视图对象对模型数据进行渲染。</p>
 <p>⑧ 客户端得到响应，可能是一个普通的HTML页面，也可以是XML或JSON字符串，还可以是一张图片或者一个PDF文件。</p>
-<p><img src="/2020/01/04/springmvc-yuan-li/D:%5CMyBlot%5Cbolt%5Csource_posts%5CSpringMVC%E5%8E%9F%E7%90%86%5C16b5eb3870589ac4.png" alt="16b5eb3870589ac4"></p>
+<p><img src="/2020/01/04/springmvc-yuan-li/SpringMVC%E5%8E%9F%E7%90%86%5C16b5eb3870589ac4.png" alt="16b5eb3870589ac4"></p>
 <h2 id="接口的解释"><a href="#接口的解释" class="headerlink" title="接口的解释"></a>接口的解释</h2><table>
 <thead>
 <tr>
@@ -509,7 +509,7 @@
 <li>初始化DispatcherServlet上下文对应WebApplicationContext，并将其与业务层、持久化层的WebApplicationContext建立关联。</li>
 <li>初始化Spring MVC的各个组成组件，并装配到DispatcherServlet中。</li>
 </ol>
-<h2 id="一个比较好理解的Spring-mvc原理图"><a href="#一个比较好理解的Spring-mvc原理图" class="headerlink" title="一个比较好理解的Spring mvc原理图"></a>一个比较好理解的Spring mvc原理图</h2><p><img src="/2020/01/04/springmvc-yuan-li/D:%5CMyBlot%5Cbolt%5Csource_posts%5CSpringMVC%E5%8E%9F%E7%90%86%5Cb856096cf065baaaabe5884deb4ecfa3.png" alt="b856096cf065baaaabe5884deb4ecfa3"></p>
+<h2 id="一个比较好理解的Spring-mvc原理图"><a href="#一个比较好理解的Spring-mvc原理图" class="headerlink" title="一个比较好理解的Spring mvc原理图"></a>一个比较好理解的Spring mvc原理图</h2><p><img src="/2020/01/04/springmvc-yuan-li/SpringMVC%E5%8E%9F%E7%90%86%5Cb856096cf065baaaabe5884deb4ecfa3.png" alt="b856096cf065baaaabe5884deb4ecfa3"></p>
 
             </div>
             <hr />
@@ -963,7 +963,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="javaWeb三大核心组件之servlet">
+                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="javaWeb三大核心组件之servlet">
                         
                         <span class="card-title">javaWeb三大核心组件之servlet</span>
                     </div>
@@ -1004,7 +1004,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="回头再看spring">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="回头再看spring">
                         
                         <span class="card-title">回头再看spring</span>
                     </div>
@@ -1189,7 +1189,7 @@
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">16.4k</span>
+            <span class="white-color">24k</span>
             
 
             <br>

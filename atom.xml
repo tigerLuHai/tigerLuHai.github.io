@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tigerLuHai.github.io/"/>
-  <updated>2020-01-07T14:24:27.140Z</updated>
+  <updated>2020-01-08T13:51:36.750Z</updated>
   <id>http://tigerLuHai.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://tigerLuHai.github.io/2020/01/07/jvm-bi-xu-zhi-dao-de-ji-chu/"/>
     <id>http://tigerLuHai.github.io/2020/01/07/jvm-bi-xu-zhi-dao-de-ji-chu/</id>
     <published>2020-01-07T12:39:20.000Z</published>
-    <updated>2020-01-07T14:24:27.140Z</updated>
+    <updated>2020-01-08T13:51:36.750Z</updated>
     
     <summary type="html">
     
@@ -60,11 +60,13 @@
     <link href="http://tigerLuHai.github.io/2020/01/05/java-yi-chang/"/>
     <id>http://tigerLuHai.github.io/2020/01/05/java-yi-chang/</id>
     <published>2020-01-05T14:47:02.000Z</published>
-    <updated>2020-01-05T14:47:02.237Z</updated>
+    <updated>2020-01-08T13:53:08.773Z</updated>
     
     <summary type="html">
     
     </summary>
+    
+      <category term="java" scheme="http://tigerLuHai.github.io/categories/java/"/>
     
     
   </entry>
@@ -74,7 +76,7 @@
     <link href="http://tigerLuHai.github.io/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/"/>
     <id>http://tigerLuHai.github.io/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/</id>
     <published>2020-01-04T14:05:03.000Z</published>
-    <updated>2020-01-04T14:45:57.361Z</updated>
+    <updated>2020-01-08T13:52:58.248Z</updated>
     
     <summary type="html">
     
@@ -98,7 +100,7 @@
     <link href="http://tigerLuHai.github.io/2020/01/04/springmvc-yuan-li/"/>
     <id>http://tigerLuHai.github.io/2020/01/04/springmvc-yuan-li/</id>
     <published>2020-01-04T13:40:42.000Z</published>
-    <updated>2020-01-04T14:46:35.038Z</updated>
+    <updated>2020-01-08T13:53:29.902Z</updated>
     
     <summary type="html">
     
@@ -122,7 +124,7 @@
     <link href="http://tigerLuHai.github.io/2020/01/04/hui-tou-zai-kan-spring/"/>
     <id>http://tigerLuHai.github.io/2020/01/04/hui-tou-zai-kan-spring/</id>
     <published>2020-01-04T06:59:57.000Z</published>
-    <updated>2020-01-04T14:47:33.184Z</updated>
+    <updated>2020-01-08T13:53:49.080Z</updated>
     
     <summary type="html">
     
@@ -170,7 +172,7 @@
     <link href="http://tigerLuHai.github.io/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/"/>
     <id>http://tigerLuHai.github.io/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/</id>
     <published>2019-12-29T14:16:39.000Z</published>
-    <updated>2019-12-30T08:07:51.918Z</updated>
+    <updated>2020-01-08T13:54:10.010Z</updated>
     
     <summary type="html">
     
@@ -262,7 +264,7 @@
     <link href="http://tigerLuHai.github.io/2019/12/01/hadoop-ji-qun-da-jian-yu-jian-dan-shi-yong/"/>
     <id>http://tigerLuHai.github.io/2019/12/01/hadoop-ji-qun-da-jian-yu-jian-dan-shi-yong/</id>
     <published>2019-12-01T06:13:08.000Z</published>
-    <updated>2020-01-04T14:46:20.095Z</updated>
+    <updated>2020-01-08T13:52:26.743Z</updated>
     
     <summary type="html">
     

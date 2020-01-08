@@ -2,9 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tigerLuHai.github.io/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/</loc>
+    
+    <lastmod>2020-01-08T13:54:10.010Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/04/hui-tou-zai-kan-spring/</loc>
+    
+    <lastmod>2020-01-08T13:53:49.080Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/04/springmvc-yuan-li/</loc>
+    
+    <lastmod>2020-01-08T13:53:29.902Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/05/java-yi-chang/</loc>
+    
+    <lastmod>2020-01-08T13:53:08.773Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/</loc>
+    
+    <lastmod>2020-01-08T13:52:58.248Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2019/12/01/hadoop-ji-qun-da-jian-yu-jian-dan-shi-yong/</loc>
+    
+    <lastmod>2020-01-08T13:52:26.743Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tigerLuHai.github.io/2020/01/07/jvm-bi-xu-zhi-dao-de-ji-chu/</loc>
     
-    <lastmod>2020-01-07T14:24:27.140Z</lastmod>
+    <lastmod>2020-01-08T13:51:36.750Z</lastmod>
     
   </url>
   
@@ -16,51 +58,9 @@
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/2020/01/05/java-yi-chang/</loc>
-    
-    <lastmod>2020-01-05T14:47:02.237Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tigerLuHai.github.io/2020/01/04/hui-tou-zai-kan-spring/</loc>
-    
-    <lastmod>2020-01-04T14:47:33.184Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://tigerLuHai.github.io/2020/01/03/li-jie-kmp-hui-su/</loc>
     
     <lastmod>2020-01-04T14:47:14.479Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tigerLuHai.github.io/2020/01/04/springmvc-yuan-li/</loc>
-    
-    <lastmod>2020-01-04T14:46:35.038Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tigerLuHai.github.io/2019/12/01/hadoop-ji-qun-da-jian-yu-jian-dan-shi-yong/</loc>
-    
-    <lastmod>2020-01-04T14:46:20.095Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tigerLuHai.github.io/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/</loc>
-    
-    <lastmod>2020-01-04T14:45:57.361Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tigerLuHai.github.io/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/</loc>
-    
-    <lastmod>2019-12-30T08:07:51.918Z</lastmod>
     
   </url>
   
@@ -100,21 +100,7 @@
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/archives/index.html</loc>
-    
-    <lastmod>2019-12-27T00:54:34.929Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://tigerLuHai.github.io/categories/index.html</loc>
-    
-    <lastmod>2019-12-27T00:54:34.929Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tigerLuHai.github.io/contact/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
     
@@ -129,6 +115,20 @@
   
   <url>
     <loc>http://tigerLuHai.github.io/tags/index.html</loc>
+    
+    <lastmod>2019-12-27T00:54:34.929Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/contact/index.html</loc>
+    
+    <lastmod>2019-12-27T00:54:34.929Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/archives/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
     
