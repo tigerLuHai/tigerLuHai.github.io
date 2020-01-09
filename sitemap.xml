@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tigerLuHai.github.io/2020/01/09/shen-ru-li-jie-jsp/</loc>
+    
+    <lastmod>2020-01-09T14:19:10.173Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/08/redis-jian-dan-shi-yong-zong-jie/</loc>
+    
+    <lastmod>2020-01-08T13:57:20.840Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tigerLuHai.github.io/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/</loc>
     
     <lastmod>2020-01-08T13:54:10.010Z</lastmod>
@@ -100,6 +114,13 @@
   </url>
   
   <url>
+    <loc>http://tigerLuHai.github.io/archives/index.html</loc>
+    
+    <lastmod>2019-12-27T00:54:34.929Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tigerLuHai.github.io/categories/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
@@ -122,13 +143,6 @@
   
   <url>
     <loc>http://tigerLuHai.github.io/contact/index.html</loc>
-    
-    <lastmod>2019-12-27T00:54:34.929Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tigerLuHai.github.io/archives/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
     
