@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tigerLuHai.github.io/"/>
-  <updated>2020-01-10T13:30:09.460Z</updated>
+  <updated>2020-01-10T13:41:41.611Z</updated>
   <id>http://tigerLuHai.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>软件开发六大设计原则</title>
+    <link href="http://tigerLuHai.github.io/2020/01/10/ruan-jian-kai-fa-liu-da-she-ji-yuan-ze/"/>
+    <id>http://tigerLuHai.github.io/2020/01/10/ruan-jian-kai-fa-liu-da-she-ji-yuan-ze/</id>
+    <published>2020-01-10T13:36:19.000Z</published>
+    <updated>2020-01-10T13:41:41.611Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;开闭原则&quot;&gt;&lt;a href=&quot;#开闭原则&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://tigerLuHai.github.io/categories/java/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>深入理解JSP</title>

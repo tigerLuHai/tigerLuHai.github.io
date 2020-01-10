@@ -4,11 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="动态代理的实现方式与区别, LuHai Java后台开发 大数据开发">
+    <meta name="keywords" content="软件开发六大设计原则, LuHai Java后台开发 大数据开发">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="动态代理的实现方式与区别 | 卢海的博客">
+    <meta name="description" content="开闭原则定义：软件实体如类、模块和函数应该对扩展开放，对修改关闭。优点：可提高软件系统的可复用性及可维护性举例：一开始需要获取课程的价格，面向接口的开发原则如下
+public interface Course {
+    Double ge">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>动态代理的实现方式与区别 | 卢海的博客</title>
+    <title>软件开发六大设计原则 | 卢海的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -290,13 +292,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        动态代理的实现方式与区别
+                        软件开发六大设计原则
                     </div>
                 </div>
             </div>
@@ -412,13 +414,22 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                        <a href="/categories/java/" class="post-category" target="_blank">
+                            java
+                        </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-06
+                    2020-01-10
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -432,14 +443,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    7 分
                 </div>
                 
                 
@@ -455,7 +466,106 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h1><p>定义：软件实体如类、模块和函数应该对扩展开放，对修改关闭。<br>优点：可提高软件系统的可复用性及可维护性<br>举例：一开始需要获取课程的价格，面向接口的开发原则如下</p>
+<pre><code>public interface Course {
+    Double getPrice();
+}
+
+public class JavaCourse implements Course {
+    private Double price;
+    public JavaCourse() {
+    }
+    public JavaCourse(Integer id, String name, Double price) {
+        this.price = price;
+    }
+    @Override
+    public Double getPrice() {
+        return this.price;
+    }
+public class Test {
+    public static void main(String[] args) {
+        Course course = new JavaCourse(1,&quot;java&quot;,15.25);
+        System.out.println(&quot;课程价格&quot;+course.getPrice());
+    }
+}
+}</code></pre><p>后来需求变动，需要显示课程打折后的价格。<br>需要做如下变动：</p>
+<pre><code>public class JavaDiscountCourse extends JavaCourse {
+    public JavaDiscountCourse(Integer id, String name, Double price) {
+        super(id, name, price);
+    }
+    public Double getDiscountPrice(){
+        return this.getPrice()*0.8;
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Course course = new JavaDiscountCourse(1,&quot;java&quot;,15.25);
+        System.out.println(&quot;课程价格&quot;+course.getPrice()+&quot;\r\n课程折后价格&quot;+((JavaDiscountCourse) course).getDiscountPrice());
+    }
+}</code></pre><h1 id="依赖倒置原则"><a href="#依赖倒置原则" class="headerlink" title="依赖倒置原则"></a>依赖倒置原则</h1><p>定义：高层模块不应该依赖底层模块，二者都应该依赖其抽象<br>优点：可以减少类之间的耦合性、提高系统稳定性、提高代码可读性和可维护性，可降低修改程序所造成的风险<br>代码举例：</p>
+<pre><code>public interface Course {
+    void study();
+}
+
+public class PythonCourse implements Course {
+    @Override
+    public void study() {
+        System.out.println(&quot;学习Python课程&quot;);
+    }
+}
+
+public class Alice {
+     Course course;
+     public Alice(Course course){
+         this.course = course;
+     }
+     public void studyCourse(){
+         course.study();
+     }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Alice alice = new Alice(new PythonCourse());
+        alice.studyCourse();
+    }
+}</code></pre><p>以上代码通过将PythonCourse的抽象注入Alice中实现了Alice和Course的具体实现的解耦，实现了依赖倒置。</p>
+<h1 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h1><p>定义：不要存在多于一个导致类变更的原因<br>优点：降低类的复杂度，提高类的可读性，提高系统的可维护性、降低变更引起的风险<br>理解：一个类只需要实现一类功能，不要有几类功能同时在一个类中，这个微服务的思想有些相似，只是一个微服务需要实现的是一大类功能，目的都是使系统细粒度化，便于开发新功能时写更少的代码（用原有的功能通过不同的调用步骤或顺序或传入不同的参数即可组合出新的功能），也就是便于扩展。</p>
+<h1 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h1><p>定义：用多个专门的接口，而不使用单一的总接口，客户端不应该依赖他不需要的接口。<br>优点：符合我们常说的高内聚低耦合的设计思想从而使得类具有很好的可读性、可扩展性和可维护性。</p>
+<h1 id="迪米特法则（最少知道原则）"><a href="#迪米特法则（最少知道原则）" class="headerlink" title="迪米特法则（最少知道原则）"></a>迪米特法则（最少知道原则）</h1><p>定义：一个对象应该对其他对象保持最少的了解。<br>优点：降低类之间的耦合。<br>举例：如下类图并不遵循迪米特原则，因为Boss只需要和TeamLeader交互，而不需要和Course产生依赖。<br><img src="/2020/01/10/ruan-jian-kai-fa-liu-da-she-ji-yuan-ze/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%85%AD%E5%A4%A7%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99%5C1.png" alt="在这里插入图片描述"></p>
+<p>改进后满足迪米特原则类关系如下<br><img src="/2020/01/10/ruan-jian-kai-fa-liu-da-she-ji-yuan-ze/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%85%AD%E5%A4%A7%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99%5C2.png" alt="在这里插入图片描述"></p>
+<h1 id="里斯替换原则"><a href="#里斯替换原则" class="headerlink" title="里斯替换原则"></a>里斯替换原则</h1><p>定义1：如果对每一个类型为 T1的对象 o1，都有类型为 T2 的对象o2，使得以 T1定义的所有程序 P 在所有的对象 o1 都代换成 o2 时，程序 P 的行为没有发生变化，那么类型 T2 是类型 T1 的子类型。</p>
+<p>定义2：所有引用基类的地方必须能透明地使用其子类的对象。</p>
+<p>问题由来：有一功能P1，由类A完成。现需要将功能P1进行扩展，扩展后的功能为P，其中P由原有功能P1与新功能P2组成。新功能P由类A的子类B来完成，则子类B在完成新功能P2的同时，有可能会导致原有功能P1发生故障。</p>
+<p>解决方案：当使用继承时，遵循里氏替换原则。类B继承类A时，除添加新的方法完成新增功能P2外，尽量不要重写父类A的方法，也尽量不要重载父类A的方法。</p>
+<p>继承包含这样一层含义：父类中凡是已经实现好的方法（相对于抽象方法而言），实际上是在设定一系列的规范和契约，虽然它不强制要求所有的子类必须遵从这些契约，但是如果子类对这些非抽象方法任意修改，就会对整个继承体系造成破坏。而里氏替换原则就是表达了这一层含义。</p>
+<p>继承作为面向对象三大特性之一，在给程序设计带来巨大便利的同时，也带来了弊端。比如使用继承会给程序带来侵入性，程序的可移植性降低，增加了对象间的耦合性，如果一个类被其他的类所继承，则当这个类需要修改时，必须考虑到所有的子类，并且父类修改后，所有涉及到子类的功能都有可能会产生故障。</p>
+<p>举例说明继承的风险，我们需要完成一个两数相减的功能，由类A来负责。</p>
+<p>运行结果：</p>
+<p>100-50=50</p>
+<p>100-80=20</p>
+<p>后来，我们需要增加一个新的功能：完成两数相加，然后再与100求和，由类B来负责。即类B需要完成两个功能：</p>
+<ul>
+<li>两数相减。</li>
+<li>两数相加，然后再加100。</li>
+</ul>
+<p>由于类A已经实现了第一个功能，所以类B继承类A后，只需要再完成第二个功能就可以了，代码如下：</p>
+<p>类B完成后，运行结果：</p>
+<p>100-50=150</p>
+<p>100-80=180</p>
+<p>100+20+100=220</p>
+<p>我们发现原本运行正常的相减功能发生了错误。原因就是类B在给方法起名时无意中重写了父类的方法，造成所有运行相减功能的代码全部调用了类B重写后的方法，造成原本运行正常的功能出现了错误。在本例中，引用基类A完成的功能，换成子类B之后，发生了异常。在实际编程中，我们常常会通过重写父类的方法来完成新的功能，这样写起来虽然简单，但是整个继承体系的可复用性会比较差，特别是运用多态比较频繁时，程序运行出错的几率非常大。如果非要重写父类的方法，比较通用的做法是：原来的父类和子类都继承一个更通俗的基类，原有的继承关系去掉，采用依赖、聚合，组合等关系代替。</p>
+<p>里氏替换原则通俗的来讲就是：子类可以扩展父类的功能，但不能改变父类原有的功能。它包含以下4层含义：</p>
+<ul>
+<li>子类可以实现父类的抽象方法，但不能覆盖父类的非抽象方法。</li>
+<li>子类中可以增加自己特有的方法。</li>
+<li>当子类的方法重载父类的方法时，方法的前置条件（即方法的形参）要比父类方法的输入参数更宽松。</li>
+<li>当子类的方法实现父类的抽象方法时，方法的后置条件（即方法的返回值）要比父类更严格。</li>
+</ul>
+<p>看上去很不可思议，因为我们会发现在自己编程中常常会违反里氏替换原则，程序照样跑的好好的。所以大家都会产生这样的疑问，假如我非要不遵循里氏替换原则会有什么后果？</p>
+<p>后果就是：你写的代码出问题的几率将会大大增加。</p>
+
             </div>
             <hr />
 
@@ -617,7 +727,7 @@
         repo: 'tigerLuHai.github.io',
         owner: 'tigerLuHai',
         admin: "tigerLuHai",
-        id: '2020/01/06/dong-tai-dai-li-de-shi-xian-fang-shi-yu-qu-bie/',
+        id: '2020/01/10/ruan-jian-kai-fa-liu-da-she-ji-yuan-ze/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -900,31 +1010,32 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/01/07/jvm-bi-xu-zhi-dao-de-ji-chu/">
+                <a href="/2020/01/10/ruan-jian-kai-fa-liu-da-she-ji-yuan-ze/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="JVM必须知道的基础">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="软件开发六大设计原则">
                         
-                        <span class="card-title">JVM必须知道的基础</span>
+                        <span class="card-title">软件开发六大设计原则</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            运行时数据区域网上有很多描述JVM内存区的图,我觉得这张能表述内容较多
-
-程序计数器 程序计数器(Program Counter Register)存储当前线程执行的字节码行号，占用内存较小。字节码解释器就是通过这个计数器的值来选择下一条需
+                            开闭原则定义：软件实体如类、模块和函数应该对扩展开放，对修改关闭。优点：可提高软件系统的可复用性及可维护性举例：一开始需要获取课程的价格，面向接口的开发原则如下
+public interface Course {
+    Double ge
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -937,6 +1048,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -947,24 +1059,25 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/05/java-yi-chang/">
+                <a href="/2020/01/09/shen-ru-li-jie-jsp/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="java异常">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="深入理解JSP">
                         
-                        <span class="card-title">java异常</span>
+                        <span class="card-title">深入理解JSP</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            JSP介绍 JSP（Java server page）是Java EE规范最基本成员，他是Java Web开发的重点知识，虽然我们一直在用，但其原理知之甚少。今天重点研究一些JSP核心内容以及其工作原理。
+  JSP和Servlet的本质是
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-05
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-09
                             </span>
                         <span class="publish-author">
                             
