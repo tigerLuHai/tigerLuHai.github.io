@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tigerLuHai.github.io/"/>
-  <updated>2020-01-09T14:19:10.173Z</updated>
+  <updated>2020-01-10T13:30:09.460Z</updated>
   <id>http://tigerLuHai.github.io/</id>
   
   <author>
@@ -21,11 +21,21 @@
     <link href="http://tigerLuHai.github.io/2020/01/09/shen-ru-li-jie-jsp/"/>
     <id>http://tigerLuHai.github.io/2020/01/09/shen-ru-li-jie-jsp/</id>
     <published>2020-01-09T14:19:10.000Z</published>
-    <updated>2020-01-09T14:19:10.173Z</updated>
+    <updated>2020-01-10T13:30:09.460Z</updated>
     
     <summary type="html">
     
+      
+      
+        
+        
+          &lt;h4 id=&quot;JSP介绍&quot;&gt;&lt;a href=&quot;#JSP介绍&quot; class=&quot;headerlink&quot; title=&quot;JSP介绍&quot;&gt;&lt;/a&gt;JSP介绍&lt;/h4&gt;&lt;p&gt; JSP（Java server page）是Java EE规范最基本成员，他是Java
+        
+      
+    
     </summary>
+    
+      <category term="java" scheme="http://tigerLuHai.github.io/categories/java/"/>
     
     
   </entry>
