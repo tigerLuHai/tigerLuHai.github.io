@@ -8,7 +8,9 @@
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="redis简单使用总结 | 卢海的博客">
+    <meta name="description" content="一、概述Redis 是速度非常快的非关系型（NoSQL）内存键值数据库，可以存储键和五种不同类型的值之间的映射。
+键的类型只能为字符串，值支持五种数据类型：字符串、列表、集合、散列表、有序集合。
+Redis 支持很多特性，例如将内存中的数据">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -290,7 +292,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -412,6 +414,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                        <a href="/categories/tool/" class="post-category" target="_blank">
+                            tool
+                        </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -432,14 +443,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
                 
@@ -455,7 +466,165 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><p>Redis 是速度非常快的非关系型（NoSQL）内存键值数据库，可以存储键和五种不同类型的值之间的映射。</p>
+<p>键的类型只能为字符串，值支持五种数据类型：字符串、列表、集合、散列表、有序集合。</p>
+<p>Redis 支持很多特性，例如将内存中的数据持久化到硬盘中，使用复制来扩展读性能，使用分片来扩展写性能。</p>
+<h1 id="二、数据类型"><a href="#二、数据类型" class="headerlink" title="二、数据类型"></a>二、数据类型</h1><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>可以存储的值</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>STRING</td>
+<td>字符串、整数或者浮点数</td>
+<td>对整个字符串或者字符串的其中一部分执行操作对整数和浮点数执行自增或者自减操作</td>
+</tr>
+<tr>
+<td>LIST</td>
+<td>列表</td>
+<td>从两端压入或者弹出元素 对单个或者多个元素进行修剪，只保留一个范围内的元素</td>
+</tr>
+<tr>
+<td>SET</td>
+<td>无序集合</td>
+<td>添加、获取、移除单个元素检查一个元素是否存在于集合中计算交集、并集、差集从集合里面随机获取元素</td>
+</tr>
+<tr>
+<td>HASH</td>
+<td>包含键值对的无序散列表</td>
+<td>添加、获取、移除单个键值对获取所有键值对检查某个键是否存在</td>
+</tr>
+<tr>
+<td>ZSET</td>
+<td>有序集合</td>
+<td>添加、获取、删除元素根据分值范围或者成员来获取元素计算一个键的排名</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><a href="https://redislabs.com/ebook/part-1-getting-started/chapter-1-getting-to-know-redis/1-2-what-redis-data-structures-look-like/" target="_blank" rel="noopener">What Redis data structures look like</a></p>
+</blockquote>
+<h2 id="STRING"><a href="#STRING" class="headerlink" title="STRING"></a>STRING</h2><p><a href="https://camo.githubusercontent.com/741c9153e1c49eeec9f29ea80a06bf444a767903/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f36303139623264622d626333652d343430382d623664382d3936303235663434383164362e706e67" target="_blank" rel="noopener"><img src="/2020/01/08/redis-jian-dan-shi-yong-zong-jie/D:%5CMyBlot%5Cbolt%5Csource_posts%5Credis%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%5C1.png" alt="img"></a></p>
+<pre><code>&gt; set hello world
+OK
+&gt; get hello
+&quot;world&quot;
+&gt; del hello
+(integer) 1
+&gt; get hello
+(nil)</code></pre><h2 id="LIST"><a href="#LIST" class="headerlink" title="LIST"></a>LIST</h2><p><a href="https://camo.githubusercontent.com/f6a0fffb6f97f71425a2d839fcc0f93b7042446e/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f66623332373631312d376532622d346632662d396635622d3338353932643430386630372e706e67" target="_blank" rel="noopener"><img src="/2020/01/08/redis-jian-dan-shi-yong-zong-jie/D:%5CMyBlot%5Cbolt%5Csource_posts%5Credis%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%5C2.png" alt="img"></a></p>
+<pre><code>&gt; rpush list-key item
+(integer) 1
+&gt; rpush list-key item2
+(integer) 2
+&gt; rpush list-key item
+(integer) 3
+
+&gt; lrange list-key 0 -1
+1) &quot;item&quot;
+2) &quot;item2&quot;
+3) &quot;item&quot;
+
+&gt; lindex list-key 1
+&quot;item2&quot;
+
+&gt; lpop list-key
+&quot;item&quot;
+
+&gt; lrange list-key 0 -1
+1) &quot;item2&quot;
+2) &quot;item&quot;</code></pre><h2 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h2><p><a href="https://camo.githubusercontent.com/ee95c32da9c5a0d4d6b69514b4bf9290dea36b6e/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f63643566626366662d336633352d343361362d386666612d3038326139336365306630652e706e67" target="_blank" rel="noopener"><img src="/2020/01/08/redis-jian-dan-shi-yong-zong-jie/D:%5CMyBlot%5Cbolt%5Csource_posts%5Credis%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%5C3.png" alt="img"></a></p>
+<pre><code>&gt; sadd set-key item
+(integer) 1
+&gt; sadd set-key item2
+(integer) 1
+&gt; sadd set-key item3
+(integer) 1
+&gt; sadd set-key item
+(integer) 0
+
+&gt; smembers set-key
+1) &quot;item&quot;
+2) &quot;item2&quot;
+3) &quot;item3&quot;
+
+&gt; sismember set-key item4
+(integer) 0
+&gt; sismember set-key item
+(integer) 1
+
+&gt; srem set-key item2
+(integer) 1
+&gt; srem set-key item2
+(integer) 0
+
+&gt; smembers set-key
+1) &quot;item&quot;
+2) &quot;item3&quot;</code></pre><h2 id="HASH"><a href="#HASH" class="headerlink" title="HASH"></a>HASH</h2><p><a href="https://camo.githubusercontent.com/2a3754a8770f890d0e53d8bb7ccf446f384c33ae/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f37626432303261372d393364342d346633612d613837382d6166363861653235353339612e706e67" target="_blank" rel="noopener"><img src="/2020/01/08/redis-jian-dan-shi-yong-zong-jie/D:%5CMyBlot%5Cbolt%5Csource_posts%5Credis%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%5C4.png" alt="img"></a></p>
+<pre><code>&gt; hset hash-key sub-key1 value1
+(integer) 1
+&gt; hset hash-key sub-key2 value2
+(integer) 1
+&gt; hset hash-key sub-key1 value1
+(integer) 0
+
+&gt; hgetall hash-key
+1) &quot;sub-key1&quot;
+2) &quot;value1&quot;
+3) &quot;sub-key2&quot;
+4) &quot;value2&quot;
+
+&gt; hdel hash-key sub-key2
+(integer) 1
+&gt; hdel hash-key sub-key2
+(integer) 0
+
+&gt; hget hash-key sub-key1
+&quot;value1&quot;
+
+&gt; hgetall hash-key
+1) &quot;sub-key1&quot;
+2) &quot;value1&quot;</code></pre><h2 id="ZSET"><a href="#ZSET" class="headerlink" title="ZSET"></a>ZSET</h2><p><a href="https://camo.githubusercontent.com/f547165de432ff22e18fd007b393b24540465abe/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f31323032623264362d393436392d343235312d626434372d6361363033346662363131362e706e67" target="_blank" rel="noopener"><img src="/2020/01/08/redis-jian-dan-shi-yong-zong-jie/D:%5CMyBlot%5Cbolt%5Csource_posts%5Credis%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%5C5.png" alt="img"></a></p>
+<pre><code>&gt; zadd zset-key 728 member1
+(integer) 1
+&gt; zadd zset-key 982 member0
+(integer) 1
+&gt; zadd zset-key 982 member0
+(integer) 0
+
+&gt; zrange zset-key 0 -1 withscores
+1) &quot;member1&quot;
+2) &quot;728&quot;
+3) &quot;member0&quot;
+4) &quot;982&quot;
+
+&gt; zrangebyscore zset-key 0 800 withscores
+1) &quot;member1&quot;
+2) &quot;728&quot;
+
+&gt; zrem zset-key member1
+(integer) 1
+&gt; zrem zset-key member1
+(integer) 0
+
+&gt; zrange zset-key 0 -1 withscores
+1) &quot;member0&quot;
+2) &quot;982&quot;</code></pre><h1 id="三、使用场景"><a href="#三、使用场景" class="headerlink" title="三、使用场景"></a>三、使用场景</h1><h2 id="计数器"><a href="#计数器" class="headerlink" title="计数器"></a>计数器</h2><p>可以对 String 进行自增自减运算，从而实现计数器功能。</p>
+<p>Redis 这种内存型数据库的读写性能非常高，很适合存储频繁读写的计数量。</p>
+<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><p>将热点数据放到内存中，设置内存的最大使用量以及淘汰策略来保证缓存的命中率。</p>
+<h2 id="查找表"><a href="#查找表" class="headerlink" title="查找表"></a>查找表</h2><p>例如 DNS 记录就很适合使用 Redis 进行存储。</p>
+<p>查找表和缓存类似，也是利用了 Redis 快速的查找特性。但是查找表的内容不能失效，而缓存的内容可以失效，因为缓存不作为可靠的数据来源。</p>
+<h2 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h2><p>List 是一个双向链表，可以通过 lpush 和 rpop 写入和读取消息</p>
+<p>不过最好使用 Kafka、RabbitMQ 等消息中间件。</p>
+<h2 id="会话缓存"><a href="#会话缓存" class="headerlink" title="会话缓存"></a>会话缓存</h2><p>可以使用 Redis 来统一存储多台应用服务器的会话信息。</p>
+<p>当应用服务器不再存储用户的会话信息，也就不再具有状态，一个用户可以请求任意一个应用服务器，从而更容易实现高可用性以及可伸缩性。</p>
+<h2 id="分布式锁实现"><a href="#分布式锁实现" class="headerlink" title="分布式锁实现"></a>分布式锁实现</h2><p>在分布式场景下，无法使用单机环境下的锁来对多个节点上的进程进行同步。</p>
+<p>可以使用 Redis 自带的 SETNX 命令实现分布式锁，除此之外，还可以使用官方提供的 RedLock 分布式锁实现。</p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>Set 可以实现交集、并集等操作，从而实现共同好友等功能。</p>
+<p>ZSet 可以实现有序性操作，从而实现排行榜等功能。</p>
+
             </div>
             <hr />
 
@@ -908,7 +1077,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="深入理解JSP">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="深入理解JSP">
                         
                         <span class="card-title">深入理解JSP</span>
                     </div>
@@ -950,7 +1119,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="JVM必须知道的基础">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="JVM必须知道的基础">
                         
                         <span class="card-title">JVM必须知道的基础</span>
                     </div>
@@ -1137,7 +1306,7 @@
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">28.1k</span>
+            <span class="white-color">31.8k</span>
             
 
             <br>

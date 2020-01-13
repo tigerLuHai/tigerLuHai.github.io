@@ -4,18 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="hexo博文包含图片的坑, LuHai Java后台开发 大数据开发">
+    <meta name="keywords" content="java的Object对象, LuHai Java后台开发 大数据开发">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="
+    <meta name="description" content="一.Object对象简介我们学Java的知道，Java是一门面向对象的语言。无论在Java中出现什么，都可以认为它是对象(除了八大基本数据类型。当然了，八大基本数据类型也能装箱成为对象)：
 
-hexo博文包含图片的坑网上有很多关于这个的教程,主要的总结如下
-①修改博客目录下的_config_yml的post_asset_folder为true
-
-post_asset_folder: true
-
-②安装hexo-asset-i">
+而Object就是这些对象的最高级别的，所有的J">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +18,7 @@ post_asset_folder: true
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>hexo博文包含图片的坑 | 卢海的博客</title>
+    <title>java的Object对象 | 卢海的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -297,13 +292,13 @@ post_asset_folder: true
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/26.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        hexo博文包含图片的坑
+                        java的Object对象
                     </div>
                 </div>
             </div>
@@ -422,8 +417,8 @@ post_asset_folder: true
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/tool/" class="post-category" target="_blank">
-                            tool
+                        <a href="/categories/java/" class="post-category" target="_blank">
+                            java
                         </a>
                         
                     </div>
@@ -434,7 +429,7 @@ post_asset_folder: true
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-29
+                    2020-01-13
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -448,14 +443,14 @@ post_asset_folder: true
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    790
+                    2.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    9 分
                 </div>
                 
                 
@@ -471,107 +466,267 @@ post_asset_folder: true
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=414414&auto=0&height=66"></iframe></div>
-
-<h1 id="hexo博文包含图片的坑"><a href="#hexo博文包含图片的坑" class="headerlink" title="hexo博文包含图片的坑"></a>hexo博文包含图片的坑</h1><h3 id="网上有很多关于这个的教程-主要的总结如下"><a href="#网上有很多关于这个的教程-主要的总结如下" class="headerlink" title="网上有很多关于这个的教程,主要的总结如下"></a>网上有很多关于这个的教程,主要的总结如下</h3><ul>
-<li>①修改博客目录下的_config_yml的post_asset_folder为true</li>
-</ul>
-<pre class="line-numbers language-java"><code class="language-java">post_asset_folder<span class="token operator">:</span> <span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h2 id="一-Object对象简介"><a href="#一-Object对象简介" class="headerlink" title="一.Object对象简介"></a>一.Object对象简介</h2><p>我们学Java的知道，Java是一门面向对象的语言。无论在Java中出现什么，都可以认为它是对象(<strong>除了</strong>八大基本数据类型。当然了，八大基本数据类型也能<strong>装箱</strong>成为对象)：</p>
 <ul>
-<li>②安装hexo-asset-image插件</li>
+<li>而Object就是这些对象的最高级别的，所有的Java对象都<strong>隐式</strong>地继承了Object对象(不用显示写<code>extends</code>继承)</li>
+<li>所有的Java对象都<strong>拥有Object默认的方法</strong>。</li>
 </ul>
-<pre><code>npm install hexo-asset-image --save</code></pre><ul>
-<li>③hexo new  file_name 时会在source/_post/下生成file_name的文件夹,将需要使用的图片放置在里面,然后使用相对路径引入</li>
+<p>那么我们看看Object有什么方法：</p>
+<p><img src="/2020/01/13/java-de-object-dui-xiang/D:%5CMyBlot%5Cbolt%5Csource_posts%5Cjava%E7%9A%84Object%E5%AF%B9%E8%B1%A1%5C1578923575140.png" alt="1578923575140"></p>
+<p>其实就可以归纳成几个：</p>
+<ul>
+<li><code>registerNatives()</code>【底层实现、不研究】</li>
+<li><code>hashCode()</code></li>
+<li><code>equals(Object obj)</code></li>
+<li><code>clone()</code></li>
+<li><code>toString()</code></li>
+<li><code>notify()</code></li>
+<li><code>notifyAll()</code></li>
+<li><code>wait(long timeout)</code>【还有重载了两个】</li>
+<li><code>finalize()</code></li>
 </ul>
-<pre><code>![用于图片加载失败时显示的内容](/file_name/image_name)</code></pre><ul>
-<li>如此博客中的图片最后会和.md文件一起生成到public\2019\12\27\file_name中,这样在hexe g 时,可以看到命令窗口会打印修改后的路径,如下</li>
+<p>Object一共有<strong>11</strong>个方法，其中一个为底层的实现<code>registerNatives()</code>，其中两个<code>wait()</code>和<code>wait(long timeout, int nanos)</code>重载方法。</p>
+<ul>
+<li>所以我们真正需要看的就是<strong>8个</strong>方法</li>
 </ul>
-<pre><code>Start processing
-update link as:--&gt;/2019/12/27/first/1577523021175.png
-update link as:--&gt;/2019/12/27/first/1577523021175.png</code></pre><h3 id="我遇到的问题"><a href="#我遇到的问题" class="headerlink" title="我遇到的问题"></a>我遇到的问题</h3><pre><code>Start processing
-update link as:--&gt;.io//2019/12/27/first/1577523021175.png
-update link as:--&gt;.io//2019/12/27/first/1577523021175.png</code></pre><ul>
-<li>经过一番搜寻,发现hexo-asset-image会将图片的地址修改,具体的源码信息可见\node_modules\hexo-asset-image\index.js,打开后内容如下:</li>
+<p>还有<strong>一个属性</strong>：</p>
+<pre><code> public final native Class&lt;?&gt; getClass();</code></pre><p><img src="/2020/01/13/java-de-object-dui-xiang/D:%5CMyBlot%5Cbolt%5Csource_posts%5Cjava%E7%9A%84Object%E5%AF%B9%E8%B1%A1%5C1.png" alt="img"></p>
+<h2 id="二、equals和hashCode方法"><a href="#二、equals和hashCode方法" class="headerlink" title="二、equals和hashCode方法"></a>二、equals和hashCode方法</h2><p>equals和hashCode方法可以说是面试的重点题了，配合着String可以说在面试题中<strong>哪都有它们的存在</strong>。</p>
+<p>首先，我们来看看equals和hashCode在Object中<strong>原生</strong>的实现吧：</p>
+<p>hashCode：</p>
+<pre><code>public native int hashCode();
+
+复制代码</code></pre><p>equals：</p>
+<pre><code>    public boolean equals(Object obj) {
+        return (this == obj);
+    }
+
+复制代码</code></pre><p>看上去都非常简单：</p>
+<ul>
+<li><code>hashCode()</code>由native方法底层实现了。</li>
+<li><code>equals()</code>就直接<code>==</code>判断是否相等了。</li>
 </ul>
-<pre><code>&#39;use strict&#39;;
-var cheerio = require(&#39;cheerio&#39;);
-function getPosition(str, m, i) {
-  return str.split(m, i).join(m).length;
+<p>想要更加清晰它们究竟是做什么的，我们来读读它的注释：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c7a3826e201?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6dd98fafb9?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>根据注释我们可以<strong>总结以下的要点</strong>：</p>
+<ul>
+<li><p>重写<code>equals()</code>方法，就必须重写<code>hashCode()</code>的方法</p>
+</li>
+<li><p><code>equals()</code>方法默认是比较对象的地址，使用的是<code>==</code>等值运算符</p>
+</li>
+<li><p><code>hashCode()</code>方法对底层是散列表的对象有提升性能的功能</p>
+</li>
+<li><p>同一个对象(如果该对象没有被修改)：那么重复调用<code>hashCode()</code>那么返回的int是相同的！</p>
+</li>
+<li><p><code>hashCode()</code>方法默认是由对象的地址转换而来的</p>
+</li>
+<li><pre><code>equals()</code></pre><p>方法还有5个默认的原则：</p>
+<ul>
+<li>自反性—&gt;调用<code>equals()</code>返回的是true，无论这两个对象谁调用<code>equals()</code>都好，返回的都是true</li>
+<li>一致性—&gt;只要对象没有被修改，那么多次调用还是返回对应的结果！</li>
+<li>传递性—&gt;<code>x.equals(y)</code>和<code>y.equals(z)</code>都返回true，那么可以得出：<code>x.equals(z)</code>返回true</li>
+<li>对称性—&gt;<code>x.equals(y)</code>和<code>y.equals(x)</code>结果应该是相等的。</li>
+<li>传入的参数为null，返回的是false</li>
+</ul>
+</li>
+</ul>
+<p>为啥说<code>hashCode()</code>以散列表为底层带来性能的提升是很容易理解的。我们再来<strong>回顾</strong>一下HashMap的插入：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6dc3ba8c3e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>如果hash值都不相等，那么可以直接判断该key是不相等的了！</p>
+<h3 id="2-1equals和hashCode方法重写"><a href="#2-1equals和hashCode方法重写" class="headerlink" title="2.1equals和hashCode方法重写"></a>2.1equals和hashCode方法重写</h3><p><code>equals()</code>方法默认是比较对象的地址，使用的是<code>==</code>等值运算符。但是按我们正常开发来说，<strong>比较的是对象地址是没有意义的</strong>。</p>
+<ul>
+<li>一般地，如果我们有两个Address对象，只要这两个对象的<strong>省号、城市号、街道号相等</strong>，我们就认为这两个对象相等了！</li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6bae49e75a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<h3 id="2-2String实现的equals和hashCode方法"><a href="#2-2String实现的equals和hashCode方法" class="headerlink" title="2.2String实现的equals和hashCode方法"></a>2.2String实现的equals和hashCode方法</h3><p>我们在初学的时候可能就听过了：String<strong>已经</strong>实现了equals和hashCode方法了。</p>
+<ul>
+<li>这也就是为什么，我们可以<strong>直接</strong>使用String.equals()来<strong>判断两个字符串</strong>是否相等！</li>
+</ul>
+<p>下面我们就来看看它的实现吧：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6bf58f1e99?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6bf1509f15?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<h1 id="三、toString方法"><a href="#三、toString方法" class="headerlink" title="三、toString方法"></a>三、toString方法</h1><p>接下来我们看看toString方法，也十分简单：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6c36facd57?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>toString方法主要是用来<strong>标识</strong>该对象的：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6c48984185?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>从上面的结果我们都可以看出来：<strong>得出的结果我们并不能看到什么东西</strong>~</p>
+<p>于是我们一般都重写toString()，那么<strong>打印出的结果就很方便我们调试了</strong>！</p>
+<pre><code>    @Override
+    public String toString() {
+        return &quot;Address{&quot; +
+                &quot;provinceNo=&quot; + provinceNo +
+                &quot;, cityNo=&quot; + cityNo +
+                &quot;, streetNo=&quot; + streetNo +
+                &#39;}&#39;;
+    }
+复制代码</code></pre><p>下面的结果看起来就好多了：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6c5155fd2c?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<h1 id="四、clone方法"><a href="#四、clone方法" class="headerlink" title="四、clone方法"></a>四、clone方法</h1><p>我们也来看看它的顶部注释：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6c5fd4239f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>看了上面的注释我们可以<strong>总结以下的要点</strong>：</p>
+<ul>
+<li>clone方法用于对象的克隆，一般想要克隆出的对象是<strong>独立</strong>的(与原有的对象是分开的)</li>
+<li>深拷贝指的是该对象的成员变量(如果是可变引用)都应该克隆一份，浅拷贝指的是成员变量没有被克隆一份</li>
+</ul>
+<p>下面我们来看一下浅拷贝：<strong>拷贝了Employee对象，但是其成员变量hireday没有被克隆出去，所以指向的还是同一个Date对象</strong>！</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6c8d1dd69f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<h2 id="4-1clone用法"><a href="#4-1clone用法" class="headerlink" title="4.1clone用法"></a>4.1clone用法</h2><p>那么我们如何克隆对象呢？无论是浅拷贝还是深拷贝都是这两步：</p>
+<ol>
+<li>克隆的对象要<strong>实现Cloneable接口</strong></li>
+<li><strong>重写clone方法</strong>，最好修饰成public</li>
+</ol>
+<p><strong>浅拷贝</strong>：仅仅拷贝了Person对象，而date没有拷贝！</p>
+<pre><code>public class Person implements Cloneable {
+
+    // 可变的成员变量
+    private Date date;
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+
+        return super.clone();
+    }
+
 }
+复制代码</code></pre><p><strong>深拷贝</strong>：不仅拷贝了Person对象，也拷贝了date成员变量</p>
+<pre><code>public class Person implements Cloneable {
 
-hexo.extend.filter.register(&#39;after_post_render&#39;, function(data){
-  var config = hexo.config;
-  if(config.post_asset_folder){
-    var link = data.permalink;
-    var beginPos = getPosition(link, &#39;/&#39;, 3) + 1;
-    var appendLink = &#39;&#39;;
-    // In hexo 3.1.1, the permalink of &quot;about&quot; page is like &quot;.../about/index.html&quot;.
-    // if not with index.html endpos = link.lastIndexOf(&#39;.&#39;) + 1 support hexo-abbrlink
-    if(/.*\/index\.html$/.test(link)) {
-      // when permalink is end with index.html, for example 2019/02/20/xxtitle/index.html
-      // image in xxtitle/ will go to xxtitle/index/
-      appendLink = &#39;index/&#39;;
-      var endPos = link.lastIndexOf(&#39;/&#39;);
+    // 可变的成员变量
+    public  Date date;
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+
+
+        // 拷贝Person对象
+        Person person = (Person) super.clone();
+
+        // 将可变的成员变量也拷贝
+        person.date = (Date) date.clone();
+
+
+        // 返回拷贝的对象
+        return person;
     }
-    else {
-      var endPos = link.lastIndexOf(&#39;.&#39;) ;
+
+}
+复制代码</code></pre><h2 id="4-2clone疑问进一步学习protected"><a href="#4-2clone疑问进一步学习protected" class="headerlink" title="4.2clone疑问进一步学习protected"></a>4.2clone疑问进一步学习protected</h2><p>不知道有没有人跟我有相同的<strong>疑问</strong>：</p>
+<ul>
+<li>我只想要<strong>浅拷贝</strong>，能不能<strong>直接调用该对象.clone()来实现</strong>？</li>
+</ul>
+<p>比如我现在有个Address对象：</p>
+<pre><code>public class Address  {
+
+    private int provinceNo;
+    private int cityNo;
+    private int streetNo;
+
+    public Address() {
     }
-    link = link.substring(beginPos, endPos) + &#39;/&#39; + appendLink;
 
-    var toprocess = [&#39;excerpt&#39;, &#39;more&#39;, &#39;content&#39;];
-    for(var i = 0; i &lt; toprocess.length; i++){
-      var key = toprocess[i];
-
-      var $ = cheerio.load(data[key], {
-        ignoreWhitespace: false,
-        xmlMode: false,
-        lowerCaseTags: false,
-        decodeEntities: false
-      });
-      $(&#39;img&#39;).each(function(){
-        if ($(this).attr(&#39;src&#39;)){
-          // For windows style path, we replace &#39;\&#39; to &#39;/&#39;.
-          var src = $(this).attr(&#39;src&#39;).replace(&#39;\\&#39;, &#39;/&#39;);
-          if(!(/http[s]*.*|\/\/.*/.test(src)
-            || /^\s+\//.test(src)
-            || /^\s*\/uploads|images\//.test(src))) {
-            // For &quot;about&quot; page, the first part of &quot;src&quot; can&#39;t be removed.
-            // In addition, to support multi-level local directory.
-            var linkArray = link.split(&#39;/&#39;).filter(function(elem){
-              return elem != &#39;&#39;;
-            });
-            var srcArray = src.split(&#39;/&#39;).filter(function(elem){
-              return elem != &#39;&#39; &amp;&amp; elem != &#39;.&#39;;
-            });
-            if(srcArray.length &gt; 1)
-            srcArray.shift();
-            src = srcArray.join(&#39;/&#39;);
-
-            $(this).attr(&#39;src&#39;, config.root + link + src);
-            console.info&amp;&amp;console.info(&quot;update link as:--&gt;&quot;+config.root + link + src);
-          }
-        }else{
-          console.info&amp;&amp;console.info(&quot;no src attr, skipped...&quot;);
-          console.info&amp;&amp;console.info($(this));
-        }
-      });
-      data[key] = $.html();
+    public Address(int provinceNo, int cityNo, int streetNo) {
+        this.provinceNo = provinceNo;
+        this.cityNo = cityNo;
+        this.streetNo = streetNo;
     }
-  }
-});
-</code></pre><ul>
-<li>通过查看源码发现里面有对生成博客图片的地址修改:</li>
+}
+复制代码</code></pre><p>下面的代码你们<strong>认为如何</strong>？</p>
+<pre><code>    Address address = new Address(1, 2, 3);
+    address.clone();
+
+复制代码</code></pre><p>我们都知道：</p>
+<ul>
+<li><strong>protected修饰的类和属性,对于自己、本包和其子类可见</strong></li>
 </ul>
-<pre><code>link = link.substring(beginPos, endPos) + &#39;/&#39; + appendLink;</code></pre><ul>
-<li>通过排查发现图片的路径的endPos为:</li>
+<p><strong>可能会想</strong>：<code>clone()</code>方法是定义在Object类上的(以protected来修饰)，而我们自定义的Address对象<strong>隐式</strong>继承着Object(所有的对象都是Object的子类)，那么子类调用Object以protected来修饰<code>clone()</code>是完全没问题的</p>
+<ul>
+<li>但是，IDE现实告诉我，这<strong>编译就不通过了</strong>！</li>
 </ul>
-<pre><code>var endPos = link.lastIndexOf(&#39;.&#39;) ;</code></pre><ul>
-<li>我打印data.permalink得到</li>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6cb2a8e1aa?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>出现错误的原因我立马就想到：<strong>是不是我对protected修饰符出现了偏差？</strong></p>
+<p>protected修饰的类和属性,对于自己、本包和其子类可见，这句话本身是没有错的。但是<strong>还需要补充</strong>：对于protected的成员或方法，要分子类和超类<strong>是否在同一个包中</strong>。与基类<strong>不在同一个包中的子类</strong>，只能<strong>访问自身从基类继承而来的受保护成员，而不能访问基类实例本身的受保护成员</strong>。</p>
+<ul>
+<li>上面的代码就错在：Address与Object<strong>不是在同一个包下</strong>的，而Address直接访问了Object的clone方法。这是不行的。</li>
 </ul>
-<pre><code>http://tigerLuHai.github.io/2019/12/27/first/</code></pre><p>如此在截取字符串的时候就会多出四个字符  <strong>.io/</strong></p>
-<p>最后发现这段代码的作用就是要将data.permalink中路径的<a href="https://tigerLuhai.gituhub.io/去掉,因为在后面部署到github时使用相对路径访问会重新加上这个前缀,如果这里有就会重复,导致地址为https://tigerLuhai.gituhub.io/http://tigerLuHai.github.io/2019/12/27/first/的现象" target="_blank" rel="noopener">https://tigerLuhai.gituhub.io/去掉,因为在后面部署到github时使用相对路径访问会重新加上这个前缀,如果这里有就会重复,导致地址为https://tigerLuhai.gituhub.io/http://tigerLuHai.github.io/2019/12/27/first/的现象</a>.</p>
-<p>明白了需求就可以修改代码为</p>
-<pre><code>var endPos = link.lastIndexOf(&#39;/&#39;) ;</code></pre><p>这样就可以正常部署了.</p>
+<p>下面我截两张图再来给你们看看(看完图再看上面的描述，就能理解了)：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6cb5b10a60?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6dda89dc8b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p><strong>图片来源和更多的展开阅读</strong>：<a href="https://blog.csdn.net/wangyanguiyiyang/article/details/49800493" target="_blank" rel="noopener">blog.csdn.net/wangyanguiy…</a></p>
+<h1 id="五、wait和notify方法"><a href="#五、wait和notify方法" class="headerlink" title="五、wait和notify方法"></a>五、wait和notify方法</h1><p>wait和notify方法其实就是Java给我们提供让<strong>线程之间通信</strong>的API。</p>
+<p>按照惯例我们还是来看注释怎么说吧：</p>
+<p>wait方法：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6d134d6573?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>notify方法：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6d2ccb71a1?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>notifyAll()方法：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6d53677af3?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>看完上面的注释我们可以<strong>总结以下的要点</strong>：</p>
+<ul>
+<li><p>无论是wait、notify还是notifyAll()都需要</p>
+<p>由监听器对象(锁对象)来进行调用</p>
+<ul>
+<li>简单来说：<strong>他们都是在同步代码块中调用的</strong>，否则会抛出异常！</li>
+</ul>
+</li>
+<li><p><code>notify()</code>唤醒的是在等待队列的<strong>某个</strong>线程(不确定会唤醒哪个)，<code>notifyAll()</code>唤醒的是等待队列<strong>所有</strong>线程</p>
+</li>
+<li><p>导致</p>
+<pre><code>wait()</code></pre><p>的线程被唤醒可以有4种情况</p>
+<ul>
+<li>该线程被中断</li>
+<li><code>wait()</code>时间到了</li>
+<li>被<code>notify()</code>唤醒</li>
+<li>被<code>notifyAll()</code>唤醒</li>
+</ul>
+</li>
+<li><p>调用<code>wait()</code>的线程会<strong>释放掉锁</strong></p>
+</li>
+</ul>
+<p>其实总结完上面的并不会有比较深刻的印象，可以尝试着回答几个问题来加深对<code>wait()</code>和<code>notify()</code>的理解。</p>
+<h2 id="5-1为什么wait和notify在Object方法上？"><a href="#5-1为什么wait和notify在Object方法上？" class="headerlink" title="5.1为什么wait和notify在Object方法上？"></a>5.1为什么wait和notify在Object方法上？</h2><p>从一开始我们就说了：<code>wait()</code>和<code>notify()</code>是Java给我们提供线程之间通信的API，既然是线程的东西，那什么是在Object类上定义，而不是在Thread类上定义呢？</p>
+<p>因为我们的<strong>锁是对象锁</strong>【要是忘记的同学可回顾：<a href="https://mp.weixin.qq.com/s?__biz=MzI4Njg5MDA5NA==&mid=2247484198&idx=1&sn=4d8e372165bb49987a6243f17153a9b4&chksm=ebd74227dca0cb31311886f835092c9360d08a9f0a249ece34d4b1e49a31c9ec773fa66c8acc#rd" target="_blank" rel="noopener">Java锁机制了解一下</a>】，每个对象都可以成为锁。<strong>让当前线程等待某个对象的锁，当然应该通过这个对象来操作了</strong>。</p>
+<ul>
+<li>锁对象是<strong>任意</strong>的，所以这些方法必须定义在Object类中</li>
+</ul>
+<h2 id="5-2notify方法调用后，会发生什么？"><a href="#5-2notify方法调用后，会发生什么？" class="headerlink" title="5.2notify方法调用后，会发生什么？"></a>5.2notify方法调用后，会发生什么？</h2><p>上面已经说了，notify会唤醒某个处于等待队列的线程。</p>
+<p>但是要<strong>注意</strong>的是：</p>
+<ul>
+<li>notify方法调用后，被唤醒的线程<strong>不会立马获得到锁对象</strong>。而是等待notify的synchronized代码块<strong>执行完之后</strong>才会获得锁对象</li>
+</ul>
+<h2 id="5-3sleep和wait有什么区别？"><a href="#5-3sleep和wait有什么区别？" class="headerlink" title="5.3sleep和wait有什么区别？"></a>5.3sleep和wait有什么区别？</h2><p><code>Thread.sleep()</code>与<code>Object.wait()</code>二者都可以暂停当前线程，释放CPU控制权。</p>
+<ul>
+<li>主要的区别在于<code>Object.wait()</code>在释放CPU同时，<strong>释放了对象锁的控制</strong>。</li>
+<li>而<code>Thread.sleep()</code>没有对锁释放</li>
+</ul>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://blog.csdn.net/lingzhm/article/details/44940823" target="_blank" rel="noopener">blog.csdn.net/lingzhm/art…</a></li>
+<li><a href="http://www.cnblogs.com/dolphin0520/p/3920385.html" target="_blank" rel="noopener">www.cnblogs.com/dolphin0520…</a></li>
+<li><a href="https://www.cnblogs.com/eer123/p/7880789.html" target="_blank" rel="noopener">www.cnblogs.com/eer123/p/78…</a></li>
+<li><a href="https://www.jianshu.com/p/f4454164c017" target="_blank" rel="noopener">www.jianshu.com/p/f4454164c…</a></li>
+</ul>
+<h1 id="六、finalize-方法"><a href="#六、finalize-方法" class="headerlink" title="六、finalize()方法"></a>六、finalize()方法</h1><p><code>finalize()</code>方法将在<strong>垃圾回收器清除对象之前调用</strong>，但该方法不知道何时调用，具有<strong>不定性</strong></p>
+<ul>
+<li>一般我们都不会重写它~</li>
+</ul>
+<blockquote>
+<p>一个对象的finalize()方法<strong>只会被调用一次</strong>，而且finalize()被调用不意味着gc会立即回收该对象，所以有可能调用finalize()后，该对象又不需要被回收了，然后到了真正要被回收的时候，因为前面调用过一次，所以不会调用finalize()，产生问题。</p>
+</blockquote>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://segmentfault.com/q/1010000000094660" target="_blank" rel="noopener">segmentfault.com/q/101000000…</a></li>
+</ul>
+<p>进阶的资料：</p>
+<ul>
+<li><a href="https://www.cnblogs.com/Smina/p/7189427.html" target="_blank" rel="noopener">www.cnblogs.com/Smina/p/718…</a></li>
+<li><a href="http://www.importnew.com/23913.html" target="_blank" rel="noopener">www.importnew.com/23913.html</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/29522201" target="_blank" rel="noopener">zhuanlan.zhihu.com/p/29522201</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/25698745" target="_blank" rel="noopener">zhuanlan.zhihu.com/p/25698745</a></li>
+</ul>
+<h1 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h1><p>总的来说也算是把Object看了一遍了，不至于一下子把它的方法给忘了<del>~</del>在学习的过程中也遇到过问题，最明显的是对protected修饰符又加深了一次理解。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6d5dc7eb99?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>参考资料：</p>
 
             </div>
             <hr />
@@ -734,7 +889,7 @@ hexo.extend.filter.register(&#39;after_post_render&#39;, function(data){
         repo: 'tigerLuHai.github.io',
         owner: 'tigerLuHai',
         admin: "tigerLuHai",
-        id: '2019/12/29/hexo-bo-wen-bao-han-tu-pian-de-keng/',
+        id: '2020/01/13/java-de-object-dui-xiang/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1017,43 +1172,45 @@ hexo.extend.filter.register(&#39;after_post_render&#39;, function(data){
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/">
+                <a href="/2020/01/13/java-de-object-dui-xiang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="使用VMware安装linux虚拟机">
+                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="java的Object对象">
                         
-                        <span class="card-title">使用VMware安装linux虚拟机</span>
+                        <span class="card-title">java的Object对象</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            一.Object对象简介我们学Java的知道，Java是一门面向对象的语言。无论在Java中出现什么，都可以认为它是对象(除了八大基本数据类型。当然了，八大基本数据类型也能装箱成为对象)：
 
-使用VMware安装linux虚拟机使用背景Linux是一种自由和开放源码的操作系统，存在着许多不同的Linux发行版本，但它们都使用了Linux内核。现在的服务器基本都是使用linux,其中CentOS使用广泛,还有ubuntu也是l
+而Object就是这些对象的最高级别的，所有的J
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/大数据/" class="post-category" target="_blank">
-                                    大数据
+                            <a href="/categories/java/" class="post-category" target="_blank">
+                                    java
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -1064,28 +1221,35 @@ hexo.extend.filter.register(&#39;after_post_render&#39;, function(data){
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/">
+                <a href="/2020/01/10/ruan-jian-kai-fa-liu-da-she-ji-yuan-ze/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="FastDFS分布式文件系统安装使用教程">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="软件开发六大设计原则">
                         
-                        <span class="card-title">FastDFS分布式文件系统安装使用教程</span>
+                        <span class="card-title">软件开发六大设计原则</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-FastDFS分布式文件系统安装使用教程使用场景分布式文件系统用于海量文件存储及传输访问的瓶颈问题，对海量视频的管理、对海量图片的管理等,FastDFS与其他分布式文件系统相比的一个显著优点就是特别适合大量小文件(图片等)的存储,因为它
+                            开闭原则定义：软件实体如类、模块和函数应该对扩展开放，对修改关闭。优点：可提高软件系统的可复用性及可维护性举例：一开始需要获取课程的价格，面向接口的开发原则如下
+public interface Course {
+    Double ge
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-28
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-10
                             </span>
                         <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/java/" class="post-category" target="_blank">
+                                    java
+                                </a>
+                            
                             
                         </span>
                     </div>
