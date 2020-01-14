@@ -4,11 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="回头再看spring, LuHai Java后台开发 大数据开发">
+    <meta name="keywords" content="Netty原理, LuHai Java后台开发 大数据开发">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="回头再看Spring什么是SpringSpring是个包含一系列功能的合集，如快速构建微服务的Spring Boot，管理一系列微服务的Spring Cloud，支持认证与鉴权的Spring Security，基于MVC的Web框架Spri">
+    <meta name="description" content="Netty架构原理，不怕你看不懂！对于高性能的 RPC 框架，Netty 作为异步通信框架，几乎成为必备品。例如，Dubbo 框架中通信组件，还有 RocketMQ 中生产者和消费者的通信，都使用了 Netty。今天，我们来看看 Netty">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>回头再看spring | 卢海的博客</title>
+    <title>Netty原理 | 卢海的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -296,7 +296,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        回头再看spring
+                        Netty原理
                     </div>
                 </div>
             </div>
@@ -415,8 +415,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/java/" class="post-category" target="_blank">
-                            java
+                        <a href="/categories/tool/" class="post-category" target="_blank">
+                            tool
                         </a>
                         
                     </div>
@@ -427,7 +427,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-04
+                    2020-01-14
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -441,14 +441,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    4.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    16 分
                 </div>
                 
                 
@@ -464,73 +464,223 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="回头再看Spring"><a href="#回头再看Spring" class="headerlink" title="回头再看Spring"></a>回头再看Spring</h2><h3 id="什么是Spring"><a href="#什么是Spring" class="headerlink" title="什么是Spring"></a>什么是Spring</h3><p>Spring是个包含一系列功能的合集，如快速构建微服务的Spring Boot，管理一系列微服务的Spring Cloud，支持认证与鉴权的Spring Security，基于MVC的Web框架Spring MVC。但IOC与AOP依然是核心。</p>
-<h3 id="Spring-Bean"><a href="#Spring-Bean" class="headerlink" title="Spring Bean"></a>Spring Bean</h3><p><strong>IOC的底层原理：文档解析xml文件，反射动态创建对象，然后保存name和Object，然后对每个对象属性进行属性注入</strong></p>
-<h5 id="加载Bean的主要逻辑"><a href="#加载Bean的主要逻辑" class="headerlink" title="加载Bean的主要逻辑"></a>加载Bean的主要逻辑</h5><p>​    1.获取配置文件资源</p>
-<p>​    2.对获取的xml资源进行一定的处理检验</p>
-<p>​    3.处理包装资源</p>
-<p>​    4.解析处理包装过后的资源</p>
-<p>​    5.加载提取bean并注册(添加到beanDefinitionMap中</p>
-<h5 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h5><ul>
-<li>Bean的建立，由BeanFactory读取Bean定义文件，并创建Bean实例；</li>
-<li>执行Bean的属性注入,Setter注入；</li>
-<li>如果Bean类实现了org.springframework.beans.factory.BeanNameAware接口,则执行其setBeanName方法；</li>
-<li>如果Bean类实现了org.springframework.beans.factory.BeanFactoryAware接口,则执行其setBeanFactory方法；</li>
-<li>如果容器中有实现org.springframework.beans.factory.BeanPostProcessors接口的实例，则任何Bean在初始化之前都会执行这个实例的processBeforeInitialization()方法；</li>
-<li>如果Bean类实现了org.springframework.beans.factory.InitializingBean接口，则执行其afterPropertiesSet()方法；</li>
-<li>调用Bean的初始化方法”init-method” (！！注意，init-method方法没有参数)；</li>
-<li>如果容器中有实现org.springframework.beans.factory.BeanPostProcessors接口的实例，则任何Bean在初始化之后都会执行这个实例的processAfterInitialization()方法；</li>
-<li>使用Bean做一些业务逻辑….</li>
-<li>使用完，容器关闭，如果Bean类实现了org.springframework.beans.factory.DisposableBean接口，则执行它的destroy()方法；</li>
-<li>在容器关闭时，可以在Bean定义文件中使用“destory-method”定义的方法，销毁Bean (！！注意，destory-method方法没有参数)；</li>
-</ul>
-<h5 id="Bean的作用域"><a href="#Bean的作用域" class="headerlink" title="Bean的作用域"></a>Bean的作用域</h5><ul>
-<li>Singleton: 这是默认的作用域，这种范围确保不管接受多少个请求，每个容器中只有一个bean的实例，单例模式有BeanFactory自身维护；</li>
-<li>Prototype: 原形范围与单例范围相反，为每一个bean请求提供一个实例；</li>
-</ul>
+                <h2 id="Netty架构原理，不怕你看不懂！"><a href="#Netty架构原理，不怕你看不懂！" class="headerlink" title="Netty架构原理，不怕你看不懂！"></a>Netty架构原理，不怕你看不懂！</h2><p>对于高性能的 RPC 框架，Netty 作为异步通信框架，几乎成为必备品。例如，Dubbo 框架中通信组件，还有 RocketMQ 中生产者和消费者的通信，都使用了 Netty。今天，我们来看看 Netty 的基本架构和原理。</p>
+<p>Netty 的特点与 NIO</p>
+<p>Netty 是一个异步的、基于事件驱动的网络应用框架，它可以用来开发高性能服务端和客户端。</p>
+<p>以前编写网络调用程序的时候，我们都会在客户端创建一个 Socket，通过这个 Socket 连接到服务端。</p>
+<p>服务端根据这个 Socket 创建一个 Thread，用来发出请求。客户端在发起调用以后，需要等待服务端处理完成，才能继续后面的操作。这样线程会出现等待的状态。</p>
+<p>如果客户端请求数越多，服务端创建的处理线程也会越多，JVM 如此多的线程并不是一件容易的事。</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p><em>使用阻赛 I/O 处理多个连接</em></p>
+<p>为了解决上述的问题，推出了 NIO 的概念，也就是（Non-blocking I/O）。其中，Selector 机制就是 NIO 的核心。</p>
+<p>当每次客户端请求时，会创建一个 Socket Channel，并将其注册到 Selector 上（多路复用器）。</p>
+<p>然后，Selector 关注服务端 IO 读写事件，此时客户端并不用等待 IO 事件完成，可以继续做接下来的工作。</p>
+<p>一旦，服务端完成了 IO 读写操作，Selector 会接到通知，同时告诉客户端 IO 操作已经完成。</p>
+<p>接到通知的客户端，就可以通过 SocketChannel 获取需要的数据了。</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p><em>NIO 机制与 Selector</em></p>
+<p>上面描述的过程有点异步的意思，不过，Selector 实现的并不是真正意义上的异步操作。</p>
+<p>因为 Selector 需要通过线程阻塞的方式监听 IO 事件变更，只是这种方式没有让客户端等待，是 Selector 在等待 IO 返回，并且通知客户端去获取数据。真正“异步 IO”（AIO）这里不展开介绍，有兴趣可以自行查找。</p>
+<p>说好了 NIO 再来谈谈 Netty，Netty 作为 NIO 的实现，它适用于服务器/客户端通讯的场景，以及针对于 TCP 协议下的高并发应用。</p>
+<p>对于开发者来说，它具有以下特点：</p>
 <ul>
-<li>Request: 在请求bean范围内会为每一个来自客户端的网络请求创建一个实例，在请求完成以后，bean会失效并被垃圾回收器回收；</li>
-<li>Session: 与请求范围类似，确保每个session中有一个bean的实例，在session过期后，bean会随之失效；</li>
-<li>global-session: global-session和Portlet应用相关。当你的应用部署在Portlet容器中工作时，它包含很多portlet。如果你想要声明让所有的portlet共用全局的存储变量的话，那么这全局变量需要存储在global-session中。</li>
+<li>对 NIO 进行封装，开发者不需要关注 NIO 的底层原理，只需要调用 Netty 组件就能够完成工作。</li>
+<li>对网络调用透明，从 Socket 建立 TCP 连接到网络异常的处理都做了包装。</li>
+<li>对数据处理灵活， Netty 支持多种序列化框架，通过“ChannelHandler”机制，可以自定义“编/解码器”。</li>
+<li>对性能调优友好，Netty 提供了线程池模式以及 Buffer 的重用机制（对象池化），不需要构建复杂的多线程模型和操作队列。</li>
 </ul>
-<h3 id="Spring-IOC"><a href="#Spring-IOC" class="headerlink" title="Spring IOC"></a>Spring IOC</h3><p>IOC(控制反转):本质就是自己的信息(全类名等)配置在文件中或者加上注解,让容器可以通过反射的方式来创建对象,从而接管对象,代替了自己通过new创建对象.其实就是讲对象的管理创建交给了容器来做.</p>
-<p>依赖注入:在运行过程中,会在需要这个对象的位置坐上一个标记,容器会负责创建对象实例并注入其中;</p>
-<h4 id="Spring-IOC容器的初始化过程"><a href="#Spring-IOC容器的初始化过程" class="headerlink" title="Spring IOC容器的初始化过程"></a>Spring IOC容器的初始化过程</h4><p>IoC容器的初始化就是含有BeanDefinition信息的Resource的定位、载入、解析、注册四个过程，最终我们配置的bean，以beanDefinition的数据结构存在于IoC容器即内存中。</p>
-<h5 id="Resource定位过程"><a href="#Resource定位过程" class="headerlink" title="Resource定位过程"></a>Resource定位过程</h5><p>这个Resource定位指的是BeanDefinition的资源定位，它由ResourceLoader通过统一的Resource接口来完成，这个Resource对各种形式的BeanDefinition的使用提供了统一接口。</p>
-<h5 id="BeanDefinition的载入"><a href="#BeanDefinition的载入" class="headerlink" title="BeanDefinition的载入"></a>BeanDefinition的载入</h5><p>该载入过程把用户定义好的Bean表示成IoC容器内部的数据结构，而这个容器内部的数据结构就BeanDefinition.</p>
-<h5 id="向IoC容器注册这些BeanDefinition"><a href="#向IoC容器注册这些BeanDefinition" class="headerlink" title="向IoC容器注册这些BeanDefinition"></a>向IoC容器注册这些BeanDefinition</h5><p>这个过程是通过调用BeanDefinitionRegistry接口的实现来完成的，这个注册过程把载入过程中解析得到的BeanDefinition向IoC容器进行注册,在IoC容器内部将BeanDefinition注入到一个HashMap中去，Ioc容器是通过这个HashMap来持有这些BeanDefinition数据的。</p>
-<p>容器的初始化是通过AbstractApplicationContext的refresh()实现的。</p>
-<pre><code></code></pre><p>整个过程如下图:</p>
-<p><img src="/2020/01/04/hui-tou-zai-kan-spring/%E5%9B%9E%E5%A4%B4%E5%86%8D%E7%9C%8Bspring%5C1.png" alt="img"></p>
-<h3 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring AOP"></a>Spring AOP</h3><p>面向切面的编程，是一种编程技术，<strong>是OOP（面向对象编程）的补充和完善</strong>。OOP的执行是一种从上往下的流程，并没有从左到右的关系。因此在OOP编程中，会有大量的重复代码。而<strong>AOP则是将这些与业务无关的重复代码抽取出来，然后再嵌入到业务代码当中</strong>。常见的应用有：权限管理、日志、事务管理等。</p>
-<p>AOP有三种植入切面的方法：其一是编译期织入，这要求使用特殊的Java编译器，AspectJ是其中的代表者；其二是类装载期织入，而这要求使用特殊的类装载器，AspectJ和AspectWerkz是其中的代表者；其三为动态代理织入，在运行期为目标类添加增强生成子类的方式，<strong>Spring AOP采用动态代理织入切面</strong>。</p>
-<p>AspectJ是静态代理的增强，所谓的静态代理就是AOP框架会在编译阶段生成AOP代理类，因此也称为编译时增强。</p>
-<p>它会在<strong>编译阶段</strong>将Aspect织入Java字节码中， 运行的时候就是经过增强之后的AOP对象。</p>
-<p>AspectJ在编译时就增强了目标对象，Spring AOP的动态代理则是在每次运行时动态的增强，生成AOP代理对象，区别在于生成AOP代理对象的时机不同，相对来说<strong>AspectJ的静态代理方式具有更好的性能</strong>，但是AspectJ<strong>需要特定的编译器</strong>进行处理，而Spring AOP则无需特定的编译器处理。</p>
-<p>Spring AOP中的动态代理主要有两种方式，<strong>JDK动态代理</strong>和<strong>CGLIB动态代理</strong>。JDK动态代理通过反射来接收被代理的类，并且要求被代理的类必须实现一个接口。<strong>JDK动态代理的核心是InvocationHandler接口和Proxy类</strong>。</p>
-<p>如果目标类没有实现接口，那么Spring AOP会选择使用CGLIB来动态代理目标类。CGLIB（Code Generation Library），是一个代码生成的类库，可以在运行时动态地生成某个类的子类，注意，<strong>CGLIB是通过继承的方式做的动态代理</strong>，因此如果某个类被标记为final，那么它是无法使用CGLIB做动态代理的</p>
-<h4 id="jDK代理"><a href="#jDK代理" class="headerlink" title="jDK代理"></a>jDK代理</h4><p> JDK的动态代理主要涉及到java.lang.reflect包中的两个类：Proxy和InvocationHandler。其中 InvocationHandler是一个接口就是拦截器的接口。，可以通过实现该接口定义横切逻辑，并通过反射机制调用目标类的代码，动态将横切逻辑和业务逻辑编织在一起。</p>
-<h5 id="InvocationHandler的作用"><a href="#InvocationHandler的作用" class="headerlink" title="InvocationHandler的作用"></a>InvocationHandler的作用</h5><p>在动态代理中InvocationHandler是核心，每个代理实例都具有一个关联的调用处理程序(InvocationHandler)。对代理实例调用方法时，将对方法调用进行编码并将其指派到它的调用处理程序(InvocationHandler)的 invoke 方法。所以对代理方法的调用都是通InvocationHadler的invoke来实现中，而invoke方法根据传入的代理对象，方法和参数来决定调用代理的哪个方法</p>
-<h5 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h5><p>使用代理模式必须要让代理类和目标类实现相同的接口，客户端通过代理类来调用目标方法，代理类会将所有的方法调用分派到目标对象上反射执行，还可以在分派过程中添加”前置通知”和后置处理（如在调用目标方法前校验权限，在调用完目标方法后打印日志等）等功能。</p>
-<p>具体有如下四步骤：</p>
-<p>1.通过实现 InvocationHandler 接口创建自己的调用处理器；</p>
-<p>2.通过为 Proxy 类指定 ClassLoader 对象和一组 interface 来创建动态代理类；</p>
-<p>3.通过反射机制获得动态代理类的构造函数，其唯一参数类型是调用处理器接口类型；</p>
-<p>4.通过构造函数创建动态代理类实例，构造时调用处理器对象作为参数被传入。</p>
-<p><img src="/2020/01/04/hui-tou-zai-kan-spring/%E5%9B%9E%E5%A4%B4%E5%86%8D%E7%9C%8Bspring%5Cclipboard.png" alt="clipboard"></p>
-<h4 id="利用cglib代理实现AOP"><a href="#利用cglib代理实现AOP" class="headerlink" title="利用cglib代理实现AOP"></a>利用cglib代理实现AOP</h4><p>CGlib是一个强大的,高性能,高质量的Code生成类库。cglib封装了asm，可以在运行期动态生成新的class，它可以在运行期扩展Java类与实现Java接口。 CGLIB是<strong>针对类实现代理</strong>的，主要对指定的类生成一个子类，并覆盖其中的方法， 因为是继承，所以不能使用final来修饰类或方法。和jdk代理实现不同的是，cglib不要求类实现接口。</p>
-<p>JDK动态代理和CGLIB字节码生成的区别？</p>
-<p>CGLib所创建的动态代理对象的性能比JDK的高大概10倍，但CGLib在创建代理对象的时间比JDK大概多8倍，所以对于singleton的代理对象或者具有实例池的代理，因为无需重复的创建代理对象，所以比较适合CGLib动态代理技术，反之选择JDK代理</p>
+<p># </p>
+<p>从一个简单的例子开始</p>
+<p>开篇讲到了，为了满足高并发下网络请求，引入了 NIO 的概念。Netty 是针对 NIO 的实现，在 NIO 封装，网络调用，数据处理以及性能优化等方面都有不俗的表现。</p>
+<p>学习架构最容易的方式就是从实例入手，从客户端访问服务端的代码来看看 Netty 是如何运作的。再一次介绍代码中调用的组件以及组件的工作原理。</p>
+<p>假设有一个客户端去调用一个服务端，假设服务端叫做 EchoServer，客户端叫做 EchoClient，用 Netty 架构实现代码如下。</p>
+<p><strong>服务端代码</strong></p>
+<p>构建服务器端，假设服务器接受客户端传来的信息，然后在控制台打印。首先，生成 EchoServer，在构造函数中传入需要监听的端口号。</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p><em>构造函数中传入需要监听的端口号</em></p>
+<p>接下来就是服务的启动方法：</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p><em>启动 NettyServer 的 Start 方法</em></p>
+<p>Server 的启动方法涉及到了一些组件的调用，例如 EventLoopGroup，Channel。这些会在后面详细讲解。</p>
+<p>这里有个大致的印象就好：</p>
 <ul>
-<li><p>JDK动态代理只能对实现了接口的类生成代理，而不能针对类</p>
+<li>创建 EventLoopGroup。</li>
+<li>创建 ServerBootstrap。</li>
+<li>指定所使用的 NIO 传输 Channel。</li>
+<li>使用指定的端口设置套接字地址。</li>
+<li>添加一个 ServerHandler 到 Channel 的 ChannelPipeline。</li>
+<li>异步地绑定服务器；调用 sync() 方法阻塞等待直到绑定完成。</li>
+<li>获取 Channel 的 CloseFuture，并且阻塞当前线程直到它完成。</li>
+<li>关闭 EventLoopGroup，释放所有的资源。</li>
+</ul>
+<p>NettyServer 启动以后会监听某个端口的请求，当接受到了请求就需要处理了。在 Netty 中客户端请求服务端，被称为“入站”操作。</p>
+<p>可以通过 ChannelInboundHandlerAdapter 实现，具体内容如下：</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p><em>处理来自客户端的请求</em></p>
+<p>从上面的代码可以看出，服务端处理的代码包含了三个方法。这三个方法都是根据事件触发的。</p>
+<p>他们分别是：</p>
+<ul>
+<li>当接收到消息时的操作，channelRead。</li>
+<li>消息读取完成时的方法，channelReadComplete。</li>
+<li>出现异常时的方法，exceptionCaught。</li>
+</ul>
+<p><strong>客户端代码</strong></p>
+<p>客户端和服务端的代码基本相似，在初始化时需要输入服务端的 IP 和 Port。</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p>同样在客户端启动函数中包括以下内容：</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p>客户端启动程序的顺序：</p>
+<ul>
+<li>创建 Bootstrap。</li>
+<li>指定 EventLoopGroup 用来监听事件。</li>
+<li>定义 Channel 的传输模式为 NIO（Non-BlockingInputOutput）。</li>
+<li>设置服务器的 InetSocketAddress。</li>
+<li>在创建 Channel 时，向 ChannelPipeline 中添加一个 EchoClientHandler 实例。</li>
+<li>连接到远程节点，阻塞等待直到连接完成。</li>
+<li>阻塞，直到 Channel 关闭。</li>
+<li>关闭线程池并且释放所有的资源。</li>
+</ul>
+<p>客户端在完成以上操作以后，会与服务端建立连接从而传输数据。同样在接受到 Channel 中触发的事件时，客户端会触发对应事件的操作。</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p>例如 Channel 激活，客户端接受到服务端的消息，或者发生异常的捕获。</p>
+<p>从代码结构上看还是比较简单的。服务端和客户端分别初始化创建监听和连接。然后分别定义各自的 Handler 处理对方的请求。</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p><em>服务端/客户端初始化和事件处理</em></p>
+<p>Netty 核心组件</p>
+<p>通过上面的简单例子，发现有些 Netty 组件在服务初始化以及通讯时被用到，下面就来介绍一下这些组件的用途和关系。</p>
+<h2 id="①Channel"><a href="#①Channel" class="headerlink" title="①Channel"></a><strong>①Channel</strong></h2><p>通过上面例子可以看出，当客户端和服务端连接的时候会建立一个 Channel。</p>
+<p>这个 Channel 我们可以理解为 Socket 连接，它负责基本的 IO 操作，例如：bind（），connect（），read（），write（） 等等。</p>
+<p>简单的说，Channel 就是代表连接，实体之间的连接，程序之间的连接，文件之间的连接，设备之间的连接。同时它也是数据入站和出站的载体。</p>
+<h2 id="②EventLoop-和-EventLoopGroup"><a href="#②EventLoop-和-EventLoopGroup" class="headerlink" title="②EventLoop 和 EventLoopGroup"></a><strong>②EventLoop 和 EventLoopGroup</strong></h2><p>既然有了 Channel 连接服务，让信息之间可以流动。如果服务发出的消息称作“出站”消息，服务接受的消息称作“入站”消息。那么消息的“出站”/“入站”就会产生事件（Event）。</p>
+<p>例如：连接已激活；数据读取；用户事件；异常事件；打开链接；关闭链接等等。</p>
+<p>顺着这个思路往下想，有了数据，数据的流动产生事件，那么就有一个机制去监控和协调事件。</p>
+<p>这个机制（组件）就是 EventLoop。在 Netty 中每个 Channel 都会被分配到一个 EventLoop。一个 EventLoop 可以服务于多个 Channel。</p>
+<p>每个 EventLoop 会占用一个 Thread，同时这个 Thread 会处理 EventLoop 上面发生的所有 IO 操作和事件（Netty 4.0）。</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p><em>EventLoop 与 Channel 关系</em></p>
+<p>理解了 EventLoop，再来说 EventLoopGroup 就容易了，EventLoopGroup 是用来生成 EventLoop 的，还记得例子代码中第一行就 new 了 EventLoopGroup 对象。</p>
+<p>一个 EventLoopGroup 中包含了多个 EventLoop 对象。</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p><em>创建 EventLoopGroup</em></p>
+<p>EventLoopGroup 要做的就是创建一个新的 Channel，并且给它分配一个 EventLoop。</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p><em>EventLoopGroup，EventLoop 和 Channel 的关系</em></p>
+<p>在异步传输的情况下，一个 EventLoop 是可以处理多个 Channel 中产生的事件的，它主要的工作就是事件的发现以及通知。</p>
+<p>相对于以前一个 Channel 就占用一个 Thread 的情况。Netty 的方式就要合理多了。</p>
+<p>客户端发送消息到服务端，EventLoop 发现以后会告诉服务端：“你去获取消息”，同时客户端进行其他的工作。</p>
+<p>当 EventLoop 检测到服务端返回的消息，也会通知客户端：“消息返回了，你去取吧“。客户端再去获取消息。整个过程 EventLoop 就是监视器+传声筒。</p>
+<h2 id="③ChannelHandler，ChannelPipeline-和-ChannelHandlerContext"><a href="#③ChannelHandler，ChannelPipeline-和-ChannelHandlerContext" class="headerlink" title="③ChannelHandler，ChannelPipeline 和 ChannelHandlerContext"></a><strong>③ChannelHandler，ChannelPipeline 和 ChannelHandlerContext</strong></h2><p>如果说 EventLoop 是事件的通知者，那么 ChannelHandler 就是事件的处理者。</p>
+<p>在 ChannelHandler 中可以添加一些业务代码，例如数据转换，逻辑运算等等。</p>
+<p>正如上面例子中展示的，Server 和 Client 分别都有一个 ChannelHandler 来处理，读取信息，网络可用，网络异常之类的信息。</p>
+<p>并且，针对出站和入站的事件，有不同的 ChannelHandler，分别是：</p>
+<ul>
+<li><strong>ChannelInBoundHandler（入站事件处理器）</strong></li>
+<li><strong>ChannelOutBoundHandler（出站事件处理器）</strong></li>
+</ul>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p>假设每次请求都会触发事件，而由 ChannelHandler 来处理这些事件，这个事件的处理顺序是由 ChannelPipeline 来决定的。</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p><em>ChannelHanlder 处理，出站/入站的事件</em></p>
+<p>ChannelPipeline 为 ChannelHandler 链提供了容器。到 Channel 被创建的时候，会被 Netty 框架自动分配到 ChannelPipeline 上。</p>
+<p>ChannelPipeline 保证 ChannelHandler 按照一定顺序处理事件，当事件触发以后，会将数据通过 ChannelPipeline 按照一定的顺序通过 ChannelHandler。</p>
+<p>说白了，ChannelPipeline 是负责“排队”的。这里的“排队”是处理事件的顺序。</p>
+<p>同时，ChannelPipeline 也可以添加或者删除 ChannelHandler，管理整个队列。</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p>如上图，ChannelPipeline 使 ChannelHandler 按照先后顺序排列，信息按照箭头所示方向流动并且被 ChannelHandler 处理。</p>
+<p>说完了 ChannelPipeline 和 ChannelHandler，前者管理后者的排列顺序。那么它们之间的关联就由 ChannelHandlerContext 来表示了。</p>
+<p>每当有 ChannelHandler 添加到 ChannelPipeline 时，同时会创建 ChannelHandlerContext 。</p>
+<p>ChannelHandlerContext 的主要功能是管理 ChannelHandler 和 ChannelPipeline 的交互。</p>
+<p>不知道大家注意到没有，开始的例子中 ChannelHandler 中处理事件函数，传入的参数就是 ChannelHandlerContext。</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p>ChannelHandlerContext 参数贯穿 ChannelPipeline，将信息传递给每个 ChannelHandler，是个合格的“通讯员”。</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p><em>ChannelHandlerContext 负责传递消息</em></p>
+<p>把上面提到的几个核心组件归纳一下，用下图表示方便记忆他们之间的关系。</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p><em>Netty 核心组件关系图</em></p>
+<p>Netty 的数据容器</p>
+<p>前面介绍了 Netty 的几个核心组件，服务器在数据传输的时候，产生事件，并且对事件进行监控和处理。</p>
+<p>接下来看看数据是如何存放以及是如何读写的。Netty 将 ByteBuf 作为数据容器，来存放数据。</p>
+<p><strong>ByteBuf 工作原理</strong></p>
+<p>从结构上来说，ByteBuf 由一串字节数组构成。数组中每个字节用来存放信息。</p>
+<p>ByteBuf 提供了两个索引，一个用于读取数据，一个用于写入数据。这两个索引通过在字节数组中移动，来定位需要读或者写信息的位置。</p>
+<p>当从 ByteBuf 读取时，它的 readerIndex（读索引）将会根据读取的字节数递增。</p>
+<p>同样，当写 ByteBuf 时，它的 writerIndex 也会根据写入的字节数进行递增。</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p><em>ByteBuf 读写索引图例</em></p>
+<p>需要注意的是极限的情况是 readerIndex 刚好读到了 writerIndex 写入的地方。</p>
+<p>如果 readerIndex 超过了 writerIndex 的时候，Netty 会抛出 IndexOutOf-BoundsException 异常。</p>
+<p><strong>ByteBuf 使用模式</strong></p>
+<p>谈了 ByteBuf 的工作原理以后，再来看看它的使用模式。</p>
+<p>根据存放缓冲区的不同分为三类：</p>
+<ul>
+<li><p><strong>堆缓冲区，</strong>ByteBuf 将数据存储在 JVM 的堆中，通过数组实现，可以做到快速分配。</p>
+<p>由于在堆上被 JVM 管理，在不被使用时可以快速释放。可以通过 ByteBuf.array() 来获取 byte[] 数据。</p>
 </li>
-<li><p>CGLIB是针对类实现代理，主要是对指定的类生成一个子类，覆盖其中的方法</p>
-<p>因为是继承，所以该类或方法最好不要声明成final </p>
+<li><p><strong>直接缓冲区，</strong>在 JVM 的堆之外直接分配内存，用来存储数据。其不占用堆空间，使用时需要考虑内存容量。</p>
+<p>它在使用 Socket 传递时性能较好，因为间接从缓冲区发送数据，在发送之前 JVM 会先将数据复制到直接缓冲区再进行发送。</p>
+<p>由于，直接缓冲区的数据分配在堆之外，通过 JVM 进行垃圾回收，并且分配时也需要做复制的操作，因此使用成本较高。</p>
+</li>
+<li><p><strong>复合缓冲区，</strong>顾名思义就是将上述两类缓冲区聚合在一起。Netty 提供了一个 CompsiteByteBuf，可以将堆缓冲区和直接缓冲区的数据放在一起，让使用更加方便。</p>
 </li>
 </ul>
-<p>1、如果目标对象实现了接口，默认情况下会采用JDK的动态代理实现AOP</p>
-<p>2、如果目标对象实现了接口，可以强制使用CGLIB实现AOP</p>
-<p>3、如果目标对象没有实现了接口，必须采用CGLIB库，spring会自动在JDK动态代理和CGLIB之间转换</p>
+<p><strong>ByteBuf 的分配</strong></p>
+<p>聊完了结构和使用模式，再来看看 ByteBuf 是如何分配缓冲区的数据的。</p>
+<p>Netty 提供了两种 ByteBufAllocator 的实现，他们分别是：</p>
+<ul>
+<li><strong>PooledByteBufAllocator，</strong>实现了 ByteBuf 的对象的池化，提高性能减少内存碎片。</li>
+<li><strong>Unpooled-ByteBufAllocator，</strong>没有实现对象的池化，每次会生成新的对象实例。</li>
+</ul>
+<p>对象池化的技术和线程池，比较相似，主要目的是提高内存的使用率。池化的简单实现思路，是在 JVM 堆内存上构建一层内存池，通过 allocate 方法获取内存池中的空间，通过 release 方法将空间归还给内存池。</p>
+<p>对象的生成和销毁，会大量地调用 allocate 和 release 方法，因此内存池面临碎片空间回收的问题，在频繁申请和释放空间后，内存池需要保证连续的内存空间，用于对象的分配。</p>
+<p>基于这个需求，有两种算法用于优化这一块的内存分配：伙伴系统和 slab 系统。</p>
+<p>伙伴系统，用完全二叉树管理内存区域，左右节点互为伙伴，每个节点代表一个内存块。内存分配将大块内存不断二分，直到找到满足所需的最小内存分片。</p>
+<p>内存释放会判断释放内存分片的伙伴（左右节点）是否空闲，如果空闲则将左右节点合成更大块内存。</p>
+<p>slab 系统，主要解决内存碎片问题，将大块内存按照一定内存大小进行等分，形成相等大小的内存片构成的内存集。</p>
+<p>按照内存申请空间的大小，申请尽量小块内存或者其整数倍的内存，释放内存时，也是将内存分片归还给内存集。</p>
+<p>Netty 内存池管理以 Allocate 对象的形式出现。一个 Allocate 对象由多个 Arena 组成，每个 Arena 能执行内存块的分配和回收。</p>
+<p>Arena 内有三类内存块管理单元：</p>
+<ul>
+<li><strong>TinySubPage</strong></li>
+<li><strong>SmallSubPage</strong></li>
+<li><strong>ChunkList</strong></li>
+</ul>
+<p>Tiny 和 Small 符合 Slab 系统的管理策略，ChunkList 符合伙伴系统的管理策略。</p>
+<p>当用户申请内存介于 tinySize 和 smallSize 之间时，从 tinySubPage 中获取内存块。</p>
+<p>申请内存介于 smallSize 和 pageSize 之间时，从 smallSubPage 中获取内存块；介于 pageSize 和 chunkSize 之间时，从 ChunkList 中获取内存；大于 ChunkSize（不知道分配内存的大小）的内存块不通过池化分配。</p>
+<p>Netty 的 Bootstrap</p>
+<p>说完了 Netty 的核心组件以及数据存储。再回到最开始的例子程序，在程序最开始的时候会 new 一个 Bootstrap 对象，后面所有的配置都是基于这个对象展开的。</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p><em>生成 Bootstrap 对象</em></p>
+<p>Bootstrap 的作用就是将 Netty 核心组件配置到程序中，并且让他们运行起来。</p>
+<p>从 Bootstrap 的继承结构来看，分为两类分别是 Bootstrap 和 ServerBootstrap，一个对应客户端的引导，另一个对应服务端的引导。</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p><em>支持客户端和服务端的程序引导</em></p>
+<p>客户端引导 Bootstrap，主要有两个方法 bind（） 和 connect（）。Bootstrap 通过 bind（） 方法创建一个 Channel。</p>
+<p>在 bind（） 之后，通过调用 connect（） 方法来创建 Channel 连接。</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p><em>Bootstrap 通过 bind 和 connect 方法创建连接</em></p>
+<p>服务端引导 ServerBootstrap，与客户端不同的是在 Bind（） 方法之后会创建一个 ServerChannel，它不仅会创建新的 Channel 还会管理已经存在的 Channel。</p>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p>ServerBootstrap 通过 bind 方法创建/管理连接</p>
+<p>通过上面的描述，服务端和客户端的引导存在两个区别：</p>
+<ul>
+<li><p>ServerBootstrap（服务端引导）绑定一个端口，用来监听客户端的连接请求。而 Bootstrap（客户端引导）只要知道服务端 IP 和 Port 建立连接就可以了。</p>
+</li>
+<li><p>Bootstrap（客户端引导）需要一个 EventLoopGroup，但是 ServerBootstrap（服务端引导）则需要两个 EventLoopGroup。</p>
+<p>因为服务器需要两组不同的 Channel。第一组 ServerChannel 自身监听本地端口的套接字。第二组用来监听客户端请求的套接字。</p>
+</li>
+</ul>
+<p><img src="/2020/01/14/netty-yuan-li/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p><em>ServerBootstrap 有两组 EventLoopGroup</em></p>
+<p>总结</p>
+<p>我们从 NIO 入手，谈到了 Selector 的核心机制。然后通过介绍 Netty 客户端和服务端源代码运行流程，让大家对 Netty 编写代码有基本的认识。</p>
+<p>在 Netty 的核心组件中，Channel 提供 Socket 的连接通道，EventLoop 会对应 Channel 监听其产生的事件，并且通知执行者。EventloopGroup 的容器，负责生成和管理 EventLoop。</p>
+<p>ChannelPipeline 作为 ChannelHandler 的容器会绑定到 Channel 上，然后由 ChannelHandler 提供具体事件处理。另外，ChannelHandlerContext 为 ChannelHandler 和 ChannelPipeline 提供信息共享。</p>
+<p>ByteBuf 作为 Netty 的数据容器，通过字节数组的方式存储数据，并且通过读索引和写索引来引导读写操作。</p>
+<p>上述的核心组件都是通过 Bootstrap 来配置并且引导启动的，Bootstrap 启动方式虽然一致，但是针对客户端和服务端有些许的区别。</p>
+<p><em>作者：崔皓</em></p>
+<p><em>简介：十六年开发和架构经验，曾担任过惠普武汉交付中心技术专家，需求分析师，项目经理，后在创业公司担任技术/产品经理。善于学习，乐于分享。目前专注于技术架构与研发管理。</em></p>
 
             </div>
             <hr />
@@ -693,7 +843,7 @@
         repo: 'tigerLuHai.github.io',
         owner: 'tigerLuHai',
         admin: "tigerLuHai",
-        id: '2020/01/04/hui-tou-zai-kan-spring/',
+        id: '2020/01/14/netty-yuan-li/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -976,43 +1126,43 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/01/04/springmvc-yuan-li/">
+                <a href="/2020/01/14/netty-yuan-li/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="SpringMVC原理">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Netty原理">
                         
-                        <span class="card-title">SpringMVC原理</span>
+                        <span class="card-title">Netty原理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            概述spring MVC主要由DispatcherServlet、处理器映射、处理器(控制器)、视图解析器、视图组成。他的两个核心是两个核心：
-处理器映射： 选择使用哪个控制器来处理请求。视图解析器： 选择结果应该如何渲染。
-运行原理下图是
+                            Netty架构原理，不怕你看不懂！对于高性能的 RPC 框架，Netty 作为异步通信框架，几乎成为必备品。例如，Dubbo 框架中通信组件，还有 RocketMQ 中生产者和消费者的通信，都使用了 Netty。今天，我们来看看 Netty
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/java/" class="post-category" target="_blank">
-                                    java
+                            <a href="/categories/tool/" class="post-category" target="_blank">
+                                    tool
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -1023,33 +1173,33 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/03/li-jie-kmp-hui-su/">
+                <a href="/2020/01/13/java-de-object-dui-xiang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="理解KMP回溯">
+                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="java的Object对象">
                         
-                        <span class="card-title">理解KMP回溯</span>
+                        <span class="card-title">java的Object对象</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            理解KMP回溯相信大家都看过KMP算法，但是对于它的回溯确是难以理解。我们先来看一下KMP中的next数组生成代码：
-    //用于生成next数组
-    private static int[] get_next(String tar
+                            一.Object对象简介我们学Java的知道，Java是一门面向对象的语言。无论在Java中出现什么，都可以认为它是对象(除了八大基本数据类型。当然了，八大基本数据类型也能装箱成为对象)：
+
+而Object就是这些对象的最高级别的，所有的J
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-03
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/数据结构/" class="post-category" target="_blank">
-                                    数据结构
+                            <a href="/categories/java/" class="post-category" target="_blank">
+                                    java
                                 </a>
                             
                             
