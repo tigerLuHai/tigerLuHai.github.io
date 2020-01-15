@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tigerLuHai.github.io/"/>
-  <updated>2020-01-14T14:52:55.112Z</updated>
+  <updated>2020-01-15T13:59:52.637Z</updated>
   <id>http://tigerLuHai.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>多线程之缓存与主存一致性</title>
+    <link href="http://tigerLuHai.github.io/2020/01/15/duo-xian-cheng-zhi-huan-cun-yu-zhu-cun-yi-zhi-xing/"/>
+    <id>http://tigerLuHai.github.io/2020/01/15/duo-xian-cheng-zhi-huan-cun-yu-zhu-cun-yi-zhi-xing/</id>
+    <published>2020-01-15T13:49:38.000Z</published>
+    <updated>2020-01-15T13:59:52.637Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、总线锁定和缓存一致性&quot;&gt;&lt;a href=&quot;#一、总线锁定和缓存一致性&quot; class=&quot;headerlink&quot; title=&quot;一、总线锁定和缓存一致性&quot;&gt;&lt;/a&gt;一、总线锁定和缓存一致性&lt;/h2&gt;&lt;h3 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://tigerLuHai.github.io/categories/java/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Netty原理</title>

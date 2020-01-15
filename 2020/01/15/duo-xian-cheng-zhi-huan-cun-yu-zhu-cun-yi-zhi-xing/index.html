@@ -4,13 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="redis简单使用总结, LuHai Java后台开发 大数据开发">
+    <meta name="keywords" content="多线程之缓存与主存一致性, LuHai Java后台开发 大数据开发">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="一、概述Redis 是速度非常快的非关系型（NoSQL）内存键值数据库，可以存储键和五种不同类型的值之间的映射。
-键的类型只能为字符串，值支持五种数据类型：字符串、列表、集合、散列表、有序集合。
-Redis 支持很多特性，例如将内存中的数据">
+    <meta name="description" content="一、总线锁定和缓存一致性基本概念这是两个操作系统层面的概念。随着多核时代的到来，并发操作已经成了很正常的现象，操作系统必须要有一些机制和原语，以保证某些基本操作的原子性，比如处理器需要保证读一个字节或写一个字节是原子的，那么它是如何实现的呢">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +16,7 @@ Redis 支持很多特性，例如将内存中的数据">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>redis简单使用总结 | 卢海的博客</title>
+    <title>多线程之缓存与主存一致性 | 卢海的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -292,13 +290,13 @@ Redis 支持很多特性，例如将内存中的数据">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        redis简单使用总结
+                        多线程之缓存与主存一致性
                     </div>
                 </div>
             </div>
@@ -417,8 +415,8 @@ Redis 支持很多特性，例如将内存中的数据">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/tool/" class="post-category" target="_blank">
-                            tool
+                        <a href="/categories/java/" class="post-category" target="_blank">
+                            java
                         </a>
                         
                     </div>
@@ -429,7 +427,7 @@ Redis 支持很多特性，例如将内存中的数据">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-08
+                    2020-01-15
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -443,14 +441,14 @@ Redis 支持很多特性，例如将内存中的数据">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    3.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    11 分
                 </div>
                 
                 
@@ -466,164 +464,75 @@ Redis 支持很多特性，例如将内存中的数据">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><p>Redis 是速度非常快的非关系型（NoSQL）内存键值数据库，可以存储键和五种不同类型的值之间的映射。</p>
-<p>键的类型只能为字符串，值支持五种数据类型：字符串、列表、集合、散列表、有序集合。</p>
-<p>Redis 支持很多特性，例如将内存中的数据持久化到硬盘中，使用复制来扩展读性能，使用分片来扩展写性能。</p>
-<h1 id="二、数据类型"><a href="#二、数据类型" class="headerlink" title="二、数据类型"></a>二、数据类型</h1><table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th>可以存储的值</th>
-<th>操作</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>STRING</td>
-<td>字符串、整数或者浮点数</td>
-<td>对整个字符串或者字符串的其中一部分执行操作对整数和浮点数执行自增或者自减操作</td>
-</tr>
-<tr>
-<td>LIST</td>
-<td>列表</td>
-<td>从两端压入或者弹出元素 对单个或者多个元素进行修剪，只保留一个范围内的元素</td>
-</tr>
-<tr>
-<td>SET</td>
-<td>无序集合</td>
-<td>添加、获取、移除单个元素检查一个元素是否存在于集合中计算交集、并集、差集从集合里面随机获取元素</td>
-</tr>
-<tr>
-<td>HASH</td>
-<td>包含键值对的无序散列表</td>
-<td>添加、获取、移除单个键值对获取所有键值对检查某个键是否存在</td>
-</tr>
-<tr>
-<td>ZSET</td>
-<td>有序集合</td>
-<td>添加、获取、删除元素根据分值范围或者成员来获取元素计算一个键的排名</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p><a href="https://redislabs.com/ebook/part-1-getting-started/chapter-1-getting-to-know-redis/1-2-what-redis-data-structures-look-like/" target="_blank" rel="noopener">What Redis data structures look like</a></p>
-</blockquote>
-<h2 id="STRING"><a href="#STRING" class="headerlink" title="STRING"></a>STRING</h2><p><a href="https://camo.githubusercontent.com/741c9153e1c49eeec9f29ea80a06bf444a767903/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f36303139623264622d626333652d343430382d623664382d3936303235663434383164362e706e67" target="_blank" rel="noopener"><img src="/2020/01/08/redis-jian-dan-shi-yong-zong-jie/D:%5CMyBlot%5Cbolt%5Csource_posts%5Credis%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%5C1.png" alt="img"></a></p>
-<pre><code>&gt; set hello world
-OK
-&gt; get hello
-&quot;world&quot;
-&gt; del hello
-(integer) 1
-&gt; get hello
-(nil)</code></pre><h2 id="LIST"><a href="#LIST" class="headerlink" title="LIST"></a>LIST</h2><p><a href="https://camo.githubusercontent.com/f6a0fffb6f97f71425a2d839fcc0f93b7042446e/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f66623332373631312d376532622d346632662d396635622d3338353932643430386630372e706e67" target="_blank" rel="noopener"><img src="/2020/01/08/redis-jian-dan-shi-yong-zong-jie/D:%5CMyBlot%5Cbolt%5Csource_posts%5Credis%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%5C2.png" alt="img"></a></p>
-<pre><code>&gt; rpush list-key item
-(integer) 1
-&gt; rpush list-key item2
-(integer) 2
-&gt; rpush list-key item
-(integer) 3
+                <h2 id="一、总线锁定和缓存一致性"><a href="#一、总线锁定和缓存一致性" class="headerlink" title="一、总线锁定和缓存一致性"></a>一、总线锁定和缓存一致性</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>这是两个操作系统层面的概念。随着多核时代的到来，并发操作已经成了很正常的现象，操作系统必须要有一些机制和原语，以保证某些基本操作的原子性，比如处理器需要保证读一个字节或写一个字节是原子的，那么它是如何实现的呢?有两种机制：总线锁定和缓存一致性。</p>
+<p>我们知道，CPU和物理内存之间的通信速度远慢于CPU的处理速度，所以CPU有自己的内部缓存，根据一些规则将内存中的数据读取到内部缓存中来，以加快频繁读取的速度。我们假设在一台PC上只有一个CPU和一份内部缓存，那么所有进程和线程看到的数都是缓存里的数，不会存在问题;但现在服务器通常是多 CPU，更普遍的是，每块CPU里有多个内核，而每个内核都维护了自己的缓存，那么这时候多线程并发就会存在缓存不一致性，这会导致严重问题。</p>
+<p>以 i++为例，i的初始值是0.那么在开始每块缓存都存储了i的值0，当第一块内核做i++的时候，其缓存中的值变成了1，即使马上回写到主内存，那么在回写之后第二块内核缓存中的i值依然是0，其执行i++，回写到内存就会覆盖第一块内核的操作，使得最终的结果是1，而不是预期中的2.</p>
+<p>那么怎么解决整个问题呢?操作系统提供了总线锁定的机制。前端总线(也叫CPU总线)是所有CPU与芯片组连接的主干道，负责CPU与外界所有部件的通信，包括高速缓存、内存、北桥，其控制总线向各个部件发送控制信号、通过地址总线发送地址信号指定其要访问的部件、通过数据总线双向传输。在CPU1要做 i++操作的时候，其在总线上发出一个LOCK#信号，其他处理器就不能操作缓存了该共享变量内存地址的缓存，也就是阻塞了其他CPU，使该处理器可以独享此共享内存。</p>
+<p>但我们只需要对此共享变量的操作是原子就可以了，而总线锁定把CPU和内存的通信给锁住了，使得在锁定期间，其他处理器不能操作其他内存地址的数据，从而开销较大，所以后来的CPU都提供了缓存一致性机制，Intel的奔腾486之后就提供了这种优化。</p>
+<p>缓存一致性机制整体来说，是当某块CPU对缓存中的数据进行操作了之后，就通知其他CPU放弃储存在它们内部的缓存，或者从主内存中重新读取，如下图：</p>
+<p><img src="/2020/01/15/duo-xian-cheng-zhi-huan-cun-yu-zhu-cun-yi-zhi-xing/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B9%8B%E7%BC%93%E5%AD%98%E4%B8%8E%E4%B8%BB%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%5C20160613151013467.png" alt="20160613151013467"></p>
+<p>这里以在Intel系列中广泛使用的MESI协议详细阐述下其原理。</p>
+<h3 id="MESI协议"><a href="#MESI协议" class="headerlink" title="MESI协议"></a>MESI协议</h3><p>MESI 协议是以缓存行(缓存的基本数据单位，在Intel的CPU上一般是64字节)的几个状态来命名的(全名是Modified、Exclusive、 Share or Invalid)。该协议要求在每个缓存行上维护两个状态位，使得每个数据单位可能处于M、E、S和I这四种状态之一，各种状态含义如下：</p>
+<p>M：被修改的。处于这一状态的数据，只在本CPU中有缓存数据，而其他CPU中没有。同时其状态相对于内存中的值来说，是已经被修改的，且没有更新到内存中。</p>
+<p>E：独占的。处于这一状态的数据，只有在本CPU中有缓存，且其数据没有修改，即与内存中一致。</p>
+<p>S：共享的。处于这一状态的数据在多个CPU中都有缓存，且与内存一致。</p>
+<p>I：无效的。本CPU中的这份缓存已经无效。</p>
+<p>这里首先介绍该协议约定的缓存上对应的监听：</p>
+<p>一个处于M状态的缓存行，必须时刻监听所有试图读取该缓存行对应的主存地址的操作，如果监听到，则必须在此操作执行前把其缓存行中的数据写回CPU。</p>
+<p>一个处于S状态的缓存行，必须时刻监听使该缓存行无效或者独享该缓存行的请求，如果监听到，则必须把其缓存行状态设置为I。</p>
+<p>一个处于E状态的缓存行，必须时刻监听其他试图读取该缓存行对应的主存地址的操作，如果监听到，则必须把其缓存行状态设置为S。</p>
+<p>当CPU需要读取数据时，如果其缓存行的状态是I的，则需要从内存中读取，并把自己状态变成S，如果不是I，则可以直接读取缓存中的值，但在此之前，必须要等待其他CPU的监听结果，如其他CPU也有该数据的缓存且状态是M，则需要等待其把缓存更新到内存之后，再读取。</p>
+<p>当CPU需要写数据时，只有在其缓存行是M或者E的时候才能执行，否则需要发出特殊的RFO指令(Read Or Ownership，这是一种总线事务)，通知其他CPU置缓存无效(I)，这种情况下会性能开销是相对较大的。在写入完成后，修改其缓存状态为M。</p>
+<p>所以如果一个变量在某段时间只被一个线程频繁地修改，则使用其内部缓存就完全可以办到，不涉及到总线事务，如果缓存一会被这个CPU独占、一会被那个CPU 独占，这时才会不断产生RFO指令影响到并发性能。这里说的缓存频繁被独占并不是指线程越多越容易触发，而是这里的CPU协调机制，这有点类似于有时多线程并不一定提高效率，原因是线程挂起、调度的开销比执行任务的开销还要大，这里的多CPU也是一样，如果在CPU间调度不合理，也会形成RFO指令的开销比任务开销还要大。当然，这不是编程者需要考虑的事，操作系统会有相应的内存地址的相关判断，这不在本文的讨论范围之内。</p>
+<p>并非所有情况都会使用缓存一致性的，如被操作的数据不能被缓存在CPU内部或操作数据跨越多个缓存行(状态无法标识)，则处理器会调用总线锁定;另外当CPU不支持缓存锁定时，自然也只能用总线锁定了，比如说奔腾486以及更老的CPU。</p>
+<h2 id="二、CAS-Compare-and-Swap"><a href="#二、CAS-Compare-and-Swap" class="headerlink" title="二、CAS(Compare and Swap)"></a>二、CAS(Compare and Swap)</h2><p>有了上一章的总线锁定和缓存一致性的介绍，对CAS就比较好理解了，这不是java特有的，而是操作系统需要保证的。CAS指令在Intel CPU上称为CMPXCHG指令，它的作用是将指定内存地址的内容与所给的某个值相比，如果相等，则将其内容替换为指令中提供的新值，如果不相等，则更新失败。这一比较并交换的操作是原子的，不可以被中断，而其保证原子性的原理就是上一节提到的“总线锁定和缓存一致性”。初一看，CAS也包含了读取、比较 (这也是种操作)和写入这三个操作，和之前的i++并没有太大区别，是的，的确在操作上没有区别，但CAS是通过硬件命令保证了原子性，而i++没有，且硬件级别的原子性比i++这样高级语言的软件级别的运行速度要快地多。虽然CAS也包含了多个操作，但其的运算是固定的(就是个比较)，这样的锁定性能开销很小。</p>
+<p>随着互联网行业的兴起和硬件多CPU/多内核的进步，高并发已经成为越来越普遍的现象，CAS已经被越来越广泛地使用，在Java领域也是如此。JDK1.4是2002年2月发布的，当时的硬件设备远没有如今这么先进，多CPU和多核还没有普及，所以在JDK1.5之前的synchronized是使用挂起线程、等待调度的方式来实现线程同步，开销较大;而随着硬件的不断升级，在2004年9月发布的JDK5中引入了CAS机制——比较并交换——来彻底解决此问题，在一般情况下不再需要挂起(参考后文对锁级别的描述，只有进入重量级锁的时候才会使用挂起)，而是多次尝试，其利用底层CPU命令实现的乐观锁机制。从内存领域来说这是乐观锁，因为它在对共享变量更新之前会先比较当前值是否与更新前的值一致，如果是，则更新，如果不是，则无限循环执行(称为自旋)，直到当前值与更新前的值一致为止，才执行更新。</p>
+<p>以concurrent中的AtomicInteger的代码为例，其的getAndIncrement()方法(获得并且自增，即i++)源代码如下：</p>
+<pre><code>   /**
+      * Atomically increments by one the current value.
+      *
+      * @return the previous value
+      */
+     public final int getAndIncrement() {
+         for (;;) {
+             int current = get();
+             int next = current + 1 ;
+             if (compareAndSet(current, next))
+                 return current;
+         }
+     }
 
-&gt; lrange list-key 0 -1
-1) &quot;item&quot;
-2) &quot;item2&quot;
-3) &quot;item&quot;
-
-&gt; lindex list-key 1
-&quot;item2&quot;
-
-&gt; lpop list-key
-&quot;item&quot;
-
-&gt; lrange list-key 0 -1
-1) &quot;item2&quot;
-2) &quot;item&quot;</code></pre><h2 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h2><p><a href="https://camo.githubusercontent.com/ee95c32da9c5a0d4d6b69514b4bf9290dea36b6e/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f63643566626366662d336633352d343361362d386666612d3038326139336365306630652e706e67" target="_blank" rel="noopener"><img src="/2020/01/08/redis-jian-dan-shi-yong-zong-jie/D:%5CMyBlot%5Cbolt%5Csource_posts%5Credis%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%5C3.png" alt="img"></a></p>
-<pre><code>&gt; sadd set-key item
-(integer) 1
-&gt; sadd set-key item2
-(integer) 1
-&gt; sadd set-key item3
-(integer) 1
-&gt; sadd set-key item
-(integer) 0
-
-&gt; smembers set-key
-1) &quot;item&quot;
-2) &quot;item2&quot;
-3) &quot;item3&quot;
-
-&gt; sismember set-key item4
-(integer) 0
-&gt; sismember set-key item
-(integer) 1
-
-&gt; srem set-key item2
-(integer) 1
-&gt; srem set-key item2
-(integer) 0
-
-&gt; smembers set-key
-1) &quot;item&quot;
-2) &quot;item3&quot;</code></pre><h2 id="HASH"><a href="#HASH" class="headerlink" title="HASH"></a>HASH</h2><p><a href="https://camo.githubusercontent.com/2a3754a8770f890d0e53d8bb7ccf446f384c33ae/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f37626432303261372d393364342d346633612d613837382d6166363861653235353339612e706e67" target="_blank" rel="noopener"><img src="/2020/01/08/redis-jian-dan-shi-yong-zong-jie/D:%5CMyBlot%5Cbolt%5Csource_posts%5Credis%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%5C4.png" alt="img"></a></p>
-<pre><code>&gt; hset hash-key sub-key1 value1
-(integer) 1
-&gt; hset hash-key sub-key2 value2
-(integer) 1
-&gt; hset hash-key sub-key1 value1
-(integer) 0
-
-&gt; hgetall hash-key
-1) &quot;sub-key1&quot;
-2) &quot;value1&quot;
-3) &quot;sub-key2&quot;
-4) &quot;value2&quot;
-
-&gt; hdel hash-key sub-key2
-(integer) 1
-&gt; hdel hash-key sub-key2
-(integer) 0
-
-&gt; hget hash-key sub-key1
-&quot;value1&quot;
-
-&gt; hgetall hash-key
-1) &quot;sub-key1&quot;
-2) &quot;value1&quot;</code></pre><h2 id="ZSET"><a href="#ZSET" class="headerlink" title="ZSET"></a>ZSET</h2><p><a href="https://camo.githubusercontent.com/f547165de432ff22e18fd007b393b24540465abe/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f31323032623264362d393436392d343235312d626434372d6361363033346662363131362e706e67" target="_blank" rel="noopener"><img src="/2020/01/08/redis-jian-dan-shi-yong-zong-jie/D:%5CMyBlot%5Cbolt%5Csource_posts%5Credis%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%5C5.png" alt="img"></a></p>
-<pre><code>&gt; zadd zset-key 728 member1
-(integer) 1
-&gt; zadd zset-key 982 member0
-(integer) 1
-&gt; zadd zset-key 982 member0
-(integer) 0
-
-&gt; zrange zset-key 0 -1 withscores
-1) &quot;member1&quot;
-2) &quot;728&quot;
-3) &quot;member0&quot;
-4) &quot;982&quot;
-
-&gt; zrangebyscore zset-key 0 800 withscores
-1) &quot;member1&quot;
-2) &quot;728&quot;
-
-&gt; zrem zset-key member1
-(integer) 1
-&gt; zrem zset-key member1
-(integer) 0
-
-&gt; zrange zset-key 0 -1 withscores
-1) &quot;member0&quot;
-2) &quot;982&quot;</code></pre><h1 id="三、使用场景"><a href="#三、使用场景" class="headerlink" title="三、使用场景"></a>三、使用场景</h1><h2 id="计数器"><a href="#计数器" class="headerlink" title="计数器"></a>计数器</h2><p>可以对 String 进行自增自减运算，从而实现计数器功能。</p>
-<p>Redis 这种内存型数据库的读写性能非常高，很适合存储频繁读写的计数量。</p>
-<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><p>将热点数据放到内存中，设置内存的最大使用量以及淘汰策略来保证缓存的命中率。</p>
-<h2 id="查找表"><a href="#查找表" class="headerlink" title="查找表"></a>查找表</h2><p>例如 DNS 记录就很适合使用 Redis 进行存储。</p>
-<p>查找表和缓存类似，也是利用了 Redis 快速的查找特性。但是查找表的内容不能失效，而缓存的内容可以失效，因为缓存不作为可靠的数据来源。</p>
-<h2 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h2><p>List 是一个双向链表，可以通过 lpush 和 rpop 写入和读取消息</p>
-<p>不过最好使用 Kafka、RabbitMQ 等消息中间件。</p>
-<h2 id="会话缓存"><a href="#会话缓存" class="headerlink" title="会话缓存"></a>会话缓存</h2><p>可以使用 Redis 来统一存储多台应用服务器的会话信息。</p>
-<p>当应用服务器不再存储用户的会话信息，也就不再具有状态，一个用户可以请求任意一个应用服务器，从而更容易实现高可用性以及可伸缩性。</p>
-<h2 id="分布式锁实现"><a href="#分布式锁实现" class="headerlink" title="分布式锁实现"></a>分布式锁实现</h2><p>在分布式场景下，无法使用单机环境下的锁来对多个节点上的进程进行同步。</p>
-<p>可以使用 Redis 自带的 SETNX 命令实现分布式锁，除此之外，还可以使用官方提供的 RedLock 分布式锁实现。</p>
-<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>Set 可以实现交集、并集等操作，从而实现共同好友等功能。</p>
-<p>ZSet 可以实现有序性操作，从而实现排行榜等功能。</p>
+ /**
+  * Atomically sets the value to the given updated value
+  * if the current value {@code ==} the expected value.
+  *
+  * @param expect the expected value
+  * @param update the new value
+  * @return true if successful. False return indicates that
+  * the actual value was not equal to the expected value.
+  */
+ public final boolean compareAndSet( int expect, int update) {
+     return unsafe.compareAndSwapInt( this , valueOffset, expect, update);
+ }</code></pre><p>其调用了compareAndSet(int expect,int update)方法，其中expect是期望值，即操作前的原始值，而update是操作后的值，以i=2为例，则这里的 expect=2，update=3，它调用了sun.misc.Unsafe的compareAndSwapInt方法来执行，此方法代码如下：</p>
+<pre><code>/***
+    * Compares the value of the integer field at the specified offset
+    * in the supplied object with the given expected value, and updates
+    * it if they match.  The operation of this method should be atomic,
+    * thus providing an uninterruptible way of updating an integer field.
+    *
+    * @param obj the object containing the field to modify.
+    * @param offset the offset of the integer field within &lt;code&gt;obj&lt;/code&gt;.
+    * @param expect the expected value of the field.
+    * @param update the new value of the field if it equals &lt;code&gt;expect&lt;/code&gt;.
+    * @return true if the field was changed.
+    */
+   public native boolean compareAndSwapInt(Object obj, long offset,
+                                           int expect, int update);</code></pre><p>这是一个本地方法，即利用CAS保证其原子性，同时如果失败了则通过循环不断地进行运算直到成功为止，这是和JDK5以前最大的区别，失败的线程不再需要被挂起、重新调度，而是可以无障碍地再度执行，这又极大减少了挂起调度的开销(当然如果CAS长时间不成功，也会造成耗费CPU，这取决于具体应用场景)。</p>
+<p>CAS策略有如下需要注意的事项：</p>
+<p>在线程抢占资源特别频繁的时候(相对于CPU执行效率而言)，会造成长时间的自旋，耗费CPU性能。</p>
+<p>有ABA问题(即在更新前的值是A，但在操作过程中被其他线程更新为B，又更新为 A)，这时当前线程认为是可以执行的，其实是发生了不一致现象，如果这种不一致对程序有影响(真正有这种影响的场景很少，除非是在变量操作过程中以此变量为标识位做一些其他的事，比如初始化配置)，则需要使用AtomicStampedReference(除了对更新前的原值进行比较，也需要用更新前的 stamp标志位来进行比较)。</p>
+<p>只能对一个变量进行原子性操作。如果需要把多个变量作为一个整体来做原子性操作，则应该使用AtomicReference来把这些变量放在一个对象里，针对这个对象做原子性操作。</p>
+<p>CAS在JDK5中被J.U.C包广泛使用，在JDK6中被应用到synchronized的 JVM实现中，因此在JDK5中J.U.C的效率是比synchronized高不少的，而到了JDK6，两者效率相差无几，而synchronized 使用更简单、更不容易出错，所以其是专家组推荐的首选，除非需要用到J.U.C的特殊功能(如阻塞一段时间后放弃，而不是继续等待)。</p>
 
             </div>
             <hr />
@@ -786,7 +695,7 @@ OK
         repo: 'tigerLuHai.github.io',
         owner: 'tigerLuHai',
         admin: "tigerLuHai",
-        id: '2020/01/08/redis-jian-dan-shi-yong-zong-jie/',
+        id: '2020/01/15/duo-xian-cheng-zhi-huan-cun-yu-zhu-cun-yi-zhi-xing/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1069,30 +978,30 @@ OK
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/01/09/shen-ru-li-jie-jsp/">
+                <a href="/2020/01/15/duo-xian-cheng-zhi-huan-cun-yu-zhu-cun-yi-zhi-xing/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="深入理解JSP">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="多线程之缓存与主存一致性">
                         
-                        <span class="card-title">深入理解JSP</span>
+                        <span class="card-title">多线程之缓存与主存一致性</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            JSP介绍 JSP（Java server page）是Java EE规范最基本成员，他是Java Web开发的重点知识，虽然我们一直在用，但其原理知之甚少。今天重点研究一些JSP核心内容以及其工作原理。
-  JSP和Servlet的本质是
+                            一、总线锁定和缓存一致性基本概念这是两个操作系统层面的概念。随着多核时代的到来，并发操作已经成了很正常的现象，操作系统必须要有一些机制和原语，以保证某些基本操作的原子性，比如处理器需要保证读一个字节或写一个字节是原子的，那么它是如何实现的呢
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1105,6 +1014,7 @@ OK
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -1115,33 +1025,31 @@ OK
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/07/jvm-bi-xu-zhi-dao-de-ji-chu/">
+                <a href="/2020/01/14/netty-yuan-li/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="JVM必须知道的基础">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Netty原理">
                         
-                        <span class="card-title">JVM必须知道的基础</span>
+                        <span class="card-title">Netty原理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            运行时数据区域网上有很多描述JVM内存区的图,我觉得这张能表述内容较多
-
-程序计数器 程序计数器(Program Counter Register)存储当前线程执行的字节码行号，占用内存较小。字节码解释器就是通过这个计数器的值来选择下一条需
+                            Netty架构原理，不怕你看不懂！对于高性能的 RPC 框架，Netty 作为异步通信框架，几乎成为必备品。例如，Dubbo 框架中通信组件，还有 RocketMQ 中生产者和消费者的通信，都使用了 Netty。今天，我们来看看 Netty
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-07
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/java/" class="post-category" target="_blank">
-                                    java
+                            <a href="/categories/tool/" class="post-category" target="_blank">
+                                    tool
                                 </a>
                             
                             
