@@ -2,6 +2,83 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tigerLuHai.github.io/2020/01/05/java-yi-chang/</loc>
+    
+    <lastmod>2020-01-16T14:01:01.585Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/16/zhen-zheng-yi-yi-de-liu-shi-chu-li-kuang-jia-strom/</loc>
+    
+    <lastmod>2020-01-16T13:40:55.573Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/16/liu-shi-chu-li-kuang-jia-hou-qi-zhi-xiu-flink/</loc>
+    
+    <lastmod>2020-01-16T13:40:41.064Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/16/sqoop-hdfs-yu-wai-jie-jiao-hu-shu-ju-de-gong-ju/</loc>
+    
+    <lastmod>2020-01-16T13:40:25.862Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/16/spark-dao-di-hao-zai-na-li/</loc>
+    
+    <lastmod>2020-01-16T13:38:21.277Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/16/kafka-da-shu-ju-de-biao-zhun-shu-ju-yuan/</loc>
+    
+    <lastmod>2020-01-16T13:38:07.763Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/16/hive-ji-yu-mapreduce-de-shu-ju-fen-xi-gong-ju/</loc>
+    
+    <lastmod>2020-01-16T13:37:55.203Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/16/hbase-jian-li-er-ji-suo-yin-de-ji-chong-fang-shi/</loc>
+    
+    <lastmod>2020-01-16T13:37:37.758Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/16/flume-da-shu-ju-cai-ji-gong-ju/</loc>
+    
+    <lastmod>2020-01-16T13:37:09.934Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/16/hbase-de-rowkey-she-ji-de-li-jie/</loc>
+    
+    <lastmod>2020-01-16T13:23:53.077Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/16/hadoop-zhi-hdfs-shang-chuan-wen-jian-yuan-ma-fen-xi/</loc>
+    
+    <lastmod>2020-01-16T13:17:19.279Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tigerLuHai.github.io/2020/01/15/duo-xian-cheng-zhi-huan-cun-yu-zhu-cun-yi-zhi-xing/</loc>
     
     <lastmod>2020-01-15T13:59:52.637Z</lastmod>
@@ -61,13 +138,6 @@
     <loc>http://tigerLuHai.github.io/2020/01/04/springmvc-yuan-li/</loc>
     
     <lastmod>2020-01-08T13:53:29.902Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tigerLuHai.github.io/2020/01/05/java-yi-chang/</loc>
-    
-    <lastmod>2020-01-08T13:53:08.773Z</lastmod>
     
   </url>
   
