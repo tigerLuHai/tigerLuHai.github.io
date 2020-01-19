@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tigerLuHai.github.io/"/>
-  <updated>2020-01-16T13:37:37.758Z</updated>
+  <updated>2020-01-19T08:27:52.950Z</updated>
   <id>http://tigerLuHai.github.io/</id>
   
   <author>
@@ -15,6 +15,78 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Nginx使用心得</title>
+    <link href="http://tigerLuHai.github.io/2020/01/19/nginx-shi-yong-xin-de/"/>
+    <id>http://tigerLuHai.github.io/2020/01/19/nginx-shi-yong-xin-de/</id>
+    <published>2020-01-19T08:15:01.000Z</published>
+    <updated>2020-01-19T08:27:52.950Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Nginx-运用小结&quot;&gt;&lt;a href=&quot;#Nginx-运用小结&quot; class=&quot;headerlink&quot; title=&quot;Nginx 运用小结&quot;&gt;&lt;/a&gt;Nginx 运用小结&lt;/h1&gt;&lt;h4 id=&quot;什么是Nginx&quot;&gt;&lt;a href=&quot;#什么是Nginx&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="tool" scheme="http://tigerLuHai.github.io/categories/tool/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>红黑树的建立与维护</title>
+    <link href="http://tigerLuHai.github.io/2020/01/16/hong-hei-shu-de-jian-li-yu-wei-hu/"/>
+    <id>http://tigerLuHai.github.io/2020/01/16/hong-hei-shu-de-jian-li-yu-wei-hu/</id>
+    <published>2020-01-16T14:05:01.000Z</published>
+    <updated>2020-01-16T14:06:18.126Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="数据结构" scheme="http://tigerLuHai.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>队列的用法</title>
+    <link href="http://tigerLuHai.github.io/2020/01/16/dui-lie-de-yong-fa/"/>
+    <id>http://tigerLuHai.github.io/2020/01/16/dui-lie-de-yong-fa/</id>
+    <published>2020-01-16T14:04:20.000Z</published>
+    <updated>2020-01-16T14:05:39.414Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="数据结构" scheme="http://tigerLuHai.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>栈的性质及一些使用场景</title>
+    <link href="http://tigerLuHai.github.io/2020/01/16/zhan-de-xing-zhi-ji-yi-xie-shi-yong-chang-jing/"/>
+    <id>http://tigerLuHai.github.io/2020/01/16/zhan-de-xing-zhi-ji-yi-xie-shi-yong-chang-jing/</id>
+    <published>2020-01-16T14:03:57.000Z</published>
+    <updated>2020-01-16T14:05:20.638Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="数据结构" scheme="http://tigerLuHai.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>HBase建立二级索引的几种方式</title>
@@ -316,93 +388,6 @@
     </summary>
     
       <category term="tool" scheme="http://tigerLuHai.github.io/categories/tool/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>JVM必须知道的基础</title>
-    <link href="http://tigerLuHai.github.io/2020/01/07/jvm-bi-xu-zhi-dao-de-ji-chu/"/>
-    <id>http://tigerLuHai.github.io/2020/01/07/jvm-bi-xu-zhi-dao-de-ji-chu/</id>
-    <published>2020-01-07T12:39:20.000Z</published>
-    <updated>2020-01-08T13:51:36.750Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;运行时数据区域&quot;&gt;&lt;a href=&quot;#运行时数据区域&quot; class=&quot;headerlink&quot; title=&quot;运行时数据区域&quot;&gt;&lt;/a&gt;运行时数据区域&lt;/h2&gt;&lt;p&gt;网上有很多描述JVM内存区的图,我觉得这张能表述内容较多&lt;/p&gt;
-&lt;p&gt;&lt;img
-        
-      
-    
-    </summary>
-    
-      <category term="java" scheme="http://tigerLuHai.github.io/categories/java/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>动态代理的实现方式与区别</title>
-    <link href="http://tigerLuHai.github.io/2020/01/06/dong-tai-dai-li-de-shi-xian-fang-shi-yu-qu-bie/"/>
-    <id>http://tigerLuHai.github.io/2020/01/06/dong-tai-dai-li-de-shi-xian-fang-shi-yu-qu-bie/</id>
-    <published>2020-01-06T13:13:56.000Z</published>
-    <updated>2020-01-06T13:13:56.936Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>java异常</title>
-    <link href="http://tigerLuHai.github.io/2020/01/05/java-yi-chang/"/>
-    <id>http://tigerLuHai.github.io/2020/01/05/java-yi-chang/</id>
-    <published>2020-01-05T14:47:02.000Z</published>
-    <updated>2020-01-16T14:01:01.585Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Java异常介绍&quot;&gt;&lt;a href=&quot;#Java异常介绍&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="java" scheme="http://tigerLuHai.github.io/categories/java/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>javaWeb三大核心组件之servlet</title>
-    <link href="http://tigerLuHai.github.io/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/"/>
-    <id>http://tigerLuHai.github.io/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/</id>
-    <published>2020-01-04T14:05:03.000Z</published>
-    <updated>2020-01-08T13:52:58.248Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;javaWeb三大核心组件之Servlet&quot;&gt;&lt;a href=&quot;#javaWeb三大核心组件之Servlet&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="java" scheme="http://tigerLuHai.github.io/categories/java/"/>
     
     
   </entry>
