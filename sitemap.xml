@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tigerLuHai.github.io/2020/01/20/wang-luo-qi-ceng-jia-gou/</loc>
+    
+    <lastmod>2020-01-20T12:30:18.497Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/20/yin-te-wang-wu-ceng-jia-gou/</loc>
+    
+    <lastmod>2020-01-20T12:30:01.269Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tigerLuHai.github.io/2020/01/19/nginx-shi-yong-xin-de/</loc>
     
     <lastmod>2020-01-19T08:27:52.950Z</lastmod>
@@ -247,7 +261,14 @@
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/categories/index.html</loc>
+    <loc>http://tigerLuHai.github.io/tags/index.html</loc>
+    
+    <lastmod>2019-12-27T00:54:34.929Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/contact/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
     
@@ -261,14 +282,7 @@
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/tags/index.html</loc>
-    
-    <lastmod>2019-12-27T00:54:34.929Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tigerLuHai.github.io/contact/index.html</loc>
+    <loc>http://tigerLuHai.github.io/categories/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
     

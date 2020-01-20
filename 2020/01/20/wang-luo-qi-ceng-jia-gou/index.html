@@ -4,11 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="真正意义的流式处理框架Strom, LuHai Java后台开发 大数据开发">
+    <meta name="keywords" content="网络七层架构, LuHai Java后台开发 大数据开发">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="真正意义的流式处理框架Strom | 卢海的博客">
+    <meta name="description" content="网络七层架构7 层模型主要包括：
+物理层主要定义物理设备标准，如网线的接口类型、光纤的接口类型、各种传输介质的传输速率等。 它的主要作用是传输比特流（就是由 1、 0 转化为电流强弱来进行传输,到达目的地后在转化为1、 0，也就是我们常说的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>真正意义的流式处理框架Strom | 卢海的博客</title>
+    <title>网络七层架构 | 卢海的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -290,13 +291,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        真正意义的流式处理框架Strom
+                        网络七层架构
                     </div>
                 </div>
             </div>
@@ -415,8 +416,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/大数据/" class="post-category" target="_blank">
-                            大数据
+                        <a href="/categories/计算机网络/" class="post-category" target="_blank">
+                            计算机网络
                         </a>
                         
                     </div>
@@ -427,7 +428,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-16
+                    2020-01-20
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -441,14 +442,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    595
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
                 
@@ -464,7 +465,16 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h3 id="网络七层架构"><a href="#网络七层架构" class="headerlink" title="网络七层架构"></a>网络七层架构</h3><p>7 层模型主要包括：</p>
+<h4 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h4><p>主要定义物理设备标准，如网线的接口类型、光纤的接口类型、各种传输介质的传输速率等。 它的主要作用是传输比特流（就是由 1、 0 转化为电流强弱来进行传输,到达目的地后在转化为1、 0，也就是我们常说的<strong>模数转换与数模转换</strong>）。<strong>这一层的数据叫做比特</strong>。</p>
+<h4 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h4><p>主要将从物理层接收的数据进行 MAC 地址（网卡的地址）的封装与解封装。<strong>常把这一层的数据叫做帧</strong>。在这一层工作的设备是交换机，<strong>数据通过交换机来传输</strong>。</p>
+<h4 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h4><p>主要将从下层接收到的数据进行 IP 地址（例 192.168.0.1)的封装与解封装。<strong>在这一层工作的设备是路由器</strong>，<strong>常把这一层的数据叫做数据包</strong></p>
+<h4 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h4><p>定义了一些<strong>传输数据的协议和端口号</strong>（WWW 端口 80 等），如： <strong>TCP</strong>（传输控制协议，传输效率低，可靠性强，用于传输可靠性要求高，数据量大的数据）， <strong>UDP</strong>（用户数据报协议，与 TCP 特性恰恰相反，用于传输可靠性要求不高，数据量小的数据，如 QQ 聊天数据就是通过这种方式传输的）。 主要是将从下层接收的数据进行分段进行传输，到达目的地址后在进行重组。常常把这一层数据叫做段</p>
+<h4 id="会话层"><a href="#会话层" class="headerlink" title="会话层"></a>会话层</h4><p>通过传输层（端口号：传输端口与接收端口） <strong>建立数据传输的通路</strong>。主要在你的系统之间发起会话或或者接受会话请求（设备之间需要互相认识可以是 IP 也可以是 MAC 或者是主机名）</p>
+<h4 id="表示层"><a href="#表示层" class="headerlink" title="表示层"></a>表示层</h4><p>主要是进行对接收的数据进行<strong>解释、加密与解密、压缩与解压缩</strong>等（也就是把计算机能够识别的东西转换成人能够能识别的东西（如图片、声音等））</p>
+<h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><p>主要是一些终端的应用，比如说FTP（各种文件下载）， WEB（IE浏览）， QQ之类的（把它理解成我们在电脑屏幕上可以看到的东西．就是终端应用）。</p>
+<p><img src="/2020/01/20/wang-luo-qi-ceng-jia-gou/%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%9E%B6%E6%9E%84%5COSIModel.png" alt="img"></p>
+
             </div>
             <hr />
 
@@ -626,7 +636,7 @@
         repo: 'tigerLuHai.github.io',
         owner: 'tigerLuHai',
         admin: "tigerLuHai",
-        id: '2020/01/16/zhen-zheng-yi-yi-de-liu-shi-chu-li-kuang-jia-strom/',
+        id: '2020/01/20/wang-luo-qi-ceng-jia-gou/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -913,31 +923,33 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/01/16/liu-shi-chu-li-kuang-jia-hou-qi-zhi-xiu-flink/">
+                <a href="/2020/01/20/yin-te-wang-wu-ceng-jia-gou/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="流式处理框架后起之秀Flink">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="因特网五层架构">
                         
-                        <span class="card-title">流式处理框架后起之秀Flink</span>
+                        <span class="card-title">因特网五层架构</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            概述TCP/IP 协议不是 TCP 和 IP 这两个协议的合称，而是指因特网整个 TCP/IP 协议族。从协议分层模型方面来讲， TCP/IP 由四个层次组成：网络接口层、网络层、传输层、应用层。
+
+网络访问层网络访问层(Network A
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-16
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-20
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/大数据/" class="post-category" target="_blank">
-                                    大数据
+                            <a href="/categories/计算机网络/" class="post-category" target="_blank">
+                                    计算机网络
                                 </a>
                             
                             
@@ -954,31 +966,41 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/16/spark-dao-di-hao-zai-na-li/">
+                <a href="/2020/01/19/nginx-shi-yong-xin-de/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Spark到底好在哪里?">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Nginx使用心得">
                         
-                        <span class="card-title">Spark到底好在哪里?</span>
+                        <span class="card-title">Nginx使用心得</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Nginx 运用小结什么是Nginx
+nginx可以作为web服务器，但更多的时候，我们把它作为网关，因为它具备网关必备的功能：
+
+反向代理
+负载均衡
+动态路由
+请求过滤
+
+nginx作为web服务器Web服务器分2类：
+
+web应用服务器
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-16
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-19
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/大数据/" class="post-category" target="_blank">
-                                    大数据
+                            <a href="/categories/tool/" class="post-category" target="_blank">
+                                    tool
                                 </a>
                             
                             

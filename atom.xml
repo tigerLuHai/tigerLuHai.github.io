@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tigerLuHai.github.io/"/>
-  <updated>2020-01-19T08:27:52.950Z</updated>
+  <updated>2020-01-20T12:30:01.269Z</updated>
   <id>http://tigerLuHai.github.io/</id>
   
   <author>
@@ -15,6 +15,55 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>因特网五层架构</title>
+    <link href="http://tigerLuHai.github.io/2020/01/20/yin-te-wang-wu-ceng-jia-gou/"/>
+    <id>http://tigerLuHai.github.io/2020/01/20/yin-te-wang-wu-ceng-jia-gou/</id>
+    <published>2020-01-20T12:27:22.000Z</published>
+    <updated>2020-01-20T12:30:01.269Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h4&gt;&lt;p&gt;TCP/IP 协议不是 TCP 和 IP 这两个协议的合称，而是指因特网整个 TCP/IP 协议族。从协议分层模型方面来讲，
+        
+      
+    
+    </summary>
+    
+      <category term="计算机网络" scheme="http://tigerLuHai.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>网络七层架构</title>
+    <link href="http://tigerLuHai.github.io/2020/01/20/wang-luo-qi-ceng-jia-gou/"/>
+    <id>http://tigerLuHai.github.io/2020/01/20/wang-luo-qi-ceng-jia-gou/</id>
+    <published>2020-01-20T12:26:37.000Z</published>
+    <updated>2020-01-20T12:30:18.497Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;网络七层架构&quot;&gt;&lt;a href=&quot;#网络七层架构&quot; class=&quot;headerlink&quot; title=&quot;网络七层架构&quot;&gt;&lt;/a&gt;网络七层架构&lt;/h3&gt;&lt;p&gt;7 层模型主要包括：&lt;/p&gt;
+&lt;h4 id=&quot;物理层&quot;&gt;&lt;a href=&quot;#物理层&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="计算机网络" scheme="http://tigerLuHai.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Nginx使用心得</title>
@@ -340,54 +389,6 @@
     </summary>
     
       <category term="java" scheme="http://tigerLuHai.github.io/categories/java/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>深入理解JSP</title>
-    <link href="http://tigerLuHai.github.io/2020/01/09/shen-ru-li-jie-jsp/"/>
-    <id>http://tigerLuHai.github.io/2020/01/09/shen-ru-li-jie-jsp/</id>
-    <published>2020-01-09T14:19:10.000Z</published>
-    <updated>2020-01-10T13:30:09.460Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;JSP介绍&quot;&gt;&lt;a href=&quot;#JSP介绍&quot; class=&quot;headerlink&quot; title=&quot;JSP介绍&quot;&gt;&lt;/a&gt;JSP介绍&lt;/h4&gt;&lt;p&gt; JSP（Java server page）是Java EE规范最基本成员，他是Java
-        
-      
-    
-    </summary>
-    
-      <category term="java" scheme="http://tigerLuHai.github.io/categories/java/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>redis简单使用总结</title>
-    <link href="http://tigerLuHai.github.io/2020/01/08/redis-jian-dan-shi-yong-zong-jie/"/>
-    <id>http://tigerLuHai.github.io/2020/01/08/redis-jian-dan-shi-yong-zong-jie/</id>
-    <published>2020-01-08T13:57:20.000Z</published>
-    <updated>2020-01-10T13:46:22.307Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;一、概述&quot;&gt;&lt;a href=&quot;#一、概述&quot; class=&quot;headerlink&quot; title=&quot;一、概述&quot;&gt;&lt;/a&gt;一、概述&lt;/h1&gt;&lt;p&gt;Redis
-        
-      
-    
-    </summary>
-    
-      <category term="tool" scheme="http://tigerLuHai.github.io/categories/tool/"/>
     
     
   </entry>

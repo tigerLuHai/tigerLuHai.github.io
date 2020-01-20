@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>因特网五层架构</title>
+      <link href="/2020/01/20/yin-te-wang-wu-ceng-jia-gou/"/>
+      <url>/2020/01/20/yin-te-wang-wu-ceng-jia-gou/</url>
+      
+        <content type="html"><![CDATA[<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>TCP/IP 协议不是 TCP 和 IP 这两个协议的合称，而是指因特网整个 TCP/IP 协议族。从协议分层模型方面来讲， <strong>TCP/IP 由四个层次组成：网络接口层、网络层、传输层、应用层</strong>。</p><p><img src="/2020/01/20/yin-te-wang-wu-ceng-jia-gou/%E5%9B%A0%E7%89%B9%E7%BD%91%E4%BA%94%E5%B1%82%E6%9E%B6%E6%9E%84%5Ctcpip1.png" alt="img"></p><h4 id="网络访问层"><a href="#网络访问层" class="headerlink" title="网络访问层"></a>网络访问层</h4><p>网络访问层(Network Access Layer)在 TCP/IP 参考模型中并没有详细描述， <strong>只是指出主机必须使用某种协议与网络相连</strong>。</p><h4 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h4><p>网络层(Internet Layer)是整个体系结构的关键部分，其功能是使主机可以把分组发往任何网络，并使分组独立地传向目标。这些分组可能经由不同的网络，到达的顺序和发送的顺序也可能不同。高层如果需要顺序收发，那么就必须自行处理对分组的排序。 <strong>互联网层使用因特网协议(IP， Internet Protocol)</strong>。</p><h4 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h4><p>传输层(Tramsport Layer)使源端和目的端机器上的对等实体可以进行会话。 <strong>在这一层定义了两个端到端的协议</strong>：传输控制协议(<strong>TCP</strong>， Transmission Control Protocol)和用户数据报协议(<strong>UDP</strong>， User Datagram Protocol)。 TCP 是面向连接的协议，它提供可靠的报文传输和对上层应用的连接服务。为此，除了基本的数据传输外，它还有可靠性保证、流量控制、多路复用、优先权和安全性控制等功能。 UDP 是面向无连接的不可靠传输的协议，主要用于不需要 TCP 的排序和流量控制等功能的应用程序。</p><h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><p>应用层(Application Layer)包含所有的高层协议，包括： <strong>虚拟终端协议(TELNET，TELecommunications NETwork)、文件传输协议(FTP， File Transfer Protocol)、电子邮件传输协议(SMTP， Simple Mail Transfer Protocol)、域名服务(DNS， Domain Name Service)、网上新闻传输协议(NNTP， Net News Transfer Protocol)和超文本传送协议(HTTP， HyperText Transfer Protocol)等</strong>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机网络 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>网络七层架构</title>
+      <link href="/2020/01/20/wang-luo-qi-ceng-jia-gou/"/>
+      <url>/2020/01/20/wang-luo-qi-ceng-jia-gou/</url>
+      
+        <content type="html"><![CDATA[<h3 id="网络七层架构"><a href="#网络七层架构" class="headerlink" title="网络七层架构"></a>网络七层架构</h3><p>7 层模型主要包括：</p><h4 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h4><p>主要定义物理设备标准，如网线的接口类型、光纤的接口类型、各种传输介质的传输速率等。 它的主要作用是传输比特流（就是由 1、 0 转化为电流强弱来进行传输,到达目的地后在转化为1、 0，也就是我们常说的<strong>模数转换与数模转换</strong>）。<strong>这一层的数据叫做比特</strong>。</p><h4 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h4><p>主要将从物理层接收的数据进行 MAC 地址（网卡的地址）的封装与解封装。<strong>常把这一层的数据叫做帧</strong>。在这一层工作的设备是交换机，<strong>数据通过交换机来传输</strong>。</p><h4 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h4><p>主要将从下层接收到的数据进行 IP 地址（例 192.168.0.1)的封装与解封装。<strong>在这一层工作的设备是路由器</strong>，<strong>常把这一层的数据叫做数据包</strong></p><h4 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h4><p>定义了一些<strong>传输数据的协议和端口号</strong>（WWW 端口 80 等），如： <strong>TCP</strong>（传输控制协议，传输效率低，可靠性强，用于传输可靠性要求高，数据量大的数据）， <strong>UDP</strong>（用户数据报协议，与 TCP 特性恰恰相反，用于传输可靠性要求不高，数据量小的数据，如 QQ 聊天数据就是通过这种方式传输的）。 主要是将从下层接收的数据进行分段进行传输，到达目的地址后在进行重组。常常把这一层数据叫做段</p><h4 id="会话层"><a href="#会话层" class="headerlink" title="会话层"></a>会话层</h4><p>通过传输层（端口号：传输端口与接收端口） <strong>建立数据传输的通路</strong>。主要在你的系统之间发起会话或或者接受会话请求（设备之间需要互相认识可以是 IP 也可以是 MAC 或者是主机名）</p><h4 id="表示层"><a href="#表示层" class="headerlink" title="表示层"></a>表示层</h4><p>主要是进行对接收的数据进行<strong>解释、加密与解密、压缩与解压缩</strong>等（也就是把计算机能够识别的东西转换成人能够能识别的东西（如图片、声音等））</p><h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><p>主要是一些终端的应用，比如说FTP（各种文件下载）， WEB（IE浏览）， QQ之类的（把它理解成我们在电脑屏幕上可以看到的东西．就是终端应用）。</p><p><img src="/2020/01/20/wang-luo-qi-ceng-jia-gou/%E7%BD%91%E7%BB%9C%E4%B8%83%E5%B1%82%E6%9E%B6%E6%9E%84%5COSIModel.png" alt="img"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机网络 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Nginx使用心得</title>
       <link href="/2020/01/19/nginx-shi-yong-xin-de/"/>
       <url>/2020/01/19/nginx-shi-yong-xin-de/</url>
