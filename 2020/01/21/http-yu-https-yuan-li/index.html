@@ -4,11 +4,27 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="javaWeb三大核心组件之servlet, LuHai Java后台开发 大数据开发">
+    <meta name="keywords" content="HTTP与HTTPS原理, LuHai Java后台开发 大数据开发">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="javaWeb三大核心组件之Servlet什么是ServletJava Servlet 是运行在 Web 服务器或应用服务器上的程序，它是作为来自 Web 浏览器或其他 HTTP 客户端的请求和 HTTP 服务器上的数据库或应用程序之间的中">
+    <meta name="description" content="
+概述
+传输流程
+地址解析
+封装 HTTP 请求数据包
+封装成 TCP 包并建立连接
+客户机发送请求命令
+服务器响应
+服务器关闭 TCP 连接
+HTTP响应状态
+
+
+小插曲：301和302有啥区别
+HTTPS
+建立连接获取证书
+证书验证
+数">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +32,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>javaWeb三大核心组件之servlet | 卢海的博客</title>
+    <title>HTTP与HTTPS原理 | 卢海的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -290,13 +306,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/27.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        javaWeb三大核心组件之servlet
+                        HTTP与HTTPS原理
                     </div>
                 </div>
             </div>
@@ -415,8 +431,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/java/" class="post-category" target="_blank">
-                            java
+                        <a href="/categories/计算机网络/" class="post-category" target="_blank">
+                            计算机网络
                         </a>
                         
                     </div>
@@ -427,7 +443,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-04
+                    2020-01-21
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -441,14 +457,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    6 分
                 </div>
                 
                 
@@ -464,35 +480,86 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="javaWeb三大核心组件之Servlet"><a href="#javaWeb三大核心组件之Servlet" class="headerlink" title="javaWeb三大核心组件之Servlet"></a>javaWeb三大核心组件之Servlet</h1><h3 id="什么是Servlet"><a href="#什么是Servlet" class="headerlink" title="什么是Servlet"></a>什么是Servlet</h3><p>Java Servlet 是运行在 Web 服务器或应用服务器上的程序，它是作为来自 Web 浏览器或其他 HTTP 客户端的请求和 HTTP 服务器上的数据库或应用程序之间的中间层。</p>
-<p>使用 Servlet，您可以收集来自网页表单的用户输入，呈现来自数据库或者其他源的记录，还可以动态创建网页。</p>
-<p>Java Servlet 通常情况下与使用 CGI（Common Gateway Interface，公共网关接口）实现的程序可以达到异曲同工的效果。但是相比于 CGI，Servlet 有以下几点优势：</p>
-<p>性能明显更好。</p>
-<p>Servlet 在 Web 服务器的地址空间内执行。这样它就没有必要再创建一个单独的进程来处理每个客户端请求。</p>
-<p>Servlet 是独立于平台的，因为它们是用 Java 编写的。</p>
-<p>服务器上的 Java 安全管理器执行了一系列限制，以保护服务器计算机上的资源。因此，Servlet 是可信的。</p>
-<p>Java 类库的全部功能对 Servlet 来说都是可用的。它可以通过 sockets 和 RMI 机制与 applets、数据库或其他软件进行交互。</p>
-<h3 id="Tomcat与Servlet的关系"><a href="#Tomcat与Servlet的关系" class="headerlink" title="Tomcat与Servlet的关系"></a>Tomcat与Servlet的关系</h3><p>Tomcat 是Web应用服务器,是一个Servlet/JSP容器. Tomcat 作为Servlet容器,负责处理客户请求,把请求传送给Servlet,并将Servlet的响应传送回给客户.而Servlet是一种运行在支持Java语言的服务器上的组件.。</p>
-<p>Servlet最常见的用途是扩展Java Web服务器功能,提供非常安全的,可移植的,易于使用的CGI替代品。从http协议中的请求和响应可以得知，浏览器发出的请求是一个请求文本，而浏览器接收到的也应该是一个响应文本。</p>
-<p><img src="/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/javaWeb%E4%B8%89%E5%A4%A7%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6%E4%B9%8Bservlet%5C1" alt="image"></p>
+                <ul>
+<li><a href="https://augustrush8.com/post/http-principle.html#%E6%A6%82%E8%BF%B0" target="_blank" rel="noopener">概述</a></li>
+<li>传输流程<ul>
+<li><a href="https://augustrush8.com/post/http-principle.html#%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90" target="_blank" rel="noopener">地址解析</a></li>
+<li><a href="https://augustrush8.com/post/http-principle.html#%E5%B0%81%E8%A3%85-http-%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E5%8C%85" target="_blank" rel="noopener">封装 HTTP 请求数据包</a></li>
+<li><a href="https://augustrush8.com/post/http-principle.html#%E5%B0%81%E8%A3%85%E6%88%90-tcp-%E5%8C%85%E5%B9%B6%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5" target="_blank" rel="noopener">封装成 TCP 包并建立连接</a></li>
+<li><a href="https://augustrush8.com/post/http-principle.html#%E5%AE%A2%E6%88%B7%E6%9C%BA%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E5%91%BD%E4%BB%A4" target="_blank" rel="noopener">客户机发送请求命令</a></li>
+<li><a href="https://augustrush8.com/post/http-principle.html#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%93%8D%E5%BA%94" target="_blank" rel="noopener">服务器响应</a></li>
+<li><a href="https://augustrush8.com/post/http-principle.html#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%85%B3%E9%97%AD-tcp-%E8%BF%9E%E6%8E%A5" target="_blank" rel="noopener">服务器关闭 TCP 连接</a></li>
+<li><a href="https://augustrush8.com/post/http-principle.html#http%E5%93%8D%E5%BA%94%E7%8A%B6%E6%80%81" target="_blank" rel="noopener">HTTP响应状态</a></li>
+</ul>
+</li>
+<li><a href="https://augustrush8.com/post/http-principle.html#%E5%B0%8F%E6%8F%92%E6%9B%B2301%E5%92%8C302%E6%9C%89%E5%95%A5%E5%8C%BA%E5%88%AB" target="_blank" rel="noopener">小插曲：301和302有啥区别</a></li>
+<li>HTTPS<ul>
+<li><a href="https://augustrush8.com/post/http-principle.html#%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E8%8E%B7%E5%8F%96%E8%AF%81%E4%B9%A6" target="_blank" rel="noopener">建立连接获取证书</a></li>
+<li><a href="https://augustrush8.com/post/http-principle.html#%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81" target="_blank" rel="noopener">证书验证</a></li>
+<li><a href="https://augustrush8.com/post/http-principle.html#%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E5%92%8C%E4%BC%A0%E8%BE%93" target="_blank" rel="noopener">数据加密和传输</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>HTTP 是一个无状态的协议。无状态是指客户机（Web 浏览器）和服务器之间不需要建立持久的连接，这意味着当一个客户端向服务器端发出请求，然后服务器返回响应(response)，连接就被关闭了，在服务器端不保留连接的有关信息.HTTP 遵循请求(Request)/应答(Response)模型。客户机（浏览器）向服务器发送请求，服务器处理请求并返回适当的应答。所有 HTTP 连接都被构造成一套请求和应答。</p>
+<h3 id="传输流程"><a href="#传输流程" class="headerlink" title="传输流程"></a>传输流程</h3><h4 id="地址解析"><a href="#地址解析" class="headerlink" title="地址解析"></a>地址解析</h4><p>如用客户端浏览器请求这个页面： <a href="http://localhost.com:8080/index.htm" target="_blank" rel="noopener">http://localhost.com:8080/index.htm</a> 从中分解出协议名、主机名、端口、对象路径等部分，对于我们的这个地址，解析得到的结果如下：</p>
+<ul>
+<li>协议名： http</li>
+<li>主机名： localhost.com</li>
+<li>端口： 8080</li>
+<li>对象路径： /index.htm</li>
+</ul>
+<p>在这一步，需要域名系统 DNS 解析域名 localhost.com,得主机的 IP 地址。</p>
+<h4 id="封装-HTTP-请求数据包"><a href="#封装-HTTP-请求数据包" class="headerlink" title="封装 HTTP 请求数据包"></a>封装 HTTP 请求数据包</h4><p>把以上部分结合本机自己的信息，封装成一个 HTTP 请求数据包</p>
+<h4 id="封装成-TCP-包并建立连接"><a href="#封装成-TCP-包并建立连接" class="headerlink" title="封装成 TCP 包并建立连接"></a>封装成 TCP 包并建立连接</h4><p>封装成 TCP 包，建立 TCP 连接（TCP 的三次握手）</p>
+<h4 id="客户机发送请求命令"><a href="#客户机发送请求命令" class="headerlink" title="客户机发送请求命令"></a>客户机发送请求命令</h4><p>建立连接后，客户机发送一个请求给服务器，请求方式的格式为：统一资源标识符（URL）、协议版本号，后边是 MIME 信息包括请求修饰符、客户机信息和可能的内容。</p>
+<h4 id="服务器响应"><a href="#服务器响应" class="headerlink" title="服务器响应"></a>服务器响应</h4><p>服务器接到请求后，给予相应的响应信息， 其格式为一个状态行，包括信息的协议版本号、一个成功或错误的代码，后边是 MIME 信息包括服务器信息、实体信息和可能的内容。</p>
+<h4 id="服务器关闭-TCP-连接"><a href="#服务器关闭-TCP-连接" class="headerlink" title="服务器关闭 TCP 连接"></a>服务器关闭 TCP 连接</h4><p>服务器关闭 TCP 连接： 一般情况下，一旦 Web 服务器向浏览器发送了请求数据，它就要关闭 TCP 连接，然后如果浏览器或者服务器在其头信息加入了这行代码 Connection:keep-alive， TCP 连接在发送后将仍然保持打开状态，于是，浏览器可以继续通过相同的连接发送请求。保持连接节省了为每个请求建立新连接所需的时间，还节约了网络带宽。</p>
+<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86%5Chttp1.png" alt="img"></p>
+<h4 id="HTTP响应状态"><a href="#HTTP响应状态" class="headerlink" title="HTTP响应状态"></a>HTTP响应状态</h4><ul>
+<li>1XX</li>
+</ul>
+<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86%5Chttp2.png" alt="img"></p>
+<ul>
+<li>2XX</li>
+</ul>
+<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86%5Chttp3.png" alt="img"></p>
+<ul>
+<li>3XX</li>
+</ul>
+<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86%5Chttp4.png" alt="img"></p>
+<ul>
+<li>4XX</li>
+</ul>
+<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86%5Chttp5.png" alt="img"></p>
+<ul>
+<li>5XX</li>
+</ul>
+<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86%5Chttp6.png" alt="img"></p>
+<h3 id="小插曲：301和302有啥区别"><a href="#小插曲：301和302有啥区别" class="headerlink" title="小插曲：301和302有啥区别"></a>小插曲：301和302有啥区别</h3><p>官方说法：</p>
+<blockquote>
+<p>301，302 都是HTTP状态的编码，都代表着某个URL发生了转移，不同之处在于： 301 redirect: 301 代表永久性转移(Permanently Moved)。 302 redirect: 302 代表暂时性转移(Temporarily Moved )。</p>
+</blockquote>
+<p>现实中的差异：</p>
+<ul>
+<li><strong>对于用户</strong>：</li>
+</ul>
+<p>301，302对用户来说没有区别，他们看到效果只是一个跳转，浏览器中旧的URL变成了新的URL。页面跳到了这个新的url指向的地方。</p>
+<ul>
+<li><strong>对于引擎及站长</strong>：</li>
+</ul>
 <ol>
-<li>Tomcat将http请求文本接收并解析，然后封装成HttpServletRequest类型的request对象，所有的HTTP头数据读可以通过request对象调用对应的方法查询到。</li>
-<li>Tomcat同时会要响应的信息封装为HttpServletResponse类型的response对象，通过设置response属性就可以控制要输出到浏览器的内容，然后将response交给tomcat，tomcat就会将其变成响应文本的格式发送给浏览器。</li>
+<li>302：302转向可能会有URL规范化及网址劫持的问题。可能被搜索引擎判为可疑转向，甚至认为是作弊</li>
 </ol>
-<p>Java Servlet API 是Servlet容器(tomcat)和servlet之间的接口，它定义了serlvet的各种方法，还定义了Servlet容器传送给Servlet的对象类，其中最重要的就是ServletRequest和ServletResponse。所以说我们在编写servlet时，需要实现Servlet接口，按照其规范进行操作。</p>
-<h3 id="Servlet执行过程"><a href="#Servlet执行过程" class="headerlink" title="Servlet执行过程"></a>Servlet执行过程</h3><p> 在浏览器的地址栏输入：<a href="http://ip" target="_blank" rel="noopener">http://ip</a>:port/appNames/servlet</p>
-<p>  1）通过浏览器和ip：port和这个服务器建立连接。<br>  2） 浏览器会生成一个请求数据包（路径appNames/servlet）向服务器发送请求。<br>  3） 服务器收到请求数据包，分析请求资源路径做精准定位，通过请求的appName查找webapps文件下面的appName做匹配，匹配上了需要获取web.xml中的servlet(mapping)。 <br>  4） 服务器创建两个对象：<br>    第一个对象：请求对象，该对象实现了HttpServletRequest接口，服务器会将请求数据包中的数据解析出来,存储在该对象里。这样做的好处是没有必要理解http协议，只需要读取request。<br>    第二个对象：响应对象，实现了HttpServletResponse接口，作用是servlet处理完成后的结果可以存放到该对象上，然后服务器依据该对象的数据生成响应数据包。<br>  5） servlet在执行servlet()方法时，可以通过request获取请求数据，也可以将处理结果存放到response上。然后服务器与响应对象直接形成一个默契，生成一个响应数据包给浏览器。<br>  6）浏览器解析服务器返回的响应数据包，生成响应的结果。</p>
-<p>  </p>
-<p><img src="/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/javaWeb%E4%B8%89%E5%A4%A7%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6%E4%B9%8Bservlet%5C2.png" alt="image"></p>
-<p>Servlet访问的过程：<br>Http请求—-&gt;web.xml——–&gt;  url -pattern—–&gt;servlet-name—–&gt;servlet-class—–&gt;   QuickStratServlet(对应的Class文件)</p>
-<h3 id="Servlet生命周期"><a href="#Servlet生命周期" class="headerlink" title="Servlet生命周期"></a>Servlet生命周期</h3><p>SpringMVC是基于servlet，控制器基于方法级别的拦截，处理器设计为单实例，所以应该了解一下Servlet的生命周期。</p>
-<p>Servlet 加载—&gt;实例化—&gt;服务—&gt;销毁。</p>
-<p><strong>init</strong>（）：</p>
-<p>在Servlet的生命周期中，仅执行一次init()方法。它是在服务器装入Servlet时执行的，负责初始化Servlet对象。可以配置服务器，以在启动服务器或客户机首次访问Servlet时装入Servlet。无论有多少客户机访问Servlet，都不会重复执行init（）。</p>
-<p><strong>service</strong>（）：</p>
-<p>它是Servlet的核心，负责响应客户的请求。每当一个客户请求一个HttpServlet对象，该对象的Service()方法就要调用，而且传递给这个方法一个“请求”（ServletRequest）对象和一个“响应”（ServletResponse）对象作为参数。在HttpServlet中已存在Service()方法。默认的服务功能是调用与HTTP请求的方法相应的do功能。</p>
-<p><strong>destroy</strong>（）：</p>
-<p>仅执行一次，在服务器端停止且卸载Servlet时执行该方法。当Servlet对象退出生命周期时，负责释放占用的资源。一个Servlet在运行service()方法时可能会产生其他的线程，因此需要确认在调用destroy()方法时，这些线程已经终止或完成。</p>
+<p><strong>网址劫持</strong>： 302重定向和网址劫持（URL hijacking）有什么关系呢？这要从搜索引擎如何处理302转向说起。从定义来说，从网址A做一个302重定向到网址B时，主机服务器的隐含意思是网址A随时有可能改主意，重新显示本身的内容或转向其他的地方。大部分的搜索引擎在大部分情况下，当收到302重定向时，一般只要去抓取目标网址就可以了，也就是说网址B。 实际上如果搜索引擎在遇到302转向时，百分之百的都抓取目标网址B的话，就不用担心网址URL劫持了。问题就在于，有的时候搜索引擎，尤其是Google，并不能总是抓取目标网址。为什么呢？比如说，有的时候A网址很短，但是它做了一个302重定向到B网址，而B网址是一个很长的乱七八糟的URL网址，甚至还有可能包含一些问号之类的参数。很自然的，A网址更加用户友好，而B网址既难看，又不用户友好。这时Google很有可能会仍然显示网址A。</p>
+<p>由于搜索引擎排名算法只是程序而不是人，在遇到302重定向的时候，并不能像人一样的去准确判定哪一个网址更适当，这就造成了网址URL劫持的可能性。也就是说，一个不道德的人在他自己的网址A做一个302重定向到你的网址B，出于某种原因， Google搜索结果所显示的仍然是网址A，但是所用的网页内容却是你的网址B上的内容，这种情况就叫做网址URL劫持。你辛辛苦苦所写的内容就这样被别人偷走了。</p>
+<ol>
+<li>301：当网页A用301重定向转到网页B时，搜索引擎可以肯定网页A永久的改变位置，或者说实际上不存了，搜索引擎就会把网页B当作唯一有效目标。 <strong>301的好处是</strong>: 第一， 没有网址规范化问题。 第二， 也很重要的，网页A的PR网页级别会传到网页B。</li>
+</ol>
+<h3 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h3><p>HTTPS（全称： Hypertext Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP 通道，简单讲是 HTTP 的安全版。<strong>即 HTTP 下加入 SSL 层</strong>， HTTPS 的安全基础是 SSL。其所用的端口号是 <strong>443</strong>。 过程大致如下：</p>
+<h4 id="建立连接获取证书"><a href="#建立连接获取证书" class="headerlink" title="建立连接获取证书"></a>建立连接获取证书</h4><p>SSL 客户端通过 TCP 和服务器建立连接之后（443 端口），并且在一般的 tcp 连接协商（握手）过程中请求证书。即客户端发出一个消息给服务器，这个消息里面包含了自己可实现的算法列表和其它一些需要的消息， SSL 的服务器端会回应一个数据包，这里面确定了这次通信所需要的算法，然后服务器向客户端返回证书。（<strong>证书里面包含了服务器信息：域名。申请证书的公司，公共秘钥</strong>）</p>
+<h4 id="证书验证"><a href="#证书验证" class="headerlink" title="证书验证"></a>证书验证</h4><p>Client 在收到服务器返回的证书后，判断签发这个证书的公共签发机构，并使用这个机构的公共秘钥确认签名是否有效，客户端还会确保证书中列出的域名就是它正在连接的域名。</p>
+<h4 id="数据加密和传输"><a href="#数据加密和传输" class="headerlink" title="数据加密和传输"></a>数据加密和传输</h4><p>如果确认证书有效，那么生成对称秘钥并使用服务器的公共秘钥进行加密。然后发送给服务器，服务器使用它的私钥对它进行解密，这样两台计算机可以开始进行对称加密进行通信。</p>
+<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86%5Chttp7.png" alt="img"></p>
 
             </div>
             <hr />
@@ -655,7 +722,7 @@
         repo: 'tigerLuHai.github.io',
         owner: 'tigerLuHai',
         admin: "tigerLuHai",
-        id: '2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/',
+        id: '2020/01/21/http-yu-https-yuan-li/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -938,41 +1005,59 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/01/05/java-yi-chang/">
+                <a href="/2020/01/21/http-yu-https-yuan-li/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="java异常">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="HTTP与HTTPS原理">
                         
-                        <span class="card-title">java异常</span>
+                        <span class="card-title">HTTP与HTTPS原理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Java异常介绍异常时什么？就是指阻止当前方法或作用域继续执行的问题,当程序运行时出现异常时,系统就会自动生成一个Exception对象来通知程序进行相应的处理。Java异常的类型有很多种，下面我们就使用一张图来看一下Java异常的继承层次
+                            
+概述
+传输流程
+地址解析
+封装 HTTP 请求数据包
+封装成 TCP 包并建立连接
+客户机发送请求命令
+服务器响应
+服务器关闭 TCP 连接
+HTTP响应状态
+
+
+小插曲：301和302有啥区别
+HTTPS
+建立连接获取证书
+证书验证
+数
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/java/" class="post-category" target="_blank">
-                                    java
+                            <a href="/categories/计算机网络/" class="post-category" target="_blank">
+                                    计算机网络
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -983,33 +1068,33 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/04/springmvc-yuan-li/">
+                <a href="/2020/01/20/yin-te-wang-wu-ceng-jia-gou/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="SpringMVC原理">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="因特网五层架构">
                         
-                        <span class="card-title">SpringMVC原理</span>
+                        <span class="card-title">因特网五层架构</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            概述spring MVC主要由DispatcherServlet、处理器映射、处理器(控制器)、视图解析器、视图组成。他的两个核心是两个核心：
-处理器映射： 选择使用哪个控制器来处理请求。视图解析器： 选择结果应该如何渲染。
-运行原理下图是
+                            概述TCP/IP 协议不是 TCP 和 IP 这两个协议的合称，而是指因特网整个 TCP/IP 协议族。从协议分层模型方面来讲， TCP/IP 由四个层次组成：网络接口层、网络层、传输层、应用层。
+
+网络访问层网络访问层(Network A
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-04
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-20
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/java/" class="post-category" target="_blank">
-                                    java
+                            <a href="/categories/计算机网络/" class="post-category" target="_blank">
+                                    计算机网络
                                 </a>
                             
                             
