@@ -4,13 +4,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="理解KMP回溯, LuHai Java后台开发 大数据开发">
+    <meta name="keywords" content="稳定排序与非稳定排序的应用场景, LuHai Java后台开发 大数据开发">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="理解KMP回溯相信大家都看过KMP算法，但是对于它的回溯确是难以理解。我们先来看一下KMP中的next数组生成代码：
-    //用于生成next数组
-    private static int[] get_next(String tar">
+    <meta name="description" content="稳定非稳定如何界定
+原始数据，a2和a4的位置都是3。对于稳定排序来说，排序后的序列，a2一定还是在a4前面。但是对于非稳定排序来说，就不一定了，可能排完序之后，a4反而在a2的前面了。
+哪些常用算法是稳定的，哪些是不稳定的呢？
+冒泡和归并">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>理解KMP回溯 | 卢海的博客</title>
+    <title>稳定排序与非稳定排序的应用场景 | 卢海的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -292,13 +293,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        理解KMP回溯
+                        稳定排序与非稳定排序的应用场景
                     </div>
                 </div>
             </div>
@@ -429,7 +430,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-03
+                    2020-01-22
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -443,14 +444,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    782
+                    416
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    1 分
                 </div>
                 
                 
@@ -466,82 +467,16 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="理解KMP回溯"><a href="#理解KMP回溯" class="headerlink" title="理解KMP回溯"></a>理解KMP回溯</h4><p>相信大家都看过KMP算法，但是对于它的回溯确是难以理解。我们先来看一下KMP中的next数组生成代码：</p>
-<pre><code>    //用于生成next数组
-    private static int[] get_next(String target){
-        int[] next = new int[target.length()];
-        next[0] = -1;
-        int i = 0, j = -1;
-        while(i &lt; target.length() - 1){
-            if (j == -1 || target.charAt(i) == target.charAt(j)) {
-                ++i;
-                ++j;
-                next[i] = j;
-            } else {
-                j = next[j];
-            }
-        }
-        return next;
-    }</code></pre><ul>
-<li>其中数组的next中的值计算方式是：</li>
-</ul>
-<p>next[j] = Max{k | 1&lt;k&lt;j,且‘p1p2…pk’=‘p(j-k)…p(j - 1)’}</p>
-<ul>
-<li><h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5></li>
-</ul>
-<p><em>简单来说next[j]表示的就是两个相等的字符串的长度，这两个字符串分别是从头开始记的长度为next[j]的和以next[j]的前一个字符结尾的长度为next[j]。</em></p>
-<ul>
-<li><h5 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h5></li>
-</ul>
-<p>例如：字符串”ababaaaba” next = [-1,0,0,1,2,3,1,1,2]<br>其中的回溯环节就是从next[5] = 3 到 next[6] = 1;</p>
-<p>其中next[5]时：是”ababa”中前缀”aba”与后缀”aba”的长度，当i = 6时，”ababaa”中”a”不等于”b”,所以回溯到j = next[j],其中j为现在next[5]的值。</p>
-<ul>
-<li><h5 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h5></li>
-</ul>
-<p><strong>我开始也是很不明白为什么就可以直接回到j = next[next[5]] = 0处开始向后比较，后来仔细研究发现原因是，通过前面的比较它已经排除了所有的前缀字符串等于后缀字符串的长度大于回溯到当前j的可能 。</strong><br>就拿上面的“ababa”到“ababaa”举例：<br>其实我们想不通的无非就是它是怎么排除“aba”!=”baa”转而直接去判断前缀“ab”是否等于后缀“aa”,后来我仔细分析才发现因为如果前面的“aba” = “baa”要成立，必须有“前缀ab”等于后缀“ba”,而得到next[5]=3的时候已经隐式的得到的第一个“ba”等于第二个“ba”(当时是“aba” = “aba”)<br>从而有“aba”中三个值都应该相等，与前面矛盾。可能你早就看不懂我在说什么了，来一点数学表达式比较实际：</p>
-<ul>
-<li><h5 id="数学证明"><a href="#数学证明" class="headerlink" title="数学证明"></a>数学证明</h5></li>
-</ul>
-<p>②开始有p1p2….pj = pi - j ….pi-1，可以得出pj = pj-1  j = 1,2,…<br>假设 next[j] = k 就有 p1p2…pk = pj-k …pj-1    k = 1,2…<br>若加入pi != pj + 1,则需要回溯到判断pk 是否等于pj;<br>首先证明：pi-j+1…pi ！= p1p2…pj,反证：假设：pi-j+1…pi = p1p2…p，又p1p2….pj = pi - j ….pi-1<br>所以有pi - j ….pi-1 =pi-j+1…pi ,得到pi-j=pi-j+1=…=pi;与前面矛盾，所以有pi-j+1…pi ！= p1p2…pj<br>同理可以得出pi-j+2…pi ！= p1p2…pj-1  。。。。。pi-j+k…pi ！= p1p2…pj-k+1  。。。。。<br>所以可以直接回溯到j = next[j]继续向后判断</p>
-<p>KMP完整代码</p>
-<pre><code>    private static int[] get_next(String target){
-        int[] next = new int[target.length()];
-        next[0] = -1;
-        int i = 0, j = -1;
-        while(i &lt; target.length() - 1){
-            if (j == -1 || target.charAt(i) == target.charAt(j)) {
-                ++i;
-                ++j;
-                next[i] = j;
-            } else {
-                j = next[j];
-            }
-        }
-        return next;
-    }
+                <h3 id="稳定非稳定如何界定"><a href="#稳定非稳定如何界定" class="headerlink" title="稳定非稳定如何界定"></a>稳定非稳定如何界定</h3><p><img src="/2020/01/22/wen-ding-pai-xu-yu-fei-wen-ding-pai-xu-de-ying-yong-chang-jing/D:%5CMyBlot%5Cbolt%5Csource_posts%5C%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E4%B8%8E%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%5Cstable1.png" alt="img"></p>
+<p>原始数据，a2和a4的位置都是3。对于稳定排序来说，排序后的序列，a2一定还是在a4前面。但是对于非稳定排序来说，就不一定了，可能排完序之后，a4反而在a2的前面了。</p>
+<p>哪些常用算法是稳定的，哪些是不稳定的呢？</p>
+<p>冒泡和归并排序是稳定的，快排和选择排序是非稳定的。</p>
+<p><strong>思考</strong>：既然最后都是有序序列，为什么还要分稳定和非稳定的排序呢？</p>
+<h3 id="为什么要分稳定和非稳定呢？"><a href="#为什么要分稳定和非稳定呢？" class="headerlink" title="为什么要分稳定和非稳定呢？"></a>为什么要分稳定和非稳定呢？</h3><p>看一个典型的场景：每次考试完成后，都会按照分数进行排序。分高的自然就是第一名。分数相同的同学怎么办呢？那就是按照上次的分数来分高低。上次分高的排在前面。</p>
+<p>这个时候就应该用稳定排序，在上次排好序的序列上，再针对这次的分数进行排序。稳定排序的结果能保证这次相同分数的人，上次分高的在前面。</p>
+<p>再比如我们熟知的基数排序与计数排序,当对最后一位进行计数排序后,当倒数第二位的数字相同时,必须保证第一轮技术排序排在前面的经过重排后还在前面。这时就需要计数排序是稳定的。</p>
+<p>其实就是有两个排序关键字的时候，稳定排序可以让第一个关键字排序的结果服务于第二个关键字排序中数值相等的那些数。</p>
 
-    int kmp(String s, String pattern) {
-        int i = 0,j = 0;
-        int slen = s.length(), plen = pattern.length();
-        int[] next = get_next(pattern);
-        while (i &lt; slen &amp;&amp; j &lt; plen) {
-            if (s.charAt(i) == pattern.charAt(j)) {
-                i++;
-                j++;
-            } else {
-                if (next[j] == -1) {
-                    i++;
-                    j = 0;
-                } else {
-                    j = next[j];
-                }
-            }
-            if (j == plen) {
-                return i - j;
-            }
-        }
-        return -1;
-    }</code></pre>
             </div>
             <hr />
 
@@ -703,7 +638,7 @@
         repo: 'tigerLuHai.github.io',
         owner: 'tigerLuHai',
         admin: "tigerLuHai",
-        id: '2020/01/03/li-jie-kmp-hui-su/',
+        id: '2020/01/22/wen-ding-pai-xu-yu-fei-wen-ding-pai-xu-de-ying-yong-chang-jing/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -986,41 +921,46 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/01/04/hui-tou-zai-kan-spring/">
+                <a href="/2020/01/22/wen-ding-pai-xu-yu-fei-wen-ding-pai-xu-de-ying-yong-chang-jing/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="回头再看spring">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="稳定排序与非稳定排序的应用场景">
                         
-                        <span class="card-title">回头再看spring</span>
+                        <span class="card-title">稳定排序与非稳定排序的应用场景</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            回头再看Spring什么是SpringSpring是个包含一系列功能的合集，如快速构建微服务的Spring Boot，管理一系列微服务的Spring Cloud，支持认证与鉴权的Spring Security，基于MVC的Web框架Spri
+                            稳定非稳定如何界定
+原始数据，a2和a4的位置都是3。对于稳定排序来说，排序后的序列，a2一定还是在a4前面。但是对于非稳定排序来说，就不一定了，可能排完序之后，a4反而在a2的前面了。
+哪些常用算法是稳定的，哪些是不稳定的呢？
+冒泡和归并
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/java/" class="post-category" target="_blank">
-                                    java
+                            <a href="/categories/数据结构/" class="post-category" target="_blank">
+                                    数据结构
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -1031,33 +971,47 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/">
+                <a href="/2020/01/21/http-yu-https-yuan-li/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="使用VMware安装linux虚拟机">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="HTTP与HTTPS原理">
                         
-                        <span class="card-title">使用VMware安装linux虚拟机</span>
+                        <span class="card-title">HTTP与HTTPS原理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
+概述
+传输流程
+地址解析
+封装 HTTP 请求数据包
+封装成 TCP 包并建立连接
+客户机发送请求命令
+服务器响应
+服务器关闭 TCP 连接
+HTTP响应状态
 
-使用VMware安装linux虚拟机使用背景Linux是一种自由和开放源码的操作系统，存在着许多不同的Linux发行版本，但它们都使用了Linux内核。现在的服务器基本都是使用linux,其中CentOS使用广泛,还有ubuntu也是l
+
+小插曲：301和302有啥区别
+HTTPS
+建立连接获取证书
+证书验证
+数
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-29
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-21
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/大数据/" class="post-category" target="_blank">
-                                    大数据
+                            <a href="/categories/计算机网络/" class="post-category" target="_blank">
+                                    计算机网络
                                 </a>
                             
                             

@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>稳定排序与非稳定排序的应用场景</title>
+      <link href="/2020/01/22/wen-ding-pai-xu-yu-fei-wen-ding-pai-xu-de-ying-yong-chang-jing/"/>
+      <url>/2020/01/22/wen-ding-pai-xu-yu-fei-wen-ding-pai-xu-de-ying-yong-chang-jing/</url>
+      
+        <content type="html"><![CDATA[<h3 id="稳定非稳定如何界定"><a href="#稳定非稳定如何界定" class="headerlink" title="稳定非稳定如何界定"></a>稳定非稳定如何界定</h3><p><img src="/2020/01/22/wen-ding-pai-xu-yu-fei-wen-ding-pai-xu-de-ying-yong-chang-jing/D:%5CMyBlot%5Cbolt%5Csource_posts%5C%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E4%B8%8E%E9%9D%9E%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%5Cstable1.png" alt="img"></p><p>原始数据，a2和a4的位置都是3。对于稳定排序来说，排序后的序列，a2一定还是在a4前面。但是对于非稳定排序来说，就不一定了，可能排完序之后，a4反而在a2的前面了。</p><p>哪些常用算法是稳定的，哪些是不稳定的呢？</p><p>冒泡和归并排序是稳定的，快排和选择排序是非稳定的。</p><p><strong>思考</strong>：既然最后都是有序序列，为什么还要分稳定和非稳定的排序呢？</p><h3 id="为什么要分稳定和非稳定呢？"><a href="#为什么要分稳定和非稳定呢？" class="headerlink" title="为什么要分稳定和非稳定呢？"></a>为什么要分稳定和非稳定呢？</h3><p>看一个典型的场景：每次考试完成后，都会按照分数进行排序。分高的自然就是第一名。分数相同的同学怎么办呢？那就是按照上次的分数来分高低。上次分高的排在前面。</p><p>这个时候就应该用稳定排序，在上次排好序的序列上，再针对这次的分数进行排序。稳定排序的结果能保证这次相同分数的人，上次分高的在前面。</p><p>再比如我们熟知的基数排序与计数排序,当对最后一位进行计数排序后,当倒数第二位的数字相同时,必须保证第一轮技术排序排在前面的经过重排后还在前面。这时就需要计数排序是稳定的。</p><p>其实就是有两个排序关键字的时候，稳定排序可以让第一个关键字排序的结果服务于第二个关键字排序中数值相等的那些数。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>HTTP与HTTPS原理</title>
       <link href="/2020/01/21/http-yu-https-yuan-li/"/>
       <url>/2020/01/21/http-yu-https-yuan-li/</url>
