@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tigerLuHai.github.io/"/>
-  <updated>2020-01-22T13:04:05.380Z</updated>
+  <updated>2020-01-23T12:47:35.299Z</updated>
   <id>http://tigerLuHai.github.io/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HashMap与ConcurrentHashMap</title>
+    <link href="http://tigerLuHai.github.io/2020/01/23/hashmap-yu-concurrenthashmap/"/>
+    <id>http://tigerLuHai.github.io/2020/01/23/hashmap-yu-concurrenthashmap/</id>
+    <published>2020-01-23T12:41:49.000Z</published>
+    <updated>2020-01-23T12:47:35.299Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;HashMap&quot;&gt;&lt;a href=&quot;#HashMap&quot; class=&quot;headerlink&quot; title=&quot;HashMap&quot;&gt;&lt;/a&gt;HashMap&lt;/h2&gt;&lt;p&gt;众所周知 HashMap 底层是基于 &lt;code&gt;数组 + 链表&lt;/code&gt; 组成的，不过在
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://tigerLuHai.github.io/categories/java/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>线程池原理</title>
+    <link href="http://tigerLuHai.github.io/2020/01/22/xian-cheng-chi-yuan-li/"/>
+    <id>http://tigerLuHai.github.io/2020/01/22/xian-cheng-chi-yuan-li/</id>
+    <published>2020-01-22T15:05:54.000Z</published>
+    <updated>2020-01-23T13:43:39.612Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;1-为什么要使用线程池&quot;&gt;&lt;a href=&quot;#1-为什么要使用线程池&quot; class=&quot;headerlink&quot; title=&quot;1. 为什么要使用线程池&quot;&gt;&lt;/a&gt;1.
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://tigerLuHai.github.io/categories/java/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>稳定排序与非稳定排序的应用场景</title>
@@ -342,54 +390,6 @@
     </summary>
     
       <category term="大数据" scheme="http://tigerLuHai.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>多线程之缓存与主存一致性</title>
-    <link href="http://tigerLuHai.github.io/2020/01/15/duo-xian-cheng-zhi-huan-cun-yu-zhu-cun-yi-zhi-xing/"/>
-    <id>http://tigerLuHai.github.io/2020/01/15/duo-xian-cheng-zhi-huan-cun-yu-zhu-cun-yi-zhi-xing/</id>
-    <published>2020-01-15T13:49:38.000Z</published>
-    <updated>2020-01-15T13:59:52.637Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;一、总线锁定和缓存一致性&quot;&gt;&lt;a href=&quot;#一、总线锁定和缓存一致性&quot; class=&quot;headerlink&quot; title=&quot;一、总线锁定和缓存一致性&quot;&gt;&lt;/a&gt;一、总线锁定和缓存一致性&lt;/h2&gt;&lt;h3 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="java" scheme="http://tigerLuHai.github.io/categories/java/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Netty原理</title>
-    <link href="http://tigerLuHai.github.io/2020/01/14/netty-yuan-li/"/>
-    <id>http://tigerLuHai.github.io/2020/01/14/netty-yuan-li/</id>
-    <published>2020-01-14T14:50:15.000Z</published>
-    <updated>2020-01-14T14:52:55.112Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Netty架构原理，不怕你看不懂！&quot;&gt;&lt;a href=&quot;#Netty架构原理，不怕你看不懂！&quot; class=&quot;headerlink&quot; title=&quot;Netty架构原理，不怕你看不懂！&quot;&gt;&lt;/a&gt;Netty架构原理，不怕你看不懂！&lt;/h2&gt;&lt;p&gt;对于高性能的
-        
-      
-    
-    </summary>
-    
-      <category term="tool" scheme="http://tigerLuHai.github.io/categories/tool/"/>
     
     
   </entry>
