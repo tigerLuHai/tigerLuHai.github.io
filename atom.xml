@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tigerLuHai.github.io/"/>
-  <updated>2020-01-23T12:47:35.299Z</updated>
+  <updated>2020-01-26T13:51:44.211Z</updated>
   <id>http://tigerLuHai.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>对Mysql读写分离的认识</title>
+    <link href="http://tigerLuHai.github.io/2020/01/26/dui-mysql-du-xie-fen-chi-de-ren-shi/"/>
+    <id>http://tigerLuHai.github.io/2020/01/26/dui-mysql-du-xie-fen-chi-de-ren-shi/</id>
+    <published>2020-01-26T13:48:39.000Z</published>
+    <updated>2020-01-26T13:51:44.211Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;读写分离应用场景&quot;&gt;&lt;a href=&quot;#读写分离应用场景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://tigerLuHai.github.io/categories/MySQL/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>HashMap与ConcurrentHashMap</title>
@@ -368,22 +392,6 @@
     <id>http://tigerLuHai.github.io/2020/01/16/hbase-de-rowkey-she-ji-de-li-jie/</id>
     <published>2020-01-16T13:23:20.000Z</published>
     <updated>2020-01-16T13:23:53.077Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="大数据" scheme="http://tigerLuHai.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hadoop之HDFS上传文件源码分析</title>
-    <link href="http://tigerLuHai.github.io/2020/01/16/hadoop-zhi-hdfs-shang-chuan-wen-jian-yuan-ma-fen-xi/"/>
-    <id>http://tigerLuHai.github.io/2020/01/16/hadoop-zhi-hdfs-shang-chuan-wen-jian-yuan-ma-fen-xi/</id>
-    <published>2020-01-16T13:16:23.000Z</published>
-    <updated>2020-01-16T13:17:19.279Z</updated>
     
     <summary type="html">
     
