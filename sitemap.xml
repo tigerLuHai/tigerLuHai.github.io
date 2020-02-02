@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tigerLuHai.github.io/2020/02/02/http-qing-qiu-fang-fa-de-mi-deng-xing/</loc>
+    
+    <lastmod>2020-02-02T13:21:03.238Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/10/ruan-jian-kai-fa-liu-da-she-ji-yuan-ze/</loc>
+    
+    <lastmod>2020-01-29T11:00:24.253Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tigerLuHai.github.io/2020/01/26/dui-mysql-du-xie-fen-chi-de-ren-shi/</loc>
     
     <lastmod>2020-01-26T13:51:44.211Z</lastmod>
@@ -184,13 +198,6 @@
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/2020/01/10/ruan-jian-kai-fa-liu-da-she-ji-yuan-ze/</loc>
-    
-    <lastmod>2020-01-10T13:41:41.611Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://tigerLuHai.github.io/2020/01/09/shen-ru-li-jie-jsp/</loc>
     
     <lastmod>2020-01-10T13:30:09.460Z</lastmod>
@@ -296,7 +303,7 @@
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/categories/index.html</loc>
+    <loc>http://tigerLuHai.github.io/tags/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
     
@@ -310,7 +317,7 @@
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/tags/index.html</loc>
+    <loc>http://tigerLuHai.github.io/categories/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
     
