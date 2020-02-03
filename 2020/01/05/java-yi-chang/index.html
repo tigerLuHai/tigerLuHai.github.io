@@ -465,7 +465,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="Java异常介绍"><a href="#Java异常介绍" class="headerlink" title="Java异常介绍"></a>Java异常介绍</h2><p>异常时什么？就是指阻止当前方法或作用域继续执行的问题,当程序运行时出现异常时,系统就会自动生成一个Exception对象来通知程序进行相应的处理。Java异常的类型有很多种，下面我们就使用一张图来看一下Java异常的继承层次结构：</p>
-<p><img src="/2020/01/05/java-yi-chang/java%E5%BC%82%E5%B8%B8%5C1.png" alt="img"></p>
+<p><img src="/2020/01/05/java-yi-chang/1.png" alt="img"></p>
 <h3 id="Java异常中的Error"><a href="#Java异常中的Error" class="headerlink" title="Java异常中的Error"></a>Java异常中的Error</h3><p>Error一般表示编译时或者系统错误，例如：虚拟机相关的错误，系统崩溃（例如：我们开发中有时会遇到的OutOfMemoryError）等。这种错误无法恢复或不可捕获,将导致应用程序中断,通常应用程序无法处理这些错误,因此也不应该试图用catch来进行捕获。</p>
 <h3 id="Java异常中的Exception"><a href="#Java异常中的Exception" class="headerlink" title="Java异常中的Exception"></a>Java异常中的Exception</h3><p>上面我们有介绍，Java异常的中的Exception分为受检查异常和运行时异常（不受检查异常）。下面我们展开介绍。</p>
 <h4 id="Java中的受检查异常"><a href="#Java中的受检查异常" class="headerlink" title="Java中的受检查异常"></a>Java中的受检查异常</h4><p>相信大家在写IO操作的代码的时候，一定有过这样的记忆，对File或者Stream进行操作的时候一定需要使用try-catch包起来，否则编译会失败，这是因为这些异常类型是受检查的异常类型。编译器在编译时，对于受检异常必须进行try…catch或throws处理,否则无法通过编译。常见的受检查异常包括：IO操作、ClassNotFoundException、线程操作等。</p>
@@ -1344,6 +1344,13 @@ public class ExceptionCatch {
                         </span>
                         <span class="publish-author">
                             
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/java/" class="post-category" target="_blank">
+                                    java
+                                </a>
+                            
+                            
                         </span>
                     </div>
                 </div>
@@ -1546,7 +1553,7 @@ public class ExceptionCatch {
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">56.9k</span>
+            <span class="white-color">56.8k</span>
             
 
             <br>

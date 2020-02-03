@@ -501,7 +501,7 @@
 <h5 id="向IoC容器注册这些BeanDefinition"><a href="#向IoC容器注册这些BeanDefinition" class="headerlink" title="向IoC容器注册这些BeanDefinition"></a>向IoC容器注册这些BeanDefinition</h5><p>这个过程是通过调用BeanDefinitionRegistry接口的实现来完成的，这个注册过程把载入过程中解析得到的BeanDefinition向IoC容器进行注册,在IoC容器内部将BeanDefinition注入到一个HashMap中去，Ioc容器是通过这个HashMap来持有这些BeanDefinition数据的。</p>
 <p>容器的初始化是通过AbstractApplicationContext的refresh()实现的。</p>
 <pre><code></code></pre><p>整个过程如下图:</p>
-<p><img src="/2020/01/04/hui-tou-zai-kan-spring/%E5%9B%9E%E5%A4%B4%E5%86%8D%E7%9C%8Bspring%5C1.png" alt="img"></p>
+<p><img src="/2020/01/04/hui-tou-zai-kan-spring/1.png" alt="img"></p>
 <h3 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring AOP"></a>Spring AOP</h3><p>面向切面的编程，是一种编程技术，<strong>是OOP（面向对象编程）的补充和完善</strong>。OOP的执行是一种从上往下的流程，并没有从左到右的关系。因此在OOP编程中，会有大量的重复代码。而<strong>AOP则是将这些与业务无关的重复代码抽取出来，然后再嵌入到业务代码当中</strong>。常见的应用有：权限管理、日志、事务管理等。</p>
 <p>AOP有三种植入切面的方法：其一是编译期织入，这要求使用特殊的Java编译器，AspectJ是其中的代表者；其二是类装载期织入，而这要求使用特殊的类装载器，AspectJ和AspectWerkz是其中的代表者；其三为动态代理织入，在运行期为目标类添加增强生成子类的方式，<strong>Spring AOP采用动态代理织入切面</strong>。</p>
 <p>AspectJ是静态代理的增强，所谓的静态代理就是AOP框架会在编译阶段生成AOP代理类，因此也称为编译时增强。</p>
@@ -1214,7 +1214,7 @@
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">56.9k</span>
+            <span class="white-color">56.8k</span>
             
 
             <br>

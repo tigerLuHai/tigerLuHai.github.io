@@ -514,27 +514,27 @@ HTTPS
 <h4 id="客户机发送请求命令"><a href="#客户机发送请求命令" class="headerlink" title="客户机发送请求命令"></a>客户机发送请求命令</h4><p>建立连接后，客户机发送一个请求给服务器，请求方式的格式为：统一资源标识符（URL）、协议版本号，后边是 MIME 信息包括请求修饰符、客户机信息和可能的内容。</p>
 <h4 id="服务器响应"><a href="#服务器响应" class="headerlink" title="服务器响应"></a>服务器响应</h4><p>服务器接到请求后，给予相应的响应信息， 其格式为一个状态行，包括信息的协议版本号、一个成功或错误的代码，后边是 MIME 信息包括服务器信息、实体信息和可能的内容。</p>
 <h4 id="服务器关闭-TCP-连接"><a href="#服务器关闭-TCP-连接" class="headerlink" title="服务器关闭 TCP 连接"></a>服务器关闭 TCP 连接</h4><p>服务器关闭 TCP 连接： 一般情况下，一旦 Web 服务器向浏览器发送了请求数据，它就要关闭 TCP 连接，然后如果浏览器或者服务器在其头信息加入了这行代码 Connection:keep-alive， TCP 连接在发送后将仍然保持打开状态，于是，浏览器可以继续通过相同的连接发送请求。保持连接节省了为每个请求建立新连接所需的时间，还节约了网络带宽。</p>
-<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86%5Chttp1.png" alt="img"></p>
+<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86/http1.png" alt="img"></p>
 <h4 id="HTTP响应状态"><a href="#HTTP响应状态" class="headerlink" title="HTTP响应状态"></a>HTTP响应状态</h4><ul>
 <li>1XX</li>
 </ul>
-<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86%5Chttp2.png" alt="img"></p>
+<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86/http2.png" alt="img"></p>
 <ul>
 <li>2XX</li>
 </ul>
-<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86%5Chttp3.png" alt="img"></p>
+<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86/http3.png" alt="img"></p>
 <ul>
 <li>3XX</li>
 </ul>
-<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86%5Chttp4.png" alt="img"></p>
+<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86/http4.png" alt="img"></p>
 <ul>
 <li>4XX</li>
 </ul>
-<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86%5Chttp5.png" alt="img"></p>
+<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86/http5.png" alt="img"></p>
 <ul>
 <li>5XX</li>
 </ul>
-<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86%5Chttp6.png" alt="img"></p>
+<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86/http6.png" alt="img"></p>
 <h3 id="小插曲：301和302有啥区别"><a href="#小插曲：301和302有啥区别" class="headerlink" title="小插曲：301和302有啥区别"></a>小插曲：301和302有啥区别</h3><p>官方说法：</p>
 <blockquote>
 <p>301，302 都是HTTP状态的编码，都代表着某个URL发生了转移，不同之处在于： 301 redirect: 301 代表永久性转移(Permanently Moved)。 302 redirect: 302 代表暂时性转移(Temporarily Moved )。</p>
@@ -559,7 +559,7 @@ HTTPS
 <h4 id="建立连接获取证书"><a href="#建立连接获取证书" class="headerlink" title="建立连接获取证书"></a>建立连接获取证书</h4><p>SSL 客户端通过 TCP 和服务器建立连接之后（443 端口），并且在一般的 tcp 连接协商（握手）过程中请求证书。即客户端发出一个消息给服务器，这个消息里面包含了自己可实现的算法列表和其它一些需要的消息， SSL 的服务器端会回应一个数据包，这里面确定了这次通信所需要的算法，然后服务器向客户端返回证书。（<strong>证书里面包含了服务器信息：域名。申请证书的公司，公共秘钥</strong>）</p>
 <h4 id="证书验证"><a href="#证书验证" class="headerlink" title="证书验证"></a>证书验证</h4><p>Client 在收到服务器返回的证书后，判断签发这个证书的公共签发机构，并使用这个机构的公共秘钥确认签名是否有效，客户端还会确保证书中列出的域名就是它正在连接的域名。</p>
 <h4 id="数据加密和传输"><a href="#数据加密和传输" class="headerlink" title="数据加密和传输"></a>数据加密和传输</h4><p>如果确认证书有效，那么生成对称秘钥并使用服务器的公共秘钥进行加密。然后发送给服务器，服务器使用它的私钥对它进行解密，这样两台计算机可以开始进行对称加密进行通信。</p>
-<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86%5Chttp7.png" alt="img"></p>
+<p><img src="HTTP%E4%B8%8EHTTPS%E5%8E%9F%E7%90%86/http7.png" alt="img"></p>
 
             </div>
             <hr />
@@ -1244,7 +1244,7 @@ HTTPS
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">56.9k</span>
+            <span class="white-color">56.8k</span>
             
 
             <br>

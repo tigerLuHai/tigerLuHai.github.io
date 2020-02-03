@@ -474,7 +474,7 @@
 <p>Java 类库的全部功能对 Servlet 来说都是可用的。它可以通过 sockets 和 RMI 机制与 applets、数据库或其他软件进行交互。</p>
 <h3 id="Tomcat与Servlet的关系"><a href="#Tomcat与Servlet的关系" class="headerlink" title="Tomcat与Servlet的关系"></a>Tomcat与Servlet的关系</h3><p>Tomcat 是Web应用服务器,是一个Servlet/JSP容器. Tomcat 作为Servlet容器,负责处理客户请求,把请求传送给Servlet,并将Servlet的响应传送回给客户.而Servlet是一种运行在支持Java语言的服务器上的组件.。</p>
 <p>Servlet最常见的用途是扩展Java Web服务器功能,提供非常安全的,可移植的,易于使用的CGI替代品。从http协议中的请求和响应可以得知，浏览器发出的请求是一个请求文本，而浏览器接收到的也应该是一个响应文本。</p>
-<p><img src="/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/javaWeb%E4%B8%89%E5%A4%A7%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6%E4%B9%8Bservlet%5C1" alt="image"></p>
+<p><img src="/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/1" alt="image"></p>
 <ol>
 <li>Tomcat将http请求文本接收并解析，然后封装成HttpServletRequest类型的request对象，所有的HTTP头数据读可以通过request对象调用对应的方法查询到。</li>
 <li>Tomcat同时会要响应的信息封装为HttpServletResponse类型的response对象，通过设置response属性就可以控制要输出到浏览器的内容，然后将response交给tomcat，tomcat就会将其变成响应文本的格式发送给浏览器。</li>
@@ -483,7 +483,7 @@
 <h3 id="Servlet执行过程"><a href="#Servlet执行过程" class="headerlink" title="Servlet执行过程"></a>Servlet执行过程</h3><p> 在浏览器的地址栏输入：<a href="http://ip" target="_blank" rel="noopener">http://ip</a>:port/appNames/servlet</p>
 <p>  1）通过浏览器和ip：port和这个服务器建立连接。<br>  2） 浏览器会生成一个请求数据包（路径appNames/servlet）向服务器发送请求。<br>  3） 服务器收到请求数据包，分析请求资源路径做精准定位，通过请求的appName查找webapps文件下面的appName做匹配，匹配上了需要获取web.xml中的servlet(mapping)。 <br>  4） 服务器创建两个对象：<br>    第一个对象：请求对象，该对象实现了HttpServletRequest接口，服务器会将请求数据包中的数据解析出来,存储在该对象里。这样做的好处是没有必要理解http协议，只需要读取request。<br>    第二个对象：响应对象，实现了HttpServletResponse接口，作用是servlet处理完成后的结果可以存放到该对象上，然后服务器依据该对象的数据生成响应数据包。<br>  5） servlet在执行servlet()方法时，可以通过request获取请求数据，也可以将处理结果存放到response上。然后服务器与响应对象直接形成一个默契，生成一个响应数据包给浏览器。<br>  6）浏览器解析服务器返回的响应数据包，生成响应的结果。</p>
 <p>  </p>
-<p><img src="/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/javaWeb%E4%B8%89%E5%A4%A7%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6%E4%B9%8Bservlet%5C2.png" alt="image"></p>
+<p><img src="/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/2.png" alt="image"></p>
 <p>Servlet访问的过程：<br>Http请求—-&gt;web.xml——–&gt;  url -pattern—–&gt;servlet-name—–&gt;servlet-class—–&gt;   QuickStratServlet(对应的Class文件)</p>
 <h3 id="Servlet生命周期"><a href="#Servlet生命周期" class="headerlink" title="Servlet生命周期"></a>Servlet生命周期</h3><p>SpringMVC是基于servlet，控制器基于方法级别的拦截，处理器设计为单实例，所以应该了解一下Servlet的生命周期。</p>
 <p>Servlet 加载—&gt;实例化—&gt;服务—&gt;销毁。</p>
@@ -1174,7 +1174,7 @@
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">56.9k</span>
+            <span class="white-color">56.8k</span>
             
 
             <br>

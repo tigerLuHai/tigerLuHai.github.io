@@ -473,7 +473,7 @@
 <li><strong>提高线程的可管理性</strong>。线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，因此，需要使用线程池来管理线程。</li>
 </ol>
 <h1 id="2-线程池的工作原理"><a href="#2-线程池的工作原理" class="headerlink" title="2. 线程池的工作原理"></a>2. 线程池的工作原理</h1><p>当一个并发任务提交给线程池，线程池分配线程去执行任务的过程如下图所示：</p>
-<p><img src="/2020/01/22/xian-cheng-chi-yuan-li/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8E%9F%E7%90%86%5C1.png" alt="线程池执行流程图.jpg">线程池执行流程图.jpg</p>
+<p><img src="/2020/01/22/xian-cheng-chi-yuan-li/1.png" alt="线程池执行流程图.jpg">线程池执行流程图.jpg</p>
 <p>从图可以看出，线程池执行所提交的任务过程主要有这样几个阶段：</p>
 <ol>
 <li>先判断线程池中<strong>核心线程池</strong>所有的线程是否都在执行任务。如果不是，则新创建一个线程执行刚提交的任务，否则，核心线程池中所有的线程都在执行任务，则进入第 2 步；</li>
@@ -551,7 +551,7 @@
         reject(command);
 }
 复制代码</code></pre><p>ThreadPoolExecutor 的 execute 方法执行逻辑请见注释。下图为 ThreadPoolExecutor 的 execute 方法的执行示意图：</p>
-<p><img src="/2020/01/22/xian-cheng-chi-yuan-li/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8E%9F%E7%90%86%5C2.png" alt="execute执行过程示意图.jpg">execute执行过程示意图.jpg</p>
+<p><img src="/2020/01/22/xian-cheng-chi-yuan-li/2.png" alt="execute执行过程示意图.jpg">execute执行过程示意图.jpg</p>
 <p>execute 方法执行逻辑有这样几种情况：</p>
 <ol>
 <li>如果当前运行的线程少于 corePoolSize，则会创建新的线程来执行新的任务；</li>
@@ -1265,7 +1265,7 @@ Base 1.71.7 中的数据结构图：
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">56.9k</span>
+            <span class="white-color">56.8k</span>
             
 
             <br>
