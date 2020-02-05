@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tigerLuHai.github.io/"/>
-  <updated>2020-02-03T07:33:59.367Z</updated>
+  <updated>2020-02-05T13:49:49.867Z</updated>
   <id>http://tigerLuHai.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Shiro框架原理及简单使用</title>
+    <link href="http://tigerLuHai.github.io/2020/02/04/shiro-kuang-jia-yuan-li-ji-jian-dan-shi-yong/"/>
+    <id>http://tigerLuHai.github.io/2020/02/04/shiro-kuang-jia-yuan-li-ji-jian-dan-shi-yong/</id>
+    <published>2020-02-04T14:41:47.000Z</published>
+    <updated>2020-02-05T13:49:49.867Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Shiro是什么？&quot;&gt;&lt;a href=&quot;#Shiro是什么？&quot; class=&quot;headerlink&quot; title=&quot;Shiro是什么？&quot;&gt;&lt;/a&gt;&lt;strong&gt;Shiro是什么？&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;Apache
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://tigerLuHai.github.io/categories/java/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>HTTP请求方法的幂等性</title>
@@ -117,7 +141,7 @@
     <link href="http://tigerLuHai.github.io/2020/01/22/wen-ding-pai-xu-yu-fei-wen-ding-pai-xu-de-ying-yong-chang-jing/"/>
     <id>http://tigerLuHai.github.io/2020/01/22/wen-ding-pai-xu-yu-fei-wen-ding-pai-xu-de-ying-yong-chang-jing/</id>
     <published>2020-01-22T12:55:27.000Z</published>
-    <updated>2020-02-03T10:29:24.905Z</updated>
+    <updated>2020-02-05T14:10:02.158Z</updated>
     
     <summary type="html">
     
@@ -166,7 +190,7 @@
     <link href="http://tigerLuHai.github.io/2020/01/20/yin-te-wang-wu-ceng-jia-gou/"/>
     <id>http://tigerLuHai.github.io/2020/01/20/yin-te-wang-wu-ceng-jia-gou/</id>
     <published>2020-01-20T12:27:22.000Z</published>
-    <updated>2020-02-03T10:30:29.576Z</updated>
+    <updated>2020-02-05T14:04:12.607Z</updated>
     
     <summary type="html">
     
@@ -351,9 +375,18 @@
     <link href="http://tigerLuHai.github.io/2020/01/16/zhen-zheng-yi-yi-de-liu-shi-chu-li-kuang-jia-strom/"/>
     <id>http://tigerLuHai.github.io/2020/01/16/zhen-zheng-yi-yi-de-liu-shi-chu-li-kuang-jia-strom/</id>
     <published>2020-01-16T13:27:19.000Z</published>
-    <updated>2020-01-16T13:40:55.573Z</updated>
+    <updated>2020-02-05T14:42:19.798Z</updated>
     
     <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Storm基础入门&quot;&gt;&lt;a href=&quot;#Storm基础入门&quot; class=&quot;headerlink&quot; title=&quot;Storm基础入门&quot;&gt;&lt;/a&gt;Storm基础入门&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Apache
+        
+      
     
     </summary>
     
@@ -384,22 +417,6 @@
     <id>http://tigerLuHai.github.io/2020/01/16/hive-ji-yu-mapreduce-de-shu-ju-fen-xi-gong-ju/</id>
     <published>2020-01-16T13:26:01.000Z</published>
     <updated>2020-01-16T13:37:55.203Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="大数据" scheme="http://tigerLuHai.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Kafka-大数据的标准数据源</title>
-    <link href="http://tigerLuHai.github.io/2020/01/16/kafka-da-shu-ju-de-biao-zhun-shu-ju-yuan/"/>
-    <id>http://tigerLuHai.github.io/2020/01/16/kafka-da-shu-ju-de-biao-zhun-shu-ju-yuan/</id>
-    <published>2020-01-16T13:24:59.000Z</published>
-    <updated>2020-01-16T13:38:07.763Z</updated>
     
     <summary type="html">
     

@@ -4,13 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="SpringMVC原理, LuHai Java后台开发 大数据开发">
+    <meta name="keywords" content="Shiro框架原理及简单使用, LuHai Java后台开发 大数据开发">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="概述spring MVC主要由DispatcherServlet、处理器映射、处理器(控制器)、视图解析器、视图组成。他的两个核心是两个核心：
-处理器映射： 选择使用哪个控制器来处理请求。视图解析器： 选择结果应该如何渲染。
-运行原理下图是">
+    <meta name="description" content="Shiro是什么？Apache Shiro是Java的一个安全框架，一个强大而灵活的开源安全框架，它干净利落地处理身份认证，授权，企业会话管理和加密。
+目前，使用Apache Shiro的人越来越多，因为它相当简单，对比Spring Sec">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>SpringMVC原理 | 卢海的博客</title>
+    <title>Shiro框架原理及简单使用 | 卢海的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -292,13 +291,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/27.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        SpringMVC原理
+                        Shiro框架原理及简单使用
                     </div>
                 </div>
             </div>
@@ -429,7 +428,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-04
+                    2020-02-04
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -443,14 +442,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    621
+                    3.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    16 分
                 </div>
                 
                 
@@ -466,50 +465,262 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="http://lib.csdn.net/base/javaee" target="_blank" rel="noopener">spring</a> MVC主要由DispatcherServlet、处理器映射、处理器(控制器)、视图解析器、视图组成。他的两个核心是两个核心：</p>
-<p><strong>处理器映射：</strong> 选择使用哪个控制器来处理请求。<br><strong>视图解析器：</strong> 选择结果应该如何渲染。</p>
-<h2 id="运行原理"><a href="#运行原理" class="headerlink" title="运行原理"></a>运行原理</h2><p>下图是在Spring官网开发手册上找到的，它清晰的诠释了Spring MVC的运行原理</p>
-<p><img src="/2020/01/04/springmvc-yuan-li/16b5eb3870589ac4.png" alt="16b5eb3870589ac4"></p>
-<p>①客户端的所有请求都交给前端控制器DispatcherServlet来处理，它会负责调用系统的其他模块来真正处理用户的请求。</p>
-<p>② DispatcherServlet收到请求后，将根据请求的信息（包括URL、HTTP协议方法、请求头、请求参数、Cookie等）以及HandlerMapping的配置找到处理该请求的Handler（任何一个对象都可以作为请求的Handler）。</p>
-<p>③在这个地方Spring会通过HandlerAdapter对该处理器进行封装。</p>
-<p>④ HandlerAdapter是一个适配器，它用统一的接口对各种Handler中的方法进行调用。</p>
-<p>⑤ Handler完成对用户请求的处理后，会返回一个ModelAndView对象给DispatcherServlet，ModelAndView顾名思义，包含了数据模型以及相应的视图的信息。</p>
-<p>⑥ ModelAndView的视图是逻辑视图，DispatcherServlet还要借助ViewResolver完成从逻辑视图到真实视图对象的解析工作。⑦ 当得到真正的视图对象后，DispatcherServlet会利用视图对象对模型数据进行渲染。</p>
-<p>⑧ 客户端得到响应，可能是一个普通的HTML页面，也可以是XML或JSON字符串，还可以是一张图片或者一个PDF文件。</p>
-<p><img src="/2020/01/04/springmvc-yuan-li/16b5eb3870589ac4.png" alt="16b5eb3870589ac4"></p>
-<h2 id="接口的解释"><a href="#接口的解释" class="headerlink" title="接口的解释"></a>接口的解释</h2><table>
-<thead>
-<tr>
-<th>接口名称</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>DispatcherServlet</td>
-<td>Spring提供的前端控制器，客户端的所有请求都由DispatcherServlet负责分发，当然在DispatcherServlet分发之前，还需要一个匹配请求的过程，这个由HandlerMapping来完成。</td>
-</tr>
-<tr>
-<td>HandlerMapping</td>
-<td>完成客户端请求到Controller映射的工作</td>
-</tr>
-<tr>
-<td>Controller</td>
-<td>用于处理用户请求，返回处理结果</td>
-</tr>
-<tr>
-<td>ViewResolver</td>
-<td>Web应用中查找View对象，从而将相应结果渲染给客户端</td>
-</tr>
-</tbody></table>
-<h2 id="DispatcherServlet："><a href="#DispatcherServlet：" class="headerlink" title="DispatcherServlet："></a>DispatcherServlet：</h2><p>是整个Spring MVC的核心。它负责接收HTTP请求组织协调Spring MVC的各个组成部分。</p>
-<p>其主要工作有以下三项：</p>
-<ol>
-<li>截获符合特定格式的URL请求。</li>
-<li>初始化DispatcherServlet上下文对应WebApplicationContext，并将其与业务层、持久化层的WebApplicationContext建立关联。</li>
-<li>初始化Spring MVC的各个组成组件，并装配到DispatcherServlet中。</li>
-</ol>
-<h2 id="一个比较好理解的Spring-mvc原理图"><a href="#一个比较好理解的Spring-mvc原理图" class="headerlink" title="一个比较好理解的Spring mvc原理图"></a>一个比较好理解的Spring mvc原理图</h2><p><img src="/2020/01/04/springmvc-yuan-li/b856096cf065baaaabe5884deb4ecfa3.png" alt="b856096cf065baaaabe5884deb4ecfa3"></p>
+                <h2 id="Shiro是什么？"><a href="#Shiro是什么？" class="headerlink" title="Shiro是什么？"></a><strong>Shiro是什么？</strong></h2><p>Apache Shiro是Java的一个安全框架，一个强大而灵活的开源安全框架，它干净利落地处理身份认证，授权，企业会话管理和加密。</p>
+<p>目前，使用Apache Shiro的人越来越多，因为它相当简单，对比Spring Security，可能没有Spring Security做的功能强大，但是在实际工作时可能并不需要那么复杂的东西，所以使用小而简单的Shiro就足够了。</p>
+<p>功能:1.验证用户来核实他们的身份2.对用户执行访问控制</p>
+<p>我们可以看一下Apache官网上对Shiro，它都包含哪些功能。</p>
+<p>**<img src="https://user-gold-cdn.xitu.io/2019/7/19/16c087572c5ec8ae?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>Authentication：认证，有时也简称为“登录”，这是一个证明用户是他们所说的他们是谁的行为。</p>
+<p>Authorization：授权，访问控制的过程，也就是绝对“谁”去访问“什么” 授权用于回答安全问题，例如“用户是否允许编辑帐户”，“该用户是否允许查看此网页”，“该用户是否可以访问”到这个按钮？“这些都是决定用户有权访问的决定，因此都代表授权检查。</p>
+<p>Cryptography：密码术是通过隐藏信息或将其转换为无意义来保护信息免受不良访问的做法，因此没有其他人可以阅读它。Shiro专注于密码学的两个核心要素：使用公钥或私钥加密数据的密码，以及对密码等数据进行不可逆转加密的哈希（也称为消息摘要）。</p>
+<p>Shiro Cryptography的主要目标是采用传统上非常复杂的领域，并在提供强大的密码学功能的同时使其他人轻松实现。</p>
+<p>Session Management：Session会话，会话是您的用户在使用您的应用程序时携带一段时间的数据桶。传统上，会话专用于Web或EJB环境。不再！Shiro支持任何应用程序环境的会话。此外，Shiro还提供许多其他强大功能来帮助您管理会话。</p>
+<p>Web Support：Shiro的web支持的API能够轻松地帮助保护 Web 应用程序。主要就是用来对Web程序进行一个好的支持的。</p>
+<p>Caching：缓存，他是Apache Shiro中的第一层公民，来确保安全操作快速而又高效。</p>
+<p>Concurrency：shiro利用它的并发特性来支持多线程应用程序。</p>
+<p>Testing：测试支持的存在来帮助你编写单元测试和集成测试，并确保你的能够如预期的一样安全。</p>
+<p>“Run As”：其实这个就是有是有允许一个用户假设为另外一个用户身份的功能，有时候在管理脚本的时候很有效果。</p>
+<p>Remember Me：在会话中记住用户的身份，所以他们只需要在强制时候登录。</p>
+<h2 id="Shiro核心"><a href="#Shiro核心" class="headerlink" title="Shiro核心"></a>Shiro核心</h2><p>Shiro其实是有三大核心组件的，Subject、SecurityManager和Realms。</p>
+<p>Subject：Subject实质上是一个当前执行用户的特定的安全“视图”。鉴于”User”一词通常意味着一个人，而一个Subject可以是一个人， 但它还可以代表第三方服务，daemon account，cron job，或其他类似的任何东西——基本上是当前正与软件进行交互的任何东西。 </p>
+<p>所有Subject实例都被绑定到（且这是必须的）一个SecurityManager上。当你与一个Subject交互时，那些交互作用转化为与SecurityManager交互的特定subject的交互作用。 我们可以把Subject认为是一个门面，SecurityManager才是真正的执行者。</p>
+<p>SecurityManager：安全管理器，也就是说所有与安全有关的操作都会与SecurityManager进行交互，而且他管理这Subject，它其实是Shiro的核心 是Shiro架构的心脏。并作为一种“保护伞”对象来协调内部的安全组件共同构成一个对象图。</p>
+<p>Realms： 域，Shiro从从Realm获取安全数据（如用户、角色、权限），就是说SecurityManager要验证用户身份，那么它需要从Realm获取相应的用户进行比较以确定用户身份是否合法；也需要从Realm得到用户相应的角色/权限进行验证用户是否能进行操作；可以把Realm看成DataSource，即安全数据源。</p>
+<p>当配置Shiro时，你必须指定至少一个Realm用来进行身份验证和/或授权。SecurityManager可能配置多个Realms，但至少有一个是必须的。</p>
+<p>**<img src="/2020/02/04/shiro-kuang-jia-yuan-li-ji-jian-dan-shi-yong/1.png" alt="img"></p>
+<p><strong>我们看一下它具体的登录图解</strong></p>
+<p><strong><img src="/2020/02/04/shiro-kuang-jia-yuan-li-ji-jian-dan-shi-yong/2.png" alt="img"></strong></p>
+<hr>
+<p><strong>1、登陆操作 携带用户名密码给subject，subject调用自己的登陆方法传递用户名和密码给权限管理器，权限管理器将用户名密码传递给开发人员编写的realm的认证方法，realm根据用户名到数据库中查找是否存在该用户，若存在将认证信息存入到session中</strong></p>
+<p><strong>2、权限管理器会自动判断传递的密码与正确密码是否一致</strong></p>
+<p><strong>3、访问3类资源（页面） 过滤器寻找权限管理器判断该用户是否拥有xxx权限，权限管理器从session中取出认证信息对象，返回给realm，realm判断该用户拥有什么权限，封装到授权信息中返回给权限管理器，权限管理器将判断的结果返回给过滤器</strong></p>
+<p><strong>4、访问3类资源（xxx添加需要访问service）（对于过滤器来说属于2类资源），在执行方法时，会到达前置通知（esrvice方法上添加注解@RequiresPermissions(“courier:list”)），权限通知寻找权限管理器判断该用户是否拥有xxx权限，权限管理器从session中取出认证信息对象，返回给realm，realm判断该用户拥有什么权限，封装到授权信息中返回给权限管理器，权限管理器将判断的结果返回给权限通知</strong></p>
+<p><strong>其实简单来说 /userAction_login ———-&gt;请求先到达权限过滤器shiroFilter，先判断是几类资源</strong></p>
+<p><strong>登录属于一类资源直接放行到————&gt;userActon中（userAction中调用执行subject对象（使用入口是一个操作入口对象，里面有登陆方法，登出方法，获取当前对象方法）的登陆方法subject.login方法（携带着用户名，密码）</strong></p>
+<p><strong>————&gt;subject对象调用 securityManager的login方法 权限管理器不能判断用户和密码是对的需要</strong></p>
+<p><strong>————&gt;ream认证|授权器（开发人员编写，判断用户名是否存在，拥有什么权限）————&gt;处理完后把认证信息对象返回给securityManager（）如果认证信息没有问题，权限管理器会把认证信息存入session（证明认证登陆过了）</strong></p>
+<p><strong>可以自定义一个Realm；</strong></p>
+<pre><code>public class LoginRelam extends AuthorizingRealm {
+
+    @Autowired
+    private UserDao userDao;
+
+    @Override
+    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+        return null;
+    }
+
+    @Override
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+        UsernamePasswordToken upToken = (UsernamePasswordToken) authenticationToken;
+        String username = upToken.getUsername();
+        User user = userDao.QueryUser(username);
+        if(user == null){
+            throw new UnknownAccountException(&quot;不存在用户名&quot;);
+        }
+        return new SimpleAuthenticationInfo(user.getUsername(),user.getPassword(),getName());
+    }
+}</code></pre><p><strong>登陆完以后访问页面资源（页面资源属于三类资源需要权限），</strong></p>
+<p><strong>shiroFilter（已经配置了哪些资源是一类哪些资源是三类）</strong></p>
+<p><strong>————&gt;访问权限管理器，找权限管理器判断是否有xxx权限（权限管理器本身不能做出判断），权限管理器把之前登陆时保存在session中的认证信息取出</strong></p>
+<p><strong>交给————&gt;realm判断(realm中认证方法是登陆时候调用的)，realm查询数据库获得权限，把权限信息返还给————&gt;权限管理器。</strong></p>
+<p><strong>权限管理器根据realm的授权信息判断是否拥有xxx权限， 判断后把结果通知给————&gt;权限管理器，权限管理器ShiraFilter 如果没有权限跳转到响应页面。</strong></p>
+<h2 id="Shiro继承Spring"><a href="#Shiro继承Spring" class="headerlink" title="Shiro继承Spring"></a>Shiro继承Spring</h2><pre><code>导入jar包（shiro的jar有很多，针对不同的项目导入不同的jar包，但是为了防止第一次学习的时候出错，所有使用的是shiro-all-版本号.jar的jar包）；</code></pre><p><strong>步骤一： 在web.xml中配置一个过滤器，是由spring提供的，用于整合shiro：</strong><br><strong>web.xml文件（一定要注意配置shiro框架以及Spring，Struts之间的顺序问题，否则报错！</strong></p>
+<pre><code>&lt;!DOCTYPE web-app PUBLIC
+        &quot;-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN&quot;
+        &quot;http://java.sun.com/dtd/web-app_2_3.dtd&quot; &gt;
+
+&lt;web-app&gt;
+    &lt;display-name&gt;Archetype Created Web Application&lt;/display-name&gt;
+
+    &lt;!-- 配置前端控制器：服务器启动必须加载，需要加载springmvc.xml配置文件 --&gt;
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet
+        &lt;/servlet-class&gt;        &lt;!-- 配置初始化参数，创建完DispatcherServlet对象，加载springmvc.xml配置文件 --&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+            &lt;param-value&gt;classpath:springmvc.xml&lt;/param-value&gt;
+        &lt;/init-param&gt;        &lt;!-- 服务器启动的时候，让DispatcherServlet对象创建 --&gt;
+        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+    &lt;/servlet&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;dispatcherServlet&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+
+    &lt;!-- 配置Spring的监听器 --&gt;
+    &lt;listener&gt;
+        &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
+    &lt;/listener&gt;    &lt;!-- 配置加载类路径的配置文件 --&gt;
+    &lt;context-param&gt;
+        &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+        &lt;param-value&gt;classpath:applicationContext.xml&lt;/param-value&gt;
+    &lt;/context-param&gt;
+    &lt;!-- 配置解决中文乱码的过滤器 --&gt;
+    &lt;filter&gt;
+        &lt;filter-name&gt;characterEncodingFilter&lt;/filter-name&gt;
+        &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;encoding&lt;/param-name&gt;
+            &lt;param-value&gt;UTF-8&lt;/param-value&gt;
+        &lt;/init-param&gt;
+    &lt;/filter&gt;
+    &lt;filter-mapping&gt;
+        &lt;filter-name&gt;characterEncodingFilter&lt;/filter-name&gt;
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
+    &lt;!-- 配置Shiro--&gt;
+    &lt;filter&gt;
+        &lt;filter-name&gt;shiroFilter&lt;/filter-name&gt;
+        &lt;filter-class&gt;org.springframework.web.filter.DelegatingFilterProxy&lt;/filter-class&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;targetFilterLifecycle&lt;/param-name&gt;
+            &lt;param-value&gt;true&lt;/param-value&gt;
+        &lt;/init-param&gt;
+    &lt;/filter&gt;
+    &lt;filter-mapping&gt;
+        &lt;filter-name&gt;shiroFilter&lt;/filter-name&gt;
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
+&lt;/web-app&gt;</code></pre><p><strong>步骤二： 在applicationContext.xml中配置bean，ID必须为shiroFilter：</strong></p>
+<p><strong>applicationContext.xml文件配置</strong><br><strong>shiro 框架由于大量的使用了代理模式，所以在使用的过程中如果配置不当，可能会出现问题，另外在使用注解开发时候尽量的使用Spring的注解，不要使用JDK自带的原生注解，减少出错的几率</strong></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:task=&quot;http://www.springframework.org/schema/task&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd&quot;&gt;
+    &lt;!-- 开启注解扫描，要扫描的是service和dao层的注解，要忽略web层注解，因为web层让SpringMVC框架 去管理 --&gt;
+    &lt;context:component-scan base-package=&quot;cqu&quot;&gt;        &lt;!-- 配置要忽略的注解 --&gt;
+        &lt;context:exclude-filter type=&quot;annotation&quot; expression=&quot;org.springframework.stereotype.Controller&quot;/&gt;
+    &lt;/context:component-scan&gt;
+    &lt;!--
+    1. 配置 SecurityManager!
+    --&gt;
+    &lt;bean id=&quot;securityManager&quot; class=&quot;org.apache.shiro.web.mgt.DefaultWebSecurityManager&quot;&gt;
+        &lt;property name=&quot;cacheManager&quot; ref=&quot;cacheManager&quot;/&gt;
+        &lt;property name=&quot;realm&quot; ref=&quot;loginRealm&quot;/&gt;
+    &lt;/bean&gt;
+    &lt;!--
+    2. 配置 CacheManager.
+    2.1 需要加入 ehcache 的 jar 包及配置文件.
+    --&gt;
+    &lt;bean id=&quot;cacheManager&quot; class=&quot;org.apache.shiro.cache.ehcache.EhCacheManager&quot;&gt;
+        &lt;property name=&quot;cacheManagerConfigFile&quot; value=&quot;classpath:ehcache.xml&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 配置C3P0的连接池对象 --&gt;
+    &lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
+        &lt;property name=&quot;driverClassName&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
+        &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql:///ssm&quot;/&gt;
+        &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+        &lt;property name=&quot;password&quot; value=&quot;root&quot;/&gt;
+    &lt;/bean&gt;
+    &lt;!--
+    3. 配置 Realm
+    3.1 直接配置实现了 org.apache.shiro.realm.Realm 接口的 bean
+    --&gt;
+    &lt;bean id=&quot;loginRealm&quot; class=&quot;cqu.controller.LoginRelam&quot;&gt;&lt;/bean&gt;
+    &lt;!--
+  4. 配置 LifecycleBeanPostProcessor. 可以自定的来调用配置在 Spring IOC 容器中 shiro bean 的生命周期方法.
+    --&gt;
+    &lt;bean id=&quot;lifecycleBeanPostProcessor&quot; class=&quot;org.apache.shiro.spring.LifecycleBeanPostProcessor&quot;/&gt;
+    &lt;!--
+    5. 启用 IOC 容器中使用 shiro 的注解. 但必须在配置了 LifecycleBeanPostProcessor 之后才可以使用.
+    --&gt;
+    &lt;bean class=&quot;org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator&quot;
+          depends-on=&quot;lifecycleBeanPostProcessor&quot;/&gt;
+    &lt;bean class=&quot;org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor&quot;&gt;
+        &lt;property name=&quot;securityManager&quot; ref=&quot;securityManager&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!--
+    6. 配置 ShiroFilter.
+    6.1 id 必须和 web.xml 文件中配置的 DelegatingFilterProxy 的 &lt;filter-name&gt; 一致.
+                      若不一致, 则会抛出: NoSuchBeanDefinitionException. 因为 Shiro 会来 IOC 容器中查找和 &lt;filter-name&gt; 名字对应的 filter bean.
+    --&gt;
+    &lt;bean id=&quot;shiroFilter&quot; class=&quot;org.apache.shiro.spring.web.ShiroFilterFactoryBean&quot;&gt;
+        &lt;property name=&quot;securityManager&quot; ref=&quot;securityManager&quot;/&gt;
+        &lt;property name=&quot;loginUrl&quot; value=&quot;/index.jsp&quot;/&gt;
+        &lt;property name=&quot;successUrl&quot; value=&quot;/list.jsp&quot;/&gt;
+        &lt;property name=&quot;unauthorizedUrl&quot; value=&quot;/unauthorized.jsp&quot;/&gt;
+        &lt;!--
+            配置哪些页面需要受保护.
+            以及访问这些页面需要的权限.
+            1). anon 可以被匿名访问
+            2). authc 必须认证(即登录)后才可能访问的页面.
+            3). logout 登出.
+            4). roles 角色过滤器
+        --&gt;
+        &lt;property name=&quot;filterChainDefinitions&quot;&gt;
+            &lt;value&gt;
+                /index.jsp = anon
+                /css/** = anon
+                /js/** = anon
+                /images/** = anon
+                /media/** = anon
+                /res/** = anon
+                /index.css = anon
+                # everything else requires authentication:
+                /* = authc
+            &lt;/value&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 配置SqlSession的工厂 --&gt;
+    &lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
+    &lt;/bean&gt;        &lt;!-- 配置扫描dao的包 --&gt;
+    &lt;bean id=&quot;mapperScanner&quot; class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
+        &lt;property name=&quot;basePackage&quot; value=&quot;cqu.dao&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;bean id=&quot;taskExecutor&quot; class=&quot;org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor&quot;&gt;
+        &lt;!-- 核心线程数 --&gt;
+        &lt;property name=&quot;corePoolSize&quot; value=&quot;5&quot; /&gt;
+        &lt;!-- 最大线程数 --&gt;
+        &lt;property name=&quot;maxPoolSize&quot; value=&quot;10&quot; /&gt;
+        &lt;!-- 队列最大长度 --&gt;
+        &lt;property name=&quot;queueCapacity&quot; value=&quot;20&quot; /&gt;
+        &lt;!-- 线程池维护线程所允许的空闲时间，默认为60s --&gt;
+        &lt;property name=&quot;keepAliveSeconds&quot; value=&quot;60&quot; /&gt;
+    &lt;/bean&gt;
+    &lt;!-- 注解式 --&gt;
+    &lt;task:annotation-driven /&gt;
+&lt;/beans&gt;</code></pre><p><strong>步骤三： 登录系统使用shrio框架管理，修改Action中login方法：</strong></p>
+<pre><code> Subject currentUser = SecurityUtils.getSubject();
+ if(!currentUser.isAuthenticated()){
+     UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+     token.setRememberMe(true);
+ try {
+     currentUser.login(token);
+ } catch (AuthenticationException e) {
+     return null;
+ }
+}</code></pre><p><strong>步骤四： 开发属于自己的realm类：</strong></p>
+<pre><code>public class LoginRelam extends AuthorizingRealm {
+
+    @Autowired
+    private UserDao userDao;
+
+    @Override
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+        UsernamePasswordToken upToken = (UsernamePasswordToken) authenticationToken;
+        String username = upToken.getUsername();
+        User user = userDao.QueryUser(username);
+        if(user == null){
+            throw new UnknownAccountException(&quot;不存在用户名&quot;);
+        }
+        return new SimpleAuthenticationInfo(user.getUsername(),user.getPassword(),getName());
+    }
+}</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>Shiro是一个功能很齐全的框架，使用起来也很容易，总结一下 三大核心内容：</strong></p>
+<p><strong>1.Subject2.SecurityManager3.Realms</strong></p>
+<p><strong>Shiro 功能强大、且 简单、灵活。是Apache 下的项目比较可靠，且不跟任何的框架或者容器绑定，可以独立运行(JavaSE环境也可以使用)</strong></p>
 
             </div>
             <hr />
@@ -672,7 +883,7 @@
         repo: 'tigerLuHai.github.io',
         owner: 'tigerLuHai',
         admin: "tigerLuHai",
-        id: '2020/01/04/springmvc-yuan-li/',
+        id: '2020/02/04/shiro-kuang-jia-yuan-li-ji-jian-dan-shi-yong/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -955,29 +1166,31 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/">
+                <a href="/2020/02/04/shiro-kuang-jia-yuan-li-ji-jian-dan-shi-yong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="javaWeb三大核心组件之servlet">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Shiro框架原理及简单使用">
                         
-                        <span class="card-title">javaWeb三大核心组件之servlet</span>
+                        <span class="card-title">Shiro框架原理及简单使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            javaWeb三大核心组件之Servlet什么是ServletJava Servlet 是运行在 Web 服务器或应用服务器上的程序，它是作为来自 Web 浏览器或其他 HTTP 客户端的请求和 HTTP 服务器上的数据库或应用程序之间的中
+                            Shiro是什么？Apache Shiro是Java的一个安全框架，一个强大而灵活的开源安全框架，它干净利落地处理身份认证，授权，企业会话管理和加密。
+目前，使用Apache Shiro的人越来越多，因为它相当简单，对比Spring Sec
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-02-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -990,6 +1203,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -1000,31 +1214,33 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/04/hui-tou-zai-kan-spring/">
+                <a href="/2020/02/02/http-qing-qiu-fang-fa-de-mi-deng-xing/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="回头再看spring">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="HTTP请求方法的幂等性">
                         
-                        <span class="card-title">回头再看spring</span>
+                        <span class="card-title">HTTP请求方法的幂等性</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            回头再看Spring什么是SpringSpring是个包含一系列功能的合集，如快速构建微服务的Spring Boot，管理一系列微服务的Spring Cloud，支持认证与鉴权的Spring Security，基于MVC的Web框架Spri
+                            怎么理解幂等性HTTP幂等方法，是指无论调用多少次都不会有不同结果的 HTTP 方法。不管你调用一次，还是调用一百次，一千次，结果都是相同的。
+还是以之前的博文的例子为例。
+GET     /tickets       # 获取ticket
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-04
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-02-02
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/java/" class="post-category" target="_blank">
-                                    java
+                            <a href="/categories/计算机网络/" class="post-category" target="_blank">
+                                    计算机网络
                                 </a>
                             
                             
