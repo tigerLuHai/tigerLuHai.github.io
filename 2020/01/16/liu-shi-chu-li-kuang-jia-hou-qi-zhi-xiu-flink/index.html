@@ -292,7 +292,7 @@ Flink起源于Stratosphe">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/flink.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -443,14 +443,14 @@ Flink起源于Stratosphe">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.7k
+                    5.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    17 分
+                    21 分
                 </div>
                 
                 
@@ -508,59 +508,6 @@ Flink起源于Stratosphe">
 <p>sender把message发送给receiver.当receiver在规定时间内没有回复ACK或回复了error信息,那么sender重发这条message给receiver,直到sender收到receiver的ACK.</p>
 <p><strong>Exactly once:</strong> 对于一条message,receiver确保只收到一次</p>
 <h3 id="支持事件时间（EventTime"><a href="#支持事件时间（EventTime" class="headerlink" title="支持事件时间（EventTime)"></a>支持事件时间（EventTime)</h3><p>目前大多数框架时间窗口计算，都是采用当前系统时间，以时间为单位进行的聚合计算只能反应数据到达计算引擎的时间，而并不是实际业务时间</p>
-<h1 id="Flink部署"><a href="#Flink部署" class="headerlink" title="Flink部署"></a>Flink部署</h1><h2 id="standalone模式"><a href="#standalone模式" class="headerlink" title="standalone模式"></a>standalone模式</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h3><p>解压缩  flink-1.7.0-bin-hadoop27-scala_2.11.tgz</p>
-<p><strong>修改 flink/conf/flink-conf.yaml 文件</strong></p>
-<pre><code>jobmanager.rpc.address:master</code></pre><p><strong>修改/conf/slave文件,添加上集群主机</strong></p>
-<pre><code>slave1
-slave2
-slave3</code></pre><p><strong>分发给 另外两台机子(<a href>分发脚本可通过如下地址获取</a>)</strong></p>
-<pre><code>xsync flink-1.7.0</code></pre><p><strong>启动</strong></p>
-<pre><code>start-cluster.sh</code></pre><p>访问<a href="http://hadoop1:8081" target="_blank" rel="noopener">http://hadoop1:8081</a></p>
-<p><img src="file:///C:%5CUsers%5Ctiger%5CAppData%5CLocal%5CTemp%5Cksohtml3252%5Cwps14.jpg" alt="img"> </p>
-<h3 id="1-2-提交任务"><a href="#1-2-提交任务" class="headerlink" title="1**.2** 提交任务"></a><strong>1**</strong>.2** <strong>提交任务</strong></h3><p><strong>1**</strong>)** <strong>准备数据文件</strong></p>
-<p><img src="file:///C:%5CUsers%5Ctiger%5CAppData%5CLocal%5CTemp%5Cksohtml3252%5Cwps15.jpg" alt="img"> </p>
-<p><strong>2**</strong>)** <strong>把含数据文件的文件夹，分发到**</strong>taskmanage** <strong>机器中</strong></p>
-<p><img src="file:///C:%5CUsers%5Ctiger%5CAppData%5CLocal%5CTemp%5Cksohtml3252%5Cwps16.jpg" alt="img"> </p>
-<p>由于读取数据是从本地磁盘读取，实际任务会被分发到taskmanage的机器中，所以要把目标文件分发。</p>
-<p><strong>3)</strong> <strong>执行程序</strong> </p>
-<p><img src="file:///C:%5CUsers%5Ctiger%5CAppData%5CLocal%5CTemp%5Cksohtml3252%5Cwps17.jpg" alt="img"> </p>
-<p><strong>4**</strong>)** <strong>到目标文件夹中查看计算结果</strong></p>
-<p>注意：计算结果根据会保存到taskmanage的机器下，不会再jobmanage下。</p>
-<p><img src="file:///C:%5CUsers%5Ctiger%5CAppData%5CLocal%5CTemp%5Cksohtml3252%5Cwps18.jpg" alt="img"> </p>
-<p><strong>5**</strong>)** <strong>在w**</strong>ebui<strong>**控制台查看计算过程</strong> </p>
-<p><img src="file:///C:%5CUsers%5Ctiger%5CAppData%5CLocal%5CTemp%5Cksohtml3252%5Cwps19.jpg" alt="img"> </p>
-<h2 id="2-yarn-模式"><a href="#2-yarn-模式" class="headerlink" title="2  yarn**模式**"></a><strong>2</strong>  <strong>yarn**</strong>模式**</h2><p>1) <strong>启动h**</strong>adoop<strong>**集群</strong></p>
-<p>2) <strong>启动**</strong>yarn-session**</p>
-<p>其中：</p>
-<p><strong>-n(–container)</strong>：TaskManager的数量。</p>
-<p><strong>-s(–slots)</strong>：    每个TaskManager的slot数量，默认一个slot一个core，默认每个taskmanager的slot的个数为1，有时可以多一些taskmanager，做冗余。</p>
-<p><strong>-jm</strong>：JobManager的内存（单位MB)。</p>
-<p><strong>-tm</strong>：每个taskmanager的内存（单位MB)。</p>
-<p><strong>-nm</strong>：yarn 的appName(现在yarn的ui上的名字)。 </p>
-<p><strong>-d</strong>：后台执行。</p>
-<p><img src="file:///C:%5CUsers%5Ctiger%5CAppData%5CLocal%5CTemp%5Cksohtml3252%5Cwps20.jpg" alt="img"> </p>
-<p>3) <strong>执行任务</strong></p>
-<p><img src="file:///C:%5CUsers%5Ctiger%5CAppData%5CLocal%5CTemp%5Cksohtml3252%5Cwps21.jpg" alt="img"> </p>
-<p>4) 去yarn控制台查看任务状态</p>
-<p><img src="file:///C:%5CUsers%5Ctiger%5CAppData%5CLocal%5CTemp%5Cksohtml3252%5Cwps22.jpg" alt="img"> </p>
-<h1 id="Flink架构介绍"><a href="#Flink架构介绍" class="headerlink" title="Flink架构介绍"></a>Flink架构介绍</h1><h2 id="基本组件栈"><a href="#基本组件栈" class="headerlink" title="基本组件栈"></a>基本组件栈</h2><p>了解Spark的朋友会发现Flink的架构和Spark是非常类似的，在整个软件架构体系中，同样遵循着分层的架构设计理念，在降低系统耦合度的同时，也为上层用户构建Flink应用提供了丰富且友好的接口。</p>
-<p><img src="/2020/01/16/liu-shi-chu-li-kuang-jia-hou-qi-zhi-xiu-flink/6.png" alt="file"></p>
-<p>Flink分为架构分为三层，由上往下依次是API&amp;Libraries层、Runtime核心层以及物理部署层</p>
-<p>​        <strong>API&amp;Libraries层</strong></p>
-<p>作为分布式数据处理框架，Flink同时提供了支撑计算和批计算的接口，同时在此基础上抽象出不同的应用类型的组件库，如基于流处理的CEP(复杂事件处理库)、SQL&amp;Table库和基于批处理的FlinkML(机器学习库)等、Gelly(图处理库)等。API层包括构建流计算应用的DataStream API和批计算应用的DataSet API，两者都提供给用户丰富的数据处理高级API，例如Map、FlatMap操作等，同时也提供比较低级的Process Function API，用户可以直接操作状态和时间等底层数据。</p>
-<p>　　<strong>Runtime核心层</strong></p>
-<p>　　该层主要负责对上层不同接口提供基础服务，也是Flink分布式计算框架的核心实现层，支持分布式Stream作业的执行、JobGraph到ExecutionGraph的映射转换、任务调度等。将DataSteam和DataSet转成统一的可执行的Task Operator，达到在流式引擎下同时处理批量计算和流式计算的目的。</p>
-<p>　　<strong>物理部署层</strong></p>
-<p>　　该层主要涉及Flink的部署模式，目前Flink支持多种部署模式：本地、集群(Standalone、YARN)、云(GCE/EC2)、Kubenetes。Flink能够通过该层能够支持不同平台的部署，用户可以根据需要选择使用对应的部署模式。</p>
-<h2 id="基本架构图"><a href="#基本架构图" class="headerlink" title="基本架构图"></a>基本架构图</h2><p><img src="/2020/01/16/liu-shi-chu-li-kuang-jia-hou-qi-zhi-xiu-flink/5.png" alt="file"></p>
-<p>Flink系统主要由两个组件组成，分别为JobManager和TaskManager，Flink架构也遵循Master-Slave架构设计原则，JobManager为Master节点，TaskManager为Worker(Slave)节点。所有组件之间的通信都是借助于Akka Framework，包括任务的状态以及Checkpoint触发等信息。</p>
-<p><strong>1.Client客户端</strong></p>
-<p>客户端负责将任务提交到集群，与JobManager构建Akka连接，然后将任务提交到JobManager，通过和JobManager之间进行交互获取任务执行状态。客户端提交任务可以采用CLI方式或者通过使用Flink WebUI提交，也可以在应用程序中指定JobManager的RPC网络端口构建ExecutionEnvironment提交Flink应用。</p>
-<p><strong>2.JobManager</strong></p>
-<p>JobManager负责整个Flink集群任务的调度以及资源的管理，从客户端中获取提交的应用，然后根据集群中TaskManager上TaskSlot的使用情况，为提交的应用分配相应的TaskSlots资源并命令TaskManager启动从客户端中获取的应用。JobManager相当于整个集群的Master节点，且整个集群中有且仅有一个活跃的JobManager，负责整个集群的任务管理和资源管理。JobManager和TaskManager之间通过Actor System进行通信，获取任务执行的情况并通过Actor System将应用的任务执行情况发送给客户端。同时在任务执行过程中，Flink JobManager会触发Checkpoints操作，每个TaskManager节点收到Checkpoint触发指令后，完成Checkpoint操作，所有的Checkpoint协调过程都是在Flink JobManager中完成。当任务完成后，Flink会将任务执行的信息反馈给客户端，并且释放掉TaskManager中的资源以供下一次提交任务使用。</p>
-<p><strong>3.TaskManager</strong></p>
-<p>TaskManager相当于整个集群的Slave节点，负责具体的任务执行和对应任务在每个节点上的资源申请与管理。客户端通过将编写好的Flink应用编译打包，提交到JobManager，然后JobManager会根据已经注册在JobManager中TaskManager的资源情况，将任务分配给有资源的TaskManager节点，然后启动并运行任务。TaskManager从JobManager接收需要部署的任务，然后使用Slot资源启动Task，建立数据接入的网络连接，接收数据并开始数据处理。同时TaskManager之间的数据交互都是通过数据流的方式进行的。</p>
-<p>可以看出，Flink的任务运行其实是采用多线程的方式，这和MapReduce多JVM进程的方式有很大的区别Flink能够极大提高CPU使用效率，在多个任务和Task之间通过TaskSlot方式共享系统资源，每个TaskManager中管理多个TaskSlot资源池进行对资源进行有效管理。</p>
 <h1 id="Flink实战入门"><a href="#Flink实战入门" class="headerlink" title="Flink实战入门"></a>Flink实战入门</h1><h2 id="批处理wordcount编程实战"><a href="#批处理wordcount编程实战" class="headerlink" title="批处理wordcount编程实战"></a><strong>批处理wordcount编程实战</strong></h2><p><strong>添加依赖</strong></p>
 <pre><code>        &lt;dependency&gt;
             &lt;groupId&gt;org.apache.flink&lt;/groupId&gt;
@@ -617,7 +564,93 @@ object StreamWcApp {
     dStream.print()
 
     env.execute()
-  }</code></pre><h3 id="流计算框架Flink与Storm-的性能对比"><a href="#流计算框架Flink与Storm-的性能对比" class="headerlink" title="流计算框架Flink与Storm 的性能对比"></a>流计算框架Flink与Storm 的性能对比</h3><table>
+  }</code></pre><h1 id="Flink部署"><a href="#Flink部署" class="headerlink" title="Flink部署"></a>Flink部署</h1><h2 id="standalone模式"><a href="#standalone模式" class="headerlink" title="standalone模式"></a>standalone模式</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h3><p>解压缩  flink-1.7.0-bin-hadoop27-scala_2.11.tgz</p>
+<p><strong>修改 flink/conf/flink-conf.yaml 文件</strong></p>
+<pre><code>jobmanager.rpc.address:master</code></pre><p><strong>修改/conf/slave文件,添加上集群主机</strong></p>
+<pre><code>slave1
+slave2
+slave3</code></pre><p><strong>分发给 另外两台机子(<a href>分发脚本可通过如下地址获取</a>)</strong></p>
+<pre><code>xsync flink-1.7.0</code></pre><p><strong>启动</strong></p>
+<pre><code>start-cluster.sh</code></pre><h3 id="提交任务"><a href="#提交任务" class="headerlink" title="提交任务"></a>提交任务</h3><p><strong>准备数据文件</strong> </p>
+<p><strong>把含数据文件的文件夹，分发到taskmanage 机器中</strong> </p>
+<p><strong>注:</strong>由于读取数据是从本地磁盘读取，实际任务会被分发到taskmanage的机器中，所以要把目标文件分发。</p>
+<p><strong>执行程序</strong> </p>
+<pre><code>..flink run -c 全类名 /jar包位置 --input 输入文件位置 --output 输出文件位置</code></pre><p> <strong>到目标文件夹中查看计算结果</strong></p>
+<p><strong>注：</strong>计算结果根据会保存到taskmanage的机器下，不会再jobmanage下。</p>
+<p>在<strong>web控制台</strong>查看计算过程</p>
+<pre><code>在浏览器打开
+http://master:8081 </code></pre><h2 id="yarn模式"><a href="#yarn模式" class="headerlink" title="yarn模式"></a>yarn模式</h2><p><strong>启动hadoop集群</strong></p>
+<p><strong>启动yarn-session</strong></p>
+<pre><code>./yarn-sessin.sh -n 2 -s 6 -jm 1024 -tm test -d</code></pre><p>其中：</p>
+<ul>
+<li><p>-n(–container)：TaskManager的数量。<br>   -s(–slots)：    每个TaskManager的slot数量，默认一个slot一个core，默认每个taskmanager的slot的个数为1，有时可以多一些taskmanager，做冗余。</p>
+</li>
+<li><p>-jm：JobManager的内存（单位MB)。</p>
+</li>
+<li><p>-tm：每个taskmanager的内存（单位MB)。</p>
+</li>
+<li><p>-nm：yarn 的appName(现在yarn的ui上的名字)。 </p>
+</li>
+<li><p>-d：后台执行。</p>
+<p><strong>执行任务</strong></p>
+</li>
+</ul>
+<pre><code>./flink run -m yarn-cluster -c 主类名 jar包位置 --input 输入文件位置 --output 输出文件位置 </code></pre><p><strong>去yarn控制台查看任务状态</strong></p>
+<pre><code>去浏览器打开
+http://slave1:8088</code></pre><h1 id="Flink架构介绍"><a href="#Flink架构介绍" class="headerlink" title="Flink架构介绍"></a>Flink架构介绍</h1><h2 id="基本组件栈"><a href="#基本组件栈" class="headerlink" title="基本组件栈"></a>基本组件栈</h2><p>了解Spark的朋友会发现Flink的架构和Spark是非常类似的，在整个软件架构体系中，同样遵循着分层的架构设计理念，在降低系统耦合度的同时，也为上层用户构建Flink应用提供了丰富且友好的接口。</p>
+<p><img src="/2020/01/16/liu-shi-chu-li-kuang-jia-hou-qi-zhi-xiu-flink/6.png" alt="file"></p>
+<p>Flink分为架构分为三层，由上往下依次是API&amp;Libraries层、Runtime核心层以及物理部署层</p>
+<p>​        <strong>API&amp;Libraries层</strong></p>
+<p>作为分布式数据处理框架，Flink同时提供了支撑计算和批计算的接口，同时在此基础上抽象出不同的应用类型的组件库，如基于流处理的CEP(复杂事件处理库)、SQL&amp;Table库和基于批处理的FlinkML(机器学习库)等、Gelly(图处理库)等。API层包括构建流计算应用的DataStream API和批计算应用的DataSet API，两者都提供给用户丰富的数据处理高级API，例如Map、FlatMap操作等，同时也提供比较低级的Process Function API，用户可以直接操作状态和时间等底层数据。</p>
+<p>　　<strong>Runtime核心层</strong></p>
+<p>　　该层主要负责对上层不同接口提供基础服务，也是Flink分布式计算框架的核心实现层，支持分布式Stream作业的执行、JobGraph到ExecutionGraph的映射转换、任务调度等。将DataSteam和DataSet转成统一的可执行的Task Operator，达到在流式引擎下同时处理批量计算和流式计算的目的。</p>
+<p>　　<strong>物理部署层</strong></p>
+<p>　　该层主要涉及Flink的部署模式，目前Flink支持多种部署模式：本地、集群(Standalone、YARN)、云(GCE/EC2)、Kubenetes。Flink能够通过该层能够支持不同平台的部署，用户可以根据需要选择使用对应的部署模式。</p>
+<h2 id="运行架构"><a href="#运行架构" class="headerlink" title="运行架构"></a>运行架构</h2><h2 id="任务提交流程（yarn模式）"><a href="#任务提交流程（yarn模式）" class="headerlink" title="任务提交流程（yarn模式）"></a>任务提交流程（yarn模式）</h2><p><img src="/2020/01/16/liu-shi-chu-li-kuang-jia-hou-qi-zhi-xiu-flink/wps23.jpg" alt="Yarn模式任务提交流程"> </p>
+<p>Flink任务提交后，Client向HDFS上传Flink的Jar包和配置，之后向Yarn ResourceManager提交任务，ResourceManager分配Container资源并通知对应的NodeManager启动ApplicationMaster，ApplicationMaster启动后加载Flink的Jar包和配置构建环境，然后启动JobManager，之后ApplicationMaster向ResourceManager申请资源启动TaskManager，ResourceManager分配Container资源后，由ApplicationMaster通知资源所在节点的NodeManager启动TaskManager，NodeManager加载Flink的Jar包和配置构建环境并启动TaskManager，TaskManager启动后向JobManager发送心跳包，并等待JobManager向其分配任务。</p>
+<h2 id="2-任务调度原理"><a href="#2-任务调度原理" class="headerlink" title="2 任务调度原理"></a><strong>2</strong> <strong>任务调度原理</strong></h2><p><img src="/2020/01/16/liu-shi-chu-li-kuang-jia-hou-qi-zhi-xiu-flink/wps24.jpg" alt="任务调度原理"></p>
+<p>客户端不是运行时和程序执行的一部分，但它用于准备并发送dataflow(JobGraph)给Master(JobManager)，然后，客户端断开连接或者维持连接以等待接收计算结果。</p>
+<p>当 Flink 集群启动后，首先会启动一个 JobManger 和一个或多个的 TaskManager。由 Client 提交任务给 JobManager，JobManager 再调度任务到各个 TaskManager 去执行，然后 TaskManager 将心跳和统计信息汇报给 JobManager。TaskManager 之间以流的形式进行数据的传输。上述三者均为独立的 JVM 进程。</p>
+<p><strong>Client</strong> 为提交 Job 的客户端，可以是运行在任何机器上（与 JobManager 环境连通即可）。提交 Job 后，Client 可以结束进程（Streaming的任务），也可以不结束并等待结果返回。</p>
+<p><strong>JobManager</strong> 主要负责调度 Job 并协调 Task 做 checkpoint，职责上很像 Storm 的 Nimbus。从 Client 处接收到 Job 和 JAR 包等资源后，会生成优化后的执行计划，并以 Task 的单元调度到各个 TaskManager 去执行。</p>
+<p><strong>TaskManager</strong> 在启动的时候就设置好了槽位数（Slot），每个 slot 能启动一个 Task，Task 为线程。从 JobManager 处接收需要部署的 Task，部署启动后，与自己的上游建立 Netty 连接，接收数据并处理。</p>
+<p><strong>关于执行图</strong></p>
+<p>Flink 中的执行图可以分成四层：<strong>StreamGraph</strong> -&gt; <strong>JobGraph</strong> -&gt; <strong>ExecutionGraph</strong> -&gt; <strong>物理执行图</strong>。</p>
+<p><strong>StreamGraph</strong>：是根据用户通过 Stream API 编写的代码生成的最初的图。用来表示程序的拓扑结构。</p>
+<p><strong>JobGraph</strong>：StreamGraph经过优化后生成了 JobGraph，提交给 JobManager 的数据结构。主要的优化为，将多个符合条件的节点 chain 在一起作为一个节点，这样可以减少数据在节点之间流动所需要的序列化/反序列化/传输消耗。</p>
+<p><strong>ExecutionGraph</strong>：JobManager 根据 JobGraph 生成ExecutionGraph。ExecutionGraph是JobGraph的并行化版本，是调度层最核心的数据结构。</p>
+<p><strong>物理执行图</strong>：JobManager 根据 ExecutionGraph 对 Job 进行调度后，在各个TaskManager 上部署 Task 后形成的“图”，并不是一个具体的数据结构。</p>
+<p><img src="/2020/01/16/liu-shi-chu-li-kuang-jia-hou-qi-zhi-xiu-flink/wps25.jpg" alt="img"></p>
+<h2 id="3-Worker与Slots"><a href="#3-Worker与Slots" class="headerlink" title="3 Worker与Slots"></a><strong>3</strong> <strong>Worker与Slots</strong></h2><p><strong>每一个worker(TaskManager)是一个JVM进程，它可能会在独立的线程上执行一个或多个subtask</strong>。为了控制一个worker能接收多少个task，worker通过task slot来进行控制（一个worker至少有一个task slot）。·</p>
+<p>每个task slot表示TaskManager拥有资源的一个固定大小的子集。假如一个TaskManager有三个slot，那么它会将其管理的内存分成三份给各个slot。<strong>资源slot化意味着一个subtask将不需要跟来自其他job的subtask竞争被管理的内存，取而代之的是它将拥有一定数量的内存储备</strong>。需要注意的是，这里不会涉及到CPU的隔离，slot目前仅仅用来隔离task的受管理的内存。</p>
+<p><strong>通过调整task slot的数量，允许用户定义subtask之间如何互相隔离</strong>。如果一个TaskManager一个slot，那将意味着每个task group运行在独立的JVM中（该JVM可能是通过一个特定的容器启动的），而一个TaskManager多个slot意味着更多的subtask可以共享同一个JVM。而在同一个JVM进程中的task将共享TCP连接（基于多路复用）和心跳消息。它们也可能共享数据集和数据结构，因此这减少了每个task的负载。</p>
+<p><img src="/2020/01/16/liu-shi-chu-li-kuang-jia-hou-qi-zhi-xiu-flink/wps26.jpg" alt="TaskManager与Slot"></p>
+<p><strong>Task **Slot是静态的概念，是指TaskManager具有的并发执行能力</strong>，可以通过参数taskmanager.numberOfTaskSlots进行配置，而<strong>并行度parallelism是动态概念，即TaskManager运行程序时实际使用的并发能力</strong>，可以通过参数parallelism.default进行配置。</p>
+<p>也就是说，假设一共有3个TaskManager，每一个TaskManager中的分配3个TaskSlot，也就是每个TaskManager可以接收3个task，一共9个TaskSlot，如果我们设置parallelism.default=1，即运行程序默认的并行度为1，9个TaskSlot只用了1个，有8个空闲，因此，设置合适的并行度才能提高效率。</p>
+<p><img src="/2020/01/16/liu-shi-chu-li-kuang-jia-hou-qi-zhi-xiu-flink/wps27.jpg" alt="img"> </p>
+<p><img src="/2020/01/16/liu-shi-chu-li-kuang-jia-hou-qi-zhi-xiu-flink/wps28.jpg" alt="img"> </p>
+<h2 id="4-并行数据流"><a href="#4-并行数据流" class="headerlink" title="4 并行数据流"></a><strong>4</strong> <strong>并行数据流</strong></h2><p><strong>Flink程序的执行具有并行、分布式的特性</strong>。在执行过程中，一个 stream 包含一个或多个 stream partition ，而每一个 operator 包含一个或多个 operator subtask，这些operator subtasks在不同的线程、不同的物理机或不同的容器中彼此互不依赖得执行。</p>
+<p><strong>一个特定operator的subtask的个数被称之为其parallelism(并行度)</strong>。一个stream的并行度总是等同于其producing operator的并行度。一个程序中，不同的operator可能具有不同的并行度。</p>
+<p><img src="/2020/01/16/liu-shi-chu-li-kuang-jia-hou-qi-zhi-xiu-flink/wps29.jpg" alt="并行数据流"></p>
+<p>Stream在operator之间传输数据的形式可以是one-to-one(forwarding)的模式也可以是redistributing的模式，具体是哪一种形式，取决于operator的种类。</p>
+<p><strong>One-to-one</strong>：<strong>stream(比如在source和map operator之间)维护着分区以及元素的顺序</strong>。那意味着map operator的subtask看到的元素的个数以及顺序跟source operator的subtask生产的元素的个数、顺序相同，map、fliter、flatMap等算子都是one-to-one的对应关系。</p>
+<p>Ø <strong>类似于s**</strong>park<strong>**中的窄依赖</strong></p>
+<p><strong>Redistributing</strong>：<strong>stream(map()跟keyBy/window之间或者keyBy/window跟sink之间)的分区会发生改变</strong>。每一个operator subtask依据所选择的transformation发送数据到不同的目标subtask。例如，keyBy() 基于hashCode重分区、broadcast和rebalance会随机重新分区，这些算子都会引起redistribute过程，而redistribute过程就类似于Spark中的shuffle过程。</p>
+<p>Ø <strong>类似于s**</strong>park<strong>**中的宽依赖</strong></p>
+<h2 id="5-task与operator-chains"><a href="#5-task与operator-chains" class="headerlink" title="5 task与operator chains"></a><strong>5</strong> <strong>task与operator</strong> <strong>chains</strong></h2><p>相同并行度的one to one操作，Flink这样相连的operator 链接在一起形成一个task，原来的operator成为里面的subtask。将operators链接成task是非常有效的优化：<strong>它能减少线程之间的切换和基于缓存区的数据交换，在减少时延的同时提升吞吐量</strong>。链接的行为可以在编程API中进行指定。</p>
+<p> <img src="/2020/01/16/liu-shi-chu-li-kuang-jia-hou-qi-zhi-xiu-flink/wps30.jpg" alt=" task与operatorchains"></p>
+<p><strong>OperatorChain的优点</strong></p>
+<ul>
+<li>减少线程切换</li>
+<li>减少序列化与反序列化</li>
+<li>减少延迟并且提高吞吐能力</li>
+</ul>
+<p><strong>OperatorChain 组成条件</strong></p>
+<ul>
+<li>上下游算子并行度一致</li>
+<li>上下游算子之间没有数据shuffle</li>
+</ul>
+<h1 id="流计算框架Flink与Storm-的性能对比"><a href="#流计算框架Flink与Storm-的性能对比" class="headerlink" title="流计算框架Flink与Storm 的性能对比"></a>流计算框架Flink与Storm 的性能对比</h1><table>
 <thead>
 <tr>
 <th></th>
@@ -651,22 +684,22 @@ object StreamWcApp {
 <td>在美团点评实时计算业务中已有一定应用，但 是管理平台、API 及文档等仍需进一步完善。</td>
 </tr>
 </tbody></table>
-<h4 id="框架本身性能"><a href="#框架本身性能" class="headerlink" title="框架本身性能"></a>框架本身性能</h4><ul>
+<h2 id="框架本身性能"><a href="#框架本身性能" class="headerlink" title="框架本身性能"></a>框架本身性能</h2><ul>
 <li>Storm 单线程吞吐约为 <strong>8.7 万条/秒</strong>，Flink 单线程吞吐 可达 <strong>35 万条/秒</strong>。Flink 吞吐约为 Storm 的 3-5 倍。</li>
 <li>Storm QPS 接近吞吐时延迟（含 Kafka 读写时间）中位 数约 100 毫秒，99 线约 700 毫秒，Flink 中位数约 50 毫秒，99 线约 300 毫秒。Flink 在 满吞吐时的延迟约为 Storm 的一半，且随着 QPS 逐渐增大，Flink 在延迟上的优势开始体现出来。</li>
 <li>综上可得，<strong>Flink 框架本身性能优于 Storm</strong>。</li>
 </ul>
-<h4 id="复杂用户逻辑对框架差异的削弱"><a href="#复杂用户逻辑对框架差异的削弱" class="headerlink" title="复杂用户逻辑对框架差异的削弱"></a>复杂用户逻辑对框架差异的削弱</h4><ul>
+<h2 id="复杂用户逻辑对框架差异的削弱"><a href="#复杂用户逻辑对框架差异的削弱" class="headerlink" title="复杂用户逻辑对框架差异的削弱"></a>复杂用户逻辑对框架差异的削弱</h2><ul>
 <li>单个 Bolt Sleep 时长达到 1 毫秒时， Flink 的延迟仍低于 Storm，但吞吐优势已基本无法体现。</li>
 <li>因此，用户逻辑越复杂，本身耗时越长，针对该逻辑的测试体现出来的框架的差异越小。</li>
 </ul>
-<h4 id="不同消息投递语义的差异"><a href="#不同消息投递语义的差异" class="headerlink" title="不同消息投递语义的差异"></a>不同消息投递语义的差异</h4><ul>
+<h2 id="不同消息投递语义的差异"><a href="#不同消息投递语义的差异" class="headerlink" title="不同消息投递语义的差异"></a>不同消息投递语义的差异</h2><ul>
 <li>Flink Exactly Once 的吞吐较 At Least Once 而 言下降 6.3%，延迟差异不大；Storm At Most Once 语义下的吞吐较 At Least Once 提升 16.8%，延迟稍有下降。</li>
 <li>由于 Storm 会对每条消息进行 ACK，Flink 是基于一批消息做的检查点，不同的实现原理导 致两者在 At Least Once 语义的花费差异较大，从而影响了性能。而 Flink 实现 Exactly Once 语义仅增加了对齐操作，因此在算子并发量不大、没有出现慢节点的情况下对 Flink 性能的 影响不大。Storm At Most Once 语义下的性能仍然低于 Flink。</li>
 </ul>
-<h4 id="Flink-状态存储后端选择"><a href="#Flink-状态存储后端选择" class="headerlink" title="Flink 状态存储后端选择"></a>Flink 状态存储后端选择</h4><p>• Flink 提供了内存、文件系统、RocksDB 三种 StateBackends，三者的对比如下：</p>
+<h2 id="Flink-状态存储后端选择"><a href="#Flink-状态存储后端选择" class="headerlink" title="Flink 状态存储后端选择"></a>Flink 状态存储后端选择</h2><p>• Flink 提供了内存、文件系统、RocksDB 三种 StateBackends，三者的对比如下：</p>
 <p>StateBackend 过程状态存储 检查点存储 吞吐 推荐使用场景 Memory TM Memory JM Memory 高（3-5 倍 Storm） 调试、无状态或对数据是否 丢失重复无要求 FileSystem TM Memory FS/HDFS 高（3-5 倍 Storm） 普通状态、窗口、KV 结构 （建议作为默认 Backend）</p>
-<pre><code>    RocksDB RocksDB on TM FS/HDFS 低（0.3-0.5 倍 Storm） 超大状态、超长窗口、大型 KV 结构 </code></pre><h4 id="推荐使用-Flink-的场景"><a href="#推荐使用-Flink-的场景" class="headerlink" title="推荐使用 Flink 的场景"></a>推荐使用 Flink 的场景</h4><p>综合上述测试结果，以下实时计算场景建议考虑使用 Flink 框架进行计算：</p>
+<pre><code>    RocksDB RocksDB on TM FS/HDFS 低（0.3-0.5 倍 Storm） 超大状态、超长窗口、大型 KV 结构 </code></pre><h2 id="推荐使用-Flink-的场景"><a href="#推荐使用-Flink-的场景" class="headerlink" title="推荐使用 Flink 的场景"></a>推荐使用 Flink 的场景</h2><p>综合上述测试结果，以下实时计算场景建议考虑使用 Flink 框架进行计算：</p>
 <ul>
 <li>要求消息投递语义为Exactly Once的场景；</li>
 <li>数据量较大，要求高吞吐低延迟的场景；</li>
@@ -1355,7 +1388,7 @@ Nimbus：即Storm的Master，负
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">71.3k</span>
+            <span class="white-color">82.5k</span>
             
 
             <br>

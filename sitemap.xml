@@ -2,9 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tigerLuHai.github.io/2020/01/16/sqoop-hdfs-yu-wai-jie-jiao-hu-shu-ju-de-gong-ju/</loc>
+    
+    <lastmod>2020-02-06T08:45:04.941Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/06/dong-tai-dai-li-de-shi-xian-fang-shi-yu-qu-bie/</loc>
+    
+    <lastmod>2020-02-06T08:29:47.505Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/16/dui-lie-de-yong-fa/</loc>
+    
+    <lastmod>2020-02-06T07:53:33.687Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/26/dui-mysql-du-xie-fen-chi-de-ren-shi/</loc>
+    
+    <lastmod>2020-02-06T07:34:19.377Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/16/hong-hei-shu-de-jian-li-yu-wei-hu/</loc>
+    
+    <lastmod>2020-02-06T07:30:05.387Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tigerLuHai.github.io/2020/01/04/hui-tou-zai-kan-spring/</loc>
+    
+    <lastmod>2020-02-06T07:10:17.406Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tigerLuHai.github.io/2020/01/16/liu-shi-chu-li-kuang-jia-hou-qi-zhi-xiu-flink/</loc>
     
-    <lastmod>2020-02-06T02:05:49.999Z</lastmod>
+    <lastmod>2020-02-06T07:09:54.945Z</lastmod>
     
   </url>
   
@@ -72,30 +114,9 @@
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/2020/01/04/hui-tou-zai-kan-spring/</loc>
-    
-    <lastmod>2020-02-03T10:27:00.617Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://tigerLuHai.github.io/2020/01/15/duo-xian-cheng-zhi-huan-cun-yu-zhu-cun-yi-zhi-xing/</loc>
     
     <lastmod>2020-02-03T10:25:32.303Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tigerLuHai.github.io/2020/01/26/dui-mysql-du-xie-fen-chi-de-ren-shi/</loc>
-    
-    <lastmod>2020-02-03T10:25:00.495Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tigerLuHai.github.io/2020/01/06/dong-tai-dai-li-de-shi-xian-fang-shi-yu-qu-bie/</loc>
-    
-    <lastmod>2020-02-03T10:21:05.613Z</lastmod>
     
   </url>
   
@@ -184,30 +205,9 @@
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/2020/01/16/hong-hei-shu-de-jian-li-yu-wei-hu/</loc>
-    
-    <lastmod>2020-01-16T14:06:18.126Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tigerLuHai.github.io/2020/01/16/dui-lie-de-yong-fa/</loc>
-    
-    <lastmod>2020-01-16T14:05:39.414Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://tigerLuHai.github.io/2020/01/16/zhan-de-xing-zhi-ji-yi-xie-shi-yong-chang-jing/</loc>
     
     <lastmod>2020-01-16T14:05:20.638Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tigerLuHai.github.io/2020/01/16/sqoop-hdfs-yu-wai-jie-jiao-hu-shu-ju-de-gong-ju/</loc>
-    
-    <lastmod>2020-01-16T13:40:25.862Z</lastmod>
     
   </url>
   
