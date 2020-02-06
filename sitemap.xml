@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tigerLuHai.github.io/2020/01/04/hui-tou-zai-kan-spring/</loc>
+    
+    <lastmod>2020-02-06T08:51:32.206Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tigerLuHai.github.io/2020/01/16/sqoop-hdfs-yu-wai-jie-jiao-hu-shu-ju-de-gong-ju/</loc>
     
     <lastmod>2020-02-06T08:45:04.941Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://tigerLuHai.github.io/2020/01/16/hong-hei-shu-de-jian-li-yu-wei-hu/</loc>
     
     <lastmod>2020-02-06T07:30:05.387Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tigerLuHai.github.io/2020/01/04/hui-tou-zai-kan-spring/</loc>
-    
-    <lastmod>2020-02-06T07:10:17.406Z</lastmod>
     
   </url>
   
@@ -317,14 +317,14 @@
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/archives/index.html</loc>
+    <loc>http://tigerLuHai.github.io/friends/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/friends/index.html</loc>
+    <loc>http://tigerLuHai.github.io/archives/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
     
