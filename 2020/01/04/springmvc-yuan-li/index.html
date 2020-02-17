@@ -8,9 +8,9 @@
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="概述spring MVC主要由DispatcherServlet、处理器映射、处理器(控制器)、视图解析器、视图组成。他的两个核心是两个核心：
+    <meta name="description" content="概述spring MVC主要由DispatcherServlet、处理器映射、处理器(控制器)、视图解析器、视图组成。他的两个核心是:
 处理器映射： 选择使用哪个控制器来处理请求。视图解析器： 选择结果应该如何渲染。
-运行原理下图是">
+运行原理下图是在Spr">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -292,7 +292,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/26.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -443,14 +443,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    621
+                    2.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    11 分
                 </div>
                 
                 
@@ -466,7 +466,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="http://lib.csdn.net/base/javaee" target="_blank" rel="noopener">spring</a> MVC主要由DispatcherServlet、处理器映射、处理器(控制器)、视图解析器、视图组成。他的两个核心是两个核心：</p>
+                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="http://lib.csdn.net/base/javaee" target="_blank" rel="noopener">spring</a> MVC主要由DispatcherServlet、处理器映射、处理器(控制器)、视图解析器、视图组成。他的两个核心是:</p>
 <p><strong>处理器映射：</strong> 选择使用哪个控制器来处理请求。<br><strong>视图解析器：</strong> 选择结果应该如何渲染。</p>
 <h2 id="运行原理"><a href="#运行原理" class="headerlink" title="运行原理"></a>运行原理</h2><p>下图是在Spring官网开发手册上找到的，它清晰的诠释了Spring MVC的运行原理</p>
 <p><img src="/2020/01/04/springmvc-yuan-li/16b5eb3870589ac4.png" alt="16b5eb3870589ac4"></p>
@@ -509,7 +509,136 @@
 <li>初始化DispatcherServlet上下文对应WebApplicationContext，并将其与业务层、持久化层的WebApplicationContext建立关联。</li>
 <li>初始化Spring MVC的各个组成组件，并装配到DispatcherServlet中。</li>
 </ol>
-<h2 id="一个比较好理解的Spring-mvc原理图"><a href="#一个比较好理解的Spring-mvc原理图" class="headerlink" title="一个比较好理解的Spring mvc原理图"></a>一个比较好理解的Spring mvc原理图</h2><p><img src="/2020/01/04/springmvc-yuan-li/b856096cf065baaaabe5884deb4ecfa3.png" alt="b856096cf065baaaabe5884deb4ecfa3"></p>
+<h2 id="SpringMVC启动流程"><a href="#SpringMVC启动流程" class="headerlink" title="SpringMVC启动流程"></a>SpringMVC启动流程</h2><h4 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h4><p>大家都知道，我们在使用spring mvc时通常会在<code>web.xml</code>文件中做如下配置：</p>
+<p><code>web.xml</code></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app version=&quot;3.0&quot; xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&quot;&gt;
+
+
+    &lt;!-- 上下文参数，在监听器中被使用 --&gt;
+    &lt;context-param&gt;
+        &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+        &lt;param-value&gt;
+            classpath:applicationContext.xml
+        &lt;/param-value&gt;
+    &lt;/context-param&gt;
+
+
+    &lt;!-- 监听器配置 --&gt;
+    &lt;listener&gt;
+        &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
+    &lt;/listener&gt;
+
+    &lt;!-- 前端控制器配置 --&gt;
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;dispatcher&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+            &lt;param-value&gt;classpath:applicationContext-mvc.xml&lt;/param-value&gt;
+        &lt;/init-param&gt;
+        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+    &lt;/servlet&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;dispatcher&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+
+&lt;/web-app&gt;</code></pre><p>上面的配置总结起来有几点内容，分别是：</p>
+<ul>
+<li>1、配置Spring Web上下文监听器，该监听器同时是Spring mvc启动的入口，至于为什么，后面第二节将会讲到</li>
+<li>2、前端控制器<code>DispatcherServlet</code>,该控制器是Spring mvc处理各种请求的入口及处理器</li>
+</ul>
+<p>当我们将spring mvc应用部署到tomcat时，当你不配置任何的<code>context-param</code>和<code>listener</code>参数,只配置一个<code>DispatcherServlet</code>时，那么tomcat在启动的时候是不会初始化spring web上下文的，换句话说，tomcat是不会初始化spring框架的，因为你并没有告诉它们spring的配置文件放在什么地方，以及怎么去加载。所以<code>listener</code>监听器帮了我们这个忙，那么为什么配置监听器之后就可以告诉tomcat怎么去加载呢？因为<code>listener</code>是实现了servlet技术规范的监听器组件，tomcat在启动时会先加载<code>web.xml</code>中是否有servlet监听器存在，有则启动它们。<code>ContextLoaderListener</code>是spring框架对servlet监听器的一个封装，本质上还是一个servlet监听器，所以会被执行，但由于<code>ContextLoaderListener</code>源码中是基于<code>contextConfigLocation</code>和<code>contextClass</code>两个配置参数去加载相应配置的，因此就有了我们配置的<code>context-param</code>参数了，<code>servlet</code>标签里的初始化参数也是同样的道理，即告诉web服务器在启动的同时把spring web上下文（<code>WebApplicationContext</code>）也给初始化了。</p>
+<p>上面讲了下tomcat加载spring mvc应用的大致流程，接下来将从源码入手分析启动原理。</p>
+<h4 id="二、Spring-MVC-web-上下文启动源码分析"><a href="#二、Spring-MVC-web-上下文启动源码分析" class="headerlink" title="二、Spring MVC web 上下文启动源码分析"></a>二、Spring MVC web 上下文启动源码分析</h4><p>假设现在我们把上面<code>web.xml</code>文件中的<code>&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</code>给去掉，那么默认tomcat启动时只会初始化spring web上下文，也就是说只会加载到<code>applicationContext.xml</code>这个文件，对于<code>applicationContext-mvc.xml</code>这个配置文件是加载不到的，<code>&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</code>的意思就是让<code>DispatcherServlet</code>延迟到使用的时候(<code>也就是处理请求的时候</code>)再做初始化。</p>
+<p>我们已经知道spring web是基于<code>servlet</code>标准去封装的，那么很明显，servlet怎么初始化，<code>WebApplicationContext</code>web上下文就应该怎么初始化。我们先看看<code>ContextLoaderListener</code>的源码是怎样的。</p>
+<pre><code>public class ContextLoaderListener extends ContextLoader implements ServletContextListener {
+    // 初始化方法
+    @Override
+    public void contextInitialized(ServletContextEvent event) {
+        initWebApplicationContext(event.getServletContext());
+    }
+    // 销毁方法
+    @Override
+    public void contextDestroyed(ServletContextEvent event) {
+        closeWebApplicationContext(event.getServletContext());
+        ContextCleanupListener.cleanupAttributes(event.getServletContext());
+    }
+}</code></pre><p><code>ContextLoaderListener</code>类实现了<code>ServletContextListener</code>，本质上是一个servlet监听器，tomcat将会优先加载servlet监听器组件，并调用<code>contextInitialized</code>方法,在<code>contextInitialized</code>方法中调用<code>initWebApplicationContext</code>方法初始化Spring web上下文，看到这焕然大悟，原来Spring mvc的入口就在这里，哈哈<del>~</del>赶紧跟进去<code>initWebApplicationContext</code>方法看看吧！</p>
+<p><code>initWebApplicationContext()</code>方法：</p>
+<pre><code>// 创建web上下文，默认是XmlWebApplicationContext
+if (this.context == null) {
+    this.context = createWebApplicationContext(servletContext);
+}
+
+if (this.context instanceof ConfigurableWebApplicationContext) {
+    ConfigurableWebApplicationContext cwac = (ConfigurableWebApplicationContext) this.context;
+    // 如果该容器还没有刷新过
+    if (!cwac.isActive()) {
+        if (cwac.getParent() == null) {
+            ApplicationContext parent = loadParentContext(servletContext);
+            cwac.setParent(parent);
+        }
+        // 配置并刷新容器
+        configureAndRefreshWebApplicationContext(cwac, servletContext);
+    }
+}</code></pre><p>上面的方法只做了两件事：</p>
+<ul>
+<li>1、如果spring web容器还没有创建，那么就创建一个全新的spring web容器，并且该容器为root根容器，下面第三节讲到的servlet spring web容器是在此根容器上创建起来的</li>
+<li>2、配置并刷新容器</li>
+</ul>
+<p>上面代码注释说到默认创建的上下文容器是<code>XmlWebApplicationContext</code>,为什么不是其他web上下文呢？为啥不是下面上下文的任何一种呢？</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/23/164c646d5fb17327?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>我们可以跟进去<code>createWebApplicationContext</code>后就可以发现默认是从一个叫<code>ContextLoader.properties</code>文件加载配置的，该文件的内容为：</p>
+<pre><code>org.springframework.web.context.WebApplicationContext=org.springframework.web.context.support.XmlWebApplicationContext
+复制代码</code></pre><p>具体实现为：</p>
+<pre><code>protected Class&lt;?&gt; determineContextClass(ServletContext servletContext) {
+    // 自定义上下文，否则就默认创建XmlWebApplicationContext
+    String contextClassName = servletContext.getInitParameter(CONTEXT_CLASS_PARAM);
+    if (contextClassName != null) {
+        try {
+            return ClassUtils.forName(contextClassName, ClassUtils.getDefaultClassLoader());
+        }
+        catch (ClassNotFoundException ex) {
+            throw new ApplicationContextException(
+                    &quot;Failed to load custom context class [&quot; + contextClassName + &quot;]&quot;, ex);
+        }
+    }
+    else {
+        // 从属性文件中加载类名，也就是org.springframework.web.context.support.XmlWebApplicationContext
+        contextClassName = defaultStrategies.getProperty(WebApplicationContext.class.getName());
+        try {
+            return ClassUtils.forName(contextClassName, ContextLoader.class.getClassLoader());
+        }
+        catch (ClassNotFoundException ex) {
+            throw new ApplicationContextException(
+                    &quot;Failed to load default context class [&quot; + contextClassName + &quot;]&quot;, ex);
+        }
+    }
+}
+复制代码</code></pre><p>上面可以看出其实我们也可以自定义spring web的上下文的，那么怎么去指定我们自定义的上下文呢？答案是通过在<code>web.xml</code>中指定<code>contextClass</code>参数，因此第一小结结尾时说<code>contextClass</code>参数和<code>contextConfigLocation</code>很重要~~至于<code>contextConfigLocation</code>参数，我们跟进<code>configureAndRefreshWebApplicationContext</code>即可看到，如下图：</p>
+<p><img src="/2020/01/04/springmvc-yuan-li/3.png" alt="img"></p>
+<p><strong>总结：</strong></p>
+<p>spring mvc启动流程大致就是从一个叫<code>ContextLoaderListener</code>开始的，它是一个servlet监听器，能够被web容器发现并加载，初始化监听器<code>ContextLoaderListener</code>之后，接着就是根据配置如<code>contextConfigLocation</code>和<code>contextClass</code>创建web容器了，如果你不指定<code>contextClass</code>参数值，则默认创建的spring web容器类型为<code>XmlWebApplicationContext</code>,最后一步就是根据你配置的<code>contextConfigLocation</code>文件路径去配置并刷新容器了。</p>
+<h4 id="三、DispatcherServlet控制器的初始化"><a href="#三、DispatcherServlet控制器的初始化" class="headerlink" title="三、DispatcherServlet控制器的初始化"></a>三、<code>DispatcherServlet</code>控制器的初始化</h4><p>好了，上面我们简单地分析了Spring mvc容器初始化的源码，我们永远不会忘记，我们默认创建的容器类型为<code>XmlWebApplicationContext</code>,当然我们也不会忘记，在<code>web.xml</code>中，我们还有一个重要的配置，那就是<code>DispatcherServlet</code>。下面我们就来分析下<code>DispatcherServlet</code>的初始化过程。</p>
+<p><code>DispatcherServlet</code>，就是一个servlet，一个用来处理request请求的servlet，它是spring mvc的核心，所有的请求都经过它，并由它指定后续操作该怎么执行，咋一看像一扇门，因此我管它叫“闸门”。在我们继续之前，我们应该共同遵守一个常识，那就是——-无论是监听器还是servlet，都是servlet规范组件，web服务器都可以发现并加载它们。</p>
+<p>下面我们先看看<code>DispatcherServlet</code>的继承关系：</p>
+<p><img src="/2020/01/04/springmvc-yuan-li/4.png" alt="img"></p>
+<p>看到这我们是不是一目了然了，<code>DispatcherServlet</code>继承了<code>HttpServlet</code>这个类，<code>HttpServlet</code>是servlet技术规范中专门用于处理http请求的servlet，这就不难解释为什么spring mvc会将<code>DispatcherServlet</code>作为统一请求入口了。</p>
+<p>因为一个servlet的生命周期是<code>init()</code>-&gt;<code>service()</code>-&gt;<code>destory()</code>，那么<code>DispatcherServlet</code>怎么初始化呢？看上面的继承图，我们进到<code>HttpServletBean</code>去看看。</p>
+<p>果不其然，<code>HttpServletBean</code>类中有一个<code>init()</code>方法，<code>HttpServletBean</code>是一个抽象类，<code>init()</code>方法如下：</p>
+<p><img src="/2020/01/04/springmvc-yuan-li/5.png" alt="img"></p>
+<p>可以看出方法采用<code>final</code>修饰，因为<code>final</code>修饰的方法是不能被子类继承的，也就是子类没有同样的<code>init()</code>方法了，这个<code>init</code>方法就是<code>DispatcherServlet</code>的初始化入口了。</p>
+<p>接着我们跟进<code>FrameworkServlet</code>的<code>initServletBean()</code>方法：</p>
+<p><img src="/2020/01/04/springmvc-yuan-li/6.png" alt="img"></p>
+<p>在方法中将会初始化不同于第一小节的web容器，请记住，这个新的spring web 容器是专门为<code>dispactherServlet</code>服务的，而且这个新容器是在第一小节根ROOT容器的基础上创建的，我们在<code>&lt;servlet&gt;</code>标签中配置的初始化参数被加入到新容器中去。</p>
+<p>至此，<code>DispatcherSevlet</code>的初始化完成了，听着有点蒙蔽，但其实也是这样，上面的分析仅仅只围绕一个方法，它叫<code>init()</code>，所有的servlet初始化都将调用该方法。</p>
+<p><strong>总结:</strong></p>
+<p><code>dispactherServlet</code>的初始化做了两件事情，第一件事情就是根据根web容器，也就是我们第一小节创建的<code>XmlWebApplicationContext</code>，然后创建一个专门为<code>dispactherServlet</code>服务的web容器，第二件事情就是将你在web.xml文件中对<code>dispactherServlet</code>进行的相关配置加载到新容器当中。</p>
+<p>发现其实大致流程就差不多了。</p>
 
             </div>
             <hr />
@@ -963,7 +1092,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="javaWeb三大核心组件之servlet">
+                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="javaWeb三大核心组件之servlet">
                         
                         <span class="card-title">javaWeb三大核心组件之servlet</span>
                     </div>
@@ -1188,7 +1317,7 @@
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">82.5k</span>
+            <span class="white-color">91.6k</span>
             
 
             <br>
