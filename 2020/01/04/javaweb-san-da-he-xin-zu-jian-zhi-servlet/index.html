@@ -98,13 +98,6 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
-    <li class="hide-on-med-and-down">
         <a href="/contact" class="waves-effect waves-light">
             
             <span>留言板</span>
@@ -178,15 +171,6 @@
                 <i class="fa fa-fw fa-link"></i>
                 
                 关于
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-link"></i>
-                
-                友情链接
             </a>
         </li>
         
@@ -290,7 +274,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/26.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -474,16 +458,16 @@
 <p>Java 类库的全部功能对 Servlet 来说都是可用的。它可以通过 sockets 和 RMI 机制与 applets、数据库或其他软件进行交互。</p>
 <h3 id="Tomcat与Servlet的关系"><a href="#Tomcat与Servlet的关系" class="headerlink" title="Tomcat与Servlet的关系"></a>Tomcat与Servlet的关系</h3><p>Tomcat 是Web应用服务器,是一个Servlet/JSP容器. Tomcat 作为Servlet容器,负责处理客户请求,把请求传送给Servlet,并将Servlet的响应传送回给客户.而Servlet是一种运行在支持Java语言的服务器上的组件.。</p>
 <p>Servlet最常见的用途是扩展Java Web服务器功能,提供非常安全的,可移植的,易于使用的CGI替代品。从http协议中的请求和响应可以得知，浏览器发出的请求是一个请求文本，而浏览器接收到的也应该是一个响应文本。</p>
-<p><img src="/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/1" alt="image"></p>
+<p><img src="/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/1" alt></p>
 <ol>
 <li>Tomcat将http请求文本接收并解析，然后封装成HttpServletRequest类型的request对象，所有的HTTP头数据读可以通过request对象调用对应的方法查询到。</li>
 <li>Tomcat同时会要响应的信息封装为HttpServletResponse类型的response对象，通过设置response属性就可以控制要输出到浏览器的内容，然后将response交给tomcat，tomcat就会将其变成响应文本的格式发送给浏览器。</li>
 </ol>
 <p>Java Servlet API 是Servlet容器(tomcat)和servlet之间的接口，它定义了serlvet的各种方法，还定义了Servlet容器传送给Servlet的对象类，其中最重要的就是ServletRequest和ServletResponse。所以说我们在编写servlet时，需要实现Servlet接口，按照其规范进行操作。</p>
-<h3 id="Servlet执行过程"><a href="#Servlet执行过程" class="headerlink" title="Servlet执行过程"></a>Servlet执行过程</h3><p> 在浏览器的地址栏输入：<a href="http://ip" target="_blank" rel="noopener">http://ip</a>:port/appNames/servlet</p>
+<h3 id="Servlet执行过程"><a href="#Servlet执行过程" class="headerlink" title="Servlet执行过程"></a>Servlet执行过程</h3><p> 在浏览器的地址栏输入：<a href="http://ip:port/appNames/servlet" target="_blank" rel="noopener">http://ip:port/appNames/servlet</a></p>
 <p>  1）通过浏览器和ip：port和这个服务器建立连接。<br>  2） 浏览器会生成一个请求数据包（路径appNames/servlet）向服务器发送请求。<br>  3） 服务器收到请求数据包，分析请求资源路径做精准定位，通过请求的appName查找webapps文件下面的appName做匹配，匹配上了需要获取web.xml中的servlet(mapping)。 <br>  4） 服务器创建两个对象：<br>    第一个对象：请求对象，该对象实现了HttpServletRequest接口，服务器会将请求数据包中的数据解析出来,存储在该对象里。这样做的好处是没有必要理解http协议，只需要读取request。<br>    第二个对象：响应对象，实现了HttpServletResponse接口，作用是servlet处理完成后的结果可以存放到该对象上，然后服务器依据该对象的数据生成响应数据包。<br>  5） servlet在执行servlet()方法时，可以通过request获取请求数据，也可以将处理结果存放到response上。然后服务器与响应对象直接形成一个默契，生成一个响应数据包给浏览器。<br>  6）浏览器解析服务器返回的响应数据包，生成响应的结果。</p>
 <p>  </p>
-<p><img src="/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/2.png" alt="image"></p>
+<p><img src="/2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/2.png" alt></p>
 <p>Servlet访问的过程：<br>Http请求—-&gt;web.xml——–&gt;  url -pattern—–&gt;servlet-name—–&gt;servlet-class—–&gt;   QuickStratServlet(对应的Class文件)</p>
 <h3 id="Servlet生命周期"><a href="#Servlet生命周期" class="headerlink" title="Servlet生命周期"></a>Servlet生命周期</h3><p>SpringMVC是基于servlet，控制器基于方法级别的拦截，处理器设计为单实例，所以应该了解一下Servlet的生命周期。</p>
 <p>Servlet 加载—&gt;实例化—&gt;服务—&gt;销毁。</p>
@@ -640,296 +624,12 @@
     </div>
 
     
-    <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div id="gitalk-container" class="card-content"></div>
-</div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '52424b98fb27c2cf5f3a',
-        clientSecret: '0b13a34441db0176018eebfebe19f75532f15e81',
-        repo: 'tigerLuHai.github.io',
-        owner: 'tigerLuHai',
-        admin: "tigerLuHai",
-        id: '2020/01/04/javaweb-san-da-he-xin-zu-jian-zhi-servlet/',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
-    
 
     
 
     
 
     
-
-    
-    <style>
-    .valine-card {
-        margin: 1.5rem auto;
-    }
-
-    .valine-card .card-content {
-        padding: 20px 20px 5px 20px;
-    }
-
-    #vcomments input[type=text],
-    #vcomments input[type=email],
-    #vcomments input[type=url],
-    #vcomments textarea {
-        box-sizing: border-box;
-    }
-
-    #vcomments p {
-        margin: 2px 2px 10px;
-        font-size: 1.05rem;
-        line-height: 1.78rem;
-    }
-
-    #vcomments blockquote p {
-        text-indent: 0.2rem;
-    }
-
-    #vcomments a {
-        padding: 0 2px;
-        color: #42b983;
-        font-weight: 500;
-        text-decoration: underline;
-    }
-
-    #vcomments img {
-        max-width: 100%;
-        height: auto;
-        cursor: pointer;
-    }
-
-    #vcomments ol li {
-        list-style-type: decimal;
-    }
-
-    #vcomments ol,
-    ul {
-        display: block;
-        padding-left: 2em;
-        word-spacing: 0.05rem;
-    }
-
-    #vcomments ul li,
-    ol li {
-        display: list-item;
-        line-height: 1.8rem;
-        font-size: 1rem;
-    }
-
-    #vcomments ul li {
-        list-style-type: disc;
-    }
-
-    #vcomments ul ul li {
-        list-style-type: circle;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    #vcomments table, th, td {
-        border: 0;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments h1 {
-        font-size: 1.85rem;
-        font-weight: bold;
-        line-height: 2.2rem;
-    }
-
-    #vcomments h2 {
-        font-size: 1.65rem;
-        font-weight: bold;
-        line-height: 1.9rem;
-    }
-
-    #vcomments h3 {
-        font-size: 1.45rem;
-        font-weight: bold;
-        line-height: 1.7rem;
-    }
-
-    #vcomments h4 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    #vcomments h5 {
-        font-size: 1.1rem;
-        font-weight: bold;
-        line-height: 1.4rem;
-    }
-
-    #vcomments h6 {
-        font-size: 1rem;
-        line-height: 1.3rem;
-    }
-
-    #vcomments p {
-        font-size: 1rem;
-        line-height: 1.5rem;
-    }
-
-    #vcomments hr {
-        margin: 12px 0;
-        border: 0;
-        border-top: 1px solid #ccc;
-    }
-
-    #vcomments blockquote {
-        margin: 15px 0;
-        border-left: 5px solid #42b983;
-        padding: 1rem 0.8rem 0.3rem 0.8rem;
-        color: #666;
-        background-color: rgba(66, 185, 131, .1);
-    }
-
-    #vcomments pre {
-        font-family: monospace, monospace;
-        padding: 1.2em;
-        margin: .5em 0;
-        background: #272822;
-        overflow: auto;
-        border-radius: 0.3em;
-        tab-size: 4;
-    }
-
-    #vcomments code {
-        font-family: monospace, monospace;
-        padding: 1px 3px;
-        font-size: 0.92rem;
-        color: #e96900;
-        background-color: #f8f8f8;
-        border-radius: 2px;
-    }
-
-    #vcomments pre code {
-        font-family: monospace, monospace;
-        padding: 0;
-        color: #e8eaf6;
-        background-color: #272822;
-    }
-
-    #vcomments pre[class*="language-"] {
-        padding: 1.2em;
-        margin: .5em 0;
-    }
-
-    #vcomments code[class*="language-"],
-    pre[class*="language-"] {
-        color: #e8eaf6;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-
-    #vcomments b,
-    strong {
-        font-weight: bold;
-    }
-
-    #vcomments dfn {
-        font-style: italic;
-    }
-
-    #vcomments small {
-        font-size: 85%;
-    }
-
-    #vcomments cite {
-        font-style: normal;
-    }
-
-    #vcomments mark {
-        background-color: #fcf8e3;
-        padding: .2em;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-</style>
-
-<div class="card valine-card" data-aos="fade-up">
-    <div id="vcomments" class="card-content"></div>
-</div>
-
-<script src="/libs/valine/av-min.js"></script>
-<script src="/libs/valine/Valine.min.js"></script>
-<!-- <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
-
-<script>
-    new Valine({
-        el: '#vcomments',
-        appId: '',
-        appKey: '',
-        notify: 'false' === 'true',
-        verify: 'false' === 'true',
-        visitor: 'false' === 'true',
-        avatar: 'wavatar',
-        pageSize: '10',
-        lang: 'zh-cn',
-        placeholder: '如果你没有GitHub账号，还可以在这里评论啦！'
-    });
-</script>
 
     
 
@@ -946,7 +646,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="java异常">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="java异常">
                         
                         <span class="card-title">java异常</span>
                     </div>
@@ -987,7 +687,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="SpringMVC原理">
+                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="SpringMVC原理">
                         
                         <span class="card-title">SpringMVC原理</span>
                     </div>
@@ -1160,13 +860,6 @@
 </main>
 
 
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
-
     <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -1174,7 +867,7 @@
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">91.6k</span>
+            <span class="white-color">96.5k</span>
             
 
             <br>
@@ -1184,6 +877,15 @@
             
             <br>
             
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
             
             
         </div>
@@ -1327,8 +1029,6 @@ $(function () {
 
 
 
-    
-    <script src="/libs/others/clicklove.js"></script>
     
 
     

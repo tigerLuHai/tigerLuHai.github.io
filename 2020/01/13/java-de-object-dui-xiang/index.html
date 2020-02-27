@@ -100,13 +100,6 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
-    <li class="hide-on-med-and-down">
         <a href="/contact" class="waves-effect waves-light">
             
             <span>留言板</span>
@@ -180,15 +173,6 @@
                 <i class="fa fa-fw fa-link"></i>
                 
                 关于
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-link"></i>
-                
-                友情链接
             </a>
         </li>
         
@@ -292,7 +276,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -443,14 +427,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    2.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    8 分
                 </div>
                 
                 
@@ -472,7 +456,7 @@
 <li>所有的Java对象都<strong>拥有Object默认的方法</strong>。</li>
 </ul>
 <p>那么我们看看Object有什么方法：</p>
-<p><img src="/2020/01/13/java-de-object-dui-xiang/1578923575140.png" alt="1578923575140"></p>
+<p><img src="/2020/01/13/java-de-object-dui-xiang/1578923575140.png" alt></p>
 <p>其实就可以归纳成几个：</p>
 <ul>
 <li><code>registerNatives()</code>【底层实现、不研究】</li>
@@ -490,25 +474,21 @@
 <li>所以我们真正需要看的就是<strong>8个</strong>方法</li>
 </ul>
 <p>还有<strong>一个属性</strong>：</p>
-<pre><code> public final native Class&lt;?&gt; getClass();</code></pre><p><img src="/2020/01/13/java-de-object-dui-xiang/1.png" alt="img"></p>
+<pre><code> public final native Class&lt;?&gt; getClass();</code></pre><p><img src="/2020/01/13/java-de-object-dui-xiang/1.png" alt></p>
 <h2 id="二、equals和hashCode方法"><a href="#二、equals和hashCode方法" class="headerlink" title="二、equals和hashCode方法"></a>二、equals和hashCode方法</h2><p>equals和hashCode方法可以说是面试的重点题了，配合着String可以说在面试题中<strong>哪都有它们的存在</strong>。</p>
 <p>首先，我们来看看equals和hashCode在Object中<strong>原生</strong>的实现吧：</p>
 <p>hashCode：</p>
-<pre><code>public native int hashCode();
-
-复制代码</code></pre><p>equals：</p>
+<pre><code>public native int hashCode();</code></pre><p>equals：</p>
 <pre><code>    public boolean equals(Object obj) {
         return (this == obj);
-    }
-
-复制代码</code></pre><p>看上去都非常简单：</p>
+    }</code></pre><p>看上去都非常简单：</p>
 <ul>
 <li><code>hashCode()</code>由native方法底层实现了。</li>
 <li><code>equals()</code>就直接<code>==</code>判断是否相等了。</li>
 </ul>
 <p>想要更加清晰它们究竟是做什么的，我们来读读它的注释：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c7a3826e201?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6dd98fafb9?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p><img src="/2020/01/13/java-de-object-dui-xiang/2.png" alt></p>
+<p><img src="/2020/01/13/java-de-object-dui-xiang/3.png" alt></p>
 <p>根据注释我们可以<strong>总结以下的要点</strong>：</p>
 <ul>
 <li><p>重写<code>equals()</code>方法，就必须重写<code>hashCode()</code>的方法</p>
@@ -521,7 +501,7 @@
 </li>
 <li><p><code>hashCode()</code>方法默认是由对象的地址转换而来的</p>
 </li>
-<li><pre><code>equals()</code></pre><p>方法还有5个默认的原则：</p>
+<li><p>equals()方法还有5个默认的原则：</p>
 <ul>
 <li>自反性—&gt;调用<code>equals()</code>返回的是true，无论这两个对象谁调用<code>equals()</code>都好，返回的都是true</li>
 <li>一致性—&gt;只要对象没有被修改，那么多次调用还是返回对应的结果！</li>
@@ -532,24 +512,24 @@
 </li>
 </ul>
 <p>为啥说<code>hashCode()</code>以散列表为底层带来性能的提升是很容易理解的。我们再来<strong>回顾</strong>一下HashMap的插入：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6dc3ba8c3e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p><img src="/2020/01/13/java-de-object-dui-xiang/4.png" alt></p>
 <p>如果hash值都不相等，那么可以直接判断该key是不相等的了！</p>
 <h3 id="2-1equals和hashCode方法重写"><a href="#2-1equals和hashCode方法重写" class="headerlink" title="2.1equals和hashCode方法重写"></a>2.1equals和hashCode方法重写</h3><p><code>equals()</code>方法默认是比较对象的地址，使用的是<code>==</code>等值运算符。但是按我们正常开发来说，<strong>比较的是对象地址是没有意义的</strong>。</p>
 <ul>
 <li>一般地，如果我们有两个Address对象，只要这两个对象的<strong>省号、城市号、街道号相等</strong>，我们就认为这两个对象相等了！</li>
 </ul>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6bae49e75a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p><img src="/2020/01/13/java-de-object-dui-xiang/5.png" alt></p>
 <h3 id="2-2String实现的equals和hashCode方法"><a href="#2-2String实现的equals和hashCode方法" class="headerlink" title="2.2String实现的equals和hashCode方法"></a>2.2String实现的equals和hashCode方法</h3><p>我们在初学的时候可能就听过了：String<strong>已经</strong>实现了equals和hashCode方法了。</p>
 <ul>
 <li>这也就是为什么，我们可以<strong>直接</strong>使用String.equals()来<strong>判断两个字符串</strong>是否相等！</li>
 </ul>
 <p>下面我们就来看看它的实现吧：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6bf58f1e99?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6bf1509f15?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p><img src="/2020/01/13/java-de-object-dui-xiang/6.png" alt></p>
+<p><img src="/2020/01/13/java-de-object-dui-xiang/7.png" alt></p>
 <h1 id="三、toString方法"><a href="#三、toString方法" class="headerlink" title="三、toString方法"></a>三、toString方法</h1><p>接下来我们看看toString方法，也十分简单：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6c36facd57?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p><img src="/2020/01/13/java-de-object-dui-xiang/8.png" alt></p>
 <p>toString方法主要是用来<strong>标识</strong>该对象的：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6c48984185?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p><img src="/2020/01/13/java-de-object-dui-xiang/9.png" alt></p>
 <p>从上面的结果我们都可以看出来：<strong>得出的结果我们并不能看到什么东西</strong>~</p>
 <p>于是我们一般都重写toString()，那么<strong>打印出的结果就很方便我们调试了</strong>！</p>
 <pre><code>    @Override
@@ -559,18 +539,17 @@
                 &quot;, cityNo=&quot; + cityNo +
                 &quot;, streetNo=&quot; + streetNo +
                 &#39;}&#39;;
-    }
-复制代码</code></pre><p>下面的结果看起来就好多了：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6c5155fd2c?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+    }</code></pre><p>下面的结果看起来就好多了：</p>
+<p><img src="/2020/01/13/java-de-object-dui-xiang/10.png" alt></p>
 <h1 id="四、clone方法"><a href="#四、clone方法" class="headerlink" title="四、clone方法"></a>四、clone方法</h1><p>我们也来看看它的顶部注释：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6c5fd4239f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p><img src="/2020/01/13/java-de-object-dui-xiang/11.png" alt></p>
 <p>看了上面的注释我们可以<strong>总结以下的要点</strong>：</p>
 <ul>
 <li>clone方法用于对象的克隆，一般想要克隆出的对象是<strong>独立</strong>的(与原有的对象是分开的)</li>
 <li>深拷贝指的是该对象的成员变量(如果是可变引用)都应该克隆一份，浅拷贝指的是成员变量没有被克隆一份</li>
 </ul>
 <p>下面我们来看一下浅拷贝：<strong>拷贝了Employee对象，但是其成员变量hireday没有被克隆出去，所以指向的还是同一个Date对象</strong>！</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6c8d1dd69f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p><img src="/2020/01/13/java-de-object-dui-xiang/12.png" alt></p>
 <h2 id="4-1clone用法"><a href="#4-1clone用法" class="headerlink" title="4.1clone用法"></a>4.1clone用法</h2><p>那么我们如何克隆对象呢？无论是浅拷贝还是深拷贝都是这两步：</p>
 <ol>
 <li>克隆的对象要<strong>实现Cloneable接口</strong></li>
@@ -587,9 +566,7 @@
 
         return super.clone();
     }
-
-}
-复制代码</code></pre><p><strong>深拷贝</strong>：不仅拷贝了Person对象，也拷贝了date成员变量</p>
+}</code></pre><p><strong>深拷贝</strong>：不仅拷贝了Person对象，也拷贝了date成员变量</p>
 <pre><code>public class Person implements Cloneable {
 
     // 可变的成员变量
@@ -610,8 +587,7 @@
         return person;
     }
 
-}
-复制代码</code></pre><h2 id="4-2clone疑问进一步学习protected"><a href="#4-2clone疑问进一步学习protected" class="headerlink" title="4.2clone疑问进一步学习protected"></a>4.2clone疑问进一步学习protected</h2><p>不知道有没有人跟我有相同的<strong>疑问</strong>：</p>
+}</code></pre><h2 id="4-2clone疑问进一步学习protected"><a href="#4-2clone疑问进一步学习protected" class="headerlink" title="4.2clone疑问进一步学习protected"></a>4.2clone疑问进一步学习protected</h2><p>不知道有没有人跟我有相同的<strong>疑问</strong>：</p>
 <ul>
 <li>我只想要<strong>浅拷贝</strong>，能不能<strong>直接调用该对象.clone()来实现</strong>？</li>
 </ul>
@@ -630,12 +606,9 @@
         this.cityNo = cityNo;
         this.streetNo = streetNo;
     }
-}
-复制代码</code></pre><p>下面的代码你们<strong>认为如何</strong>？</p>
+}</code></pre><p>下面的代码你们<strong>认为如何</strong>？</p>
 <pre><code>    Address address = new Address(1, 2, 3);
-    address.clone();
-
-复制代码</code></pre><p>我们都知道：</p>
+    address.clone();</code></pre><p>我们都知道：</p>
 <ul>
 <li><strong>protected修饰的类和属性,对于自己、本包和其子类可见</strong></li>
 </ul>
@@ -643,24 +616,23 @@
 <ul>
 <li>但是，IDE现实告诉我，这<strong>编译就不通过了</strong>！</li>
 </ul>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6cb2a8e1aa?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p><img src="/2020/01/13/java-de-object-dui-xiang/13.png" alt></p>
 <p>出现错误的原因我立马就想到：<strong>是不是我对protected修饰符出现了偏差？</strong></p>
 <p>protected修饰的类和属性,对于自己、本包和其子类可见，这句话本身是没有错的。但是<strong>还需要补充</strong>：对于protected的成员或方法，要分子类和超类<strong>是否在同一个包中</strong>。与基类<strong>不在同一个包中的子类</strong>，只能<strong>访问自身从基类继承而来的受保护成员，而不能访问基类实例本身的受保护成员</strong>。</p>
 <ul>
 <li>上面的代码就错在：Address与Object<strong>不是在同一个包下</strong>的，而Address直接访问了Object的clone方法。这是不行的。</li>
 </ul>
 <p>下面我截两张图再来给你们看看(看完图再看上面的描述，就能理解了)：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6cb5b10a60?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6dda89dc8b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
-<p><strong>图片来源和更多的展开阅读</strong>：<a href="https://blog.csdn.net/wangyanguiyiyang/article/details/49800493" target="_blank" rel="noopener">blog.csdn.net/wangyanguiy…</a></p>
+<p><img src="/2020/01/13/java-de-object-dui-xiang/14.png" alt></p>
+<p><img src="/2020/01/13/java-de-object-dui-xiang/15.png" alt></p>
 <h1 id="五、wait和notify方法"><a href="#五、wait和notify方法" class="headerlink" title="五、wait和notify方法"></a>五、wait和notify方法</h1><p>wait和notify方法其实就是Java给我们提供让<strong>线程之间通信</strong>的API。</p>
 <p>按照惯例我们还是来看注释怎么说吧：</p>
 <p>wait方法：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6d134d6573?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p><img src="/2020/01/13/java-de-object-dui-xiang/16.png" alt></p>
 <p>notify方法：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6d2ccb71a1?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p><img src="/2020/01/13/java-de-object-dui-xiang/17.png" alt></p>
 <p>notifyAll()方法：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6d53677af3?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p><img src="/2020/01/13/java-de-object-dui-xiang/18.png" alt></p>
 <p>看完上面的注释我们可以<strong>总结以下的要点</strong>：</p>
 <ul>
 <li><p>无论是wait、notify还是notifyAll()都需要</p>
@@ -671,8 +643,7 @@
 </li>
 <li><p><code>notify()</code>唤醒的是在等待队列的<strong>某个</strong>线程(不确定会唤醒哪个)，<code>notifyAll()</code>唤醒的是等待队列<strong>所有</strong>线程</p>
 </li>
-<li><p>导致</p>
-<pre><code>wait()</code></pre><p>的线程被唤醒可以有4种情况</p>
+<li><p>导致wait()的线程被唤醒可以有4种情况</p>
 <ul>
 <li>该线程被中断</li>
 <li><code>wait()</code>时间到了</li>
@@ -685,7 +656,7 @@
 </ul>
 <p>其实总结完上面的并不会有比较深刻的印象，可以尝试着回答几个问题来加深对<code>wait()</code>和<code>notify()</code>的理解。</p>
 <h2 id="5-1为什么wait和notify在Object方法上？"><a href="#5-1为什么wait和notify在Object方法上？" class="headerlink" title="5.1为什么wait和notify在Object方法上？"></a>5.1为什么wait和notify在Object方法上？</h2><p>从一开始我们就说了：<code>wait()</code>和<code>notify()</code>是Java给我们提供线程之间通信的API，既然是线程的东西，那什么是在Object类上定义，而不是在Thread类上定义呢？</p>
-<p>因为我们的<strong>锁是对象锁</strong>【要是忘记的同学可回顾：<a href="https://mp.weixin.qq.com/s?__biz=MzI4Njg5MDA5NA==&mid=2247484198&idx=1&sn=4d8e372165bb49987a6243f17153a9b4&chksm=ebd74227dca0cb31311886f835092c9360d08a9f0a249ece34d4b1e49a31c9ec773fa66c8acc#rd" target="_blank" rel="noopener">Java锁机制了解一下</a>】，每个对象都可以成为锁。<strong>让当前线程等待某个对象的锁，当然应该通过这个对象来操作了</strong>。</p>
+<p>因为我们的锁是对象锁，每个对象都可以成为锁。让当前线程等待某个对象的锁，当然应该通过这个对象来操作了。</p>
 <ul>
 <li>锁对象是<strong>任意</strong>的，所以这些方法必须定义在Object类中</li>
 </ul>
@@ -699,13 +670,6 @@
 <li>主要的区别在于<code>Object.wait()</code>在释放CPU同时，<strong>释放了对象锁的控制</strong>。</li>
 <li>而<code>Thread.sleep()</code>没有对锁释放</li>
 </ul>
-<p>参考资料：</p>
-<ul>
-<li><a href="https://blog.csdn.net/lingzhm/article/details/44940823" target="_blank" rel="noopener">blog.csdn.net/lingzhm/art…</a></li>
-<li><a href="http://www.cnblogs.com/dolphin0520/p/3920385.html" target="_blank" rel="noopener">www.cnblogs.com/dolphin0520…</a></li>
-<li><a href="https://www.cnblogs.com/eer123/p/7880789.html" target="_blank" rel="noopener">www.cnblogs.com/eer123/p/78…</a></li>
-<li><a href="https://www.jianshu.com/p/f4454164c017" target="_blank" rel="noopener">www.jianshu.com/p/f4454164c…</a></li>
-</ul>
 <h1 id="六、finalize-方法"><a href="#六、finalize-方法" class="headerlink" title="六、finalize()方法"></a>六、finalize()方法</h1><p><code>finalize()</code>方法将在<strong>垃圾回收器清除对象之前调用</strong>，但该方法不知道何时调用，具有<strong>不定性</strong></p>
 <ul>
 <li>一般我们都不会重写它~</li>
@@ -713,20 +677,6 @@
 <blockquote>
 <p>一个对象的finalize()方法<strong>只会被调用一次</strong>，而且finalize()被调用不意味着gc会立即回收该对象，所以有可能调用finalize()后，该对象又不需要被回收了，然后到了真正要被回收的时候，因为前面调用过一次，所以不会调用finalize()，产生问题。</p>
 </blockquote>
-<p>参考资料：</p>
-<ul>
-<li><a href="https://segmentfault.com/q/1010000000094660" target="_blank" rel="noopener">segmentfault.com/q/101000000…</a></li>
-</ul>
-<p>进阶的资料：</p>
-<ul>
-<li><a href="https://www.cnblogs.com/Smina/p/7189427.html" target="_blank" rel="noopener">www.cnblogs.com/Smina/p/718…</a></li>
-<li><a href="http://www.importnew.com/23913.html" target="_blank" rel="noopener">www.importnew.com/23913.html</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/29522201" target="_blank" rel="noopener">zhuanlan.zhihu.com/p/29522201</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/25698745" target="_blank" rel="noopener">zhuanlan.zhihu.com/p/25698745</a></li>
-</ul>
-<h1 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h1><p>总的来说也算是把Object看了一遍了，不至于一下子把它的方法给忘了<del>~</del>在学习的过程中也遇到过问题，最明显的是对protected修饰符又加深了一次理解。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/3/16324c6d5dc7eb99?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
-<p>参考资料：</p>
 
             </div>
             <hr />
@@ -874,296 +824,12 @@
     </div>
 
     
-    <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div id="gitalk-container" class="card-content"></div>
-</div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '52424b98fb27c2cf5f3a',
-        clientSecret: '0b13a34441db0176018eebfebe19f75532f15e81',
-        repo: 'tigerLuHai.github.io',
-        owner: 'tigerLuHai',
-        admin: "tigerLuHai",
-        id: '2020/01/13/java-de-object-dui-xiang/',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
-    
 
     
 
     
 
     
-
-    
-    <style>
-    .valine-card {
-        margin: 1.5rem auto;
-    }
-
-    .valine-card .card-content {
-        padding: 20px 20px 5px 20px;
-    }
-
-    #vcomments input[type=text],
-    #vcomments input[type=email],
-    #vcomments input[type=url],
-    #vcomments textarea {
-        box-sizing: border-box;
-    }
-
-    #vcomments p {
-        margin: 2px 2px 10px;
-        font-size: 1.05rem;
-        line-height: 1.78rem;
-    }
-
-    #vcomments blockquote p {
-        text-indent: 0.2rem;
-    }
-
-    #vcomments a {
-        padding: 0 2px;
-        color: #42b983;
-        font-weight: 500;
-        text-decoration: underline;
-    }
-
-    #vcomments img {
-        max-width: 100%;
-        height: auto;
-        cursor: pointer;
-    }
-
-    #vcomments ol li {
-        list-style-type: decimal;
-    }
-
-    #vcomments ol,
-    ul {
-        display: block;
-        padding-left: 2em;
-        word-spacing: 0.05rem;
-    }
-
-    #vcomments ul li,
-    ol li {
-        display: list-item;
-        line-height: 1.8rem;
-        font-size: 1rem;
-    }
-
-    #vcomments ul li {
-        list-style-type: disc;
-    }
-
-    #vcomments ul ul li {
-        list-style-type: circle;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    #vcomments table, th, td {
-        border: 0;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments h1 {
-        font-size: 1.85rem;
-        font-weight: bold;
-        line-height: 2.2rem;
-    }
-
-    #vcomments h2 {
-        font-size: 1.65rem;
-        font-weight: bold;
-        line-height: 1.9rem;
-    }
-
-    #vcomments h3 {
-        font-size: 1.45rem;
-        font-weight: bold;
-        line-height: 1.7rem;
-    }
-
-    #vcomments h4 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    #vcomments h5 {
-        font-size: 1.1rem;
-        font-weight: bold;
-        line-height: 1.4rem;
-    }
-
-    #vcomments h6 {
-        font-size: 1rem;
-        line-height: 1.3rem;
-    }
-
-    #vcomments p {
-        font-size: 1rem;
-        line-height: 1.5rem;
-    }
-
-    #vcomments hr {
-        margin: 12px 0;
-        border: 0;
-        border-top: 1px solid #ccc;
-    }
-
-    #vcomments blockquote {
-        margin: 15px 0;
-        border-left: 5px solid #42b983;
-        padding: 1rem 0.8rem 0.3rem 0.8rem;
-        color: #666;
-        background-color: rgba(66, 185, 131, .1);
-    }
-
-    #vcomments pre {
-        font-family: monospace, monospace;
-        padding: 1.2em;
-        margin: .5em 0;
-        background: #272822;
-        overflow: auto;
-        border-radius: 0.3em;
-        tab-size: 4;
-    }
-
-    #vcomments code {
-        font-family: monospace, monospace;
-        padding: 1px 3px;
-        font-size: 0.92rem;
-        color: #e96900;
-        background-color: #f8f8f8;
-        border-radius: 2px;
-    }
-
-    #vcomments pre code {
-        font-family: monospace, monospace;
-        padding: 0;
-        color: #e8eaf6;
-        background-color: #272822;
-    }
-
-    #vcomments pre[class*="language-"] {
-        padding: 1.2em;
-        margin: .5em 0;
-    }
-
-    #vcomments code[class*="language-"],
-    pre[class*="language-"] {
-        color: #e8eaf6;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-
-    #vcomments b,
-    strong {
-        font-weight: bold;
-    }
-
-    #vcomments dfn {
-        font-style: italic;
-    }
-
-    #vcomments small {
-        font-size: 85%;
-    }
-
-    #vcomments cite {
-        font-style: normal;
-    }
-
-    #vcomments mark {
-        background-color: #fcf8e3;
-        padding: .2em;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-</style>
-
-<div class="card valine-card" data-aos="fade-up">
-    <div id="vcomments" class="card-content"></div>
-</div>
-
-<script src="/libs/valine/av-min.js"></script>
-<script src="/libs/valine/Valine.min.js"></script>
-<!-- <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
-
-<script>
-    new Valine({
-        el: '#vcomments',
-        appId: '',
-        appKey: '',
-        notify: 'false' === 'true',
-        verify: 'false' === 'true',
-        visitor: 'false' === 'true',
-        avatar: 'wavatar',
-        pageSize: '10',
-        lang: 'zh-cn',
-        placeholder: '如果你没有GitHub账号，还可以在这里评论啦！'
-    });
-</script>
 
     
 
@@ -1180,7 +846,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Netty原理">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Netty原理">
                         
                         <span class="card-title">Netty原理</span>
                     </div>
@@ -1221,7 +887,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="软件开发六大设计原则">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="软件开发六大设计原则">
                         
                         <span class="card-title">软件开发六大设计原则</span>
                     </div>
@@ -1394,13 +1060,6 @@ public interface Course {
 </main>
 
 
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
-
     <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -1408,7 +1067,7 @@ public interface Course {
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">91.6k</span>
+            <span class="white-color">96.5k</span>
             
 
             <br>
@@ -1418,6 +1077,15 @@ public interface Course {
             
             <br>
             
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
             
             
         </div>
@@ -1561,8 +1229,6 @@ $(function () {
 
 
 
-    
-    <script src="/libs/others/clicklove.js"></script>
     
 
     

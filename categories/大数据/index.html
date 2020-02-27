@@ -98,13 +98,6 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
-    <li class="hide-on-med-and-down">
         <a href="/contact" class="waves-effect waves-light">
             
             <span>留言板</span>
@@ -178,15 +171,6 @@
                 <i class="fa fa-fw fa-link"></i>
                 
                 关于
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-link"></i>
-                
-                友情链接
             </a>
         </li>
         
@@ -362,20 +346,20 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
-                <a href="/categories/MySQL/" title="MySQL: 1">
+                <a href="/categories/MySQL/" title="MySQL: 0">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #F8F9F9;">MySQL
-                        <span class="tag-length">1</span>
+                        <span class="tag-length">0</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/数据库/" title="数据库: 1">
+                <a href="/categories/数据库/" title="数据库: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #82E0AA;">数据库
-                        <span class="tag-length">1</span>
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -395,8 +379,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                     <a href="/2020/01/16/hbase-jian-li-er-ji-suo-yin-de-ji-chong-fang-shi/">
                         <div class="card-image tag-image">
                             
-                            
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="HBase建立二级索引的几种方式">
+                            <img src="/medias/featureimages/hbase.png" class="responsive-img" alt="HBase建立二级索引的几种方式">
                             
                             <span class="card-title">HBase建立二级索引的几种方式</span>
                         </div>
@@ -404,7 +387,8 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                
+                                为什么需要HBse二级索引HBase里面只有rowkey作为一级索引， 如果要对库里的非rowkey字段进行数据检索和查询， 往往要通过MapReduce/Spark等分布式计算框架进行，硬件资源消耗和时间延迟都会比较高。
+只依赖rowke
                             
                         </div>
                         <div class="publish-info">
@@ -434,7 +418,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Sqoop-HDFS与外界交互数据的工具">
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Sqoop-HDFS与外界交互数据的工具">
                             
                             <span class="card-title">Sqoop-HDFS与外界交互数据的工具</span>
                         </div>
@@ -472,7 +456,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Flume-大数据采集工具">
+                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Flume-大数据采集工具">
                             
                             <span class="card-title">Flume-大数据采集工具</span>
                         </div>
@@ -480,7 +464,10 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                
+                                概述Flume定义Flume是Cloudera提供的一个高可用的，高可靠的，分布式的海量日志采集、聚合和传输的系统。Flume基于流式架构，灵活简单。
+Flume组成架构Flume组成架构如图所示：
+ 
+AgentAgent是一个JVM进程
                             
                         </div>
                         <div class="publish-info">
@@ -549,7 +536,7 @@ Flink起源于Stratosphe
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="真正意义的流式处理框架Strom">
+                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="真正意义的流式处理框架Strom">
                             
                             <span class="card-title">真正意义的流式处理框架Strom</span>
                         </div>
@@ -591,7 +578,7 @@ Nimbus：即Storm的Master，负
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="Spark到底好在哪里?">
+                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Spark到底好在哪里?">
                             
                             <span class="card-title">Spark到底好在哪里?</span>
                         </div>
@@ -628,8 +615,7 @@ Nimbus：即Storm的Master，负
                     <a href="/2020/01/16/hive-ji-yu-mapreduce-de-shu-ju-fen-xi-gong-ju/">
                         <div class="card-image tag-image">
                             
-                            
-                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Hive-基于MapReduce的数据分析工具">
+                            <img src="/medias/featureimages/hive.png" class="responsive-img" alt="Hive-基于MapReduce的数据分析工具">
                             
                             <span class="card-title">Hive-基于MapReduce的数据分析工具</span>
                         </div>
@@ -637,7 +623,8 @@ Nimbus：即Storm的Master，负
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                
+                                Hive概述Hive 的底层执行引擎有 ：MapReduce，Tez，Spark- Hive on MapReduce- Hive on Tez- Hive on spark
+压缩：GZIP,LZO,Snappy,Bzip2…存储：Text
                             
                         </div>
                         <div class="publish-info">
@@ -667,7 +654,7 @@ Nimbus：即Storm的Master，负
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Kafka-大数据的标准数据源">
+                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Kafka-大数据的标准数据源">
                             
                             <span class="card-title">Kafka-大数据的标准数据源</span>
                         </div>
@@ -704,8 +691,7 @@ Nimbus：即Storm的Master，负
                     <a href="/2020/01/16/hbase-de-rowkey-she-ji-de-li-jie/">
                         <div class="card-image tag-image">
                             
-                            
-                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="HBase的rowkey设计的理解">
+                            <img src="/medias/featureimages/hbase.png" class="responsive-img" alt="HBase的rowkey设计的理解">
                             
                             <span class="card-title">HBase的rowkey设计的理解</span>
                         </div>
@@ -713,7 +699,8 @@ Nimbus：即Storm的Master，负
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                
+                                HBase是三维有序存储的，通过rowkey（行键），column key（column family和qualifier）和TimeStamp（时间戳）这个三个维度可以对HBase中的数据进行快速定位。
+HBase中rowkey可以唯一标
                             
                         </div>
                         <div class="publish-info">
@@ -743,7 +730,7 @@ Nimbus：即Storm的Master，负
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Hadoop之HDFS上传文件源码分析">
+                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Hadoop之HDFS上传文件源码分析">
                             
                             <span class="card-title">Hadoop之HDFS上传文件源码分析</span>
                         </div>
@@ -781,7 +768,7 @@ Nimbus：即Storm的Master，负
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="使用VMware安装linux虚拟机">
+                            <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="使用VMware安装linux虚拟机">
                             
                             <span class="card-title">使用VMware安装linux虚拟机</span>
                         </div>
@@ -821,7 +808,7 @@ Nimbus：即Storm的Master，负
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hadoop集群搭建与简单使用">
+                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Hadoop集群搭建与简单使用">
                             
                             <span class="card-title">Hadoop集群搭建与简单使用</span>
                         </div>
@@ -870,7 +857,7 @@ Hadoop的运行是基于java的,所以需要先安装JDK,而且JDK版本必须�
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">91.6k</span>
+            <span class="white-color">96.5k</span>
             
 
             <br>
@@ -880,6 +867,15 @@ Hadoop的运行是基于java的,所以需要先安装JDK,而且JDK版本必须�
             
             <br>
             
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
             
             
         </div>
@@ -1023,8 +1019,6 @@ $(function () {
 
 
 
-    
-    <script src="/libs/others/clicklove.js"></script>
     
 
     

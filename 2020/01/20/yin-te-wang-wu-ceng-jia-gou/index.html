@@ -98,13 +98,6 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
-    <li class="hide-on-med-and-down">
         <a href="/contact" class="waves-effect waves-light">
             
             <span>留言板</span>
@@ -178,15 +171,6 @@
                 <i class="fa fa-fw fa-link"></i>
                 
                 关于
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-link"></i>
-                
-                友情链接
             </a>
         </li>
         
@@ -290,7 +274,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -465,7 +449,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>TCP/IP 协议不是 TCP 和 IP 这两个协议的合称，而是指因特网整个 TCP/IP 协议族。从协议分层模型方面来讲， <strong>TCP/IP 由四个层次组成：网络接口层、网络层、传输层、应用层(因特网没有对链路层和物理层有任何规定,统一为为网络层提供服务的更底层)</strong>。</p>
-<p><img src="/2020/01/20/yin-te-wang-wu-ceng-jia-gou/tcpip1.png" alt="img"></p>
+<p><img src="/2020/01/20/yin-te-wang-wu-ceng-jia-gou/tcpip1.png" alt></p>
 <h4 id="网络接口层"><a href="#网络接口层" class="headerlink" title="网络接口层"></a>网络接口层</h4><p>网络访问层(Network Access Layer)在 TCP/IP 参考模型中并没有详细描述,(<strong>这也是为什么会有因特网是四层架构还是五层架构机构的问题,严格来说他的实现是五层,规定只有四层</strong>) <strong>只是指出主机必须使用某种协议与网络相连</strong>。</p>
 <h4 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h4><p>网络层(Internet Layer)是整个体系结构的关键部分，其功能是使主机可以把分组发往任何网络，并使分组独立地传向目标。这些分组可能经由不同的网络，到达的顺序和发送的顺序也可能不同。高层如果需要顺序收发，那么就必须自行处理对分组的排序。 一些书上也把网络层分开为控制平面和数据平面两个层面去讲解。<strong>互联网层使用因特网协议(IP， Internet Protocol)</strong>。</p>
 <h4 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h4><p>传输层(Tramsport Layer)使源端和目的端机器上的对等实体可以进行会话。 <strong>在这一层定义了两个端到端的协议</strong>：传输控制协议(<strong>TCP</strong>， Transmission Control Protocol)和用户数据报协议(<strong>UDP</strong>， User Datagram Protocol)。 TCP 是面向连接的协议，它提供可靠的报文传输和对上层应用的连接服务。为此，除了基本的数据传输外，它还有可靠性保证、流量控制、多路复用、优先权和安全性控制等功能。 UDP 是面向无连接的不可靠传输的协议，主要用于实时性要求高但是对数据丢失可容忍的应用程序（微信视频等）。</p>
@@ -618,296 +602,12 @@
     </div>
 
     
-    <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div id="gitalk-container" class="card-content"></div>
-</div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '52424b98fb27c2cf5f3a',
-        clientSecret: '0b13a34441db0176018eebfebe19f75532f15e81',
-        repo: 'tigerLuHai.github.io',
-        owner: 'tigerLuHai',
-        admin: "tigerLuHai",
-        id: '2020/01/20/yin-te-wang-wu-ceng-jia-gou/',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
-    
 
     
 
     
 
     
-
-    
-    <style>
-    .valine-card {
-        margin: 1.5rem auto;
-    }
-
-    .valine-card .card-content {
-        padding: 20px 20px 5px 20px;
-    }
-
-    #vcomments input[type=text],
-    #vcomments input[type=email],
-    #vcomments input[type=url],
-    #vcomments textarea {
-        box-sizing: border-box;
-    }
-
-    #vcomments p {
-        margin: 2px 2px 10px;
-        font-size: 1.05rem;
-        line-height: 1.78rem;
-    }
-
-    #vcomments blockquote p {
-        text-indent: 0.2rem;
-    }
-
-    #vcomments a {
-        padding: 0 2px;
-        color: #42b983;
-        font-weight: 500;
-        text-decoration: underline;
-    }
-
-    #vcomments img {
-        max-width: 100%;
-        height: auto;
-        cursor: pointer;
-    }
-
-    #vcomments ol li {
-        list-style-type: decimal;
-    }
-
-    #vcomments ol,
-    ul {
-        display: block;
-        padding-left: 2em;
-        word-spacing: 0.05rem;
-    }
-
-    #vcomments ul li,
-    ol li {
-        display: list-item;
-        line-height: 1.8rem;
-        font-size: 1rem;
-    }
-
-    #vcomments ul li {
-        list-style-type: disc;
-    }
-
-    #vcomments ul ul li {
-        list-style-type: circle;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    #vcomments table, th, td {
-        border: 0;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments h1 {
-        font-size: 1.85rem;
-        font-weight: bold;
-        line-height: 2.2rem;
-    }
-
-    #vcomments h2 {
-        font-size: 1.65rem;
-        font-weight: bold;
-        line-height: 1.9rem;
-    }
-
-    #vcomments h3 {
-        font-size: 1.45rem;
-        font-weight: bold;
-        line-height: 1.7rem;
-    }
-
-    #vcomments h4 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    #vcomments h5 {
-        font-size: 1.1rem;
-        font-weight: bold;
-        line-height: 1.4rem;
-    }
-
-    #vcomments h6 {
-        font-size: 1rem;
-        line-height: 1.3rem;
-    }
-
-    #vcomments p {
-        font-size: 1rem;
-        line-height: 1.5rem;
-    }
-
-    #vcomments hr {
-        margin: 12px 0;
-        border: 0;
-        border-top: 1px solid #ccc;
-    }
-
-    #vcomments blockquote {
-        margin: 15px 0;
-        border-left: 5px solid #42b983;
-        padding: 1rem 0.8rem 0.3rem 0.8rem;
-        color: #666;
-        background-color: rgba(66, 185, 131, .1);
-    }
-
-    #vcomments pre {
-        font-family: monospace, monospace;
-        padding: 1.2em;
-        margin: .5em 0;
-        background: #272822;
-        overflow: auto;
-        border-radius: 0.3em;
-        tab-size: 4;
-    }
-
-    #vcomments code {
-        font-family: monospace, monospace;
-        padding: 1px 3px;
-        font-size: 0.92rem;
-        color: #e96900;
-        background-color: #f8f8f8;
-        border-radius: 2px;
-    }
-
-    #vcomments pre code {
-        font-family: monospace, monospace;
-        padding: 0;
-        color: #e8eaf6;
-        background-color: #272822;
-    }
-
-    #vcomments pre[class*="language-"] {
-        padding: 1.2em;
-        margin: .5em 0;
-    }
-
-    #vcomments code[class*="language-"],
-    pre[class*="language-"] {
-        color: #e8eaf6;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-
-    #vcomments b,
-    strong {
-        font-weight: bold;
-    }
-
-    #vcomments dfn {
-        font-style: italic;
-    }
-
-    #vcomments small {
-        font-size: 85%;
-    }
-
-    #vcomments cite {
-        font-style: normal;
-    }
-
-    #vcomments mark {
-        background-color: #fcf8e3;
-        padding: .2em;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-</style>
-
-<div class="card valine-card" data-aos="fade-up">
-    <div id="vcomments" class="card-content"></div>
-</div>
-
-<script src="/libs/valine/av-min.js"></script>
-<script src="/libs/valine/Valine.min.js"></script>
-<!-- <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
-
-<script>
-    new Valine({
-        el: '#vcomments',
-        appId: '',
-        appKey: '',
-        notify: 'false' === 'true',
-        verify: 'false' === 'true',
-        visitor: 'false' === 'true',
-        avatar: 'wavatar',
-        pageSize: '10',
-        lang: 'zh-cn',
-        placeholder: '如果你没有GitHub账号，还可以在这里评论啦！'
-    });
-</script>
 
     
 
@@ -924,7 +624,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="HTTP与HTTPS原理">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="HTTP与HTTPS原理">
                         
                         <span class="card-title">HTTP与HTTPS原理</span>
                     </div>
@@ -932,23 +632,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-概述
-传输流程
-地址解析
-封装 HTTP 请求数据包
-封装成 TCP 包并建立连接
-客户机发送请求命令
-服务器响应
-服务器关闭 TCP 连接
-HTTP响应状态
-
-
-小插曲：301和302有啥区别
-HTTPS
-建立连接获取证书
-证书验证
-数
+                            概述HTTP 是一个无状态的协议。无状态是指客户机（Web 浏览器）和服务器之间不需要建立持久的连接，这意味着当一个客户端向服务器端发出请求，然后服务器返回响应(response)，连接就被关闭了，在服务器端不保留连接的有关信息.HTTP 
                         
                     </div>
                     <div class="publish-info">
@@ -981,7 +665,7 @@ HTTPS
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="网络七层架构">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="网络七层架构">
                         
                         <span class="card-title">网络七层架构</span>
                     </div>
@@ -1153,13 +837,6 @@ HTTPS
 </main>
 
 
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
-
     <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -1167,7 +844,7 @@ HTTPS
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">91.6k</span>
+            <span class="white-color">96.5k</span>
             
 
             <br>
@@ -1177,6 +854,15 @@ HTTPS
             
             <br>
             
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
             
             
         </div>
@@ -1320,8 +1006,6 @@ $(function () {
 
 
 
-    
-    <script src="/libs/others/clicklove.js"></script>
     
 
     

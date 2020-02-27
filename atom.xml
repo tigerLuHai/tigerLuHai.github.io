@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tigerLuHai.github.io/"/>
-  <updated>2020-02-17T14:44:04.254Z</updated>
+  <updated>2020-02-26T06:59:21.543Z</updated>
   <id>http://tigerLuHai.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://tigerLuHai.github.io/2020/02/17/mongodb-shi-yong-ji-di-ceng-yuan-li/"/>
     <id>http://tigerLuHai.github.io/2020/02/17/mongodb-shi-yong-ji-di-ceng-yuan-li/</id>
     <published>2020-02-17T14:23:25.000Z</published>
-    <updated>2020-02-17T14:44:04.254Z</updated>
+    <updated>2020-02-26T06:59:21.543Z</updated>
     
     <summary type="html">
     
@@ -45,7 +45,7 @@
     <link href="http://tigerLuHai.github.io/2020/02/04/shiro-kuang-jia-yuan-li-ji-jian-dan-shi-yong/"/>
     <id>http://tigerLuHai.github.io/2020/02/04/shiro-kuang-jia-yuan-li-ji-jian-dan-shi-yong/</id>
     <published>2020-02-04T14:41:47.000Z</published>
-    <updated>2020-02-05T13:49:49.867Z</updated>
+    <updated>2020-02-26T02:21:18.510Z</updated>
     
     <summary type="html">
     
@@ -93,7 +93,7 @@
     <link href="http://tigerLuHai.github.io/2020/01/26/dui-mysql-du-xie-fen-chi-de-ren-shi/"/>
     <id>http://tigerLuHai.github.io/2020/01/26/dui-mysql-du-xie-fen-chi-de-ren-shi/</id>
     <published>2020-01-26T13:48:39.000Z</published>
-    <updated>2020-02-06T07:34:19.377Z</updated>
+    <updated>2020-02-26T06:57:19.283Z</updated>
     
     <summary type="html">
     
@@ -107,7 +107,7 @@
     
     </summary>
     
-      <category term="MySQL" scheme="http://tigerLuHai.github.io/categories/MySQL/"/>
+      <category term="数据库" scheme="http://tigerLuHai.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
   </entry>
@@ -117,7 +117,7 @@
     <link href="http://tigerLuHai.github.io/2020/01/23/hashmap-yu-concurrenthashmap/"/>
     <id>http://tigerLuHai.github.io/2020/01/23/hashmap-yu-concurrenthashmap/</id>
     <published>2020-01-23T12:41:49.000Z</published>
-    <updated>2020-01-23T12:47:35.299Z</updated>
+    <updated>2020-02-26T03:33:35.728Z</updated>
     
     <summary type="html">
     
@@ -141,7 +141,7 @@
     <link href="http://tigerLuHai.github.io/2020/01/22/xian-cheng-chi-yuan-li/"/>
     <id>http://tigerLuHai.github.io/2020/01/22/xian-cheng-chi-yuan-li/</id>
     <published>2020-01-22T15:05:54.000Z</published>
-    <updated>2020-02-05T14:48:03.064Z</updated>
+    <updated>2020-02-26T06:25:46.917Z</updated>
     
     <summary type="html">
     
@@ -165,7 +165,7 @@
     <link href="http://tigerLuHai.github.io/2020/01/22/wen-ding-pai-xu-yu-fei-wen-ding-pai-xu-de-ying-yong-chang-jing/"/>
     <id>http://tigerLuHai.github.io/2020/01/22/wen-ding-pai-xu-yu-fei-wen-ding-pai-xu-de-ying-yong-chang-jing/</id>
     <published>2020-01-22T12:55:27.000Z</published>
-    <updated>2020-02-05T14:10:02.158Z</updated>
+    <updated>2020-02-26T06:52:48.175Z</updated>
     
     <summary type="html">
     
@@ -188,8 +188,8 @@
     <title>HTTP与HTTPS原理</title>
     <link href="http://tigerLuHai.github.io/2020/01/21/http-yu-https-yuan-li/"/>
     <id>http://tigerLuHai.github.io/2020/01/21/http-yu-https-yuan-li/</id>
-    <published>2020-01-21T12:46:41.000Z</published>
-    <updated>2020-02-03T10:12:01.442Z</updated>
+    <published>2020-01-21T04:14:30.000Z</published>
+    <updated>2020-02-26T05:17:19.915Z</updated>
     
     <summary type="html">
     
@@ -197,8 +197,7 @@
       
         
         
-          &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://augustrush8.com/post/http-principle.html#%E6%A6%82%E8%BF%B0&quot; target=&quot;_blank&quot;
+          &lt;h3 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h3&gt;&lt;p&gt;HTTP 是一个无状态的协议。无状态是指客户机（Web
         
       
     
@@ -214,7 +213,7 @@
     <link href="http://tigerLuHai.github.io/2020/01/20/yin-te-wang-wu-ceng-jia-gou/"/>
     <id>http://tigerLuHai.github.io/2020/01/20/yin-te-wang-wu-ceng-jia-gou/</id>
     <published>2020-01-20T12:27:22.000Z</published>
-    <updated>2020-02-05T14:04:12.607Z</updated>
+    <updated>2020-02-26T02:40:41.489Z</updated>
     
     <summary type="html">
     
@@ -238,7 +237,7 @@
     <link href="http://tigerLuHai.github.io/2020/01/20/wang-luo-qi-ceng-jia-gou/"/>
     <id>http://tigerLuHai.github.io/2020/01/20/wang-luo-qi-ceng-jia-gou/</id>
     <published>2020-01-20T12:26:37.000Z</published>
-    <updated>2020-02-03T10:28:50.784Z</updated>
+    <updated>2020-02-26T07:10:23.433Z</updated>
     
     <summary type="html">
     
@@ -263,7 +262,7 @@
     <link href="http://tigerLuHai.github.io/2020/01/19/nginx-shi-yong-xin-de/"/>
     <id>http://tigerLuHai.github.io/2020/01/19/nginx-shi-yong-xin-de/</id>
     <published>2020-01-19T08:15:01.000Z</published>
-    <updated>2020-02-03T10:19:08.378Z</updated>
+    <updated>2020-02-26T03:12:22.353Z</updated>
     
     <summary type="html">
     
@@ -311,7 +310,7 @@
     <link href="http://tigerLuHai.github.io/2020/01/16/dui-lie-de-yong-fa/"/>
     <id>http://tigerLuHai.github.io/2020/01/16/dui-lie-de-yong-fa/</id>
     <published>2020-01-16T14:04:20.000Z</published>
-    <updated>2020-02-06T07:53:33.687Z</updated>
+    <updated>2020-02-26T06:54:42.179Z</updated>
     
     <summary type="html">
     
@@ -335,9 +334,17 @@
     <link href="http://tigerLuHai.github.io/2020/01/16/zhan-de-xing-zhi-ji-yi-xie-shi-yong-chang-jing/"/>
     <id>http://tigerLuHai.github.io/2020/01/16/zhan-de-xing-zhi-ji-yi-xie-shi-yong-chang-jing/</id>
     <published>2020-01-16T14:03:57.000Z</published>
-    <updated>2020-01-16T14:05:20.638Z</updated>
+    <updated>2020-02-26T07:07:36.785Z</updated>
     
     <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;性质&quot;&gt;&lt;a href=&quot;#性质&quot; class=&quot;headerlink&quot; title=&quot;性质&quot;&gt;&lt;/a&gt;性质&lt;/h2&gt;&lt;p&gt;栈和队列其实是一个工具，他们传统的工具方法
+        
+      
     
     </summary>
     
@@ -351,9 +358,17 @@
     <link href="http://tigerLuHai.github.io/2020/01/16/hbase-jian-li-er-ji-suo-yin-de-ji-chong-fang-shi/"/>
     <id>http://tigerLuHai.github.io/2020/01/16/hbase-jian-li-er-ji-suo-yin-de-ji-chong-fang-shi/</id>
     <published>2020-01-16T13:35:01.000Z</published>
-    <updated>2020-01-16T13:37:37.758Z</updated>
+    <updated>2020-02-26T02:11:18.766Z</updated>
     
     <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;为什么需要HBse二级索引&quot;&gt;&lt;a href=&quot;#为什么需要HBse二级索引&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -391,9 +406,17 @@
     <link href="http://tigerLuHai.github.io/2020/01/16/flume-da-shu-ju-cai-ji-gong-ju/"/>
     <id>http://tigerLuHai.github.io/2020/01/16/flume-da-shu-ju-cai-ji-gong-ju/</id>
     <published>2020-01-16T13:29:00.000Z</published>
-    <updated>2020-01-16T13:37:09.934Z</updated>
+    <updated>2020-02-26T07:44:40.726Z</updated>
     
     <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;h2 id=&quot;Flume定义&quot;&gt;&lt;a href=&quot;#Flume定义&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -407,7 +430,7 @@
     <link href="http://tigerLuHai.github.io/2020/01/16/liu-shi-chu-li-kuang-jia-hou-qi-zhi-xiu-flink/"/>
     <id>http://tigerLuHai.github.io/2020/01/16/liu-shi-chu-li-kuang-jia-hou-qi-zhi-xiu-flink/</id>
     <published>2020-01-16T13:27:46.000Z</published>
-    <updated>2020-02-06T07:09:54.945Z</updated>
+    <updated>2020-02-26T02:31:31.842Z</updated>
     
     <summary type="html">
     
@@ -431,7 +454,7 @@
     <link href="http://tigerLuHai.github.io/2020/01/16/zhen-zheng-yi-yi-de-liu-shi-chu-li-kuang-jia-strom/"/>
     <id>http://tigerLuHai.github.io/2020/01/16/zhen-zheng-yi-yi-de-liu-shi-chu-li-kuang-jia-strom/</id>
     <published>2020-01-16T13:27:19.000Z</published>
-    <updated>2020-02-05T14:42:19.798Z</updated>
+    <updated>2020-02-26T07:13:19.588Z</updated>
     
     <summary type="html">
     

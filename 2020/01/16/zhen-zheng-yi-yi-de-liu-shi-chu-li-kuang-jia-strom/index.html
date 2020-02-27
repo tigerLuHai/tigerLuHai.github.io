@@ -102,13 +102,6 @@ Nimbus：即Storm的Master，负">
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
-    <li class="hide-on-med-and-down">
         <a href="/contact" class="waves-effect waves-light">
             
             <span>留言板</span>
@@ -182,15 +175,6 @@ Nimbus：即Storm的Master，负">
                 <i class="fa fa-fw fa-link"></i>
                 
                 关于
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-link"></i>
-                
-                友情链接
             </a>
         </li>
         
@@ -294,7 +278,7 @@ Nimbus：即Storm的Master，负">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -514,18 +498,15 @@ export PATH=.:${JAVA_HOME}/bin:${ZK_HOME}/bin:${STORM_HOME}/bin:$PATH</code></pr
 <li>supervisor.slots.ports 表示worker 端口。</li>
 </ul>
 <h2 id="启动Storm"><a href="#启动Storm" class="headerlink" title="启动Storm"></a>启动Storm</h2><p>进入到/usr/local/apache-storm-1.2.2/bin 目录下 首先启动主节点</p>
-<pre><code>nohup ./strom nimbus &amp; 
-复制代码</code></pre><p>启动图形界面</p>
-<pre><code>nohup ./storm ui &amp;
-复制代码</code></pre><p>启动其他节点</p>
-<pre><code>nohup ./storm supervisor &amp;
-复制代码</code></pre><p>在浏览器访问主节点<a href="https://juejin.im/post/5c9aeb95f265da610849b2b8" target="_blank" rel="noopener">http://192.168.70.68:10088</a> 看到界面表示成功。</p>
-<h1 id="Storm-核心概念详解"><a href="#Storm-核心概念详解" class="headerlink" title="Storm 核心概念详解"></a>Storm 核心概念详解</h1><h2 id="一、Storm核心概念"><a href="#一、Storm核心概念" class="headerlink" title="一、Storm核心概念"></a>一、Storm核心概念</h2><p><img src="https://user-gold-cdn.xitu.io/2019/9/21/16d52da826976d15?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="https://github.com/heibaiying"></p>
+<pre><code>nohup ./strom nimbus &amp; </code></pre><p>启动图形界面</p>
+<pre><code>nohup ./storm ui &amp;</code></pre><p>启动其他节点</p>
+<pre><code>nohup ./storm supervisor &amp;</code></pre><p>在浏览器访问主节点<a href="https://juejin.im/post/5c9aeb95f265da610849b2b8" target="_blank" rel="noopener">http://192.168.70.68:10088</a> 看到界面表示成功。</p>
+<h1 id="Storm-核心概念详解"><a href="#Storm-核心概念详解" class="headerlink" title="Storm 核心概念详解"></a>Storm 核心概念详解</h1><h2 id="一、Storm核心概念"><a href="#一、Storm核心概念" class="headerlink" title="一、Storm核心概念"></a>一、Storm核心概念</h2><p><img src="/2020/01/16/zhen-zheng-yi-yi-de-liu-shi-chu-li-kuang-jia-strom/4.png" alt></p>
 <h3 id="1-1-Topologies（拓扑）"><a href="#1-1-Topologies（拓扑）" class="headerlink" title="1.1 Topologies（拓扑）"></a>1.1 Topologies（拓扑）</h3><p>一个完整的 Storm 流处理程序被称为 Storm topology(拓扑)。它是一个是由 <code>Spouts</code> 和 <code>Bolts</code>通过 <code>Stream</code> 连接起来的有向无环图，Storm 会保持每个提交到集群的 topology 持续地运行，从而处理源源不断的数据流，直到你将主动其杀死 (kill) 为止。</p>
 <h3 id="1-2-Streams（流）"><a href="#1-2-Streams（流）" class="headerlink" title="1.2 Streams（流）"></a>1.2 Streams（流）</h3><p><code>Stream</code> 是 Storm 中的核心概念。一个 <code>Stream</code> 是一个无界的、以分布式方式并行创建和处理的 <code>Tuple</code> 序列。Tuple 可以包含大多数基本类型以及自定义类型的数据。简单来说，Tuple 就是流数据的实际载体，而 Stream 就是一系列 Tuple。</p>
 <h3 id="1-3-Spouts"><a href="#1-3-Spouts" class="headerlink" title="1.3 Spouts"></a>1.3 Spouts</h3><p><code>Spouts</code> 是流数据的源头，一个 Spout 可以向不止一个 <code>Streams</code> 中发送数据。<code>Spout</code> 通常分为<strong>可靠</strong>和<strong>不可靠</strong>两种：可靠的 <code>Spout</code> 能够在失败时重新发送 Tuple, 不可靠的 <code>Spout</code> 一旦把 Tuple 发送出去就置之不理了。</p>
 <h3 id="1-4-Bolts"><a href="#1-4-Bolts" class="headerlink" title="1.4 Bolts"></a>1.4 Bolts</h3><p><code>Bolts</code> 是流数据的处理单元，它可以从一个或者多个 <code>Streams</code> 中接收数据，处理完成后再发射到新的 <code>Streams</code> 中。<code>Bolts</code> 可以执行过滤 (filtering)，聚合 (aggregations)，连接 (joins) 等操作，并能与文件系统或数据库进行交互。</p>
-<h3 id="1-5-Stream-groupings（分组策略）"><a href="#1-5-Stream-groupings（分组策略）" class="headerlink" title="1.5 Stream groupings（分组策略）"></a>1.5 Stream groupings（分组策略）</h3><p><img src="/2020/01/16/zhen-zheng-yi-yi-de-liu-shi-chu-li-kuang-jia-strom/D:%5CMyBlot%5Cbolt%5Csource_posts%5C%E7%9C%9F%E6%AD%A3%E6%84%8F%E4%B9%89%E7%9A%84%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86%E6%A1%86%E6%9E%B6Strom%5C1.png" alt="https://github.com/heibaiying"></p>
+<h3 id="1-5-Stream-groupings（分组策略）"><a href="#1-5-Stream-groupings（分组策略）" class="headerlink" title="1.5 Stream groupings（分组策略）"></a>1.5 Stream groupings（分组策略）</h3><p><img src="/2020/01/16/zhen-zheng-yi-yi-de-liu-shi-chu-li-kuang-jia-strom/1.png" alt></p>
 <p><code>spouts</code> 和 <code>bolts</code> 在集群上执行任务时，是由多个 Task 并行执行 (如上图，每一个圆圈代表一个 Task)。当一个 Tuple 需要从 Bolt A 发送给 Bolt B 执行的时候，程序如何知道应该发送给 Bolt B 的哪一个 Task 执行呢？</p>
 <p>这是由 Stream groupings 分组策略来决定的，Storm 中一共有如下 8 个内置的 Stream Grouping。当然你也可以通过实现 <code>CustomStreamGrouping</code> 接口来实现自定义 Stream 分组策略。</p>
 <ol>
@@ -554,7 +535,7 @@ export PATH=.:${JAVA_HOME}/bin:${ZK_HOME}/bin:${STORM_HOME}/bin:$PATH</code></pr
 <p>如果目标 Bolt 有 Tasks 和当前 Bolt 的 Tasks 处在同一个 Worker 进程中，那么则优先将 Tuple Shuffled 到处于同一个进程的目标 Bolt 的 Tasks 上，这样可以最大限度地减少网络传输。否则，就和普通的 <code>Shuffle Grouping</code> 行为一致。</p>
 </li>
 </ol>
-<h2 id="二、Storm架构详解"><a href="#二、Storm架构详解" class="headerlink" title="二、Storm架构详解"></a>二、Storm架构详解</h2><p><img src="/2020/01/16/zhen-zheng-yi-yi-de-liu-shi-chu-li-kuang-jia-strom/D:%5CMyBlot%5Cbolt%5Csource_posts%5C%E7%9C%9F%E6%AD%A3%E6%84%8F%E4%B9%89%E7%9A%84%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86%E6%A1%86%E6%9E%B6Strom%5C2.png" alt="https://github.com/heibaiying"></p>
+<h2 id="二、Storm架构详解"><a href="#二、Storm架构详解" class="headerlink" title="二、Storm架构详解"></a>二、Storm架构详解</h2><p><img src="/2020/01/16/zhen-zheng-yi-yi-de-liu-shi-chu-li-kuang-jia-strom/2.png" alt></p>
 <h3 id="2-1-Nimbus进程"><a href="#2-1-Nimbus进程" class="headerlink" title="2.1 Nimbus进程"></a>2.1 Nimbus进程</h3><p>也叫做 Master Node，是 Storm 集群工作的全局指挥官。主要功能如下：</p>
 <ol>
 <li>通过 Thrift 接口，监听并接收 Client 提交的 Topology；</li>
@@ -582,7 +563,7 @@ export PATH=.:${JAVA_HOME}/bin:${ZK_HOME}/bin:${STORM_HOME}/bin:$PATH</code></pr
 <li>执行 1 个或多个 Task；</li>
 <li>执行 Acker 机制，负责发送 Task 处理状态给对应 Spout 所在的 worker。</li>
 </ol>
-<h3 id="2-6-并行度"><a href="#2-6-并行度" class="headerlink" title="2.6 并行度"></a>2.6 并行度</h3><p><img src="/2020/01/16/zhen-zheng-yi-yi-de-liu-shi-chu-li-kuang-jia-strom/D:%5CMyBlot%5Cbolt%5Csource_posts%5C%E7%9C%9F%E6%AD%A3%E6%84%8F%E4%B9%89%E7%9A%84%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86%E6%A1%86%E6%9E%B6Strom%5C3.png" alt="https://github.com/heibaiying"></p>
+<h3 id="2-6-并行度"><a href="#2-6-并行度" class="headerlink" title="2.6 并行度"></a>2.6 并行度</h3><p><img src="/2020/01/16/zhen-zheng-yi-yi-de-liu-shi-chu-li-kuang-jia-strom/3.png" alt></p>
 <p>1 个 Worker 进程执行的是 1 个 Topology 的子集，不会出现 1 个 Worker 为多个 Topology 服务的情况，因此 1 个运行中的 Topology 就是由集群中多台物理机上的多个 Worker 进程组成的。1 个 Worker 进程会启动 1 个或多个 Executor 线程来执行 1 个 Topology 的 Component(组件，即 Spout 或 Bolt)。</p>
 <p>Executor 是 1 个被 Worker 进程启动的单独线程。每个 Executor 会运行 1 个 Component 中的一个或者多个 Task。</p>
 <p>Task 是组成 Component 的代码单元。Topology 启动后，1 个 Component 的 Task 数目是固定不变的，但该 Component 使用的 Executor 线程数可以动态调整（例如：1 个 Executor 线程可以执行该 Component 的 1 个或多个 Task 实例）。这意味着，对于 1 个 Component 来说，<code>#threads&lt;=#tasks</code>（线程数小于等于 Task 数目）这样的情况是存在的。默认情况下 Task 的数目等于 Executor 线程数，即 1 个 Executor 线程只运行 1 个 Task。</p>
@@ -928,296 +909,12 @@ export PATH=.:${JAVA_HOME}/bin:${ZK_HOME}/bin:${STORM_HOME}/bin:$PATH</code></pr
     </div>
 
     
-    <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div id="gitalk-container" class="card-content"></div>
-</div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '52424b98fb27c2cf5f3a',
-        clientSecret: '0b13a34441db0176018eebfebe19f75532f15e81',
-        repo: 'tigerLuHai.github.io',
-        owner: 'tigerLuHai',
-        admin: "tigerLuHai",
-        id: '2020/01/16/zhen-zheng-yi-yi-de-liu-shi-chu-li-kuang-jia-strom/',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
-    
 
     
 
     
 
     
-
-    
-    <style>
-    .valine-card {
-        margin: 1.5rem auto;
-    }
-
-    .valine-card .card-content {
-        padding: 20px 20px 5px 20px;
-    }
-
-    #vcomments input[type=text],
-    #vcomments input[type=email],
-    #vcomments input[type=url],
-    #vcomments textarea {
-        box-sizing: border-box;
-    }
-
-    #vcomments p {
-        margin: 2px 2px 10px;
-        font-size: 1.05rem;
-        line-height: 1.78rem;
-    }
-
-    #vcomments blockquote p {
-        text-indent: 0.2rem;
-    }
-
-    #vcomments a {
-        padding: 0 2px;
-        color: #42b983;
-        font-weight: 500;
-        text-decoration: underline;
-    }
-
-    #vcomments img {
-        max-width: 100%;
-        height: auto;
-        cursor: pointer;
-    }
-
-    #vcomments ol li {
-        list-style-type: decimal;
-    }
-
-    #vcomments ol,
-    ul {
-        display: block;
-        padding-left: 2em;
-        word-spacing: 0.05rem;
-    }
-
-    #vcomments ul li,
-    ol li {
-        display: list-item;
-        line-height: 1.8rem;
-        font-size: 1rem;
-    }
-
-    #vcomments ul li {
-        list-style-type: disc;
-    }
-
-    #vcomments ul ul li {
-        list-style-type: circle;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    #vcomments table, th, td {
-        border: 0;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments h1 {
-        font-size: 1.85rem;
-        font-weight: bold;
-        line-height: 2.2rem;
-    }
-
-    #vcomments h2 {
-        font-size: 1.65rem;
-        font-weight: bold;
-        line-height: 1.9rem;
-    }
-
-    #vcomments h3 {
-        font-size: 1.45rem;
-        font-weight: bold;
-        line-height: 1.7rem;
-    }
-
-    #vcomments h4 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    #vcomments h5 {
-        font-size: 1.1rem;
-        font-weight: bold;
-        line-height: 1.4rem;
-    }
-
-    #vcomments h6 {
-        font-size: 1rem;
-        line-height: 1.3rem;
-    }
-
-    #vcomments p {
-        font-size: 1rem;
-        line-height: 1.5rem;
-    }
-
-    #vcomments hr {
-        margin: 12px 0;
-        border: 0;
-        border-top: 1px solid #ccc;
-    }
-
-    #vcomments blockquote {
-        margin: 15px 0;
-        border-left: 5px solid #42b983;
-        padding: 1rem 0.8rem 0.3rem 0.8rem;
-        color: #666;
-        background-color: rgba(66, 185, 131, .1);
-    }
-
-    #vcomments pre {
-        font-family: monospace, monospace;
-        padding: 1.2em;
-        margin: .5em 0;
-        background: #272822;
-        overflow: auto;
-        border-radius: 0.3em;
-        tab-size: 4;
-    }
-
-    #vcomments code {
-        font-family: monospace, monospace;
-        padding: 1px 3px;
-        font-size: 0.92rem;
-        color: #e96900;
-        background-color: #f8f8f8;
-        border-radius: 2px;
-    }
-
-    #vcomments pre code {
-        font-family: monospace, monospace;
-        padding: 0;
-        color: #e8eaf6;
-        background-color: #272822;
-    }
-
-    #vcomments pre[class*="language-"] {
-        padding: 1.2em;
-        margin: .5em 0;
-    }
-
-    #vcomments code[class*="language-"],
-    pre[class*="language-"] {
-        color: #e8eaf6;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-
-    #vcomments b,
-    strong {
-        font-weight: bold;
-    }
-
-    #vcomments dfn {
-        font-style: italic;
-    }
-
-    #vcomments small {
-        font-size: 85%;
-    }
-
-    #vcomments cite {
-        font-style: normal;
-    }
-
-    #vcomments mark {
-        background-color: #fcf8e3;
-        padding: .2em;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-</style>
-
-<div class="card valine-card" data-aos="fade-up">
-    <div id="vcomments" class="card-content"></div>
-</div>
-
-<script src="/libs/valine/av-min.js"></script>
-<script src="/libs/valine/Valine.min.js"></script>
-<!-- <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
-
-<script>
-    new Valine({
-        el: '#vcomments',
-        appId: '',
-        appKey: '',
-        notify: 'false' === 'true',
-        verify: 'false' === 'true',
-        visitor: 'false' === 'true',
-        avatar: 'wavatar',
-        pageSize: '10',
-        lang: 'zh-cn',
-        placeholder: '如果你没有GitHub账号，还可以在这里评论啦！'
-    });
-</script>
 
     
 
@@ -1276,7 +973,7 @@ Flink起源于Stratosphe
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="Spark到底好在哪里?">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Spark到底好在哪里?">
                         
                         <span class="card-title">Spark到底好在哪里?</span>
                     </div>
@@ -1447,13 +1144,6 @@ Flink起源于Stratosphe
 </main>
 
 
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
-
     <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -1461,7 +1151,7 @@ Flink起源于Stratosphe
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">91.6k</span>
+            <span class="white-color">96.5k</span>
             
 
             <br>
@@ -1471,6 +1161,15 @@ Flink起源于Stratosphe
             
             <br>
             
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
             
             
         </div>
@@ -1614,8 +1313,6 @@ $(function () {
 
 
 
-    
-    <script src="/libs/others/clicklove.js"></script>
     
 
     

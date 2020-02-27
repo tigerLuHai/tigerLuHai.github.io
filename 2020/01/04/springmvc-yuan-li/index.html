@@ -100,13 +100,6 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
-    <li class="hide-on-med-and-down">
         <a href="/contact" class="waves-effect waves-light">
             
             <span>留言板</span>
@@ -180,15 +173,6 @@
                 <i class="fa fa-fw fa-link"></i>
                 
                 关于
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-link"></i>
-                
-                友情链接
             </a>
         </li>
         
@@ -292,7 +276,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/26.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -450,7 +434,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    10 分
                 </div>
                 
                 
@@ -469,7 +453,7 @@
                 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="http://lib.csdn.net/base/javaee" target="_blank" rel="noopener">spring</a> MVC主要由DispatcherServlet、处理器映射、处理器(控制器)、视图解析器、视图组成。他的两个核心是:</p>
 <p><strong>处理器映射：</strong> 选择使用哪个控制器来处理请求。<br><strong>视图解析器：</strong> 选择结果应该如何渲染。</p>
 <h2 id="运行原理"><a href="#运行原理" class="headerlink" title="运行原理"></a>运行原理</h2><p>下图是在Spring官网开发手册上找到的，它清晰的诠释了Spring MVC的运行原理</p>
-<p><img src="/2020/01/04/springmvc-yuan-li/16b5eb3870589ac4.png" alt="16b5eb3870589ac4"></p>
+<p><img src="/2020/01/04/springmvc-yuan-li/16b5eb3870589ac4.png" alt></p>
 <p>①客户端的所有请求都交给前端控制器DispatcherServlet来处理，它会负责调用系统的其他模块来真正处理用户的请求。</p>
 <p>② DispatcherServlet收到请求后，将根据请求的信息（包括URL、HTTP协议方法、请求头、请求参数、Cookie等）以及HandlerMapping的配置找到处理该请求的Handler（任何一个对象都可以作为请求的Handler）。</p>
 <p>③在这个地方Spring会通过HandlerAdapter对该处理器进行封装。</p>
@@ -477,7 +461,7 @@
 <p>⑤ Handler完成对用户请求的处理后，会返回一个ModelAndView对象给DispatcherServlet，ModelAndView顾名思义，包含了数据模型以及相应的视图的信息。</p>
 <p>⑥ ModelAndView的视图是逻辑视图，DispatcherServlet还要借助ViewResolver完成从逻辑视图到真实视图对象的解析工作。⑦ 当得到真正的视图对象后，DispatcherServlet会利用视图对象对模型数据进行渲染。</p>
 <p>⑧ 客户端得到响应，可能是一个普通的HTML页面，也可以是XML或JSON字符串，还可以是一张图片或者一个PDF文件。</p>
-<p><img src="/2020/01/04/springmvc-yuan-li/16b5eb3870589ac4.png" alt="16b5eb3870589ac4"></p>
+<p><img src="/2020/01/04/springmvc-yuan-li/16b5eb3870589ac4.png" alt></p>
 <h2 id="接口的解释"><a href="#接口的解释" class="headerlink" title="接口的解释"></a>接口的解释</h2><table>
 <thead>
 <tr>
@@ -553,7 +537,7 @@
 </ul>
 <p>当我们将spring mvc应用部署到tomcat时，当你不配置任何的<code>context-param</code>和<code>listener</code>参数,只配置一个<code>DispatcherServlet</code>时，那么tomcat在启动的时候是不会初始化spring web上下文的，换句话说，tomcat是不会初始化spring框架的，因为你并没有告诉它们spring的配置文件放在什么地方，以及怎么去加载。所以<code>listener</code>监听器帮了我们这个忙，那么为什么配置监听器之后就可以告诉tomcat怎么去加载呢？因为<code>listener</code>是实现了servlet技术规范的监听器组件，tomcat在启动时会先加载<code>web.xml</code>中是否有servlet监听器存在，有则启动它们。<code>ContextLoaderListener</code>是spring框架对servlet监听器的一个封装，本质上还是一个servlet监听器，所以会被执行，但由于<code>ContextLoaderListener</code>源码中是基于<code>contextConfigLocation</code>和<code>contextClass</code>两个配置参数去加载相应配置的，因此就有了我们配置的<code>context-param</code>参数了，<code>servlet</code>标签里的初始化参数也是同样的道理，即告诉web服务器在启动的同时把spring web上下文（<code>WebApplicationContext</code>）也给初始化了。</p>
 <p>上面讲了下tomcat加载spring mvc应用的大致流程，接下来将从源码入手分析启动原理。</p>
-<h4 id="二、Spring-MVC-web-上下文启动源码分析"><a href="#二、Spring-MVC-web-上下文启动源码分析" class="headerlink" title="二、Spring MVC web 上下文启动源码分析"></a>二、Spring MVC web 上下文启动源码分析</h4><p>假设现在我们把上面<code>web.xml</code>文件中的<code>&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</code>给去掉，那么默认tomcat启动时只会初始化spring web上下文，也就是说只会加载到<code>applicationContext.xml</code>这个文件，对于<code>applicationContext-mvc.xml</code>这个配置文件是加载不到的，<code>&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</code>的意思就是让<code>DispatcherServlet</code>延迟到使用的时候(<code>也就是处理请求的时候</code>)再做初始化。</p>
+<h4 id="Spring-MVC-web-上下文启动源码分析"><a href="#Spring-MVC-web-上下文启动源码分析" class="headerlink" title="Spring MVC web 上下文启动源码分析"></a>Spring MVC web 上下文启动源码分析</h4><p>假设现在我们把上面<code>web.xml</code>文件中的<code>&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</code>给去掉，那么默认tomcat启动时只会初始化spring web上下文，也就是说只会加载到<code>applicationContext.xml</code>这个文件，对于<code>applicationContext-mvc.xml</code>这个配置文件是加载不到的，<code>&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</code>的意思就是让<code>DispatcherServlet</code>延迟到使用的时候(<code>也就是处理请求的时候</code>)再做初始化。</p>
 <p>我们已经知道spring web是基于<code>servlet</code>标准去封装的，那么很明显，servlet怎么初始化，<code>WebApplicationContext</code>web上下文就应该怎么初始化。我们先看看<code>ContextLoaderListener</code>的源码是怎样的。</p>
 <pre><code>public class ContextLoaderListener extends ContextLoader implements ServletContextListener {
     // 初始化方法
@@ -593,8 +577,7 @@ if (this.context instanceof ConfigurableWebApplicationContext) {
 <p>上面代码注释说到默认创建的上下文容器是<code>XmlWebApplicationContext</code>,为什么不是其他web上下文呢？为啥不是下面上下文的任何一种呢？</p>
 <p><img src="https://user-gold-cdn.xitu.io/2018/7/23/164c646d5fb17327?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
 <p>我们可以跟进去<code>createWebApplicationContext</code>后就可以发现默认是从一个叫<code>ContextLoader.properties</code>文件加载配置的，该文件的内容为：</p>
-<pre><code>org.springframework.web.context.WebApplicationContext=org.springframework.web.context.support.XmlWebApplicationContext
-复制代码</code></pre><p>具体实现为：</p>
+<pre><code>org.springframework.web.context.WebApplicationContext=org.springframework.web.context.support.XmlWebApplicationContext</code></pre><p>具体实现为：</p>
 <pre><code>protected Class&lt;?&gt; determineContextClass(ServletContext servletContext) {
     // 自定义上下文，否则就默认创建XmlWebApplicationContext
     String contextClassName = servletContext.getInitParameter(CONTEXT_CLASS_PARAM);
@@ -618,12 +601,11 @@ if (this.context instanceof ConfigurableWebApplicationContext) {
                     &quot;Failed to load default context class [&quot; + contextClassName + &quot;]&quot;, ex);
         }
     }
-}
-复制代码</code></pre><p>上面可以看出其实我们也可以自定义spring web的上下文的，那么怎么去指定我们自定义的上下文呢？答案是通过在<code>web.xml</code>中指定<code>contextClass</code>参数，因此第一小结结尾时说<code>contextClass</code>参数和<code>contextConfigLocation</code>很重要~~至于<code>contextConfigLocation</code>参数，我们跟进<code>configureAndRefreshWebApplicationContext</code>即可看到，如下图：</p>
+}</code></pre><p>上面可以看出其实我们也可以自定义spring web的上下文的，那么怎么去指定我们自定义的上下文呢？答案是通过在<code>web.xml</code>中指定<code>contextClass</code>参数，因此第一小结结尾时说<code>contextClass</code>参数和<code>contextConfigLocation</code>很重要~~至于<code>contextConfigLocation</code>参数，我们跟进<code>configureAndRefreshWebApplicationContext</code>即可看到，如下图：</p>
 <p><img src="/2020/01/04/springmvc-yuan-li/3.png" alt="img"></p>
 <p><strong>总结：</strong></p>
 <p>spring mvc启动流程大致就是从一个叫<code>ContextLoaderListener</code>开始的，它是一个servlet监听器，能够被web容器发现并加载，初始化监听器<code>ContextLoaderListener</code>之后，接着就是根据配置如<code>contextConfigLocation</code>和<code>contextClass</code>创建web容器了，如果你不指定<code>contextClass</code>参数值，则默认创建的spring web容器类型为<code>XmlWebApplicationContext</code>,最后一步就是根据你配置的<code>contextConfigLocation</code>文件路径去配置并刷新容器了。</p>
-<h4 id="三、DispatcherServlet控制器的初始化"><a href="#三、DispatcherServlet控制器的初始化" class="headerlink" title="三、DispatcherServlet控制器的初始化"></a>三、<code>DispatcherServlet</code>控制器的初始化</h4><p>好了，上面我们简单地分析了Spring mvc容器初始化的源码，我们永远不会忘记，我们默认创建的容器类型为<code>XmlWebApplicationContext</code>,当然我们也不会忘记，在<code>web.xml</code>中，我们还有一个重要的配置，那就是<code>DispatcherServlet</code>。下面我们就来分析下<code>DispatcherServlet</code>的初始化过程。</p>
+<h4 id="DispatcherServlet控制器的初始化"><a href="#DispatcherServlet控制器的初始化" class="headerlink" title="DispatcherServlet控制器的初始化"></a><code>DispatcherServlet</code>控制器的初始化</h4><p>好了，上面我们简单地分析了Spring mvc容器初始化的源码，我们永远不会忘记，我们默认创建的容器类型为<code>XmlWebApplicationContext</code>,当然我们也不会忘记，在<code>web.xml</code>中，我们还有一个重要的配置，那就是<code>DispatcherServlet</code>。下面我们就来分析下<code>DispatcherServlet</code>的初始化过程。</p>
 <p><code>DispatcherServlet</code>，就是一个servlet，一个用来处理request请求的servlet，它是spring mvc的核心，所有的请求都经过它，并由它指定后续操作该怎么执行，咋一看像一扇门，因此我管它叫“闸门”。在我们继续之前，我们应该共同遵守一个常识，那就是——-无论是监听器还是servlet，都是servlet规范组件，web服务器都可以发现并加载它们。</p>
 <p>下面我们先看看<code>DispatcherServlet</code>的继承关系：</p>
 <p><img src="/2020/01/04/springmvc-yuan-li/4.png" alt="img"></p>
@@ -786,296 +768,12 @@ if (this.context instanceof ConfigurableWebApplicationContext) {
     </div>
 
     
-    <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div id="gitalk-container" class="card-content"></div>
-</div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '52424b98fb27c2cf5f3a',
-        clientSecret: '0b13a34441db0176018eebfebe19f75532f15e81',
-        repo: 'tigerLuHai.github.io',
-        owner: 'tigerLuHai',
-        admin: "tigerLuHai",
-        id: '2020/01/04/springmvc-yuan-li/',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
-    
 
     
 
     
 
     
-
-    
-    <style>
-    .valine-card {
-        margin: 1.5rem auto;
-    }
-
-    .valine-card .card-content {
-        padding: 20px 20px 5px 20px;
-    }
-
-    #vcomments input[type=text],
-    #vcomments input[type=email],
-    #vcomments input[type=url],
-    #vcomments textarea {
-        box-sizing: border-box;
-    }
-
-    #vcomments p {
-        margin: 2px 2px 10px;
-        font-size: 1.05rem;
-        line-height: 1.78rem;
-    }
-
-    #vcomments blockquote p {
-        text-indent: 0.2rem;
-    }
-
-    #vcomments a {
-        padding: 0 2px;
-        color: #42b983;
-        font-weight: 500;
-        text-decoration: underline;
-    }
-
-    #vcomments img {
-        max-width: 100%;
-        height: auto;
-        cursor: pointer;
-    }
-
-    #vcomments ol li {
-        list-style-type: decimal;
-    }
-
-    #vcomments ol,
-    ul {
-        display: block;
-        padding-left: 2em;
-        word-spacing: 0.05rem;
-    }
-
-    #vcomments ul li,
-    ol li {
-        display: list-item;
-        line-height: 1.8rem;
-        font-size: 1rem;
-    }
-
-    #vcomments ul li {
-        list-style-type: disc;
-    }
-
-    #vcomments ul ul li {
-        list-style-type: circle;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    #vcomments table, th, td {
-        border: 0;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments h1 {
-        font-size: 1.85rem;
-        font-weight: bold;
-        line-height: 2.2rem;
-    }
-
-    #vcomments h2 {
-        font-size: 1.65rem;
-        font-weight: bold;
-        line-height: 1.9rem;
-    }
-
-    #vcomments h3 {
-        font-size: 1.45rem;
-        font-weight: bold;
-        line-height: 1.7rem;
-    }
-
-    #vcomments h4 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    #vcomments h5 {
-        font-size: 1.1rem;
-        font-weight: bold;
-        line-height: 1.4rem;
-    }
-
-    #vcomments h6 {
-        font-size: 1rem;
-        line-height: 1.3rem;
-    }
-
-    #vcomments p {
-        font-size: 1rem;
-        line-height: 1.5rem;
-    }
-
-    #vcomments hr {
-        margin: 12px 0;
-        border: 0;
-        border-top: 1px solid #ccc;
-    }
-
-    #vcomments blockquote {
-        margin: 15px 0;
-        border-left: 5px solid #42b983;
-        padding: 1rem 0.8rem 0.3rem 0.8rem;
-        color: #666;
-        background-color: rgba(66, 185, 131, .1);
-    }
-
-    #vcomments pre {
-        font-family: monospace, monospace;
-        padding: 1.2em;
-        margin: .5em 0;
-        background: #272822;
-        overflow: auto;
-        border-radius: 0.3em;
-        tab-size: 4;
-    }
-
-    #vcomments code {
-        font-family: monospace, monospace;
-        padding: 1px 3px;
-        font-size: 0.92rem;
-        color: #e96900;
-        background-color: #f8f8f8;
-        border-radius: 2px;
-    }
-
-    #vcomments pre code {
-        font-family: monospace, monospace;
-        padding: 0;
-        color: #e8eaf6;
-        background-color: #272822;
-    }
-
-    #vcomments pre[class*="language-"] {
-        padding: 1.2em;
-        margin: .5em 0;
-    }
-
-    #vcomments code[class*="language-"],
-    pre[class*="language-"] {
-        color: #e8eaf6;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-
-    #vcomments b,
-    strong {
-        font-weight: bold;
-    }
-
-    #vcomments dfn {
-        font-style: italic;
-    }
-
-    #vcomments small {
-        font-size: 85%;
-    }
-
-    #vcomments cite {
-        font-style: normal;
-    }
-
-    #vcomments mark {
-        background-color: #fcf8e3;
-        padding: .2em;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-</style>
-
-<div class="card valine-card" data-aos="fade-up">
-    <div id="vcomments" class="card-content"></div>
-</div>
-
-<script src="/libs/valine/av-min.js"></script>
-<script src="/libs/valine/Valine.min.js"></script>
-<!-- <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
-
-<script>
-    new Valine({
-        el: '#vcomments',
-        appId: '',
-        appKey: '',
-        notify: 'false' === 'true',
-        verify: 'false' === 'true',
-        visitor: 'false' === 'true',
-        avatar: 'wavatar',
-        pageSize: '10',
-        lang: 'zh-cn',
-        placeholder: '如果你没有GitHub账号，还可以在这里评论啦！'
-    });
-</script>
 
     
 
@@ -1092,7 +790,7 @@ if (this.context instanceof ConfigurableWebApplicationContext) {
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="javaWeb三大核心组件之servlet">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="javaWeb三大核心组件之servlet">
                         
                         <span class="card-title">javaWeb三大核心组件之servlet</span>
                     </div>
@@ -1303,13 +1001,6 @@ if (this.context instanceof ConfigurableWebApplicationContext) {
 </main>
 
 
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
-
     <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -1317,7 +1008,7 @@ if (this.context instanceof ConfigurableWebApplicationContext) {
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">91.6k</span>
+            <span class="white-color">96.5k</span>
             
 
             <br>
@@ -1327,6 +1018,15 @@ if (this.context instanceof ConfigurableWebApplicationContext) {
             
             <br>
             
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
             
             
         </div>
@@ -1470,8 +1170,6 @@ $(function () {
 
 
 
-    
-    <script src="/libs/others/clicklove.js"></script>
     
 
     

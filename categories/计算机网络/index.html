@@ -98,13 +98,6 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
-    <li class="hide-on-med-and-down">
         <a href="/contact" class="waves-effect waves-light">
             
             <span>留言板</span>
@@ -178,15 +171,6 @@
                 <i class="fa fa-fw fa-link"></i>
                 
                 关于
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-link"></i>
-                
-                友情链接
             </a>
         </li>
         
@@ -362,20 +346,20 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
-                <a href="/categories/MySQL/" title="MySQL: 1">
+                <a href="/categories/MySQL/" title="MySQL: 0">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #F8F9F9;">MySQL
-                        <span class="tag-length">1</span>
+                        <span class="tag-length">0</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/数据库/" title="数据库: 1">
+                <a href="/categories/数据库/" title="数据库: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #82E0AA;">数据库
-                        <span class="tag-length">1</span>
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -396,7 +380,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="HTTP请求方法的幂等性">
+                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="HTTP请求方法的幂等性">
                             
                             <span class="card-title">HTTP请求方法的幂等性</span>
                         </div>
@@ -436,7 +420,7 @@ GET     /tickets       # 获取ticket
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="HTTP与HTTPS原理">
+                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="HTTP与HTTPS原理">
                             
                             <span class="card-title">HTTP与HTTPS原理</span>
                         </div>
@@ -444,23 +428,7 @@ GET     /tickets       # 获取ticket
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                
-概述
-传输流程
-地址解析
-封装 HTTP 请求数据包
-封装成 TCP 包并建立连接
-客户机发送请求命令
-服务器响应
-服务器关闭 TCP 连接
-HTTP响应状态
-
-
-小插曲：301和302有啥区别
-HTTPS
-建立连接获取证书
-证书验证
-数
+                                概述HTTP 是一个无状态的协议。无状态是指客户机（Web 浏览器）和服务器之间不需要建立持久的连接，这意味着当一个客户端向服务器端发出请求，然后服务器返回响应(response)，连接就被关闭了，在服务器端不保留连接的有关信息.HTTP 
                             
                         </div>
                         <div class="publish-info">
@@ -490,7 +458,7 @@ HTTPS
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="因特网五层架构">
+                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="因特网五层架构">
                             
                             <span class="card-title">因特网五层架构</span>
                         </div>
@@ -528,7 +496,7 @@ HTTPS
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="网络七层架构">
+                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="网络七层架构">
                             
                             <span class="card-title">网络七层架构</span>
                         </div>
@@ -573,7 +541,7 @@ HTTPS
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">91.6k</span>
+            <span class="white-color">96.5k</span>
             
 
             <br>
@@ -583,6 +551,15 @@ HTTPS
             
             <br>
             
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
             
             
         </div>
@@ -726,8 +703,6 @@ $(function () {
 
 
 
-    
-    <script src="/libs/others/clicklove.js"></script>
     
 
     

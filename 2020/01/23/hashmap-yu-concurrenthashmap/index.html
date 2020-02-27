@@ -103,13 +103,6 @@ Base 1.71.7 中的数据结构图：
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
-    <li class="hide-on-med-and-down">
         <a href="/contact" class="waves-effect waves-light">
             
             <span>留言板</span>
@@ -183,15 +176,6 @@ Base 1.71.7 中的数据结构图：
                 <i class="fa fa-fw fa-link"></i>
                 
                 关于
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-link"></i>
-                
-                友情链接
             </a>
         </li>
         
@@ -295,7 +279,7 @@ Base 1.71.7 中的数据结构图：
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -471,9 +455,9 @@ Base 1.71.7 中的数据结构图：
             <div id="articleContent">
                 <h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><p>众所周知 HashMap 底层是基于 <code>数组 + 链表</code> 组成的，不过在 jdk1.7 和 1.8 中具体实现稍有不同。</p>
 <h3 id="Base-1-7"><a href="#Base-1-7" class="headerlink" title="Base 1.7"></a>Base 1.7</h3><p>1.7 中的数据结构图：</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/HashMap%E4%B8%8EConcurrentHashMap%5C1.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/1.png" alt="img"></p>
 <p>先来看看 1.7 中的实现。</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/HashMap%E4%B8%8EConcurrentHashMap%5C2.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/2.png" alt="img"></p>
 <p>这是 HashMap 中比较核心的几个成员变量；看看分别是什么意思？</p>
 <ol>
 <li>初始化桶大小，因为底层是数组，所以这是数组默认的大小。</li>
@@ -509,7 +493,7 @@ Base 1.71.7 中的数据结构图：
 <p>根据代码可以看到其实真正存放数据的是</p>
 <p><code>transient Entry&lt;K,V&gt;[] table = (Entry&lt;K,V&gt;[]) EMPTY_TABLE;</code></p>
 <p>这个数组，那么它又是如何定义的呢？</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/HashMap%E4%B8%8EConcurrentHashMap%5C3.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/3.png" alt="img"></p>
 <p>Entry 是 HashMap 中的一个内部类，从他的成员变量很容易看出：</p>
 <ul>
 <li>key 就是写入时的键。</li>
@@ -605,7 +589,7 @@ Base 1.71.7 中的数据结构图：
 </blockquote>
 <p>因此 1.8 中重点优化了这个查询效率。</p>
 <p>1.8 HashMap 结构图：</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/HashMap%E4%B8%8EConcurrentHashMap%5C4.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/4.png" alt="img"></p>
 <p>先来看看几个核心的成员变量：</p>
 <pre><code>    static final int DEFAULT_INITIAL_CAPACITY = 1 &lt;&lt; 4; // aka 16
 
@@ -642,7 +626,7 @@ Base 1.71.7 中的数据结构图：
 </ul>
 <p>Node 的核心组成其实也是和 1.7 中的 HashEntry 一样，存放的都是 <code>key value hashcode next</code> 等数据。</p>
 <p>再来看看核心方法。</p>
-<h4 id="put-方法-1"><a href="#put-方法-1" class="headerlink" title="put 方法"></a>put 方法</h4><p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/HashMap%E4%B8%8EConcurrentHashMap%5C5.png" alt="img"></p>
+<h4 id="put-方法-1"><a href="#put-方法-1" class="headerlink" title="put 方法"></a>put 方法</h4><p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/5.png" alt="img"></p>
 <p>看似要比 1.7 的复杂，我们一步步拆解：</p>
 <ol>
 <li>判断当前桶是否为空，空的就需要初始化（resize 中会判断是否进行初始化）。</li>
@@ -725,7 +709,7 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
 </blockquote>
 <h2 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h2><p>ConcurrentHashMap 同样也分为 1.7 、1.8 版，两者在实现上略有不同。</p>
 <h3 id="Base-1-7-1"><a href="#Base-1-7-1" class="headerlink" title="Base 1.7"></a>Base 1.7</h3><p>先来看看 1.7 的实现，下面是他的结构图：</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/HashMap%E4%B8%8EConcurrentHashMap%5C6.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/6.png" alt="img"></p>
 <p>如图所示，是由 Segment 数组、HashEntry 组成，和 HashMap 一样，仍然是数组加链表。</p>
 <p>它的核心成员变量：</p>
 <pre><code>    /**
@@ -751,7 +735,7 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
         final float loadFactor;
 
     }</code></pre><p>看看其中 HashEntry 的组成：</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/HashMap%E4%B8%8EConcurrentHashMap%5C7.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/7.png" alt="img"></p>
 <p>和 HashMap 非常类似，唯一的区别就是其中的核心数据如 value ，以及链表都是 volatile 修饰的，保证了获取时的可见性。</p>
 <p>原理上来说：ConcurrentHashMap 采用了分段锁技术，其中 Segment 继承于 ReentrantLock。不会像 HashTable 那样不管是 put 还是 get 操作都需要做同步处理，理论上 ConcurrentHashMap 支持 CurrencyLevel (Segment 数组数量)的线程并发。每当一个线程占用锁访问一个 Segment 时，不会影响到其他的 Segment。</p>
 <p>下面也来看看核心的 <code>put get</code> 方法。</p>
@@ -812,12 +796,12 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
         }
 复制代码</code></pre><p>虽然 HashEntry 中的 value 是用 volatile 关键词修饰的，但是并不能保证并发的原子性，所以 put 操作时仍然需要加锁处理。</p>
 <p>首先第一步的时候会尝试获取锁，如果获取失败肯定就有其他线程存在竞争，则利用 <code>scanAndLockForPut()</code> 自旋获取锁。</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/HashMap%E4%B8%8EConcurrentHashMap%5C8.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/8.png" alt="img"></p>
 <ol>
 <li>尝试自旋获取锁。</li>
 <li>如果重试的次数达到了 <code>MAX_SCAN_RETRIES</code> 则改为阻塞锁获取，保证能获取成功。</li>
 </ol>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/HashMap%E4%B8%8EConcurrentHashMap%5C9.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/9.png" alt="img"></p>
 <p>再结合图看看 put 的流程。</p>
 <ol>
 <li>将当前 Segment 中的 table 通过 key 的 hashcode 定位到 HashEntry。</li>
@@ -852,14 +836,14 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
 </blockquote>
 <p>因此 1.8 做了一些数据结构上的调整。</p>
 <p>首先来看下底层的组成结构：</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/HashMap%E4%B8%8EConcurrentHashMap%5C10.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/10.png" alt="img"></p>
 <p>看起来是不是和 1.8 HashMap 结构类似？</p>
 <p>其中抛弃了原有的 Segment 分段锁，而采用了 <code>CAS + synchronized</code> 来保证并发安全性。</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/HashMap%E4%B8%8EConcurrentHashMap%5C11.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/11.png" alt="img"></p>
 <p>也将 1.7 中存放数据的 HashEntry 改为 Node，但作用都是相同的。</p>
 <p>其中的 <code>val next</code> 都用了 volatile 修饰，保证了可见性。</p>
 <h4 id="put-方法-3"><a href="#put-方法-3" class="headerlink" title="put 方法"></a>put 方法</h4><p>重点来看看 put 函数：</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/HashMap%E4%B8%8EConcurrentHashMap%5C12.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/12.png" alt="img"></p>
 <ul>
 <li>根据 key 计算出 hashcode 。</li>
 <li>判断是否需要进行初始化。</li>
@@ -868,7 +852,7 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
 <li>如果都不满足，则利用 synchronized 锁写入数据。</li>
 <li>如果数量大于 <code>TREEIFY_THRESHOLD</code> 则要转换为红黑树。</li>
 </ul>
-<h4 id="get-方法-3"><a href="#get-方法-3" class="headerlink" title="get 方法"></a>get 方法</h4><p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/HashMap%E4%B8%8EConcurrentHashMap%5C13.png" alt="img"></p>
+<h4 id="get-方法-3"><a href="#get-方法-3" class="headerlink" title="get 方法"></a>get 方法</h4><p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/13.png" alt="img"></p>
 <ul>
 <li>根据计算出来的 hashcode 寻址，如果就在桶上那么直接返回值。</li>
 <li>如果是红黑树那就按照树的方式获取值。</li>
@@ -1025,296 +1009,12 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
     </div>
 
     
-    <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div id="gitalk-container" class="card-content"></div>
-</div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '52424b98fb27c2cf5f3a',
-        clientSecret: '0b13a34441db0176018eebfebe19f75532f15e81',
-        repo: 'tigerLuHai.github.io',
-        owner: 'tigerLuHai',
-        admin: "tigerLuHai",
-        id: '2020/01/23/hashmap-yu-concurrenthashmap/',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
-    
 
     
 
     
 
     
-
-    
-    <style>
-    .valine-card {
-        margin: 1.5rem auto;
-    }
-
-    .valine-card .card-content {
-        padding: 20px 20px 5px 20px;
-    }
-
-    #vcomments input[type=text],
-    #vcomments input[type=email],
-    #vcomments input[type=url],
-    #vcomments textarea {
-        box-sizing: border-box;
-    }
-
-    #vcomments p {
-        margin: 2px 2px 10px;
-        font-size: 1.05rem;
-        line-height: 1.78rem;
-    }
-
-    #vcomments blockquote p {
-        text-indent: 0.2rem;
-    }
-
-    #vcomments a {
-        padding: 0 2px;
-        color: #42b983;
-        font-weight: 500;
-        text-decoration: underline;
-    }
-
-    #vcomments img {
-        max-width: 100%;
-        height: auto;
-        cursor: pointer;
-    }
-
-    #vcomments ol li {
-        list-style-type: decimal;
-    }
-
-    #vcomments ol,
-    ul {
-        display: block;
-        padding-left: 2em;
-        word-spacing: 0.05rem;
-    }
-
-    #vcomments ul li,
-    ol li {
-        display: list-item;
-        line-height: 1.8rem;
-        font-size: 1rem;
-    }
-
-    #vcomments ul li {
-        list-style-type: disc;
-    }
-
-    #vcomments ul ul li {
-        list-style-type: circle;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    #vcomments table, th, td {
-        border: 0;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments h1 {
-        font-size: 1.85rem;
-        font-weight: bold;
-        line-height: 2.2rem;
-    }
-
-    #vcomments h2 {
-        font-size: 1.65rem;
-        font-weight: bold;
-        line-height: 1.9rem;
-    }
-
-    #vcomments h3 {
-        font-size: 1.45rem;
-        font-weight: bold;
-        line-height: 1.7rem;
-    }
-
-    #vcomments h4 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    #vcomments h5 {
-        font-size: 1.1rem;
-        font-weight: bold;
-        line-height: 1.4rem;
-    }
-
-    #vcomments h6 {
-        font-size: 1rem;
-        line-height: 1.3rem;
-    }
-
-    #vcomments p {
-        font-size: 1rem;
-        line-height: 1.5rem;
-    }
-
-    #vcomments hr {
-        margin: 12px 0;
-        border: 0;
-        border-top: 1px solid #ccc;
-    }
-
-    #vcomments blockquote {
-        margin: 15px 0;
-        border-left: 5px solid #42b983;
-        padding: 1rem 0.8rem 0.3rem 0.8rem;
-        color: #666;
-        background-color: rgba(66, 185, 131, .1);
-    }
-
-    #vcomments pre {
-        font-family: monospace, monospace;
-        padding: 1.2em;
-        margin: .5em 0;
-        background: #272822;
-        overflow: auto;
-        border-radius: 0.3em;
-        tab-size: 4;
-    }
-
-    #vcomments code {
-        font-family: monospace, monospace;
-        padding: 1px 3px;
-        font-size: 0.92rem;
-        color: #e96900;
-        background-color: #f8f8f8;
-        border-radius: 2px;
-    }
-
-    #vcomments pre code {
-        font-family: monospace, monospace;
-        padding: 0;
-        color: #e8eaf6;
-        background-color: #272822;
-    }
-
-    #vcomments pre[class*="language-"] {
-        padding: 1.2em;
-        margin: .5em 0;
-    }
-
-    #vcomments code[class*="language-"],
-    pre[class*="language-"] {
-        color: #e8eaf6;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-
-    #vcomments b,
-    strong {
-        font-weight: bold;
-    }
-
-    #vcomments dfn {
-        font-style: italic;
-    }
-
-    #vcomments small {
-        font-size: 85%;
-    }
-
-    #vcomments cite {
-        font-style: normal;
-    }
-
-    #vcomments mark {
-        background-color: #fcf8e3;
-        padding: .2em;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-</style>
-
-<div class="card valine-card" data-aos="fade-up">
-    <div id="vcomments" class="card-content"></div>
-</div>
-
-<script src="/libs/valine/av-min.js"></script>
-<script src="/libs/valine/Valine.min.js"></script>
-<!-- <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
-
-<script>
-    new Valine({
-        el: '#vcomments',
-        appId: '',
-        appKey: '',
-        notify: 'false' === 'true',
-        verify: 'false' === 'true',
-        visitor: 'false' === 'true',
-        avatar: 'wavatar',
-        pageSize: '10',
-        lang: 'zh-cn',
-        placeholder: '如果你没有GitHub账号，还可以在这里评论啦！'
-    });
-</script>
 
     
 
@@ -1349,8 +1049,8 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/MySQL/" class="post-category" target="_blank">
-                                    MySQL
+                            <a href="/categories/数据库/" class="post-category" target="_blank">
+                                    数据库
                                 </a>
                             
                             
@@ -1371,7 +1071,7 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="线程池原理">
+                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="线程池原理">
                         
                         <span class="card-title">线程池原理</span>
                     </div>
@@ -1544,13 +1244,6 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
 </main>
 
 
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
-
     <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -1558,7 +1251,7 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">91.6k</span>
+            <span class="white-color">96.5k</span>
             
 
             <br>
@@ -1568,6 +1261,15 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
             
             <br>
             
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
             
             
         </div>
@@ -1711,8 +1413,6 @@ $(function () {
 
 
 
-    
-    <script src="/libs/others/clicklove.js"></script>
     
 
     

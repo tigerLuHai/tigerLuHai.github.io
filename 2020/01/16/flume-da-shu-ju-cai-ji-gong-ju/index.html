@@ -8,7 +8,10 @@
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="Flume-大数据采集工具 | 卢海的博客">
+    <meta name="description" content="概述Flume定义Flume是Cloudera提供的一个高可用的，高可靠的，分布式的海量日志采集、聚合和传输的系统。Flume基于流式架构，灵活简单。
+Flume组成架构Flume组成架构如图所示：
+ 
+AgentAgent是一个JVM进程">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -98,13 +101,6 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
-    <li class="hide-on-med-and-down">
         <a href="/contact" class="waves-effect waves-light">
             
             <span>留言板</span>
@@ -178,15 +174,6 @@
                 <i class="fa fa-fw fa-link"></i>
                 
                 关于
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-link"></i>
-                
-                友情链接
             </a>
         </li>
         
@@ -290,7 +277,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -441,14 +428,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    5 分
                 </div>
                 
                 
@@ -464,7 +451,141 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="Flume定义"><a href="#Flume定义" class="headerlink" title="Flume定义"></a>Flume定义</h2><p>Flume是Cloudera提供的一个高可用的，高可靠的，分布式的海量日志采集、聚合和传输的系统。Flume基于流式架构，灵活简单。</p>
+<h2 id="Flume组成架构"><a href="#Flume组成架构" class="headerlink" title="Flume组成架构"></a>Flume组成架构</h2><p>Flume组成架构如图所示：</p>
+<p><img src="/2020/01/16/flume-da-shu-ju-cai-ji-gong-ju/wps2.jpg" alt="Flume组成架构"> </p>
+<h3 id="Agent"><a href="#Agent" class="headerlink" title="Agent"></a>Agent</h3><p>Agent是一个JVM进程，它以事件的形式将数据从源头送至目的，是Flume数据传输的基本单元。</p>
+<p>Agent主要有3个部分组成，Source、Channel、Sink。</p>
+<h3 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h3><p>Source是负责接收数据到Flume Agent的组件。Source组件可以处理各种类型、各种格式的日志数据，包括avro、thrift、exec、jms、spooling directory、netcat、sequence generator、syslog、http、legacy。</p>
+<h3 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h3><p>Channel是位于Source和Sink之间的缓冲区。因此，Channel允许Source和Sink运作在不同的速率上。Channel是线程安全的，可以同时处理几个Source的写入操作和几个Sink的读取操作。</p>
+<p>Flume自带两种Channel：Memory Channel和File Channel。</p>
+<p>Memory Channel是内存中的队列。Memory Channel在不需要关心数据丢失的情景下适用。如果需要关心数据丢失，那么Memory Channel就不应该使用，因为程序死亡、机器宕机或者重启都会导致数据丢失。</p>
+<p>File Channel将所有事件写到磁盘。因此在程序关闭或机器宕机的情况下不会丢失数据。</p>
+<h3 id="Sink"><a href="#Sink" class="headerlink" title="Sink"></a>Sink</h3><p>Sink不断地轮询Channel中的事件且批量地移除它们，并将这些事件批量写入到存储或索引系统、或者被发送到另一个Flume Agent。</p>
+<p>Sink是完全事务性的。在从Channel批量删除数据之前，每个Sink用Channel启动一个事务。批量事件一旦成功写出到存储系统或下一个Flume Agent，Sink就利用Channel提交事务。事务一旦被提交，该Channel从自己的内部缓冲区删除事件。</p>
+<p>Sink组件目的地包括hdfs、logger、avro、thrift、ipc、file、null、HBase、solr、自定义。</p>
+<h3 id="Event"><a href="#Event" class="headerlink" title="Event"></a>Event</h3><p>传输单元，Flume数据传输的基本单元，以事件的形式将数据从源头送至目的地。</p>
+<h2 id="Flume拓扑结构"><a href="#Flume拓扑结构" class="headerlink" title="Flume拓扑结构"></a>Flume拓扑结构</h2><p>Flume的拓扑结构如图所示：</p>
+<p><img src="/2020/01/16/flume-da-shu-ju-cai-ji-gong-ju/wps4.jpg" alt="Flume Agent连接"> </p>
+<p><img src="/2020/01/16/flume-da-shu-ju-cai-ji-gong-ju/wps5.jpg" alt="单source，多channel、sink"> </p>
+<p><img src="/2020/01/16/flume-da-shu-ju-cai-ji-gong-ju/wps6.jpg" alt="Flume负载均衡"> </p>
+<p><img src="/2020/01/16/flume-da-shu-ju-cai-ji-gong-ju/wps7.jpg" alt="Flume Agent聚合"> </p>
+<h2 id="Flume-Agent内部原理"><a href="#Flume-Agent内部原理" class="headerlink" title="Flume Agent内部原理"></a>Flume Agent内部原理</h2><p><img src="/2020/01/16/flume-da-shu-ju-cai-ji-gong-ju/wps8.png" alt></p>
+<h1 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h1><h2 id="Flume安装地址"><a href="#Flume安装地址" class="headerlink" title="Flume安装地址"></a>Flume安装地址</h2><p>1） Flume官网地址</p>
+<p><a href="http://flume.apache.org/" target="_blank" rel="noopener">http://flume.apache.org/</a></p>
+<p>2）文档查看地址</p>
+<p><a href="http://flume.apache.org/FlumeUserGuide.html" target="_blank" rel="noopener">http://flume.apache.org/FlumeUserGuide.html</a></p>
+<p>3）下载地址</p>
+<p><a href="http://archive.apache.org/dist/flume/" target="_blank" rel="noopener">http://archive.apache.org/dist/flume/</a></p>
+<h2 id="安装部署"><a href="#安装部署" class="headerlink" title="安装部署"></a>安装部署</h2><p><strong>下载安装包解压配置环境变量即可</strong></p>
+<p>1）解压</p>
+<p>2)配置jdk路径</p>
+<pre><code> vi flume-env.sh
+ export JAVA_HOME=jdk路径</code></pre><h2 id="监控端口数据官方案例"><a href="#监控端口数据官方案例" class="headerlink" title="监控端口数据官方案例"></a>监控端口数据官方案例</h2><p>1）案例需求：首先，Flume监控本机44444端口，然后通过telnet工具向本机44444端口发送消息，最后Flume将监听的数据实时显示在控制台。</p>
+<p>2）实现步骤：</p>
+<p>1．安装telnet工具</p>
+<p>将rpm软件包(xinetd-2.3.14-40.el6.x86_64.rpm、telnet-0.17-48.el6.x86_64.rpm和telnet-server-0.17-48.el6.x86_64.rpm)拷入/opt/software文件夹下面。执行RPM软件包安装命令：</p>
+<pre><code>sudo rpm -ivh xinetd-2.3.14-40.el6.x86_64.rpm
+sudo rpm -ivh telnet-0.17-48.el6.x86_64.rpm
+sudo rpm -ivh telnet-server-0.17-48.el6.x86_64.rpm</code></pre><p>2．判断44444端口是否被占用</p>
+<pre><code>sudo netstat -tunlp | grep 44444</code></pre><p>功能描述：netstat命令是一个监控TCP/IP网络的非常有用的工具，它可以显示路由表、实际的网络连接以及每一个网络接口设备的状态信息。 </p>
+<p>基本语法：netstat [选项]</p>
+<p>选项参数：</p>
+<p>​    -t或–tcp：显示TCP传输协议的连线状况； </p>
+<p>​      -u或–udp：显示UDP传输协议的连线状况；</p>
+<p>​    -n或–numeric：直接使用ip地址，而不通过域名服务器； </p>
+<p>​    -l或–listening：显示监控中的服务器的Socket； </p>
+<p>​    -p或–programs：显示正在使用Socket的程序识别码和程序名称；</p>
+<p>3．创建Flume Agent配置文件flume-telnet-logger.conf</p>
+<p>在flume目录下创建job文件夹并进入job文件夹。</p>
+<pre><code>mkdir job
+
+cd job/
+
+touch flume-telnet-logger.conf
+
+# Name the components on this agent
+a1.sources = r1
+a1.sinks = k1
+a1.channels = c1
+
+# Describe/configure the source
+a1.sources.r1.type = netcat
+a1.sources.r1.bind = localhost
+a1.sources.r1.port = 44444
+
+# Describe the sink
+a1.sinks.k1.type = logger 
+
+# Use a channel which buffers events in memory
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 1000
+a1.channels.c1.transactionCapacity = 100
+
+# Bind the source and sink to the channel
+a1.sources.r1.channels = c1
+a1.sinks.k1.channel = c1</code></pre><ol start="4">
+<li>先开启flume监听端口</li>
+</ol>
+<pre><code></code></pre><p>参数说明：</p>
+<p>​    –conf conf/  ：表示配置文件存储在conf/目录</p>
+<p>​    –name a1    ：表示给agent起名为a1</p>
+<p>​    –conf-file job/flume-telnet.conf ：flume本次启动读取的配置文件是在job文件夹下的flume-telnet.conf文件。</p>
+<p>​    -Dflume.root.logger==INFO,console ：-D表示flume运行时动态修改flume.root.logger参数属性值，并将控制台日志打印级别设置为INFO级别。日志级别包括:log、info、warn、error。</p>
+<p>5．使用telnet工具向本机的44444端口发送内容</p>
+<p>[atguigu@hadoop102 ~]$ telnet localhost 44444</p>
+<p><img src="/2020/01/16/flume-da-shu-ju-cai-ji-gong-ju/wps11.jpg" alt> </p>
+<p>6．在Flume监听页面观察接收数据情况</p>
+<p><img src="/2020/01/16/flume-da-shu-ju-cai-ji-gong-ju/wps28.jpg" alt> </p>
+<p><strong>具体使用时可以根据自己的输入输出去官网查询对一个配置文件书写方式.</strong></p>
+<h1 id="Flume监控之Ganglia"><a href="#Flume监控之Ganglia" class="headerlink" title="Flume监控之Ganglia"></a>Flume监控之Ganglia</h1><h2 id="操作Flume测试监控"><a href="#操作Flume测试监控" class="headerlink" title="操作Flume测试监控"></a>操作Flume测试监控</h2><p>样式如图：</p>
+<p><img src="/2020/01/16/flume-da-shu-ju-cai-ji-gong-ju/wps27.jpg" alt> </p>
+<p>图例说明：</p>
+<table>
+<thead>
+<tr>
+<th>字段（图表名称）</th>
+<th>字段含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>EventPutAttemptCount</td>
+<td>source尝试写入channel的事件总数量</td>
+</tr>
+<tr>
+<td>EventPutSuccessCount</td>
+<td>成功写入channel且提交的事件总数量</td>
+</tr>
+<tr>
+<td>EventTakeAttemptCount</td>
+<td>sink尝试从channel拉取事件的总数量。这不意味着每次事件都被返回，因为sink拉取的时候channel可能没有任何数据。</td>
+</tr>
+<tr>
+<td>EventTakeSuccessCount</td>
+<td>sink成功读取的事件的总数量</td>
+</tr>
+<tr>
+<td>StartTime</td>
+<td>channel启动的时间（毫秒）</td>
+</tr>
+<tr>
+<td>StopTime</td>
+<td>channel停止的时间（毫秒）</td>
+</tr>
+<tr>
+<td>ChannelSize</td>
+<td>目前channel中事件的总数量</td>
+</tr>
+<tr>
+<td>ChannelFillPercentage</td>
+<td>channel占用百分比</td>
+</tr>
+<tr>
+<td>ChannelCapacity</td>
+<td>channel的容量</td>
+</tr>
+</tbody></table>
+
             </div>
             <hr />
 
@@ -611,296 +732,12 @@
     </div>
 
     
-    <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div id="gitalk-container" class="card-content"></div>
-</div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '52424b98fb27c2cf5f3a',
-        clientSecret: '0b13a34441db0176018eebfebe19f75532f15e81',
-        repo: 'tigerLuHai.github.io',
-        owner: 'tigerLuHai',
-        admin: "tigerLuHai",
-        id: '2020/01/16/flume-da-shu-ju-cai-ji-gong-ju/',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
-    
 
     
 
     
 
     
-
-    
-    <style>
-    .valine-card {
-        margin: 1.5rem auto;
-    }
-
-    .valine-card .card-content {
-        padding: 20px 20px 5px 20px;
-    }
-
-    #vcomments input[type=text],
-    #vcomments input[type=email],
-    #vcomments input[type=url],
-    #vcomments textarea {
-        box-sizing: border-box;
-    }
-
-    #vcomments p {
-        margin: 2px 2px 10px;
-        font-size: 1.05rem;
-        line-height: 1.78rem;
-    }
-
-    #vcomments blockquote p {
-        text-indent: 0.2rem;
-    }
-
-    #vcomments a {
-        padding: 0 2px;
-        color: #42b983;
-        font-weight: 500;
-        text-decoration: underline;
-    }
-
-    #vcomments img {
-        max-width: 100%;
-        height: auto;
-        cursor: pointer;
-    }
-
-    #vcomments ol li {
-        list-style-type: decimal;
-    }
-
-    #vcomments ol,
-    ul {
-        display: block;
-        padding-left: 2em;
-        word-spacing: 0.05rem;
-    }
-
-    #vcomments ul li,
-    ol li {
-        display: list-item;
-        line-height: 1.8rem;
-        font-size: 1rem;
-    }
-
-    #vcomments ul li {
-        list-style-type: disc;
-    }
-
-    #vcomments ul ul li {
-        list-style-type: circle;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    #vcomments table, th, td {
-        border: 0;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments h1 {
-        font-size: 1.85rem;
-        font-weight: bold;
-        line-height: 2.2rem;
-    }
-
-    #vcomments h2 {
-        font-size: 1.65rem;
-        font-weight: bold;
-        line-height: 1.9rem;
-    }
-
-    #vcomments h3 {
-        font-size: 1.45rem;
-        font-weight: bold;
-        line-height: 1.7rem;
-    }
-
-    #vcomments h4 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    #vcomments h5 {
-        font-size: 1.1rem;
-        font-weight: bold;
-        line-height: 1.4rem;
-    }
-
-    #vcomments h6 {
-        font-size: 1rem;
-        line-height: 1.3rem;
-    }
-
-    #vcomments p {
-        font-size: 1rem;
-        line-height: 1.5rem;
-    }
-
-    #vcomments hr {
-        margin: 12px 0;
-        border: 0;
-        border-top: 1px solid #ccc;
-    }
-
-    #vcomments blockquote {
-        margin: 15px 0;
-        border-left: 5px solid #42b983;
-        padding: 1rem 0.8rem 0.3rem 0.8rem;
-        color: #666;
-        background-color: rgba(66, 185, 131, .1);
-    }
-
-    #vcomments pre {
-        font-family: monospace, monospace;
-        padding: 1.2em;
-        margin: .5em 0;
-        background: #272822;
-        overflow: auto;
-        border-radius: 0.3em;
-        tab-size: 4;
-    }
-
-    #vcomments code {
-        font-family: monospace, monospace;
-        padding: 1px 3px;
-        font-size: 0.92rem;
-        color: #e96900;
-        background-color: #f8f8f8;
-        border-radius: 2px;
-    }
-
-    #vcomments pre code {
-        font-family: monospace, monospace;
-        padding: 0;
-        color: #e8eaf6;
-        background-color: #272822;
-    }
-
-    #vcomments pre[class*="language-"] {
-        padding: 1.2em;
-        margin: .5em 0;
-    }
-
-    #vcomments code[class*="language-"],
-    pre[class*="language-"] {
-        color: #e8eaf6;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-
-    #vcomments b,
-    strong {
-        font-weight: bold;
-    }
-
-    #vcomments dfn {
-        font-style: italic;
-    }
-
-    #vcomments small {
-        font-size: 85%;
-    }
-
-    #vcomments cite {
-        font-style: normal;
-    }
-
-    #vcomments mark {
-        background-color: #fcf8e3;
-        padding: .2em;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-</style>
-
-<div class="card valine-card" data-aos="fade-up">
-    <div id="vcomments" class="card-content"></div>
-</div>
-
-<script src="/libs/valine/av-min.js"></script>
-<script src="/libs/valine/Valine.min.js"></script>
-<!-- <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
-
-<script>
-    new Valine({
-        el: '#vcomments',
-        appId: '',
-        appKey: '',
-        notify: 'false' === 'true',
-        verify: 'false' === 'true',
-        visitor: 'false' === 'true',
-        avatar: 'wavatar',
-        pageSize: '10',
-        lang: 'zh-cn',
-        placeholder: '如果你没有GitHub账号，还可以在这里评论啦！'
-    });
-</script>
 
     
 
@@ -917,7 +754,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Sqoop-HDFS与外界交互数据的工具">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Sqoop-HDFS与外界交互数据的工具">
                         
                         <span class="card-title">Sqoop-HDFS与外界交互数据的工具</span>
                     </div>
@@ -1130,13 +967,6 @@ Flink起源于Stratosphe
 </main>
 
 
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
-
     <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -1144,7 +974,7 @@ Flink起源于Stratosphe
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">91.6k</span>
+            <span class="white-color">96.5k</span>
             
 
             <br>
@@ -1154,6 +984,15 @@ Flink起源于Stratosphe
             
             <br>
             
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
             
             
         </div>
@@ -1297,8 +1136,6 @@ $(function () {
 
 
 
-    
-    <script src="/libs/others/clicklove.js"></script>
     
 
     

@@ -108,13 +108,6 @@ web应用服务器">
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
-    <li class="hide-on-med-and-down">
         <a href="/contact" class="waves-effect waves-light">
             
             <span>留言板</span>
@@ -188,15 +181,6 @@ web应用服务器">
                 <i class="fa fa-fw fa-link"></i>
                 
                 关于
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-link"></i>
-                
-                友情链接
             </a>
         </li>
         
@@ -300,7 +284,7 @@ web应用服务器">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -474,7 +458,7 @@ web应用服务器">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Nginx-运用小结"><a href="#Nginx-运用小结" class="headerlink" title="Nginx 运用小结"></a>Nginx 运用小结</h1><h4 id="什么是Nginx"><a href="#什么是Nginx" class="headerlink" title="什么是Nginx"></a>什么是Nginx</h4><p><img src="/2020/01/19/nginx-shi-yong-xin-de/1526187409033.png" alt="img"></p>
+                <h1 id="Nginx-运用小结"><a href="#Nginx-运用小结" class="headerlink" title="Nginx 运用小结"></a>Nginx 运用小结</h1><h4 id="什么是Nginx"><a href="#什么是Nginx" class="headerlink" title="什么是Nginx"></a>什么是Nginx</h4><p><img src="/2020/01/19/nginx-shi-yong-xin-de/1526187409033.png" alt></p>
 <p>nginx可以作为web服务器，但更多的时候，我们把它作为网关，因为它具备网关必备的功能：</p>
 <ul>
 <li>反向代理</li>
@@ -509,12 +493,12 @@ web应用服务器">
 <li>当请求到达nginx，nginx会根据已经定义的规则进行请求的转发，从而实现路由功能</li>
 </ul>
 <p>利用反向代理，就可以解决我们前面所说的端口问题，如图</p>
-<p><img src="/2020/01/19/nginx-shi-yong-xin-de/1526016663674.png" alt="1526016663674"></p>
+<p><img src="/2020/01/19/nginx-shi-yong-xin-de/1526016663674.png" alt></p>
 <h3 id="安装和使用"><a href="#安装和使用" class="headerlink" title="安装和使用"></a>安装和使用</h3><blockquote>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3></blockquote>
 <p>安装非常简单，把课前资料提供的nginx直接解压即可，绿色免安装!</p>
 <p>解压后，目录结构：</p>
-<p><img src="/2020/01/19/nginx-shi-yong-xin-de/Nginx%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97%5C1579422396676.png" alt="1579422396676"></p>
+<p><img src="/2020/01/19/nginx-shi-yong-xin-de/Nginx%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97%5C1579422396676.png" alt></p>
 <ol>
 <li>conf：配置目录</li>
 <li>contrib：第三方依赖</li>
@@ -525,7 +509,7 @@ web应用服务器">
 <blockquote>
 <h3 id="反向代理配置"><a href="#反向代理配置" class="headerlink" title="反向代理配置"></a>反向代理配置</h3></blockquote>
 <p>示例：</p>
-<p><img src="/2020/01/19/nginx-shi-yong-xin-de/1526188831504.png" alt="1526188831504"></p>
+<p><img src="/2020/01/19/nginx-shi-yong-xin-de/1526188831504.png" alt></p>
 <p>nginx中的每个server就是一个反向代理配置，可以有多个server</p>
 <p>完整配置：</p>
 <pre><code>#user  nobody;
@@ -580,11 +564,11 @@ http {
 <li>重新加载：<code>nginx.exe -s reload</code></li>
 </ul>
 <p>启动过程会闪烁一下，启动成功后，任务管理器中会有两个nginx进程：</p>
-<p><img src="/2020/01/19/nginx-shi-yong-xin-de/sshot-1.png" alt="1530385404783"></p>
+<p><img src="/2020/01/19/nginx-shi-yong-xin-de/sshot-1.png" alt></p>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>启动nginx，然后用域名访问后台管理系统：</p>
-<p><img src="/2020/01/19/nginx-shi-yong-xin-de/screenshot.png" alt="1530385593052"></p>
+<p><img src="/2020/01/19/nginx-shi-yong-xin-de/screenshot.png" alt></p>
 <p>现在实现了域名访问网站了，中间的流程是怎样的呢？</p>
-<p><img src="/2020/01/19/nginx-shi-yong-xin-de/1526189945180.png" alt="1526189945180"></p>
+<p><img src="/2020/01/19/nginx-shi-yong-xin-de/1526189945180.png" alt></p>
 <ol>
 <li><p>浏览器准备发起请求，访问<a href="http://mamage.leyou.com，但需要进行域名解析" target="_blank" rel="noopener">http://mamage.leyou.com，但需要进行域名解析</a></p>
 </li>
@@ -747,296 +731,12 @@ http {
     </div>
 
     
-    <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div id="gitalk-container" class="card-content"></div>
-</div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '52424b98fb27c2cf5f3a',
-        clientSecret: '0b13a34441db0176018eebfebe19f75532f15e81',
-        repo: 'tigerLuHai.github.io',
-        owner: 'tigerLuHai',
-        admin: "tigerLuHai",
-        id: '2020/01/19/nginx-shi-yong-xin-de/',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
-    
 
     
 
     
 
     
-
-    
-    <style>
-    .valine-card {
-        margin: 1.5rem auto;
-    }
-
-    .valine-card .card-content {
-        padding: 20px 20px 5px 20px;
-    }
-
-    #vcomments input[type=text],
-    #vcomments input[type=email],
-    #vcomments input[type=url],
-    #vcomments textarea {
-        box-sizing: border-box;
-    }
-
-    #vcomments p {
-        margin: 2px 2px 10px;
-        font-size: 1.05rem;
-        line-height: 1.78rem;
-    }
-
-    #vcomments blockquote p {
-        text-indent: 0.2rem;
-    }
-
-    #vcomments a {
-        padding: 0 2px;
-        color: #42b983;
-        font-weight: 500;
-        text-decoration: underline;
-    }
-
-    #vcomments img {
-        max-width: 100%;
-        height: auto;
-        cursor: pointer;
-    }
-
-    #vcomments ol li {
-        list-style-type: decimal;
-    }
-
-    #vcomments ol,
-    ul {
-        display: block;
-        padding-left: 2em;
-        word-spacing: 0.05rem;
-    }
-
-    #vcomments ul li,
-    ol li {
-        display: list-item;
-        line-height: 1.8rem;
-        font-size: 1rem;
-    }
-
-    #vcomments ul li {
-        list-style-type: disc;
-    }
-
-    #vcomments ul ul li {
-        list-style-type: circle;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    #vcomments table, th, td {
-        border: 0;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments h1 {
-        font-size: 1.85rem;
-        font-weight: bold;
-        line-height: 2.2rem;
-    }
-
-    #vcomments h2 {
-        font-size: 1.65rem;
-        font-weight: bold;
-        line-height: 1.9rem;
-    }
-
-    #vcomments h3 {
-        font-size: 1.45rem;
-        font-weight: bold;
-        line-height: 1.7rem;
-    }
-
-    #vcomments h4 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    #vcomments h5 {
-        font-size: 1.1rem;
-        font-weight: bold;
-        line-height: 1.4rem;
-    }
-
-    #vcomments h6 {
-        font-size: 1rem;
-        line-height: 1.3rem;
-    }
-
-    #vcomments p {
-        font-size: 1rem;
-        line-height: 1.5rem;
-    }
-
-    #vcomments hr {
-        margin: 12px 0;
-        border: 0;
-        border-top: 1px solid #ccc;
-    }
-
-    #vcomments blockquote {
-        margin: 15px 0;
-        border-left: 5px solid #42b983;
-        padding: 1rem 0.8rem 0.3rem 0.8rem;
-        color: #666;
-        background-color: rgba(66, 185, 131, .1);
-    }
-
-    #vcomments pre {
-        font-family: monospace, monospace;
-        padding: 1.2em;
-        margin: .5em 0;
-        background: #272822;
-        overflow: auto;
-        border-radius: 0.3em;
-        tab-size: 4;
-    }
-
-    #vcomments code {
-        font-family: monospace, monospace;
-        padding: 1px 3px;
-        font-size: 0.92rem;
-        color: #e96900;
-        background-color: #f8f8f8;
-        border-radius: 2px;
-    }
-
-    #vcomments pre code {
-        font-family: monospace, monospace;
-        padding: 0;
-        color: #e8eaf6;
-        background-color: #272822;
-    }
-
-    #vcomments pre[class*="language-"] {
-        padding: 1.2em;
-        margin: .5em 0;
-    }
-
-    #vcomments code[class*="language-"],
-    pre[class*="language-"] {
-        color: #e8eaf6;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-
-    #vcomments b,
-    strong {
-        font-weight: bold;
-    }
-
-    #vcomments dfn {
-        font-style: italic;
-    }
-
-    #vcomments small {
-        font-size: 85%;
-    }
-
-    #vcomments cite {
-        font-style: normal;
-    }
-
-    #vcomments mark {
-        background-color: #fcf8e3;
-        padding: .2em;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-</style>
-
-<div class="card valine-card" data-aos="fade-up">
-    <div id="vcomments" class="card-content"></div>
-</div>
-
-<script src="/libs/valine/av-min.js"></script>
-<script src="/libs/valine/Valine.min.js"></script>
-<!-- <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
-
-<script>
-    new Valine({
-        el: '#vcomments',
-        appId: '',
-        appKey: '',
-        notify: 'false' === 'true',
-        verify: 'false' === 'true',
-        visitor: 'false' === 'true',
-        avatar: 'wavatar',
-        pageSize: '10',
-        lang: 'zh-cn',
-        placeholder: '如果你没有GitHub账号，还可以在这里评论啦！'
-    });
-</script>
 
     
 
@@ -1053,7 +753,7 @@ http {
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="网络七层架构">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="网络七层架构">
                         
                         <span class="card-title">网络七层架构</span>
                     </div>
@@ -1095,7 +795,7 @@ http {
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="红黑树的建立与维护">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="红黑树的建立与维护">
                         
                         <span class="card-title">红黑树的建立与维护</span>
                     </div>
@@ -1266,13 +966,6 @@ http {
 </main>
 
 
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
-
     <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -1280,7 +973,7 @@ http {
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">91.6k</span>
+            <span class="white-color">96.5k</span>
             
 
             <br>
@@ -1290,6 +983,15 @@ http {
             
             <br>
             
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
             
             
         </div>
@@ -1433,8 +1135,6 @@ $(function () {
 
 
 
-    
-    <script src="/libs/others/clicklove.js"></script>
     
 
     

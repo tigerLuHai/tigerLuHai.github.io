@@ -8,7 +8,8 @@
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="HBase建立二级索引的几种方式 | 卢海的博客">
+    <meta name="description" content="为什么需要HBse二级索引HBase里面只有rowkey作为一级索引， 如果要对库里的非rowkey字段进行数据检索和查询， 往往要通过MapReduce/Spark等分布式计算框架进行，硬件资源消耗和时间延迟都会比较高。
+只依赖rowke">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -98,13 +99,6 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
-    <li class="hide-on-med-and-down">
         <a href="/contact" class="waves-effect waves-light">
             
             <span>留言板</span>
@@ -178,15 +172,6 @@
                 <i class="fa fa-fw fa-link"></i>
                 
                 关于
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-link"></i>
-                
-                友情链接
             </a>
         </li>
         
@@ -290,7 +275,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/hbase.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -441,14 +426,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    765
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
                 
@@ -464,7 +449,20 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h3 id="为什么需要HBse二级索引"><a href="#为什么需要HBse二级索引" class="headerlink" title="为什么需要HBse二级索引"></a><strong>为什么需要HBse二级索引</strong></h3><p><strong>HBase里面只有rowkey作为一级索引，</strong> 如果要对库里的非rowkey字段进行数据检索和查询， 往往要通过MapReduce/Spark等分布式计算框架进行，硬件资源消耗和时间延迟都会比较高。</p>
+<p><strong>只依赖rowkey作为索引,最高可以支持数据量为十万级的数据快速响应.</strong>为了HBase的数据查询更高效、适应更多的场景， <strong>诸如使用非rowkey字段检索也能做到秒级响应，或者支持各个字段进行模糊查询和多字段组合查询等</strong>， 因此需要在HBase上面构建二级索引， 以满足现实中更复杂多样的业务需求。</p>
+<h4 id="1-MapReduce方案"><a href="#1-MapReduce方案" class="headerlink" title="1.MapReduce方案"></a>1.MapReduce方案</h4><p>自己编写MapReduce实现二级索引,相对成本较高,但是可以将MapReduce的并发特性运用起来,相对开发成本较高,而且以来开发人员代码水平.</p>
+<h4 id="2-Phoenix"><a href="#2-Phoenix" class="headerlink" title="2.Phoenix"></a>2.Phoenix</h4><p><strong>Apache Phoenix：</strong> 功能围绕着SQL on hbase，支持和兼容多个hbase版本， 二级索引只是其中一块功能。 二级索引的创建和管理直接有SQL语法支持，使用起来很简便， 该项目目前社区活跃度和版本更新迭代情况都比较好。</p>
+<p><strong>ApachePhoenix在目前开源的方案中，是一个比较优的选择。主打SQL on HBase ， 基于SQL能完成HBase的CRUD操作，支持JDBC协议</strong>。 Apache Phoenix在Hadoop生态里面位置：</p>
+<p><strong>Phoenix二级索引特点：</strong></p>
+<p>Covered Indexes(覆盖索引) ：把关注的数据字段也附在索引表上，只需要通过索引表就能返回所要查询的数据（列）， 所以索引的列必须包含所需查询的列(SELECT的列和WHRER的列)。</p>
+<p>Functional indexes(函数索引)： 索引不局限于列，支持任意的表达式来创建索引。</p>
+<p>Global indexes(全局索引)：适用于读多写少场景。通过维护全局索引表，所有的更新和写操作都会引起索引的更新，写入性能受到影响。 在读数据时，Phoenix SQL会基于索引字段，执行快速查询。</p>
+<p>Local indexes(本地索引)：适用于写多读少场景。 在数据写入时，索引数据和表数据都会存储在本地。在数据读取时， 由于无法预先确定region的位置，所以在读取数据时需要检查每个region（以找到索引数据），会带来一定性能（网络）开销。</p>
+<p><strong>该方案可适用于数量级百万甚至千万.</strong></p>
+<p>3.ElasticSearch</p>
+<p>总所周知,ElasticSearch是一个基于Lucene开发的分布式搜索引擎,可以做到对亿级数据实现快速查询,我们只需要将需要建立二级索引的字段与rowkey放入elasticsearch中,需要使用时,先在elasticsearch中通过字段查询到对应的rowkey,再利用hbase自身的rowkey索引搜索到对应的数据,<strong>该方案可以实现亿级数据的快速响应</strong>,是一种冷热分离思想的运用,</p>
+
             </div>
             <hr />
 
@@ -611,296 +609,12 @@
     </div>
 
     
-    <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div id="gitalk-container" class="card-content"></div>
-</div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '52424b98fb27c2cf5f3a',
-        clientSecret: '0b13a34441db0176018eebfebe19f75532f15e81',
-        repo: 'tigerLuHai.github.io',
-        owner: 'tigerLuHai',
-        admin: "tigerLuHai",
-        id: '2020/01/16/hbase-jian-li-er-ji-suo-yin-de-ji-chong-fang-shi/',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
-    
 
     
 
     
 
     
-
-    
-    <style>
-    .valine-card {
-        margin: 1.5rem auto;
-    }
-
-    .valine-card .card-content {
-        padding: 20px 20px 5px 20px;
-    }
-
-    #vcomments input[type=text],
-    #vcomments input[type=email],
-    #vcomments input[type=url],
-    #vcomments textarea {
-        box-sizing: border-box;
-    }
-
-    #vcomments p {
-        margin: 2px 2px 10px;
-        font-size: 1.05rem;
-        line-height: 1.78rem;
-    }
-
-    #vcomments blockquote p {
-        text-indent: 0.2rem;
-    }
-
-    #vcomments a {
-        padding: 0 2px;
-        color: #42b983;
-        font-weight: 500;
-        text-decoration: underline;
-    }
-
-    #vcomments img {
-        max-width: 100%;
-        height: auto;
-        cursor: pointer;
-    }
-
-    #vcomments ol li {
-        list-style-type: decimal;
-    }
-
-    #vcomments ol,
-    ul {
-        display: block;
-        padding-left: 2em;
-        word-spacing: 0.05rem;
-    }
-
-    #vcomments ul li,
-    ol li {
-        display: list-item;
-        line-height: 1.8rem;
-        font-size: 1rem;
-    }
-
-    #vcomments ul li {
-        list-style-type: disc;
-    }
-
-    #vcomments ul ul li {
-        list-style-type: circle;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    #vcomments table, th, td {
-        border: 0;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments h1 {
-        font-size: 1.85rem;
-        font-weight: bold;
-        line-height: 2.2rem;
-    }
-
-    #vcomments h2 {
-        font-size: 1.65rem;
-        font-weight: bold;
-        line-height: 1.9rem;
-    }
-
-    #vcomments h3 {
-        font-size: 1.45rem;
-        font-weight: bold;
-        line-height: 1.7rem;
-    }
-
-    #vcomments h4 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    #vcomments h5 {
-        font-size: 1.1rem;
-        font-weight: bold;
-        line-height: 1.4rem;
-    }
-
-    #vcomments h6 {
-        font-size: 1rem;
-        line-height: 1.3rem;
-    }
-
-    #vcomments p {
-        font-size: 1rem;
-        line-height: 1.5rem;
-    }
-
-    #vcomments hr {
-        margin: 12px 0;
-        border: 0;
-        border-top: 1px solid #ccc;
-    }
-
-    #vcomments blockquote {
-        margin: 15px 0;
-        border-left: 5px solid #42b983;
-        padding: 1rem 0.8rem 0.3rem 0.8rem;
-        color: #666;
-        background-color: rgba(66, 185, 131, .1);
-    }
-
-    #vcomments pre {
-        font-family: monospace, monospace;
-        padding: 1.2em;
-        margin: .5em 0;
-        background: #272822;
-        overflow: auto;
-        border-radius: 0.3em;
-        tab-size: 4;
-    }
-
-    #vcomments code {
-        font-family: monospace, monospace;
-        padding: 1px 3px;
-        font-size: 0.92rem;
-        color: #e96900;
-        background-color: #f8f8f8;
-        border-radius: 2px;
-    }
-
-    #vcomments pre code {
-        font-family: monospace, monospace;
-        padding: 0;
-        color: #e8eaf6;
-        background-color: #272822;
-    }
-
-    #vcomments pre[class*="language-"] {
-        padding: 1.2em;
-        margin: .5em 0;
-    }
-
-    #vcomments code[class*="language-"],
-    pre[class*="language-"] {
-        color: #e8eaf6;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-
-    #vcomments b,
-    strong {
-        font-weight: bold;
-    }
-
-    #vcomments dfn {
-        font-style: italic;
-    }
-
-    #vcomments small {
-        font-size: 85%;
-    }
-
-    #vcomments cite {
-        font-style: normal;
-    }
-
-    #vcomments mark {
-        background-color: #fcf8e3;
-        padding: .2em;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-</style>
-
-<div class="card valine-card" data-aos="fade-up">
-    <div id="vcomments" class="card-content"></div>
-</div>
-
-<script src="/libs/valine/av-min.js"></script>
-<script src="/libs/valine/Valine.min.js"></script>
-<!-- <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
-
-<script>
-    new Valine({
-        el: '#vcomments',
-        appId: '',
-        appKey: '',
-        notify: 'false' === 'true',
-        verify: 'false' === 'true',
-        visitor: 'false' === 'true',
-        avatar: 'wavatar',
-        pageSize: '10',
-        lang: 'zh-cn',
-        placeholder: '如果你没有GitHub账号，还可以在这里评论啦！'
-    });
-</script>
 
     
 
@@ -917,7 +631,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="栈的性质及一些使用场景">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="栈的性质及一些使用场景">
                         
                         <span class="card-title">栈的性质及一些使用场景</span>
                     </div>
@@ -925,7 +639,13 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            性质栈和队列其实是一个工具，他们传统的工具方法 工具类不同，他们是“思想”工具，栈是后进先出。
+
+
+常见的使用栈的场景递归
+从前山上有座庙，庙里有个老和尚和小和尚，老和尚给小和尚讲故事：“从前山上有座庙……”
+
+有名的斐波那契数列，手动地计
                         
                     </div>
                     <div class="publish-info">
@@ -958,7 +678,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Sqoop-HDFS与外界交互数据的工具">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Sqoop-HDFS与外界交互数据的工具">
                         
                         <span class="card-title">Sqoop-HDFS与外界交互数据的工具</span>
                     </div>
@@ -1129,13 +849,6 @@
 </main>
 
 
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
-
     <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -1143,7 +856,7 @@
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">91.6k</span>
+            <span class="white-color">96.5k</span>
             
 
             <br>
@@ -1153,6 +866,15 @@
             
             <br>
             
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
             
             
         </div>
@@ -1296,8 +1018,6 @@ $(function () {
 
 
 
-    
-    <script src="/libs/others/clicklove.js"></script>
     
 
     

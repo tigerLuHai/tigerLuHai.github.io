@@ -98,13 +98,6 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
-    <li class="hide-on-med-and-down">
         <a href="/contact" class="waves-effect waves-light">
             
             <span>留言板</span>
@@ -178,15 +171,6 @@
                 <i class="fa fa-fw fa-link"></i>
                 
                 关于
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-link"></i>
-                
-                友情链接
             </a>
         </li>
         
@@ -470,8 +454,8 @@ $(function () {
         preload: 'auto',
         volume: Number('0.5'),
         listFolded: 'false' === 'true',
-        listMaxHeight: '',
-        audio: JSON.parse('[{"name":"五月雨变奏电音","artist":"AnimeVibe","url":"http://xxx.com/music1.mp3","cover":"http://xxx.com/music-cover1.png"},{"name":"Take me hand","artist":"DAISHI DANCE,Cecile Corbel","url":"/medias/music/music2.mp3","cover":"/medias/music/cover2.png"},{"name":"Shape of You","artist":"J.Fla","url":"http://xxx.com/music3.mp3","cover":"http://xxx.com/music-cover3.png"}]')
+        listMaxHeight: '50#列表最大高度',
+        audio: JSON.parse('[]')
     });
 });
 </script>
@@ -503,7 +487,7 @@ $(function () {
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="MongoDB使用及底层原理">
+                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="MongoDB使用及底层原理">
                             
                             <span class="card-title">MongoDB使用及底层原理</span>
                         </div>
@@ -548,7 +532,7 @@ mongoDB download地址： download
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Shiro框架原理及简单使用">
+                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Shiro框架原理及简单使用">
                             
                             <span class="card-title">Shiro框架原理及简单使用</span>
                         </div>
@@ -588,7 +572,7 @@ mongoDB download地址： download
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="HTTP请求方法的幂等性">
+                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="HTTP请求方法的幂等性">
                             
                             <span class="card-title">HTTP请求方法的幂等性</span>
                         </div>
@@ -648,8 +632,8 @@ GET     /tickets       # 获取ticket
                                 
                                 <i class="fa fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/MySQL/" class="post-category" target="_blank">
-                                    MySQL
+                                <a href="/categories/数据库/" class="post-category" target="_blank">
+                                    数据库
                                 </a>
                                 
                                 
@@ -667,7 +651,7 @@ GET     /tickets       # 获取ticket
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="HashMap与ConcurrentHashMap">
+                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="HashMap与ConcurrentHashMap">
                             
                             <span class="card-title">HashMap与ConcurrentHashMap</span>
                         </div>
@@ -711,7 +695,7 @@ Base 1.71.7 中的数据结构图：
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="线程池原理">
+                            <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="线程池原理">
                             
                             <span class="card-title">线程池原理</span>
                         </div>
@@ -752,7 +736,7 @@ Base 1.71.7 中的数据结构图：
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="稳定排序与非稳定排序的应用场景">
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="稳定排序与非稳定排序的应用场景">
                             
                             <span class="card-title">稳定排序与非稳定排序的应用场景</span>
                         </div>
@@ -794,7 +778,7 @@ Base 1.71.7 中的数据结构图：
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="HTTP与HTTPS原理">
+                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="HTTP与HTTPS原理">
                             
                             <span class="card-title">HTTP与HTTPS原理</span>
                         </div>
@@ -803,23 +787,7 @@ Base 1.71.7 中的数据结构图：
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                            
-概述
-传输流程
-地址解析
-封装 HTTP 请求数据包
-封装成 TCP 包并建立连接
-客户机发送请求命令
-服务器响应
-服务器关闭 TCP 连接
-HTTP响应状态
-
-
-小插曲：301和302有啥区别
-HTTPS
-建立连接获取证书
-证书验证
-数
+                            概述HTTP 是一个无状态的协议。无状态是指客户机（Web 浏览器）和服务器之间不需要建立持久的连接，这意味着当一个客户端向服务器端发出请求，然后服务器返回响应(response)，连接就被关闭了，在服务器端不保留连接的有关信息.HTTP 
                             
                         </div>
                         <div class="publish-info">
@@ -849,7 +817,7 @@ HTTPS
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="因特网五层架构">
+                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="因特网五层架构">
                             
                             <span class="card-title">因特网五层架构</span>
                         </div>
@@ -888,7 +856,7 @@ HTTPS
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="网络七层架构">
+                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="网络七层架构">
                             
                             <span class="card-title">网络七层架构</span>
                         </div>
@@ -928,7 +896,7 @@ HTTPS
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="Nginx使用心得">
+                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Nginx使用心得">
                             
                             <span class="card-title">Nginx使用心得</span>
                         </div>
@@ -977,7 +945,7 @@ web应用服务器
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="红黑树的建立与维护">
+                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="红黑树的建立与维护">
                             
                             <span class="card-title">红黑树的建立与维护</span>
                         </div>
@@ -1047,7 +1015,7 @@ web应用服务器
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">91.6k</span>
+            <span class="white-color">96.5k</span>
             
 
             <br>
@@ -1057,6 +1025,15 @@ web应用服务器
             
             <br>
             
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
             
             
         </div>
@@ -1200,8 +1177,6 @@ $(function () {
 
 
 
-    
-    <script src="/libs/others/clicklove.js"></script>
     
 
     
