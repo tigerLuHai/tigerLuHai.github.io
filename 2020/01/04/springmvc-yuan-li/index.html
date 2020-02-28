@@ -276,7 +276,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/26.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/27.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -605,7 +605,7 @@ if (this.context instanceof ConfigurableWebApplicationContext) {
 <p><img src="/2020/01/04/springmvc-yuan-li/3.png" alt="img"></p>
 <p><strong>总结：</strong></p>
 <p>spring mvc启动流程大致就是从一个叫<code>ContextLoaderListener</code>开始的，它是一个servlet监听器，能够被web容器发现并加载，初始化监听器<code>ContextLoaderListener</code>之后，接着就是根据配置如<code>contextConfigLocation</code>和<code>contextClass</code>创建web容器了，如果你不指定<code>contextClass</code>参数值，则默认创建的spring web容器类型为<code>XmlWebApplicationContext</code>,最后一步就是根据你配置的<code>contextConfigLocation</code>文件路径去配置并刷新容器了。</p>
-<h4 id="DispatcherServlet控制器的初始化"><a href="#DispatcherServlet控制器的初始化" class="headerlink" title="DispatcherServlet控制器的初始化"></a><code>DispatcherServlet</code>控制器的初始化</h4><p>好了，上面我们简单地分析了Spring mvc容器初始化的源码，我们永远不会忘记，我们默认创建的容器类型为<code>XmlWebApplicationContext</code>,当然我们也不会忘记，在<code>web.xml</code>中，我们还有一个重要的配置，那就是<code>DispatcherServlet</code>。下面我们就来分析下<code>DispatcherServlet</code>的初始化过程。</p>
+<h4 id="DispatcherServlet控制器的初始化"><a href="#DispatcherServlet控制器的初始化" class="headerlink" title="DispatcherServlet控制器的初始化"></a>DispatcherServlet控制器的初始化</h4><p>好了，上面我们简单地分析了Spring mvc容器初始化的源码，我们永远不会忘记，我们默认创建的容器类型为<code>XmlWebApplicationContext</code>,当然我们也不会忘记，在<code>web.xml</code>中，我们还有一个重要的配置，那就是<code>DispatcherServlet</code>。下面我们就来分析下<code>DispatcherServlet</code>的初始化过程。</p>
 <p><code>DispatcherServlet</code>，就是一个servlet，一个用来处理request请求的servlet，它是spring mvc的核心，所有的请求都经过它，并由它指定后续操作该怎么执行，咋一看像一扇门，因此我管它叫“闸门”。在我们继续之前，我们应该共同遵守一个常识，那就是——-无论是监听器还是servlet，都是servlet规范组件，web服务器都可以发现并加载它们。</p>
 <p>下面我们先看看<code>DispatcherServlet</code>的继承关系：</p>
 <p><img src="/2020/01/04/springmvc-yuan-li/4.png" alt="img"></p>
@@ -790,7 +790,7 @@ if (this.context instanceof ConfigurableWebApplicationContext) {
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="javaWeb三大核心组件之servlet">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="javaWeb三大核心组件之servlet">
                         
                         <span class="card-title">javaWeb三大核心组件之servlet</span>
                     </div>
@@ -1008,7 +1008,7 @@ if (this.context instanceof ConfigurableWebApplicationContext) {
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">96.5k</span>
+            <span class="white-color">100.6k</span>
             
 
             <br>

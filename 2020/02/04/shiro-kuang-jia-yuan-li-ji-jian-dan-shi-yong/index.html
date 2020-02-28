@@ -275,7 +275,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -453,7 +453,7 @@
 <p>目前，使用Apache Shiro的人越来越多，因为它相当简单，对比Spring Security，可能没有Spring Security做的功能强大，但是在实际工作时可能并不需要那么复杂的东西，所以使用小而简单的Shiro就足够了。</p>
 <p>功能:1.验证用户来核实他们的身份2.对用户执行访问控制</p>
 <p>我们可以看一下Apache官网上对Shiro，它都包含哪些功能。</p>
-<p>**<img src="/2020/02/04/shiro-kuang-jia-yuan-li-ji-jian-dan-shi-yong/3.png" alt="img"></p>
+<p><img src="/2020/02/04/shiro-kuang-jia-yuan-li-ji-jian-dan-shi-yong/3.png" alt></p>
 <p>Authentication：认证，有时也简称为“登录”，这是一个证明用户是他们所说的他们是谁的行为。</p>
 <p>Authorization：授权，访问控制的过程，也就是绝对“谁”去访问“什么” 授权用于回答安全问题，例如“用户是否允许编辑帐户”，“该用户是否允许查看此网页”，“该用户是否可以访问”到这个按钮？“这些都是决定用户有权访问的决定，因此都代表授权检查。</p>
 <p>Cryptography：密码术是通过隐藏信息或将其转换为无意义来保护信息免受不良访问的做法，因此没有其他人可以阅读它。Shiro专注于密码学的两个核心要素：使用公钥或私钥加密数据的密码，以及对密码等数据进行不可逆转加密的哈希（也称为消息摘要）。</p>
@@ -471,9 +471,9 @@
 <p>SecurityManager：安全管理器，也就是说所有与安全有关的操作都会与SecurityManager进行交互，而且他管理这Subject，它其实是Shiro的核心 是Shiro架构的心脏。并作为一种“保护伞”对象来协调内部的安全组件共同构成一个对象图。</p>
 <p>Realms： 域，Shiro从从Realm获取安全数据（如用户、角色、权限），就是说SecurityManager要验证用户身份，那么它需要从Realm获取相应的用户进行比较以确定用户身份是否合法；也需要从Realm得到用户相应的角色/权限进行验证用户是否能进行操作；可以把Realm看成DataSource，即安全数据源。</p>
 <p>当配置Shiro时，你必须指定至少一个Realm用来进行身份验证和/或授权。SecurityManager可能配置多个Realms，但至少有一个是必须的。</p>
-<p>**<img src="/2020/02/04/shiro-kuang-jia-yuan-li-ji-jian-dan-shi-yong/1.png" alt="img"></p>
+<p><img src="/2020/02/04/shiro-kuang-jia-yuan-li-ji-jian-dan-shi-yong/1.png" alt></p>
 <p><strong>我们看一下它具体的登录图解</strong></p>
-<p><strong><img src="/2020/02/04/shiro-kuang-jia-yuan-li-ji-jian-dan-shi-yong/2.png" alt="img"></strong></p>
+<p><strong><img src="/2020/02/04/shiro-kuang-jia-yuan-li-ji-jian-dan-shi-yong/2.png" alt></strong></p>
 <hr>
 <p><strong>1、登陆操作 携带用户名密码给subject，subject调用自己的登陆方法传递用户名和密码给权限管理器，权限管理器将用户名密码传递给开发人员编写的realm的认证方法，realm根据用户名到数据库中查找是否存在该用户，若存在将认证信息存入到session中</strong></p>
 <p><strong>2、权限管理器会自动判断传递的密码与正确密码是否一致</strong></p>
@@ -874,7 +874,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="MongoDB使用及底层原理">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="MongoDB使用及底层原理">
                         
                         <span class="card-title">MongoDB使用及底层原理</span>
                     </div>
@@ -921,7 +921,7 @@ mongoDB download地址： download
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="HTTP请求方法的幂等性">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="HTTP请求方法的幂等性">
                         
                         <span class="card-title">HTTP请求方法的幂等性</span>
                     </div>
@@ -1101,7 +1101,7 @@ GET     /tickets       # 获取ticket
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">96.5k</span>
+            <span class="white-color">100.6k</span>
             
 
             <br>

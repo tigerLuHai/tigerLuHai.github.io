@@ -276,7 +276,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/26.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/27.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -457,7 +457,7 @@
 <li><strong>提高线程的可管理性</strong>。线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，因此，需要使用线程池来管理线程。</li>
 </ol>
 <h1 id="2-线程池的工作原理"><a href="#2-线程池的工作原理" class="headerlink" title="2. 线程池的工作原理"></a>2. 线程池的工作原理</h1><p>当一个并发任务提交给线程池，线程池分配线程去执行任务的过程如下图所示：</p>
-<p><img src="/2020/01/22/xian-cheng-chi-yuan-li/1.png" alt="线程池执行流程">线程池执行流程图.jpg</p>
+<p><img src="/2020/01/22/xian-cheng-chi-yuan-li/1.png" alt="线程池执行流程"></p>
 <p>从图可以看出，线程池执行所提交的任务过程主要有这样几个阶段：</p>
 <ol>
 <li>先判断线程池中<strong>核心线程池</strong>所有的线程是否都在执行任务。如果不是，则新创建一个线程执行刚提交的任务，否则，核心线程池中所有的线程都在执行任务，则进入第 2 步；</li>
@@ -477,7 +477,7 @@
 <li>maximumPoolSize：表示线程池能创建线程的最大个数。如果当阻塞队列已满时，并且当前线程池线程个数没有超过 maximumPoolSize 的话，就会创建新的线程来执行任务。</li>
 <li>keepAliveTime：空闲线程存活时间。如果当前线程池的线程个数已经超过了 corePoolSize，并且线程空闲时间超过了 keepAliveTime 的话，就会将这些空闲线程销毁，这样可以尽可能降低系统资源消耗。</li>
 <li>unit：时间单位。为 keepAliveTime 指定时间单位。</li>
-<li>workQueue：阻塞队列。用于保存任务的阻塞队列，关于阻塞队列<a href="https://juejin.im/post/5aeebd02518825672f19c546" target="_blank" rel="noopener">可以看这篇文章</a>。可以使用<strong>ArrayBlockingQueue, LinkedBlockingQueue, SynchronousQueue, PriorityBlockingQueue</strong>。</li>
+<li>workQueue：阻塞队列。用于保存任务的阻塞队列。可以使用<strong>ArrayBlockingQueue, LinkedBlockingQueue, SynchronousQueue, PriorityBlockingQueue</strong>。</li>
 <li>threadFactory：创建线程的工程类。可以通过指定线程工厂为每个创建出来的线程设置更有意义的名字，如果出现并发问题，也方便查找问题原因。</li>
 <li><ol>
 <li>AbortPolicy： 直接拒绝所提交的任务，并抛出<strong>RejectedExecutionException</strong>异常；</li>
@@ -487,9 +487,6 @@
 </ol>
 </li>
 </ol>
-<blockquote>
-<p>线程池执行逻辑</p>
-</blockquote>
 <p>通过 ThreadPoolExecutor 创建线程池后，提交任务后执行过程是怎样的，下面来通过源码来看一看。execute 方法源码如下：</p>
 <pre><code>public void execute(Runnable command) {
     if (command == null)
@@ -532,9 +529,8 @@
     //如果当前任务无法放进阻塞队列中，则创建新的线程来执行任务
     else if (!addWorker(command, false))
         reject(command);
-}
-复制代码</code></pre><p>ThreadPoolExecutor 的 execute 方法执行逻辑请见注释。下图为 ThreadPoolExecutor 的 execute 方法的执行示意图：</p>
-<p><img src="/2020/01/22/xian-cheng-chi-yuan-li/2.png" alt="execute执行过程">execute执行过程示意图.jpg</p>
+}</code></pre><p>ThreadPoolExecutor 的 execute 方法执行逻辑请见注释。下图为 ThreadPoolExecutor 的 execute 方法的执行示意图：</p>
+<p><img src="/2020/01/22/xian-cheng-chi-yuan-li/2.png" alt="execute执行过程"></p>
 <p>execute 方法执行逻辑有这样几种情况：</p>
 <ol>
 <li>如果当前运行的线程少于 corePoolSize，则会创建新的线程来执行新的任务；</li>
@@ -761,7 +757,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="HashMap与ConcurrentHashMap">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="HashMap与ConcurrentHashMap">
                         
                         <span class="card-title">HashMap与ConcurrentHashMap</span>
                     </div>
@@ -807,7 +803,7 @@ Base 1.71.7 中的数据结构图：
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="稳定排序与非稳定排序的应用场景">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="稳定排序与非稳定排序的应用场景">
                         
                         <span class="card-title">稳定排序与非稳定排序的应用场景</span>
                     </div>
@@ -988,7 +984,7 @@ Base 1.71.7 中的数据结构图：
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">96.5k</span>
+            <span class="white-color">100.6k</span>
             
 
             <br>

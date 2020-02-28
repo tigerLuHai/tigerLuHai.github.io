@@ -8,7 +8,7 @@
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="Nginx 运用小结什么是Nginx
+    <meta name="description" content="什么是Nginx
 nginx可以作为web服务器，但更多的时候，我们把它作为网关，因为它具备网关必备的功能：
 
 反向代理
@@ -18,7 +18,8 @@ nginx可以作为web服务器，但更多的时候，我们把它作为网关，
 
 nginx作为web服务器Web服务器分2类：
 
-web应用服务器">
+web应用服务器，如：
+tomcat">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -284,7 +285,7 @@ web应用服务器">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -435,14 +436,14 @@ web应用服务器">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    826
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    6 分
                 </div>
                 
                 
@@ -458,7 +459,7 @@ web应用服务器">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Nginx-运用小结"><a href="#Nginx-运用小结" class="headerlink" title="Nginx 运用小结"></a>Nginx 运用小结</h1><h4 id="什么是Nginx"><a href="#什么是Nginx" class="headerlink" title="什么是Nginx"></a>什么是Nginx</h4><p><img src="/2020/01/19/nginx-shi-yong-xin-de/1526187409033.png" alt></p>
+                <h3 id="什么是Nginx"><a href="#什么是Nginx" class="headerlink" title="什么是Nginx"></a>什么是Nginx</h3><p><img src="/2020/01/19/nginx-shi-yong-xin-de/1526187409033.png" alt></p>
 <p>nginx可以作为web服务器，但更多的时候，我们把它作为网关，因为它具备网关必备的功能：</p>
 <ul>
 <li>反向代理</li>
@@ -565,8 +566,6 @@ http {
 </ul>
 <p>启动过程会闪烁一下，启动成功后，任务管理器中会有两个nginx进程：</p>
 <p><img src="/2020/01/19/nginx-shi-yong-xin-de/sshot-1.png" alt></p>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>启动nginx，然后用域名访问后台管理系统：</p>
-<p><img src="/2020/01/19/nginx-shi-yong-xin-de/screenshot.png" alt></p>
 <p>现在实现了域名访问网站了，中间的流程是怎样的呢？</p>
 <p><img src="/2020/01/19/nginx-shi-yong-xin-de/1526189945180.png" alt></p>
 <ol>
@@ -581,10 +580,170 @@ http {
 </li>
 <li><p>后台系统的webpack server监听的端口是9001，得到请求并处理，完成后将响应返回到nginx</p>
 </li>
-<li><p>nginx将得到的结果返回到浏览器</p>
+<li><p>nginx将得到的结果返回到浏览器使用场景</p>
 </li>
 </ol>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>平时开发分布式系统的时候,作为自己的调试环境往往是只有一台电脑的,这个时候为了配置和实际生产环境一致,我们的配置都是和线上一致,这个时候就需要使用hosts文件中的映射和nginx配合使用实现一台电脑上部署一个分布式的系统的多个部分的效果.如下配置文件:</p>
+<pre><code>#cms页面预览
+    upstream cms_server_pool{
+        server 127.0.0.1:31001 weight=10;
+    }
 
+    upstream static_server_pool{
+        server 127.0.0.1:91 weight=10;
+    }    
+
+    #前端动态门户 
+    upstream dynamic_portal_server_pool{ 
+        server 127.0.0.1:10000 weight=10; 
+    }
+    #前端ucenter 
+    upstream ucenter_server_pool{ 
+        #server 127.0.0.1:7081 weight=10; 
+        server 127.0.0.1:13000 weight=10; 
+    }
+
+    #后台搜索（公开api） 
+    upstream search_server_pool{
+        server 127.0.0.1:40100 weight=10; 
+    }
+
+    #媒体服务
+    upstream video_server_pool {
+        server 127.0.0.1:90 weight=10;
+    }
+    #认证服务 
+    upstream auth_server_pool{
+        server 127.0.0.1:40400 weight=10;
+    }
+
+    server {
+        listen       91;    
+        server_name  localhost;
+        ssi on;
+        ssi_silent_errors on;
+
+        location /static/company/ {
+            alias    D:/皇家java教程/04-java项目/xcEduUI01/static/company/;
+        }
+        location /static/teacher/ {
+            alias    D:/皇家java教程/04-java项目/xcEduUI01/static/teacher/;
+        }
+        location /static/stat/ {
+            alias    D:/皇家java教程/04-java项目/xcEduUI01/static/stat/;
+        }
+        location /course/detail/ {
+            alias   D:/皇家java教程/04-java项目/xcEduUI01/static/course/detail/;
+        }
+        #分类信息 
+        location /static/category {
+            default_type application/json;
+            alias   D:/皇家java教程/04-java项目/xcEduUI01/static/category/;
+        }
+    }
+    server {
+        listen       80;    
+        server_name  www.xuecheng.com;
+        ssi on;
+        ssi_silent_errors on;
+        location / {
+            alias   D:/皇家java教程/04-java项目/xcEduUI01/xc-ui-pc-static-portal/;
+            index  index.html;
+        }
+
+        location /cms/preview/{
+            proxy_pass http://cms_server_pool/cms/preview/;
+        }        
+        location /static/company/{
+            proxy_pass http://static_server_pool;
+        }
+        location /static/teacher/{
+            proxy_pass http://static_server_pool;
+        }
+        location /static/stat/{
+            proxy_pass http://static_server_pool;
+        }
+        location /static/course/detail/{
+            proxy_pass http://static_server_pool;
+        }
+        location /static/img/{
+            alias D:/皇家java教程/04-java项目/xcEduUI01/xc-ui-pc-static-portal/img/;
+        }
+        location /static/css/{
+            alias D:/皇家java教程/04-java项目/xcEduUI01/xc-ui-pc-static-portal/css/;
+        }
+        location /static/js/{
+            alias D:/皇家java教程/04-java项目/xcEduUI01/xc-ui-pc-static-portal/js/;
+        }
+        location /static/plugins/{
+            alias D:/皇家java教程/04-java项目/xcEduUI01/xc-ui-pc-static-portal/plugins/;
+            add_header Access-Control-Allow-Origin http://ucenter.xuecheng.com;
+            add_header Access-Control-Allow-Credentials true;
+            add_header Access-Control-Allow-Methods GET;
+        }
+        #前端门户页面搜索
+        location ^~ /course/search {
+            proxy_pass http://dynamic_portal_server_pool;
+        }
+        #后端搜索服务
+        location /openapi/search/ {
+        proxy_pass http://search_server_pool/search/;
+        }
+        #分类信息 
+        location /static/category/ {
+            proxy_pass http://static_server_pool;
+        }
+        #开发环境webpack定时加载此文件 
+        location ^~ /__webpack_hmr {
+            proxy_pass http://dynamic_portal_server_pool/__webpack_hmr;
+        }
+        #开发环境nuxt访问_nuxt 
+        location ^~ /_nuxt/ {
+            proxy_pass http://dynamic_portal_server_pool/_nuxt/;
+        }    
+    }
+    #学成网媒体服务代理 
+    map $http_origin $origin_list{
+        default http://www.xuecheng.com;
+        &quot;~http://www.xuecheng.com&quot; http://www.xuecheng.com;
+        &quot;~http://ucenter.xuecheng.com&quot; http://ucenter.xuecheng.com;
+    }
+    #学成网媒体服务代理
+    server {
+        listen 80;
+        server_name video.xuecheng.com;
+        location /video {
+            proxy_pass http://video_server_pool;
+            add_header Access‐Control‐Allow‐Origin $origin_list;
+            #add_header Access‐Control‐Allow‐Origin *;
+            add_header Access‐Control‐Allow‐Credentials true;
+            add_header Access‐Control‐Allow‐Methods GET;
+        }
+    }
+    server{
+        listen        90;
+        server_name    localhost;
+
+        #视频目录
+        location /video/ {
+            alias    D:/皇家java教程/04-java项目/xcEduUI01/video/;
+        }
+    }
+    #学成网用户中心
+    server {
+        listen 80;
+        server_name ucenter.xuecheng.com;
+
+        #认证 
+        location ^~ /openapi/auth/ {
+            proxy_pass http://auth_server_pool/auth/;
+        }
+        #个人中心 
+        location / { 
+            proxy_pass http://ucenter_server_pool;
+        }
+    }
+</code></pre>
             </div>
             <hr />
 
@@ -753,7 +912,7 @@ http {
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="网络七层架构">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="网络七层架构">
                         
                         <span class="card-title">网络七层架构</span>
                     </div>
@@ -795,7 +954,7 @@ http {
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="红黑树的建立与维护">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="红黑树的建立与维护">
                         
                         <span class="card-title">红黑树的建立与维护</span>
                     </div>
@@ -973,7 +1132,7 @@ http {
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">96.5k</span>
+            <span class="white-color">100.6k</span>
             
 
             <br>

@@ -279,7 +279,7 @@ Base 1.71.7 中的数据结构图：
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -455,9 +455,9 @@ Base 1.71.7 中的数据结构图：
             <div id="articleContent">
                 <h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><p>众所周知 HashMap 底层是基于 <code>数组 + 链表</code> 组成的，不过在 jdk1.7 和 1.8 中具体实现稍有不同。</p>
 <h3 id="Base-1-7"><a href="#Base-1-7" class="headerlink" title="Base 1.7"></a>Base 1.7</h3><p>1.7 中的数据结构图：</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/1.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/1.png" alt></p>
 <p>先来看看 1.7 中的实现。</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/2.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/2.png" alt></p>
 <p>这是 HashMap 中比较核心的几个成员变量；看看分别是什么意思？</p>
 <ol>
 <li>初始化桶大小，因为底层是数组，所以这是数组默认的大小。</li>
@@ -487,13 +487,12 @@ Base 1.71.7 中的数据结构图：
         this.loadFactor = loadFactor;
         threshold = initialCapacity;
         init();
-    }
-复制代码</code></pre><p>给定的默认容量为 16，负载因子为 0.75。Map 在使用过程中不断的往里面存放数据，当数量达到了 <code>16 * 0.75 = 12</code> 就需要将当前 16 的容量进行扩容，而扩容这个过程涉及到 rehash、复制数据等操作，所以非常消耗性能。</p>
+    }</code></pre><p>给定的默认容量为 16，负载因子为 0.75。Map 在使用过程中不断的往里面存放数据，当数量达到了 <code>16 * 0.75 = 12</code> 就需要将当前 16 的容量进行扩容，而扩容这个过程涉及到 rehash、复制数据等操作，所以非常消耗性能。</p>
 <p>因此通常建议能提前预估 HashMap 的大小最好，尽量的减少扩容带来的性能损耗。</p>
 <p>根据代码可以看到其实真正存放数据的是</p>
 <p><code>transient Entry&lt;K,V&gt;[] table = (Entry&lt;K,V&gt;[]) EMPTY_TABLE;</code></p>
 <p>这个数组，那么它又是如何定义的呢？</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/3.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/3.png" alt></p>
 <p>Entry 是 HashMap 中的一个内部类，从他的成员变量很容易看出：</p>
 <ul>
 <li>key 就是写入时的键。</li>
@@ -523,8 +522,7 @@ Base 1.71.7 中的数据结构图：
         modCount++;
         addEntry(hash, key, value, i);
         return null;
-    }
-复制代码</code></pre><ul>
+    }</code></pre><ul>
 <li>判断当前数组是否需要初始化。</li>
 <li>如果 key 为空，则 put 一个空值进去。</li>
 <li>根据 key 计算出 hashcode。</li>
@@ -546,8 +544,7 @@ Base 1.71.7 中的数据结构图：
         Entry&lt;K,V&gt; e = table[bucketIndex];
         table[bucketIndex] = new Entry&lt;&gt;(hash, key, value, e);
         size++;
-    }
-复制代码</code></pre><p>当调用 addEntry 写入 Entry 时需要判断是否需要扩容。</p>
+    }</code></pre><p>当调用 addEntry 写入 Entry 时需要判断是否需要扩容。</p>
 <p>如果需要就进行两倍扩充，并将当前的 key 重新 hash 并定位。</p>
 <p>而在 <code>createEntry</code> 中会将当前位置的桶传入到新建的桶中，如果当前桶有值就会在位置形成链表。</p>
 <h4 id="get-方法"><a href="#get-方法" class="headerlink" title="get 方法"></a>get 方法</h4><p>再来看看 get 函数：</p>
@@ -574,8 +571,7 @@ Base 1.71.7 中的数据结构图：
                 return e;
         }
         return null;
-    }
-复制代码</code></pre><ul>
+    }</code></pre><ul>
 <li>首先也是根据 key 计算出 hashcode，然后定位到具体的桶中。</li>
 <li>判断该位置是否为链表。</li>
 <li>不是链表就根据 <code>key、key 的 hashcode</code> 是否相等来返回值。</li>
@@ -589,7 +585,7 @@ Base 1.71.7 中的数据结构图：
 </blockquote>
 <p>因此 1.8 中重点优化了这个查询效率。</p>
 <p>1.8 HashMap 结构图：</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/4.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/4.png" alt></p>
 <p>先来看看几个核心的成员变量：</p>
 <pre><code>    static final int DEFAULT_INITIAL_CAPACITY = 1 &lt;&lt; 4; // aka 16
 
@@ -618,15 +614,14 @@ Base 1.71.7 中的数据结构图：
     /**
      * The number of key-value mappings contained in this map.
      */
-    transient int size;
-复制代码</code></pre><p>和 1.7 大体上都差不多，还是有几个重要的区别：</p>
+    transient int size;</code></pre><p>和 1.7 大体上都差不多，还是有几个重要的区别：</p>
 <ul>
 <li><code>TREEIFY_THRESHOLD</code> 用于判断是否需要将链表转换为红黑树的阈值。</li>
 <li>HashEntry 修改为 Node。</li>
 </ul>
 <p>Node 的核心组成其实也是和 1.7 中的 HashEntry 一样，存放的都是 <code>key value hashcode next</code> 等数据。</p>
 <p>再来看看核心方法。</p>
-<h4 id="put-方法-1"><a href="#put-方法-1" class="headerlink" title="put 方法"></a>put 方法</h4><p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/5.png" alt="img"></p>
+<h4 id="put-方法-1"><a href="#put-方法-1" class="headerlink" title="put 方法"></a>put 方法</h4><p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/5.png" alt></p>
 <p>看似要比 1.7 的复杂，我们一步步拆解：</p>
 <ol>
 <li>判断当前桶是否为空，空的就需要初始化（resize 中会判断是否进行初始化）。</li>
@@ -662,8 +657,7 @@ Base 1.71.7 中的数据结构图：
             }
         }
         return null;
-    }
-复制代码</code></pre><p>get 方法看起来就要简单许多了。</p>
+    }</code></pre><p>get 方法看起来就要简单许多了。</p>
 <ul>
 <li>首先将 key hash 之后取得所定位的桶。</li>
 <li>如果桶为空则直接返回 null 。</li>
@@ -682,8 +676,7 @@ for (int i = 0; i &lt; 1000; i++) {
             map.put(UUID.randomUUID().toString(), &quot;&quot;);
         }
     }).start();
-}
-复制代码</code></pre><p>但是为什么呢？简单分析下。</p>
+}</code></pre><p>但是为什么呢？简单分析下。</p>
 <p>看过上文的还记得在 HashMap 扩容的时候会调用 <code>resize()</code> 方法，就是这里的并发操作容易在一个桶上形成环形链表；这样当获取一个不存在的 key 时，计算出的 index 正好是环形链表的下标就会出现死循环。</p>
 <h3 id="遍历方式"><a href="#遍历方式" class="headerlink" title="遍历方式"></a>遍历方式</h3><p>还有一个值得注意的是 HashMap 的遍历方式，通常有以下几种：</p>
 <pre><code>Iterator&lt;Map.Entry&lt;String, Integer&gt;&gt; entryIterator = map.entrySet().iterator();
@@ -697,8 +690,7 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
             String key = iterator.next();
             System.out.println(&quot;key=&quot; + key + &quot; value=&quot; + map.get(key));
 
-        }
-复制代码</code></pre><p><code>强烈建议</code>使用第一种 EntrySet 进行遍历。</p>
+        }</code></pre><p><code>强烈建议</code>使用第一种 EntrySet 进行遍历。</p>
 <p>第一种可以把 key value 同时取出，第二种还得需要通过 key 取一次 value，效率较低。</p>
 <blockquote>
 <p>简单总结下 HashMap：无论是 1.7 还是 1.8 其实都能看出 JDK 没有对它做任何的同步操作，所以并发会出问题，甚至出现死循环导致系统不可用。</p>
@@ -709,7 +701,7 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
 </blockquote>
 <h2 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h2><p>ConcurrentHashMap 同样也分为 1.7 、1.8 版，两者在实现上略有不同。</p>
 <h3 id="Base-1-7-1"><a href="#Base-1-7-1" class="headerlink" title="Base 1.7"></a>Base 1.7</h3><p>先来看看 1.7 的实现，下面是他的结构图：</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/6.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/6.png" alt></p>
 <p>如图所示，是由 Segment 数组、HashEntry 组成，和 HashMap 一样，仍然是数组加链表。</p>
 <p>它的核心成员变量：</p>
 <pre><code>    /**
@@ -735,7 +727,7 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
         final float loadFactor;
 
     }</code></pre><p>看看其中 HashEntry 的组成：</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/7.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/7.png" alt></p>
 <p>和 HashMap 非常类似，唯一的区别就是其中的核心数据如 value ，以及链表都是 volatile 修饰的，保证了获取时的可见性。</p>
 <p>原理上来说：ConcurrentHashMap 采用了分段锁技术，其中 Segment 继承于 ReentrantLock。不会像 HashTable 那样不管是 put 还是 get 操作都需要做同步处理，理论上 ConcurrentHashMap 支持 CurrencyLevel (Segment 数组数量)的线程并发。每当一个线程占用锁访问一个 Segment 时，不会影响到其他的 Segment。</p>
 <p>下面也来看看核心的 <code>put get</code> 方法。</p>
@@ -749,8 +741,7 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
              (segments, (j &lt;&lt; SSHIFT) + SBASE)) == null) //  in ensureSegment
             s = ensureSegment(j);
         return s.put(key, hash, value, false);
-    }
-复制代码</code></pre><p>首先是通过 key 定位到 Segment，之后在对应的 Segment 中进行具体的 put。</p>
+    }</code></pre><p>首先是通过 key 定位到 Segment，之后在对应的 Segment 中进行具体的 put。</p>
 <pre><code>        final V put(K key, int hash, V value, boolean onlyIfAbsent) {
             HashEntry&lt;K,V&gt; node = tryLock() ? null :
                 scanAndLockForPut(key, hash, value);
@@ -793,15 +784,14 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
                 unlock();
             }
             return oldValue;
-        }
-复制代码</code></pre><p>虽然 HashEntry 中的 value 是用 volatile 关键词修饰的，但是并不能保证并发的原子性，所以 put 操作时仍然需要加锁处理。</p>
+        }</code></pre><p>虽然 HashEntry 中的 value 是用 volatile 关键词修饰的，但是并不能保证并发的原子性，所以 put 操作时仍然需要加锁处理。</p>
 <p>首先第一步的时候会尝试获取锁，如果获取失败肯定就有其他线程存在竞争，则利用 <code>scanAndLockForPut()</code> 自旋获取锁。</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/8.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/8.png" alt></p>
 <ol>
 <li>尝试自旋获取锁。</li>
 <li>如果重试的次数达到了 <code>MAX_SCAN_RETRIES</code> 则改为阻塞锁获取，保证能获取成功。</li>
 </ol>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/9.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/9.png" alt></p>
 <p>再结合图看看 put 的流程。</p>
 <ol>
 <li>将当前 Segment 中的 table 通过 key 的 hashcode 定位到 HashEntry。</li>
@@ -825,8 +815,7 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
             }
         }
         return null;
-    }
-复制代码</code></pre><p>get 逻辑比较简单：</p>
+    }</code></pre><p>get 逻辑比较简单：</p>
 <p>只需要将 Key 通过 Hash 之后定位到具体的 Segment ，再通过一次 Hash 定位到具体的元素上。</p>
 <p>由于 HashEntry 中的 value 属性是用 volatile 关键词修饰的，保证了内存可见性，所以每次获取时都是最新值。</p>
 <p>ConcurrentHashMap 的 get 方法是非常高效的，<strong>因为整个过程都不需要加锁</strong>。</p>
@@ -836,14 +825,14 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
 </blockquote>
 <p>因此 1.8 做了一些数据结构上的调整。</p>
 <p>首先来看下底层的组成结构：</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/10.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/10.png" alt></p>
 <p>看起来是不是和 1.8 HashMap 结构类似？</p>
 <p>其中抛弃了原有的 Segment 分段锁，而采用了 <code>CAS + synchronized</code> 来保证并发安全性。</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/11.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/11.png" alt></p>
 <p>也将 1.7 中存放数据的 HashEntry 改为 Node，但作用都是相同的。</p>
 <p>其中的 <code>val next</code> 都用了 volatile 修饰，保证了可见性。</p>
 <h4 id="put-方法-3"><a href="#put-方法-3" class="headerlink" title="put 方法"></a>put 方法</h4><p>重点来看看 put 函数：</p>
-<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/12.png" alt="img"></p>
+<p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/12.png" alt></p>
 <ul>
 <li>根据 key 计算出 hashcode 。</li>
 <li>判断是否需要进行初始化。</li>
@@ -852,7 +841,7 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
 <li>如果都不满足，则利用 synchronized 锁写入数据。</li>
 <li>如果数量大于 <code>TREEIFY_THRESHOLD</code> 则要转换为红黑树。</li>
 </ul>
-<h4 id="get-方法-3"><a href="#get-方法-3" class="headerlink" title="get 方法"></a>get 方法</h4><p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/13.png" alt="img"></p>
+<h4 id="get-方法-3"><a href="#get-方法-3" class="headerlink" title="get 方法"></a>get 方法</h4><p><img src="/2020/01/23/hashmap-yu-concurrenthashmap/13.png" alt></p>
 <ul>
 <li>根据计算出来的 hashcode 寻址，如果就在桶上那么直接返回值。</li>
 <li>如果是红黑树那就按照树的方式获取值。</li>
@@ -861,7 +850,6 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
 <blockquote>
 <p>1.8 在 1.7 的数据结构上做了大的改动，采用红黑树之后可以保证查询效率（<code>O(logn)</code>），甚至取消了 ReentrantLock 改为了 synchronized，这样可以看出在新版的 JDK 中对 synchronized 优化是很到位的。</p>
 </blockquote>
-<p>原文转载至:<a href="https://juejin.im/post/5b551e8df265da0f84562403" target="_blank" rel="noopener">https://juejin.im/post/5b551e8df265da0f84562403</a></p>
 
             </div>
             <hr />
@@ -1071,7 +1059,7 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="线程池原理">
+                        <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="线程池原理">
                         
                         <span class="card-title">线程池原理</span>
                     </div>
@@ -1251,7 +1239,7 @@ Iterator&lt;String&gt; iterator = map.keySet().iterator();
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">96.5k</span>
+            <span class="white-color">100.6k</span>
             
 
             <br>

@@ -4,12 +4,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="HBase建立二级索引的几种方式, LuHai Java后台开发 大数据开发">
+    <meta name="keywords" content="ElasticSearch原理及基本使用, LuHai Java后台开发 大数据开发">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="为什么需要HBse二级索引HBase里面只有rowkey作为一级索引， 如果要对库里的非rowkey字段进行数据检索和查询， 往往要通过MapReduce/Spark等分布式计算框架进行，硬件资源消耗和时间延迟都会比较高。
-只依赖rowke">
+    <meta name="description" content="ElasticSearch基本原理ElasticSearch 基本原理搜索原理ElasticSearch简介
+
+ElasticSearch就是独立的网络上的一个或一组进程节点
+它能对外提供搜索服务（使用http或transport协议），自">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>HBase建立二级索引的几种方式 | 卢海的博客</title>
+    <title>ElasticSearch原理及基本使用 | 卢海的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -275,13 +277,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/hbase.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        HBase建立二级索引的几种方式
+                        ElasticSearch原理及基本使用
                     </div>
                 </div>
             </div>
@@ -400,8 +402,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/大数据/" class="post-category" target="_blank">
-                            大数据
+                        <a href="/categories/tool/" class="post-category" target="_blank">
+                            tool
                         </a>
                         
                     </div>
@@ -412,7 +414,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-16
+                    2019-12-27
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -426,14 +428,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    765
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    6 分
                 </div>
                 
                 
@@ -449,18 +451,172 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="为什么需要HBse二级索引"><a href="#为什么需要HBse二级索引" class="headerlink" title="为什么需要HBse二级索引"></a><strong>为什么需要HBse二级索引</strong></h3><p><strong>HBase里面只有rowkey作为一级索引，</strong> 如果要对库里的非rowkey字段进行数据检索和查询， 往往要通过MapReduce/Spark等分布式计算框架进行，硬件资源消耗和时间延迟都会比较高。</p>
-<p><strong>只依赖rowkey作为索引,最高可以支持数据量为十万级的数据快速响应.</strong>为了HBase的数据查询更高效、适应更多的场景， <strong>诸如使用非rowkey字段检索也能做到秒级响应，或者支持各个字段进行模糊查询和多字段组合查询等</strong>， 因此需要在HBase上面构建二级索引， 以满足现实中更复杂多样的业务需求。</p>
-<h4 id="1-MapReduce方案"><a href="#1-MapReduce方案" class="headerlink" title="1.MapReduce方案"></a>1.MapReduce方案</h4><p>自己编写MapReduce实现二级索引,相对成本较高,但是可以将MapReduce的并发特性运用起来,相对开发成本较高,而且以来开发人员代码水平.</p>
-<h4 id="2-Phoenix"><a href="#2-Phoenix" class="headerlink" title="2.Phoenix"></a>2.Phoenix</h4><p><strong>Apache Phoenix：</strong> 功能围绕着SQL on hbase，支持和兼容多个hbase版本， 二级索引只是其中一块功能。 二级索引的创建和管理直接有SQL语法支持，使用起来很简便， 该项目目前社区活跃度和版本更新迭代情况都比较好。</p>
-<p><strong>ApachePhoenix在目前开源的方案中，是一个比较优的选择。主打SQL on HBase ， 基于SQL能完成HBase的CRUD操作，支持JDBC协议</strong>。 Apache Phoenix在Hadoop生态里面位置：</p>
-<p><strong>Phoenix二级索引特点：</strong></p>
-<p>Covered Indexes(覆盖索引) ：把关注的数据字段也附在索引表上，只需要通过索引表就能返回所要查询的数据（列）， 所以索引的列必须包含所需查询的列(SELECT的列和WHRER的列)。</p>
-<p>Functional indexes(函数索引)： 索引不局限于列，支持任意的表达式来创建索引。</p>
-<p>Global indexes(全局索引)：适用于读多写少场景。通过维护全局索引表，所有的更新和写操作都会引起索引的更新，写入性能受到影响。 在读数据时，Phoenix SQL会基于索引字段，执行快速查询。</p>
-<p>Local indexes(本地索引)：适用于写多读少场景。 在数据写入时，索引数据和表数据都会存储在本地。在数据读取时， 由于无法预先确定region的位置，所以在读取数据时需要检查每个region（以找到索引数据），会带来一定性能（网络）开销。</p>
-<p><strong>该方案可适用于数量级百万甚至千万.</strong></p>
-<h4 id="3-ElasticSearch"><a href="#3-ElasticSearch" class="headerlink" title="3.ElasticSearch"></a>3.ElasticSearch</h4><p>总所周知,ElasticSearch是一个基于Lucene开发的分布式搜索引擎,可以做到对亿级数据实现快速查询,我们只需要将需要建立二级索引的字段与rowkey放入elasticsearch中,需要使用时,先在elasticsearch中通过字段查询到对应的rowkey,再利用hbase自身的rowkey索引搜索到对应的数据,<strong>该方案可以实现亿级数据的快速响应</strong>,是一种冷热分离思想的运用,</p>
+                <h1 id="ElasticSearch基本原理"><a href="#ElasticSearch基本原理" class="headerlink" title="ElasticSearch基本原理"></a>ElasticSearch基本原理</h1><h3 id="ElasticSearch-基本原理"><a href="#ElasticSearch-基本原理" class="headerlink" title="ElasticSearch 基本原理"></a>ElasticSearch 基本原理</h3><h4 id="搜索原理"><a href="#搜索原理" class="headerlink" title="搜索原理"></a>搜索原理</h4><p>ElasticSearch简介</p>
+<ul>
+<li><code>ElasticSearch</code>就是独立的网络上的一个或一组进程节点</li>
+<li>它能对外提供搜索服务（使用<code>http</code>或<code>transport</code>协议），自从<code>ElasticSearch 7.0</code>开始，主要支持<code>http</code>协议</li>
+<li><code>ElaticSearch</code>对内其实就是一个数据库</li>
+</ul>
+<h4 id="分词"><a href="#分词" class="headerlink" title="分词"></a>分词</h4><p>搜索是以词为单位做最基本单位的搜索单元，依赖分词器构建分词，用分词器倒排索引。</p>
+<p><img src="/2019/12/27/elasticsearch-yuan-li-ji-ji-ben-shi-yong/D:%5CMyBlot%5Cbolt%5Csource_posts%5CElasticSearch%E5%8E%9F%E7%90%86%E5%8F%8A%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%5C1.png" alt="img"></p>
+<h4 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h4><ul>
+<li><p>正向索引</p>
+<pre><code>对文档中的所有分词进行遍历，获取与 keyword 中分词相同的词，命中一次，这种索引方法需要对每一个文档都进行遍历，性能上不是很好。
+复制代码</code></pre><p>​</p>
+<p><img src="/2019/12/27/elasticsearch-yuan-li-ji-ji-ben-shi-yong/D:%5CMyBlot%5Cbolt%5Csource_posts%5CElasticSearch%E5%8E%9F%E7%90%86%E5%8F%8A%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%5C2.png" alt="img"></p>
+<p>​</p>
+</li>
+<li><p>倒排索引</p>
+<pre><code>对文档的分词结果进行遍历，如果 keyword 命中该分词，那么通过该分词便可以找到所有含有这个分词的文档，性能相对较高。
+复制代码</code></pre><p>​</p>
+<p><img src="/2019/12/27/elasticsearch-yuan-li-ji-ji-ben-shi-yong/D:%5CMyBlot%5Cbolt%5Csource_posts%5CElasticSearch%E5%8E%9F%E7%90%86%E5%8F%8A%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%5C3.png" alt="img"></p>
+<p>​</p>
+</li>
+</ul>
+<h3 id="TF-IDF打分"><a href="#TF-IDF打分" class="headerlink" title="TF/IDF打分"></a>TF/IDF打分</h3><pre><code>TF：词频，这个 document 文档包含了多少个这个词，包含越多表名越相关
+DF：文档频率，包含该词的文档总数目
+IDF：DF 取反
+复制代码</code></pre><table>
+<thead>
+<tr>
+<th>单词 ID</th>
+<th>单词</th>
+<th>文档频率</th>
+<th>倒排列表（DocID;TF;<pos>）</pos></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>谷歌</td>
+<td>5</td>
+<td>（1;1;&lt;1&gt;），（2;1;&lt;1&gt;），（3;2;&lt;1;6&gt;），（4;1;&lt;1&gt;），（5;1;&lt;1&gt;）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>地图</td>
+<td>5</td>
+<td>（1;1;&lt;2&gt;），（2;1;&lt;2&gt;），（3;1;&lt;2&gt;），（4;1;&lt;2&gt;），（5;1;&lt;2&gt;）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>之父</td>
+<td>4</td>
+<td>（1;1;&lt;3&gt;），（2;1;&lt;3&gt;），（4;1;&lt;3&gt;），（5;1;&lt;3&gt;）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>跳槽</td>
+<td>2</td>
+<td>（1;1;&lt;4&gt;），（4;1;&lt;4&gt;）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Facebook</td>
+<td>5</td>
+<td>（1;1;&lt;5&gt;），（2;1;&lt;5&gt;），（3;1;&lt;8&gt;），（4;1;&lt;5&gt;），（5;1;&lt;8&gt;）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>加盟</td>
+<td>3</td>
+<td>（2;1;&lt;4&gt;），（3;1;&lt;7&gt;），（5;1;&lt;5&gt;）</td>
+</tr>
+<tr>
+<td>7</td>
+<td>创始人</td>
+<td>1</td>
+<td>（3;1;&lt;3&gt;）</td>
+</tr>
+<tr>
+<td>8</td>
+<td>拉斯</td>
+<td>2</td>
+<td>（3;1;&lt;4&gt;），（5;1;&lt;4&gt;）</td>
+</tr>
+<tr>
+<td>9</td>
+<td>离开</td>
+<td>1</td>
+<td>（3;1;&lt;5&gt;）</td>
+</tr>
+<tr>
+<td>10</td>
+<td>与</td>
+<td>1</td>
+<td>（4;1;&lt;6&gt;）</td>
+</tr>
+</tbody></table>
+<h3 id="名词定义"><a href="#名词定义" class="headerlink" title="名词定义"></a>名词定义</h3><p>在<code>ElasticSearch</code>中的<code>索引=数据库，类型=表，文档=行数据</code>，在<code>ElasticSearch 7.0</code>逐步的废弃了类型这样一个定义，也就是说索引和类型统称为索引，也就是说在<code>ElasticSearch 7.0</code>中只有索引和文档的定义，其中索引相当于索引和类型。</p>
+<p>与关系型数据库的名词之间的类比：</p>
+<table>
+<thead>
+<tr>
+<th>关系型数据库</th>
+<th>ElasticSearch</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Database</td>
+<td>Index</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>Type</td>
+</tr>
+<tr>
+<td>Row</td>
+<td>Document</td>
+</tr>
+<tr>
+<td>Column</td>
+<td>Field</td>
+</tr>
+<tr>
+<td>Schema</td>
+<td>Mapping</td>
+</tr>
+<tr>
+<td>Index</td>
+<td>Everything is indexed</td>
+</tr>
+<tr>
+<td>SQL</td>
+<td>Query DSL</td>
+</tr>
+<tr>
+<td>SELECT * FROM table …</td>
+<td>GET http://…</td>
+</tr>
+<tr>
+<td>UPDATE table SET …</td>
+<td>PUT http://…</td>
+</tr>
+</tbody></table>
+<h3 id="分布式原理"><a href="#分布式原理" class="headerlink" title="分布式原理"></a>分布式原理</h3><h4 id="分片"><a href="#分片" class="headerlink" title="分片"></a>分片</h4><p>ElasticSearch 中默认的主分片（num_of_shards）数量为 5，默认的副本（num_of_replicas）个数为 1<br>主分片数量一旦设置就不会再改变，但是副本个数可以进行改变</p>
+<p>在单集群节点中，如果主分片数量为 1，副本也为 1，那么此时单节点集群的 health 为 yellow，因为单节点必然会存在副本和主分片在同一个节点，会导致该索引的 health 为 yellow。此时可以修改集群的副本个数为 0，则索引和集群的状态会变回到 green 状态。</p>
+<h4 id="主从"><a href="#主从" class="headerlink" title="主从"></a>主从</h4><pre><code>单节点集群中，如果创建了一个索引，默认会拥有副本，此时由于副本和主分片在一个节点，则单节点集群的 health 为 yellow。创建索引时，根据未来的扩展性，将主分片个数设置为合适的个数，但也不能太多，因为数量太多，如果数据量没有达到对应的瓶颈，在进行数据聚合时，就需要遍历所有的主分片，才能得到结果。
+
+# 双节点集群
+当新增一个集群节点的，此时节点集群会将副本全部存放到新增的节点上，此时如果索引的副本个数为 1 时，那么此时集群的状态会变成 green。
+
+# 三节点集群
+当继续新增一个集群节点时，此时节点集群会使用负载均衡，将某个索引的主分片会迁移到新增的节点上，会将部分的副本也迁移到新增的节点上
+
+# 三台节点构成 es 集群
+# 副本个数为 2 时
+此时 es 集群会将副本个数分别存放于另外两个节点之上，这两个节点中并没有改索引的主分片，此时主从分离，读写也分离。es 集群其实是一个对称的结构，es 集群的 master 用来管理所有负载的一个核心节点，也就是说如果要进行写操作，如果要写的索引的主分片就在 master 上，那么就可以直接进行写请求；如果写的索引在另一个节点上，那么 master 会将这个写请求进行转发，转发到要写的主分片所在的节点，由该节点进行写请求。
+
+# 当关掉此时的 master 节点时
+此时 es 集群会进行选举，选举一个新的 master 节点，会比较剩余的节点中的 metadata 是最新的，就会通过 paxos 方式从具备竞争主节点能力的机器中竞选主节点。此时被关掉的 master 上存在的主分片会均匀的分布到剩余的集群节点上，此时由于副本个数为 2，所以集群的状态又会变成 yellow，但是集群对外响应服务的能力还是有的。
+
+# 三台节点构成 es 集群，并且状态为 green
+# PUT 请求
+当有操作请求集群进行新建索引操作时，无论请求的是 es 集群的那个节点，都会将该请求转发到 master 节点，因为只有 master 节点知道所有的 metadata 存储的位置，此时 master 会对进行写请求的操作进行识别，如果写请求的 documenId 识别是在 master 节点上，那么由 master 节点进行写操作，如果在 node3 上，就会将该写请求进行转发，转发到 node3，由 node3 完成写请求。写操作完成之后，node3 会异步的将数据改动同步回其对应的副本。
+# GET 请求
+进行读请求时，master 会进行一次路由计算，计算出该读请求属于 R0 副本的操作，假设 master 节点上也存在 R0 副本，假设上一次的操作是在 master 节点上进行，那么 es 集群会根据负载均衡，将该读请求转发到另一个存在 R0 副本的节点上。如果读请求第一次命中在别的节点上，但是由于是读请求，可以由每个节点进行路由操作。
+# 总结
+也就是说，master 节点只路由读请求，所有的写请求可以由其命中的节点进行处理，此时整个 es 集群就做到了负载均衡和读写分离。</code></pre><p><strong>思考:为什么es开始的时候特别慢,用一会儿就很快了?</strong></p>
+<p>其实es的数据本来大部分存在磁盘上,操作系统存在一个系统缓存,加载使用后的数据会放在里面,访问速度远远大于直接从磁盘读取.</p>
 
             </div>
             <hr />
@@ -626,39 +782,28 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/01/16/zhan-de-xing-zhi-ji-yi-xie-shi-yong-chang-jing/">
+                <a href="/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="栈的性质及一些使用场景">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="FastDFS分布式文件系统安装使用教程">
                         
-                        <span class="card-title">栈的性质及一些使用场景</span>
+                        <span class="card-title">FastDFS分布式文件系统安装使用教程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            性质栈和队列其实是一个工具，他们传统的工具方法 工具类不同，他们是“思想”工具，栈是后进先出。
+                            
 
-
-常见的使用栈的场景递归
-从前山上有座庙，庙里有个老和尚和小和尚，老和尚给小和尚讲故事：“从前山上有座庙……”
-
-有名的斐波那契数列，手动地计
+FastDFS分布式文件系统安装使用教程使用场景分布式文件系统用于海量文件存储及传输访问的瓶颈问题，对海量视频的管理、对海量图片的管理等,FastDFS与其他分布式文件系统相比的一个显著优点就是特别适合大量小文件(图片等)的存储,因为它
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-16
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-28
                         </span>
                         <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/数据结构/" class="post-category" target="_blank">
-                                    数据结构
-                                </a>
-                            
                             
                         </span>
                     </div>
@@ -673,24 +818,29 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/16/sqoop-hdfs-yu-wai-jie-jiao-hu-shu-ju-de-gong-ju/">
+                <a href="/2019/12/01/hadoop-ji-qun-da-jian-yu-jian-dan-shi-yong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Sqoop-HDFS与外界交互数据的工具">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Hadoop集群搭建与简单使用">
                         
-                        <span class="card-title">Sqoop-HDFS与外界交互数据的工具</span>
+                        <span class="card-title">Hadoop集群搭建与简单使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Sqoop简介Sqoop是一款开源的工具，主要用于在Hadoop(Hive)与传统的数据库(mysql、postgresql…)间进行数据的传递，可以将一个关系型数据库（例如 ： MySQL ,Oracle ,Postgres等）中的数据导
+                            Hadoop集群搭建与简单使用首先需要搭建一个linux的集群,可以参见我的博客linux集群搭建
+
+Hadoop的运行是基于java的,所以需要先安装JDK,而且JDK版本必须高于1.7
+
+安装JDK（1）查询是否安装Java软件：
+ r
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-16
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-01
                             </span>
                         <span class="publish-author">
                             

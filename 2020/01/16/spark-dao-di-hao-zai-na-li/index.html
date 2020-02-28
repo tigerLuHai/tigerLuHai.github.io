@@ -274,7 +274,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -528,9 +528,6 @@ GROUP BY dept.id, dept.name</code></pre></blockquote>
 <p><img src="/2020/01/16/spark-dao-di-hao-zai-na-li/10.png" alt="d-stream-state-rdd"></p>
 <p>▲ <em>上图是流式计算 word count 的例子，count 结果在不同时间步中不断累积。</em></p>
 <p>那么另一个问题也随之而来：随着时间的推进，上图中的状态 RDD <code>counts</code> 会越来越多，他的祖先（lineage）变得越来越长，极端情况下，恢复过程可能溯源到很久之前。这是不可接受的！<strong>因此，Spark Streming 会定期地对状态 RDD 做 checkpoint，将其持久化到 HDFS 等存储中，这被称为 lineage cut</strong>，在它之前更早的 RDD 就可以没有顾虑地清理掉了。</p>
-<blockquote>
-<p>关于流行的几个开源流计算框架的对比，可以参考文章 <a href="https://www.cakesolutions.net/teamblogs/comparison-of-apache-stream-processing-frameworks-part-1" target="_blank" rel="noopener">Comparison of Apache Stream Processing Frameworks</a>。</p>
-</blockquote>
 <h2 id="流计算与-SQL：Spark-Structured-Streaming"><a href="#流计算与-SQL：Spark-Structured-Streaming" class="headerlink" title="流计算与 SQL：Spark Structured Streaming"></a>流计算与 SQL：Spark Structured Streaming</h2><p>Spark 通过 Spark Streaming 拥有了流计算能力，那 Spark SQL 是否也能具有类似的流处理能力呢？答案是肯定的，只要将<strong>数据流建模成一张不断增长、没有边界的表</strong>，在这样的语义之下，很多 SQL 操作等就能直接应用在流数据上。</p>
 <blockquote>
 <p>出人意料的是，Spark Structured Streaming 的流式计算引擎并没有复用 Spark Streaming，而是在 Spark SQL 上设计了新的一套引擎。因此，从 Spark SQL 迁移到 Spark Structured Streaming 十分容易，但从 Spark Streaming 迁移过来就要困难得多。</p>
@@ -721,7 +718,7 @@ GROUP BY dept.id, dept.name</code></pre></blockquote>
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="真正意义的流式处理框架Strom">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="真正意义的流式处理框架Strom">
                         
                         <span class="card-title">真正意义的流式处理框架Strom</span>
                     </div>
@@ -944,7 +941,7 @@ Nimbus：即Storm的Master，负
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">96.5k</span>
+            <span class="white-color">100.6k</span>
             
 
             <br>

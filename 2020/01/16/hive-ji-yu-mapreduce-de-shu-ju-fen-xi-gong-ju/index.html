@@ -604,8 +604,7 @@ row format  delimited fields terminated by &#39;,&#39;;</code></pre><ul>
 row format  delimited fields terminated by &#39;,&#39;
 location &#39;/input&#39;;
 
--- input 目录中有相关数据
-复制代码</code></pre><ul>
+-- input 目录中有相关数据</code></pre><ul>
 <li><h4 id="桶表"><a href="#桶表" class="headerlink" title="桶表"></a>桶表</h4></li>
 </ul>
 <p><img src="https://user-gold-cdn.xitu.io/2018/12/12/167a101e0beef1ad?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
@@ -662,7 +661,6 @@ CREATE TEMPORARY FUNCTION get_tag_list as &#39;com.meituan.hive.udf.common.Resol
 <p>ba_travel.topic_log_tag_moudlefact_log_tag_pv</p>
 <p>优化排查：1.最后一个map少，时间长2.reduce一直在99%，发生了数据倾斜3.job交接时间长，说明碎片多</p>
 <p>优化：1.ETL语句执行问题：问Hadoop小客服2.子查询，精简数据3.子查询之间的关联，是否数据倾斜4.参数调高</p>
-<p>测试代码：线上库：select count(uuid),      count(DISTINCT uuid) from ba_hotel.topic_log_mt_order_trade_entrancewhere datekey=’20180422’  and partition_entrance_type= ‘mpt’limit 10测试库：select count(uuid),      count(DISTINCT uuid) from ba_hotel_test.topic_log_mt_order_trade_entrancewhere datekey=’20180422’  and partition_entrance_type= ‘mpt’</p>
 
             </div>
             <hr />
@@ -832,7 +830,7 @@ CREATE TEMPORARY FUNCTION get_tag_list as &#39;com.meituan.hive.udf.common.Resol
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Spark到底好在哪里?">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Spark到底好在哪里?">
                         
                         <span class="card-title">Spark到底好在哪里?</span>
                     </div>
@@ -873,7 +871,7 @@ CREATE TEMPORARY FUNCTION get_tag_list as &#39;com.meituan.hive.udf.common.Resol
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Kafka-大数据的标准数据源">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Kafka-大数据的标准数据源">
                         
                         <span class="card-title">Kafka-大数据的标准数据源</span>
                     </div>
@@ -881,7 +879,11 @@ CREATE TEMPORARY FUNCTION get_tag_list as &#39;com.meituan.hive.udf.common.Resol
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            基本概念
+消息队列中的基本概念尤为重要,当对基本概念有了深入的理解之后,消息队列的原理以及常见的问题都将更浅显明了。
+
+
+Broker:一个单独的Kafka server就是一个Broker,Broker的主要工作就是接收生产者发送来的消息
                         
                     </div>
                     <div class="publish-info">
@@ -1051,7 +1053,7 @@ CREATE TEMPORARY FUNCTION get_tag_list as &#39;com.meituan.hive.udf.common.Resol
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">96.5k</span>
+            <span class="white-color">100.6k</span>
             
 
             <br>
