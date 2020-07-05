@@ -455,7 +455,7 @@
 <p>我们可以看一下Apache官网上对Shiro，它都包含哪些功能。</p>
 <p><img src="/2020/02/04/shiro-kuang-jia-yuan-li-ji-jian-dan-shi-yong/3.png" alt></p>
 <p>Authentication：认证，有时也简称为“登录”，这是一个证明用户是他们所说的他们是谁的行为。</p>
-<p>Authorization：授权，访问控制的过程，也就是绝对“谁”去访问“什么” 授权用于回答安全问题，例如“用户是否允许编辑帐户”，“该用户是否允许查看此网页”，“该用户是否可以访问”到这个按钮？“这些都是决定用户有权访问的决定，因此都代表授权检查。</p>
+<p>Authorization：授权，访问控制的过程，也就是决定“谁”去访问“什么” 授权用于回答安全问题，例如“用户是否允许编辑帐户”，“该用户是否允许查看此网页”，“该用户是否可以访问”到这个按钮？“这些都是决定用户有权访问的决定，因此都代表授权检查。</p>
 <p>Cryptography：密码术是通过隐藏信息或将其转换为无意义来保护信息免受不良访问的做法，因此没有其他人可以阅读它。Shiro专注于密码学的两个核心要素：使用公钥或私钥加密数据的密码，以及对密码等数据进行不可逆转加密的哈希（也称为消息摘要）。</p>
 <p>Shiro Cryptography的主要目标是采用传统上非常复杂的领域，并在提供强大的密码学功能的同时使其他人轻松实现。</p>
 <p>Session Management：Session会话，会话是您的用户在使用您的应用程序时携带一段时间的数据桶。传统上，会话专用于Web或EJB环境。不再！Shiro支持任何应用程序环境的会话。此外，Shiro还提供许多其他强大功能来帮助您管理会话。</p>
@@ -468,8 +468,8 @@
 <h2 id="Shiro核心"><a href="#Shiro核心" class="headerlink" title="Shiro核心"></a>Shiro核心</h2><p>Shiro其实是有三大核心组件的，Subject、SecurityManager和Realms。</p>
 <p>Subject：Subject实质上是一个当前执行用户的特定的安全“视图”。鉴于”User”一词通常意味着一个人，而一个Subject可以是一个人， 但它还可以代表第三方服务，daemon account，cron job，或其他类似的任何东西——基本上是当前正与软件进行交互的任何东西。 </p>
 <p>所有Subject实例都被绑定到（且这是必须的）一个SecurityManager上。当你与一个Subject交互时，那些交互作用转化为与SecurityManager交互的特定subject的交互作用。 我们可以把Subject认为是一个门面，SecurityManager才是真正的执行者。</p>
-<p>SecurityManager：安全管理器，也就是说所有与安全有关的操作都会与SecurityManager进行交互，而且他管理这Subject，它其实是Shiro的核心 是Shiro架构的心脏。并作为一种“保护伞”对象来协调内部的安全组件共同构成一个对象图。</p>
-<p>Realms： 域，Shiro从从Realm获取安全数据（如用户、角色、权限），就是说SecurityManager要验证用户身份，那么它需要从Realm获取相应的用户进行比较以确定用户身份是否合法；也需要从Realm得到用户相应的角色/权限进行验证用户是否能进行操作；可以把Realm看成DataSource，即安全数据源。</p>
+<p>SecurityManager：安全管理器，也就是说所有与安全有关的操作都会与SecurityManager进行交互，而且他管理着Subject，它其实是Shiro的核心 是Shiro架构的心脏。并作为一种“保护伞”对象来协调内部的安全组件共同构成一个对象图。</p>
+<p>Realms： 域，Shiro从Realm获取安全数据（如用户、角色、权限），就是说SecurityManager要验证用户身份，那么它需要从Realm获取相应的用户进行比较以确定用户身份是否合法；也需要从Realm得到用户相应的角色/权限进行验证用户是否能进行操作；可以把Realm看成DataSource，即安全数据源。</p>
 <p>当配置Shiro时，你必须指定至少一个Realm用来进行身份验证和/或授权。SecurityManager可能配置多个Realms，但至少有一个是必须的。</p>
 <p><img src="/2020/02/04/shiro-kuang-jia-yuan-li-ji-jian-dan-shi-yong/1.png" alt></p>
 <p><strong>我们看一下它具体的登录图解</strong></p>
@@ -509,7 +509,7 @@
 <p><strong>————&gt;访问权限管理器，找权限管理器判断是否有xxx权限（权限管理器本身不能做出判断），权限管理器把之前登陆时保存在session中的认证信息取出</strong></p>
 <p><strong>交给————&gt;realm判断(realm中认证方法是登陆时候调用的)，realm查询数据库获得权限，把权限信息返还给————&gt;权限管理器。</strong></p>
 <p><strong>权限管理器根据realm的授权信息判断是否拥有xxx权限， 判断后把结果通知给————&gt;权限管理器，权限管理器ShiraFilter 如果没有权限跳转到响应页面。</strong></p>
-<h2 id="Shiro继承Spring"><a href="#Shiro继承Spring" class="headerlink" title="Shiro继承Spring"></a>Shiro继承Spring</h2><pre><code>导入jar包（shiro的jar有很多，针对不同的项目导入不同的jar包，但是为了防止第一次学习的时候出错，所有使用的是shiro-all-版本号.jar的jar包）；</code></pre><p><strong>步骤一： 在web.xml中配置一个过滤器，是由spring提供的，用于整合shiro：</strong><br><strong>web.xml文件（一定要注意配置shiro框架以及Spring，Struts之间的顺序问题，否则报错！</strong></p>
+<h2 id="Shiro集成Spring"><a href="#Shiro集成Spring" class="headerlink" title="Shiro集成Spring"></a>Shiro集成Spring</h2><pre><code>导入jar包（shiro的jar有很多，针对不同的项目导入不同的jar包，但是为了防止第一次学习的时候出错，所有使用的是shiro-all-版本号.jar的jar包）；</code></pre><p><strong>步骤一： 在web.xml中配置一个过滤器，是由spring提供的，用于整合shiro：</strong><br><strong>web.xml文件（一定要注意配置shiro框架以及Spring，Struts之间的顺序问题，否则报错！</strong></p>
 <pre><code>&lt;!DOCTYPE web-app PUBLIC
         &quot;-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN&quot;
         &quot;http://java.sun.com/dtd/web-app_2_3.dtd&quot; &gt;
@@ -1101,7 +1101,7 @@ GET     /tickets       # 获取ticket
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">104.4k</span>
+            <span class="white-color">105.1k</span>
             
 
             <br>

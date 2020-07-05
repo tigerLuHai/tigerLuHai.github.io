@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tigerLuHai.github.io/"/>
-  <updated>2020-02-29T07:58:25.160Z</updated>
+  <updated>2020-07-04T07:47:29.192Z</updated>
   <id>http://tigerLuHai.github.io/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>记一次springboot项目启动报错</title>
+    <link href="http://tigerLuHai.github.io/2020/07/03/ji-yi-ci-springboot-xiang-mu-qi-dong-bao-cuo/"/>
+    <id>http://tigerLuHai.github.io/2020/07/03/ji-yi-ci-springboot-xiang-mu-qi-dong-bao-cuo/</id>
+    <published>2020-07-03T13:34:28.000Z</published>
+    <updated>2020-07-04T07:47:29.192Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;Failed to configure a DataSource: ‘url’ attribute is not specified and no embedded datasource could be configured.Reason: Failed
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://tigerLuHai.github.io/categories/java/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>深入理解java的BIO、NIO、AIO</title>
     <link href="http://tigerLuHai.github.io/2020/02/29/shen-ru-li-jie-java-de-bio-nio-aio/"/>
     <id>http://tigerLuHai.github.io/2020/02/29/shen-ru-li-jie-java-de-bio-nio-aio/</id>
     <published>2020-02-29T03:47:08.000Z</published>
-    <updated>2020-02-29T07:58:25.160Z</updated>
+    <updated>2020-07-04T06:31:51.527Z</updated>
     
     <summary type="html">
     
@@ -93,7 +117,7 @@
     <link href="http://tigerLuHai.github.io/2020/02/04/shiro-kuang-jia-yuan-li-ji-jian-dan-shi-yong/"/>
     <id>http://tigerLuHai.github.io/2020/02/04/shiro-kuang-jia-yuan-li-ji-jian-dan-shi-yong/</id>
     <published>2020-02-04T14:41:47.000Z</published>
-    <updated>2020-02-28T05:36:18.148Z</updated>
+    <updated>2020-07-04T06:43:19.398Z</updated>
     
     <summary type="html">
     
@@ -463,30 +487,6 @@
         
         
           &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;h2 id=&quot;Flume定义&quot;&gt;&lt;a href=&quot;#Flume定义&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="大数据" scheme="http://tigerLuHai.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>流式处理框架后起之秀Flink</title>
-    <link href="http://tigerLuHai.github.io/2020/01/16/liu-shi-chu-li-kuang-jia-hou-qi-zhi-xiu-flink/"/>
-    <id>http://tigerLuHai.github.io/2020/01/16/liu-shi-chu-li-kuang-jia-hou-qi-zhi-xiu-flink/</id>
-    <published>2020-01-16T13:27:46.000Z</published>
-    <updated>2020-02-28T07:06:25.605Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;Flink简介&quot;&gt;&lt;a href=&quot;#Flink简介&quot; class=&quot;headerlink&quot; title=&quot;Flink简介&quot;&gt;&lt;/a&gt;Flink简介&lt;/h1&gt;&lt;h2 id=&quot;初识Flink&quot;&gt;&lt;a href=&quot;#初识Flink&quot;
         
       
     
