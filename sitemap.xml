@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tigerLuHai.github.io/2020/07/05/mapreduce-zhong-de-liang-biao-join-fang-an/</loc>
+    
+    <lastmod>2020-07-05T10:48:19.487Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tigerLuHai.github.io/2020/07/03/ji-yi-ci-springboot-xiang-mu-qi-dong-bao-cuo/</loc>
     
     <lastmod>2020-07-04T07:47:29.192Z</lastmod>
@@ -338,14 +345,14 @@
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/categories/index.html</loc>
+    <loc>http://tigerLuHai.github.io/archives/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tigerLuHai.github.io/archives/index.html</loc>
+    <loc>http://tigerLuHai.github.io/categories/index.html</loc>
     
     <lastmod>2019-12-27T00:54:34.929Z</lastmod>
     
