@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tigerLuHai.github.io/"/>
-  <updated>2020-07-05T10:48:19.487Z</updated>
+  <updated>2020-07-06T13:53:56.900Z</updated>
   <id>http://tigerLuHai.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MapReduce的流程及优化</title>
+    <link href="http://tigerLuHai.github.io/2020/07/06/mapreduce-de-liu-cheng-ji-you-hua/"/>
+    <id>http://tigerLuHai.github.io/2020/07/06/mapreduce-de-liu-cheng-ji-you-hua/</id>
+    <published>2020-07-06T13:31:49.000Z</published>
+    <updated>2020-07-06T13:53:56.900Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;MapReduce的流程相对来说比较复杂,这里借用尚硅谷的两张图来描述其流程.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2020/07/06/mapreduce-de-liu-cheng-ji-you-hua/wps3.png&quot; alt&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+      <category term="大数据" scheme="http://tigerLuHai.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>MapReduce中的两表join方案</title>
@@ -45,7 +70,7 @@
     <link href="http://tigerLuHai.github.io/2020/07/03/ji-yi-ci-springboot-xiang-mu-qi-dong-bao-cuo/"/>
     <id>http://tigerLuHai.github.io/2020/07/03/ji-yi-ci-springboot-xiang-mu-qi-dong-bao-cuo/</id>
     <published>2020-07-03T13:34:28.000Z</published>
-    <updated>2020-07-04T07:47:29.192Z</updated>
+    <updated>2020-07-05T14:18:52.658Z</updated>
     
     <summary type="html">
     
@@ -463,30 +488,6 @@
         
         
           &lt;h3 id=&quot;为什么需要HBse二级索引&quot;&gt;&lt;a href=&quot;#为什么需要HBse二级索引&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="大数据" scheme="http://tigerLuHai.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Sqoop-HDFS与外界交互数据的工具</title>
-    <link href="http://tigerLuHai.github.io/2020/01/16/sqoop-hdfs-yu-wai-jie-jiao-hu-shu-ju-de-gong-ju/"/>
-    <id>http://tigerLuHai.github.io/2020/01/16/sqoop-hdfs-yu-wai-jie-jiao-hu-shu-ju-de-gong-ju/</id>
-    <published>2020-01-16T13:34:23.000Z</published>
-    <updated>2020-02-06T08:45:04.941Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;Sqoop简介&quot;&gt;&lt;a href=&quot;#Sqoop简介&quot; class=&quot;headerlink&quot;
         
       
     

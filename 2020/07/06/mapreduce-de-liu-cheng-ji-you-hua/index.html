@@ -4,11 +4,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Sqoop-HDFS与外界交互数据的工具, LuHai Java后台开发 大数据开发">
+    <meta name="keywords" content="MapReduce的流程及优化, LuHai Java后台开发 大数据开发">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="Sqoop简介Sqoop是一款开源的工具，主要用于在Hadoop(Hive)与传统的数据库(mysql、postgresql…)间进行数据的传递，可以将一个关系型数据库（例如 ： MySQL ,Oracle ,Postgres等）中的数据导">
+    <meta name="description" content="MapReduce的流程相对来说比较复杂,这里借用尚硅谷的两张图来描述其流程.
+
+上面两张图对MapReduce有比较详细的描述,通过这个图我们就能够发现一些MapReduce的优化方法.
+数据输入小文件处理HDFS小文件会因为文件元数据存">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Sqoop-HDFS与外界交互数据的工具 | 卢海的博客</title>
+    <title>MapReduce的流程及优化 | 卢海的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -274,13 +277,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Sqoop-HDFS与外界交互数据的工具
+                        MapReduce的流程及优化
                     </div>
                 </div>
             </div>
@@ -411,7 +414,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-16
+                    2020-07-06
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -425,14 +428,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    920
+                    572
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    2 分
                 </div>
                 
                 
@@ -448,115 +451,29 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Sqoop简介"><a href="#Sqoop简介" class="headerlink" title="Sqoop简介"></a>Sqoop简介</h1><p>Sqoop是一款开源的工具，主要用于在Hadoop(Hive)与传统的数据库(mysql、postgresql…)间进行数据的传递，可以将一个关系型数据库（例如 ： MySQL ,Oracle ,Postgres等）中的数据导进到Hadoop的HDFS中，也可以将HDFS的数据导进到关系型数据库中。</p>
-<p>Sqoop项目开始于2009年，最早是作为Hadoop的一个第三方模块存在，后来为了让使用者能够快速部署，也为了让开发人员能够更快速的迭代开发，Sqoop独立成为一个<a href="https://baike.baidu.com/item/Apache/6265" target="_blank" rel="noopener">Apache</a>项目。</p>
-<p>Sqoop2的最新版本是1.99.7。请注意，2与1不兼容，且特征不完整，它并不打算用于生产部署。</p>
-<h1 id="Sqoop原理"><a href="#Sqoop原理" class="headerlink" title="Sqoop原理"></a>Sqoop原理</h1><p>将导入或导出命令翻译成mapreduce程序来实现。</p>
-<p>在翻译出的mapreduce中主要是对inputformat和outputformat进行定制。</p>
-<h1 id="Sqoop安装"><a href="#Sqoop安装" class="headerlink" title="Sqoop安装"></a>Sqoop安装</h1><p>安装Sqoop的前提是已经具备Java和Hadoop的环境。</p>
-<h2 id="3-1-下载并解压"><a href="#3-1-下载并解压" class="headerlink" title="3.1 下载并解压"></a>3.1 下载并解压</h2><p>1) 下载地址：<a href="http://mirrors.hust.edu.cn/apache/sqoop/1.4.6/" target="_blank" rel="noopener">http://mirrors.hust.edu.cn/apache/sqoop/1.4.6/</a></p>
-<p>2) 上传安装包sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz到虚拟机中</p>
-<p>3) 解压sqoop安装包到指定目录，如：</p>
-<pre><code> tar -zxf sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz -C /opt/module/</code></pre><h2 id="3-2-修改配置文件"><a href="#3-2-修改配置文件" class="headerlink" title="3.2 修改配置文件"></a>3.2 修改配置文件</h2><p>Sqoop的配置文件与大多数大数据框架类似，在sqoop根目录下的conf目录中。</p>
-<p>1) 重命名配置文件</p>
-<pre><code> mv sqoop-env-template.sh sqoop-env.sh</code></pre><p>2) 修改配置文件</p>
-<pre><code># sqoop-env.sh
-
-export HADOOP_COMMON_HOME=/opt/module/hadoop-2.7.2
-
-export HADOOP_MAPRED_HOME=/opt/module/hadoop-2.7.2
-
-export HIVE_HOME=/opt/module/hive
-
-export ZOOKEEPER_HOME=/opt/module/zookeeper-3.4.10
-
-export ZOOCFGDIR=/opt/module/zookeeper-3.4.10
-
-export HBASE_HOME=/opt/module/hbase
-</code></pre><h2 id="3-3-拷贝JDBC驱动"><a href="#3-3-拷贝JDBC驱动" class="headerlink" title="3.3 拷贝JDBC驱动"></a>3.3 拷贝JDBC驱动</h2><p>拷贝jdbc驱动到sqoop的lib目录下，如：</p>
-<pre><code>cp mysql-connector-java-5.1.27-bin.jar /opt/module/sqoop-1.4.6.bin__hadoop-2.0.4-alpha/lib/</code></pre><h2 id="3-4-验证Sqoop"><a href="#3-4-验证Sqoop" class="headerlink" title="3.4 验证Sqoop"></a>3.4 验证Sqoop</h2><p>我们可以通过某一个command来验证sqoop配置是否正确：</p>
-<p>$ bin/sqoop help</p>
-<p>出现一些Warning警告（警告信息已省略），并伴随着帮助命令的输出：</p>
-<pre><code>Available commands:
-
-  codegen            Generate code to interact with database records
-
-  create-hive-table     Import a table definition into Hive
-
-  eval               Evaluate a SQL statement and display the results
-
-  export             Export an HDFS directory to a database table
-
-  help               List available commands
-
-  import             Import a table from a database to HDFS
-
-  import-all-tables     Import tables from a database to HDFS
-
-  import-mainframe    Import datasets from a mainframe server to HDFS
-
-  job                Work with saved jobs
-
-  list-databases        List available databases on a server
-
-  list-tables           List available tables in a database
-
-  merge              Merge results of incremental imports
-
-  metastore           Run a standalone Sqoop metastore
-
-  version            Display version information
-</code></pre><h2 id="3-5-测试Sqoop是否能够成功连接数据库"><a href="#3-5-测试Sqoop是否能够成功连接数据库" class="headerlink" title="3.5 测试Sqoop是否能够成功连接数据库"></a>3.5 测试Sqoop是否能够成功连接数据库</h2><pre><code> bin/sqoop list-databases --connect jdbc:mysql://slave2:3306/ --username root --password 000000</code></pre><p>出现如下输出：</p>
-<pre><code>information_schema
-metastore
-mysql
-oozie
-performance_schema</code></pre><h1 id="第4章-Sqoop的简单使用案例"><a href="#第4章-Sqoop的简单使用案例" class="headerlink" title="第4章 Sqoop的简单使用案例"></a>第4章 Sqoop的简单使用案例</h1><h2 id="4-1-导入数据"><a href="#4-1-导入数据" class="headerlink" title="4.1 导入数据"></a>4.1 导入数据</h2><p>在Sqoop中，“导入”概念指：从非大数据集群（RDBMS）向大数据集群（HDFS，HIVE，HBASE）中传输数据，叫做：导入，即使用import关键字。</p>
-<h3 id="4-1-1-RDBMS到HDFS"><a href="#4-1-1-RDBMS到HDFS" class="headerlink" title="4.1.1 RDBMS到HDFS"></a>4.1.1 RDBMS到HDFS</h3><p>1) 确定Mysql服务开启正常</p>
-<p>2) 在Mysql中新建一张表并插入一些数据</p>
-<pre><code>mysql -uroot -p000000
-
-mysql&gt; create database company;
-
-mysql&gt; create table company.staff(id int(4) primary key not null auto_increment, name varchar(255), sex varchar(255));
-
-mysql&gt; insert into company.staff(name, sex) values(&#39;Thomas&#39;, &#39;Male&#39;);
-
-mysql&gt; insert into company.staff(name, sex) values(&#39;Catalina&#39;, &#39;FeMale&#39;);
-</code></pre><p>3) 导入数据</p>
-<pre><code> bin/sqoop import \
-
---connect jdbc:mysql://hadoop102:3306/company \
-
---username root \
-
---password 000000 \
-
---table staff \
-
---target-dir /user/company \
-
---delete-target-dir \
-
---num-mappers 1 \
-
---fields-terminated-by &quot;\t&quot;</code></pre><h2 id="4-2、导出数据"><a href="#4-2、导出数据" class="headerlink" title="4.2、导出数据"></a>4.2、导出数据</h2><p>在Sqoop中，“导出”概念指：从大数据集群（HDFS，HIVE，HBASE）向非大数据集群（RDBMS）中传输数据，叫做：导出，即使用export关键字。</p>
-<h3 id="4-2-1-HIVE-HDFS到RDBMS"><a href="#4-2-1-HIVE-HDFS到RDBMS" class="headerlink" title="4.2.1 HIVE/HDFS到RDBMS"></a>4.2.1 HIVE/HDFS到RDBMS</h3><pre><code>bin/sqoop export \
-
---connect jdbc:mysql://hadoop102:3306/company \
-
---username root \
-
---password 000000 \
-
---table staff \
-
---num-mappers 1 \
-
---export-dir /user/hive/warehouse/staff_hive \
-
---input-fields-terminated-by &quot;\t&quot;
-</code></pre><p>提示：Mysql中如果表不存在，不会自动创建</p>
+                <p>MapReduce的流程相对来说比较复杂,这里借用尚硅谷的两张图来描述其流程.</p>
+<p><img src="/2020/07/06/mapreduce-de-liu-cheng-ji-you-hua/wps3.png" alt><img src="/2020/07/06/mapreduce-de-liu-cheng-ji-you-hua/wps4.png" alt></p>
+<p>上面两张图对MapReduce有比较详细的描述,通过这个图我们就能够发现一些MapReduce的优化方法.</p>
+<h4 id="数据输入小文件处理"><a href="#数据输入小文件处理" class="headerlink" title="数据输入小文件处理"></a>数据输入小文件处理</h4><p><strong>HDFS小文件会因为文件元数据存储在NameNode的内存中影响NameNode的寿命;还会影响计算引擎的任务数量，比如每个小的文件都会生成一个Map任务.</strong>以下有三种方式可以优化:</p>
+<p>（1）合并小文件：对小文件进行归档（Har）、自定义Inputformat将小文件存储成SequenceFile文件。</p>
+<p>（2）采用ConbinFileInputFormat来作为输入，解决输入端大量小文件场景。</p>
+<p>（3）对于大量小文件Job，可以开启JVM重用。</p>
+<h4 id="Map阶段"><a href="#Map阶段" class="headerlink" title="Map阶段"></a>Map阶段</h4><p>（1）增大环形缓冲区大小。由100m扩大到200m</p>
+<p>（2）增大环形缓冲区溢写的比例。由80%扩大到90%</p>
+<p>（3）减少对溢写文件的merge次数。</p>
+<p>（4）不影响实际业务的前提下，采用Combiner提前合并，减少 I/O。</p>
+<h4 id="Reduce阶段"><a href="#Reduce阶段" class="headerlink" title="Reduce阶段"></a>Reduce阶段</h4><p>（1）合理设置Map和Reduce数：两个都不能设置太少，也不能设置太多。太少，会导致Task等待，延长处理时间；太多，会导致 Map、Reduce任务间竞争资源，造成处理超时等错误。</p>
+<p>（2）设置Map、Reduce共存：调整slowstart.completedmaps参数，使Map运行到一定程度后，Reduce也开始运行，减少Reduce的等待时间。</p>
+<p>（3）规避使用Reduce，因为Reduce在用于连接数据集的时候将会产生大量的网络消耗。</p>
+<p>（4）增加每个Reduce去Map中拿数据的并行数</p>
+<p>（5）集群性能可以的前提下，增大Reduce端存储数据内存的大小。 </p>
+<h4 id="IO传输"><a href="#IO传输" class="headerlink" title="IO传输"></a>IO传输</h4><p>（1）采用数据压缩的方式，减少网络IO的的时间。安装Snappy和LZOP压缩编码器。</p>
+<p>（2）使用SequenceFile二进制文件</p>
+<h4 id="整体"><a href="#整体" class="headerlink" title="整体"></a>整体</h4><p>（1）MapTask默认内存大小为1G，可以增加MapTask内存大小为4-5g</p>
+<p>（2）ReduceTask默认内存大小为1G，可以增加ReduceTask内存大小为4-5g</p>
+<p>（3）可以增加MapTask的cpu核数，增加ReduceTask的CPU核数</p>
+<p>（4）增加每个Container的CPU核数和内存大小</p>
+<p>（5）调整每个Map Task和Reduce Task最大重试次数</p>
 
             </div>
             <hr />
@@ -718,29 +635,33 @@ mysql&gt; insert into company.staff(name, sex) values(&#39;Catalina&#39;, &#39;F
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/01/16/hbase-jian-li-er-ji-suo-yin-de-ji-chong-fang-shi/">
+                <a href="/2020/07/06/mapreduce-de-liu-cheng-ji-you-hua/">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/hbase.png" class="responsive-img" alt="HBase建立二级索引的几种方式">
                         
-                        <span class="card-title">HBase建立二级索引的几种方式</span>
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="MapReduce的流程及优化">
+                        
+                        <span class="card-title">MapReduce的流程及优化</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            为什么需要HBse二级索引HBase里面只有rowkey作为一级索引， 如果要对库里的非rowkey字段进行数据检索和查询， 往往要通过MapReduce/Spark等分布式计算框架进行，硬件资源消耗和时间延迟都会比较高。
-只依赖rowke
+                            MapReduce的流程相对来说比较复杂,这里借用尚硅谷的两张图来描述其流程.
+
+上面两张图对MapReduce有比较详细的描述,通过这个图我们就能够发现一些MapReduce的优化方法.
+数据输入小文件处理HDFS小文件会因为文件元数据存
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -753,6 +674,7 @@ mysql&gt; insert into company.staff(name, sex) values(&#39;Catalina&#39;, &#39;F
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -763,27 +685,24 @@ mysql&gt; insert into company.staff(name, sex) values(&#39;Catalina&#39;, &#39;F
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/16/flume-da-shu-ju-cai-ji-gong-ju/">
+                <a href="/2020/07/05/mapreduce-zhong-de-liang-biao-join-fang-an/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Flume-大数据采集工具">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="MapReduce中的两表join方案">
                         
-                        <span class="card-title">Flume-大数据采集工具</span>
+                        <span class="card-title">MapReduce中的两表join方案</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            概述Flume定义Flume是Cloudera提供的一个高可用的，高可靠的，分布式的海量日志采集、聚合和传输的系统。Flume基于流式架构，灵活简单。
-Flume组成架构Flume组成架构如图所示：
- 
-AgentAgent是一个JVM进程
+                            MapReduce中两表join方案概述随着互联网行业的发展,数据量变得越来越大,随之而来的就是hadoop生态圈的兴起,其中MapReduce作为较原始的分布式计算框架,在当时也是解决了很多分布式计算的问题,其中包括两张表的join操作,
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-16
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-05
                             </span>
                         <span class="publish-author">
                             
