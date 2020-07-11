@@ -4,18 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="hexo博文包含图片的坑, LuHai Java后台开发 大数据开发">
+    <meta name="keywords" content="springboot项目遇到的问题, LuHai Java后台开发 大数据开发">
     <meta name="baidu-site-verification" content>
     <meta name="google-site-verification" content>
     <meta name="360-site-verification" content>
-    <meta name="description" content="
-
-hexo博文包含图片的坑网上有很多关于这个的教程,主要的总结如下
-①修改博客目录下的_config_yml的post_asset_folder为true
-
-post_asset_folder: true
-
-②安装hexo-asset-i">
+    <meta name="description" content="①Failed to configure a DataSource: ‘url’ attribute is not specified and no embedded datasource could be configured.Reaso">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +16,7 @@ post_asset_folder: true
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>hexo博文包含图片的坑 | 卢海的博客</title>
+    <title>springboot项目遇到的问题 | 卢海的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -281,13 +274,13 @@ post_asset_folder: true
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        hexo博文包含图片的坑
+                        springboot项目遇到的问题
                     </div>
                 </div>
             </div>
@@ -406,8 +399,8 @@ post_asset_folder: true
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/tool/" class="post-category" target="_blank">
-                            tool
+                        <a href="/categories/java/" class="post-category" target="_blank">
+                            java
                         </a>
                         
                     </div>
@@ -418,7 +411,7 @@ post_asset_folder: true
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-29
+                    2020-07-03
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -432,14 +425,14 @@ post_asset_folder: true
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    790
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
                 
@@ -455,107 +448,71 @@ post_asset_folder: true
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=414414&auto=0&height=66"></iframe></div>
+                <p><strong>①Failed to configure a DataSource: ‘url’ attribute is not specified and no embedded datasource could be configured.Reason: Failed to determine a suitable driver class</strong></p>
+<h3 id="问题记录解决"><a href="#问题记录解决" class="headerlink" title="问题记录解决"></a>问题记录解决</h3><p>今天小组长让我加入一个新的工程项目,开开心心的把项目从公司内部gitlab上面clone下来,经过一段长时间处理maven依赖以后消除了idea里面所有的红线(感觉每次clone项目下来之后maven总是要出点幺蛾子然后解决掉才行),然后就开开心心的启动,刚启动就报如下错误:</p>
+<pre class="line-numbers language-复制代码"><code class="language-复制代码">***************************
+APPLICATION FAILED TO START
+***************************
 
-<h1 id="hexo博文包含图片的坑"><a href="#hexo博文包含图片的坑" class="headerlink" title="hexo博文包含图片的坑"></a>hexo博文包含图片的坑</h1><h3 id="网上有很多关于这个的教程-主要的总结如下"><a href="#网上有很多关于这个的教程-主要的总结如下" class="headerlink" title="网上有很多关于这个的教程,主要的总结如下"></a>网上有很多关于这个的教程,主要的总结如下</h3><ul>
-<li>①修改博客目录下的_config_yml的post_asset_folder为true</li>
-</ul>
-<pre class="line-numbers language-java"><code class="language-java">post_asset_folder<span class="token operator">:</span> <span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ul>
-<li>②安装hexo-asset-image插件</li>
-</ul>
-<pre><code>npm install hexo-asset-image --save</code></pre><ul>
-<li>③hexo new  file_name 时会在source/_post/下生成file_name的文件夹,将需要使用的图片放置在里面,然后使用相对路径引入</li>
-</ul>
-<pre><code>![用于图片加载失败时显示的内容](/file_name/image_name)</code></pre><ul>
-<li>如此博客中的图片最后会和.md文件一起生成到public\2019\12\27\file_name中,这样在hexe g 时,可以看到命令窗口会打印修改后的路径,如下</li>
-</ul>
-<pre><code>Start processing
-update link as:--&gt;/2019/12/27/first/1577523021175.png
-update link as:--&gt;/2019/12/27/first/1577523021175.png</code></pre><h3 id="我遇到的问题"><a href="#我遇到的问题" class="headerlink" title="我遇到的问题"></a>我遇到的问题</h3><pre><code>Start processing
-update link as:--&gt;.io//2019/12/27/first/1577523021175.png
-update link as:--&gt;.io//2019/12/27/first/1577523021175.png</code></pre><ul>
-<li>经过一番搜寻,发现hexo-asset-image会将图片的地址修改,具体的源码信息可见\node_modules\hexo-asset-image\index.js,打开后内容如下:</li>
-</ul>
-<pre><code>&#39;use strict&#39;;
-var cheerio = require(&#39;cheerio&#39;);
-function getPosition(str, m, i) {
-  return str.split(m, i).join(m).length;
-}
+Description:
 
-hexo.extend.filter.register(&#39;after_post_render&#39;, function(data){
-  var config = hexo.config;
-  if(config.post_asset_folder){
-    var link = data.permalink;
-    var beginPos = getPosition(link, &#39;/&#39;, 3) + 1;
-    var appendLink = &#39;&#39;;
-    // In hexo 3.1.1, the permalink of &quot;about&quot; page is like &quot;.../about/index.html&quot;.
-    // if not with index.html endpos = link.lastIndexOf(&#39;.&#39;) + 1 support hexo-abbrlink
-    if(/.*\/index\.html$/.test(link)) {
-      // when permalink is end with index.html, for example 2019/02/20/xxtitle/index.html
-      // image in xxtitle/ will go to xxtitle/index/
-      appendLink = &#39;index/&#39;;
-      var endPos = link.lastIndexOf(&#39;/&#39;);
-    }
-    else {
-      var endPos = link.lastIndexOf(&#39;.&#39;) ;
-    }
-    link = link.substring(beginPos, endPos) + &#39;/&#39; + appendLink;
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
 
-    var toprocess = [&#39;excerpt&#39;, &#39;more&#39;, &#39;content&#39;];
-    for(var i = 0; i &lt; toprocess.length; i++){
-      var key = toprocess[i];
+Reason: Failed to determine a suitable driver class
 
-      var $ = cheerio.load(data[key], {
-        ignoreWhitespace: false,
-        xmlMode: false,
-        lowerCaseTags: false,
-        decodeEntities: false
-      });
-      $(&#39;img&#39;).each(function(){
-        if ($(this).attr(&#39;src&#39;)){
-          // For windows style path, we replace &#39;\&#39; to &#39;/&#39;.
-          var src = $(this).attr(&#39;src&#39;).replace(&#39;\\&#39;, &#39;/&#39;);
-          if(!(/http[s]*.*|\/\/.*/.test(src)
-            || /^\s+\//.test(src)
-            || /^\s*\/uploads|images\//.test(src))) {
-            // For &quot;about&quot; page, the first part of &quot;src&quot; can&#39;t be removed.
-            // In addition, to support multi-level local directory.
-            var linkArray = link.split(&#39;/&#39;).filter(function(elem){
-              return elem != &#39;&#39;;
-            });
-            var srcArray = src.split(&#39;/&#39;).filter(function(elem){
-              return elem != &#39;&#39; &amp;&amp; elem != &#39;.&#39;;
-            });
-            if(srcArray.length &gt; 1)
-            srcArray.shift();
-            src = srcArray.join(&#39;/&#39;);
 
-            $(this).attr(&#39;src&#39;, config.root + link + src);
-            console.info&amp;&amp;console.info(&quot;update link as:--&gt;&quot;+config.root + link + src);
-          }
-        }else{
-          console.info&amp;&amp;console.info(&quot;no src attr, skipped...&quot;);
-          console.info&amp;&amp;console.info($(this));
-        }
-      });
-      data[key] = $.html();
-    }
-  }
-});
-</code></pre><ul>
-<li>通过查看源码发现里面有对生成博客图片的地址修改:</li>
-</ul>
-<pre><code>link = link.substring(beginPos, endPos) + &#39;/&#39; + appendLink;</code></pre><ul>
-<li>通过排查发现图片的路径的endPos为:</li>
-</ul>
-<pre><code>var endPos = link.lastIndexOf(&#39;.&#39;) ;</code></pre><ul>
-<li>我打印data.permalink得到</li>
-</ul>
-<pre><code>http://tigerLuHai.github.io/2019/12/27/first/</code></pre><p>如此在截取字符串的时候就会多出四个字符  <strong>.io/</strong></p>
-<p>最后发现这段代码的作用就是要将data.permalink中路径的<a href="https://tigerLuhai.gituhub.io/去掉,因为在后面部署到github时使用相对路径访问会重新加上这个前缀,如果这里有就会重复,导致地址为https://tigerLuhai.gituhub.io/http://tigerLuHai.github.io/2019/12/27/first/的现象" target="_blank" rel="noopener">https://tigerLuhai.gituhub.io/去掉,因为在后面部署到github时使用相对路径访问会重新加上这个前缀,如果这里有就会重复,导致地址为https://tigerLuhai.gituhub.io/http://tigerLuHai.github.io/2019/12/27/first/的现象</a>.</p>
-<p>明白了需求就可以修改代码为</p>
-<pre><code>var endPos = link.lastIndexOf(&#39;/&#39;) ;</code></pre><p>这样就可以正常部署了.</p>
+Action:
+
+Consider the following:
+    If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+    If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+
+Process finished with exit code 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后就去网上搜索,很多说没有在springboot的配置文件中配置spring.datasource.url,而且好多都是这样的,正对这个找了很多解决办法,但是对我来说都是没啥用的.其中比较典型的一个博客是这么说的:</p>
+<p>问题原因: Mybatis没有找到合适的加载类,其实是大部分<strong>spring - datasource - url</strong>没有加载成功,分析原因如下所示.</p>
+<ol>
+<li><p><strong>DataSourceAutoConfiguration</strong>会自动加载.</p>
+</li>
+<li><p>没有配置<strong>spring - datasource - url</strong> 属性.</p>
+</li>
+<li><p><strong>spring - datasource - url</strong> 配置的地址格式有问题.</p>
+</li>
+<li><p>配置 <strong>spring - datasource - url</strong>的文件没有加载.</p>
+</li>
+<li><p>profiles文件夹名称冲突</p>
+<p>​</p>
+</li>
+</ol>
+<p>感觉这应该是是分析得比较全面的了,但是按照他的来并没有解决我的困境.当然还有大佬便是重新clone项目下来操作一遍问题就没了,但是我还是想找到问题的根源.我的配置文件内容是这样的:</p>
+<p><img src="/2020/07/03/springboot-xiang-mu-yu-dao-de-wen-ti/1593848519591.png" alt>首先我确定这个没有问题,我在里面怎么改动都没有影响,我开始觉得我根本就没有读取这个配置文件,后来去网上找了springboot项目怎么加载properties配置文件,才知道我这里有两个配置文件,一个开发的,一个测试的,但是一个都没有用,在启动参数上面加入-Dspring.profiles.active=dev就好了.</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>经过一年多时间的反复学习,在解决错误上已经具备了一定的能力,一般的问题通过谷歌就能直接解决,这次问题给我的最大感触就是,我们解决问题的时候还是要具体问题具体分析,不要这个csdn不行我就换那个掘金或者StackOverflow,网上的东西很多时候只能让你知道大致问题出在了什么地方,具体的处理还是要靠自己.</p>
+<p>②对jdk源码做动态代理没有起作用</p>
+<p>今天上面给我一个任务,让我统计项目中方法的运行时间和调用成功与失败次数,我一想挺简单的,这个直接动态代理就可以做,spring注解用起来不是轻轻松松吗?计算方法调用时间的时候确实是这样,但是当我统计方法运行失败与成功次数的时候就遇到了问题,项目本身方法基本都是在方法整体一个try catch,成功就返回,失败就被catch打印错误日志,这就有点难办了,spring的注解@AfterThrowing只能处理方法把异常抛出去了的情况,后来我就发现他只有在失败的时候会去打印日志,打印日志的时候如下:</p>
+<pre class="line-numbers language-java"><code class="language-java">logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"方法对应任务"</span><span class="token punctuation">,</span>e<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>不难发现在调用这个方法的时候一定会执行Throwable类的getMessage()方法获取信息,我就想着设置一个该方法的代理,作为失败统计代码如下</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Before</span><span class="token punctuation">(</span><span class="token string">"exceution(java.lang.Throwable.getMessage(..))"</span><span class="token punctuation">)</span>
+puhlic <span class="token keyword">void</span> <span class="token function">calculationFailCall</span><span class="token punctuation">(</span>JoinPoint joinpoint<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>但是出乎意料的是代理并没有起到作用,看过很多遍动态代理的我有点不明所以,这个类没有final,就算JDK动态代理代理不了,应该也还有Cglib可以兜底呀,没道理呀,难道是jdk源码有权限,Spring操作不了?我就另辟蹊径,决定在Logger类的error上做代理,但是结果还是不行,后来苦思冥想发现,这些类应该都没有被spring扫描包的时候扫描到,所以不可以代理,于是我就在启动类加上如下注解</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>basePackages<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"com.iqiyi.hadoop"</span><span class="token punctuation">,</span><span class="token string">"ch.qos.logback.classic"</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>我以为这次妥妥的,但是想不到还是不行,我就在AppLication的字包外面建了一个测试类,加上包扫描,对它做代理,看行不行</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>basePackages<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"com.iqiyi.hadoop"</span><span class="token punctuation">,</span><span class="token string">"ch.qos.logback.classic"</span><span class="token punctuation">,</span><span class="token string">"cn"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token annotation punctuation">@Before</span><span class="token punctuation">(</span><span class="token string">"exceution(cn.Test.test(..))"</span><span class="token punctuation">)</span>
+puhlic <span class="token keyword">void</span> <span class="token function">calculationFailCall</span><span class="token punctuation">(</span>JoinPoint joinpoint<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//在Controller做如下调用</span>
+<span class="token keyword">new</span> <span class="token class-name">Test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2020/07/03/springboot-xiang-mu-yu-dao-de-wen-ti/D:%5CMyBlot%5Cbolt%5Csource_posts%5Cspringboot%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%5C1594362451200.png" alt="1594362451200"></p>
+<p>结果还是不行,我想着是不是这个类没有注入进去,于是我加上@Component注解,发现依然不可以,最后我想着这个类还是原生类,不是经过代理产生的类,会不会是因为这个原因,我就把调用方式改了一下:</p>
+<pre><code>@Autowired
+Test test
+
+test.test();</code></pre><p>这次终于成功了,进了代理的逻辑里面.总结一下SpringAOP的代理逻辑应该是在Bean类经过容器创建的时候加上去的,所以没有经过Spring容器的类,你对他设置了代理最后也用不上.</p>
 
             </div>
             <hr />
@@ -721,26 +678,24 @@ hexo.extend.filter.register(&#39;after_post_render&#39;, function(data){
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/12/29/shi-yong-vmware-an-zhuang-linux-xu-ni-ji/">
+                <a href="/2020/07/05/mapreduce-zhong-de-liang-biao-join-fang-an/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="使用VMware安装linux虚拟机">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="MapReduce中的两表join方案">
                         
-                        <span class="card-title">使用VMware安装linux虚拟机</span>
+                        <span class="card-title">MapReduce中的两表join方案</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-使用VMware安装linux虚拟机使用背景Linux是一种自由和开放源码的操作系统，存在着许多不同的Linux发行版本，但它们都使用了Linux内核。现在的服务器基本都是使用linux,其中CentOS使用广泛,还有ubuntu也是l
+                            MapReduce中两表join方案概述随着互联网行业的发展,数据量变得越来越大,随之而来的就是hadoop生态圈的兴起,其中MapReduce作为较原始的分布式计算框架,在当时也是解决了很多分布式计算的问题,其中包括两张表的join操作,
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-29
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-05
                         </span>
                         <span class="publish-author">
                             
@@ -764,28 +719,35 @@ hexo.extend.filter.register(&#39;after_post_render&#39;, function(data){
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/28/fastdfs-fen-bu-shi-wen-jian-xi-tong-an-zhuang-shi-yong-jiao-cheng/">
+                <a href="/2020/02/29/shen-ru-li-jie-java-de-bio-nio-aio/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="FastDFS分布式文件系统安装使用教程">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="深入理解java的BIO、NIO、AIO">
                         
-                        <span class="card-title">FastDFS分布式文件系统安装使用教程</span>
+                        <span class="card-title">深入理解java的BIO、NIO、AIO</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-FastDFS分布式文件系统安装使用教程使用场景分布式文件系统用于海量文件存储及传输访问的瓶颈问题，对海量视频的管理、对海量图片的管理等,FastDFS与其他分布式文件系统相比的一个显著优点就是特别适合大量小文件(图片等)的存储,因为它
+                            IO 介绍我们通常所说的 BIO 是相对于 NIO 来说的，BIO 也就是 Java 开始之初推出的 IO 操作模块，BIO 是 BlockingIO 的缩写，顾名思义就是阻塞 IO 的意思。
+BIO、NIO、AIO的区别
+BIO 就是传统
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-28
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-02-29
                             </span>
                         <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/java/" class="post-category" target="_blank">
+                                    java
+                                </a>
+                            
                             
                         </span>
                     </div>

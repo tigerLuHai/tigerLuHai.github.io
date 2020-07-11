@@ -276,7 +276,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -427,7 +427,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    2.3k
                 </div>
                 
 
@@ -530,7 +530,7 @@
 <p><img src="/2020/01/13/java-de-object-dui-xiang/8.png" alt></p>
 <p>toString方法主要是用来<strong>标识</strong>该对象的：</p>
 <p><img src="/2020/01/13/java-de-object-dui-xiang/9.png" alt></p>
-<p>从上面的结果我们都可以看出来：<strong>得出的结果我们并不能看到什么东西</strong>~</p>
+<p>从上面的结果我们都可以看出来：<strong>得出的结果并不能直观的展示这个对象</strong>~</p>
 <p>于是我们一般都重写toString()，那么<strong>打印出的结果就很方便我们调试了</strong>！</p>
 <pre><code>    @Override
     public String toString() {
@@ -549,7 +549,6 @@
 <li>深拷贝指的是该对象的成员变量(如果是可变引用)都应该克隆一份，浅拷贝指的是成员变量没有被克隆一份</li>
 </ul>
 <p>下面我们来看一下浅拷贝：<strong>拷贝了Employee对象，但是其成员变量hireday没有被克隆出去，所以指向的还是同一个Date对象</strong>！</p>
-<p><img src="/2020/01/13/java-de-object-dui-xiang/12.png" alt></p>
 <h2 id="4-1clone用法"><a href="#4-1clone用法" class="headerlink" title="4.1clone用法"></a>4.1clone用法</h2><p>那么我们如何克隆对象呢？无论是浅拷贝还是深拷贝都是这两步：</p>
 <ol>
 <li>克隆的对象要<strong>实现Cloneable接口</strong></li>
@@ -558,30 +557,24 @@
 <p><strong>浅拷贝</strong>：仅仅拷贝了Person对象，而date没有拷贝！</p>
 <pre><code>public class Person implements Cloneable {
 
-    // 可变的成员变量
     private Date date;
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-
         return super.clone();
     }
 }</code></pre><p><strong>深拷贝</strong>：不仅拷贝了Person对象，也拷贝了date成员变量</p>
 <pre><code>public class Person implements Cloneable {
 
-    // 可变的成员变量
     public  Date date;
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-
-
         // 拷贝Person对象
         Person person = (Person) super.clone();
 
         // 将可变的成员变量也拷贝
         person.date = (Date) date.clone();
-
 
         // 返回拷贝的对象
         return person;
@@ -622,9 +615,6 @@
 <ul>
 <li>上面的代码就错在：Address与Object<strong>不是在同一个包下</strong>的，而Address直接访问了Object的clone方法。这是不行的。</li>
 </ul>
-<p>下面我截两张图再来给你们看看(看完图再看上面的描述，就能理解了)：</p>
-<p><img src="/2020/01/13/java-de-object-dui-xiang/14.png" alt></p>
-<p><img src="/2020/01/13/java-de-object-dui-xiang/15.png" alt></p>
 <h1 id="五、wait和notify方法"><a href="#五、wait和notify方法" class="headerlink" title="五、wait和notify方法"></a>五、wait和notify方法</h1><p>wait和notify方法其实就是Java给我们提供让<strong>线程之间通信</strong>的API。</p>
 <p>按照惯例我们还是来看注释怎么说吧：</p>
 <p>wait方法：</p>
@@ -635,8 +625,7 @@
 <p><img src="/2020/01/13/java-de-object-dui-xiang/18.png" alt></p>
 <p>看完上面的注释我们可以<strong>总结以下的要点</strong>：</p>
 <ul>
-<li><p>无论是wait、notify还是notifyAll()都需要</p>
-<p>由监听器对象(锁对象)来进行调用</p>
+<li><p>无论是wait、notify还是notifyAll()都需要<strong>由监听器对象(锁对象)来进行调用</strong></p>
 <ul>
 <li>简单来说：<strong>他们都是在同步代码块中调用的</strong>，否则会抛出异常！</li>
 </ul>
@@ -655,7 +644,7 @@
 </li>
 </ul>
 <p>其实总结完上面的并不会有比较深刻的印象，可以尝试着回答几个问题来加深对<code>wait()</code>和<code>notify()</code>的理解。</p>
-<h2 id="5-1为什么wait和notify在Object方法上？"><a href="#5-1为什么wait和notify在Object方法上？" class="headerlink" title="5.1为什么wait和notify在Object方法上？"></a>5.1为什么wait和notify在Object方法上？</h2><p>从一开始我们就说了：<code>wait()</code>和<code>notify()</code>是Java给我们提供线程之间通信的API，既然是线程的东西，那什么是在Object类上定义，而不是在Thread类上定义呢？</p>
+<h2 id="5-1为什么wait和notify在Object方法上？"><a href="#5-1为什么wait和notify在Object方法上？" class="headerlink" title="5.1为什么wait和notify在Object方法上？"></a>5.1为什么wait和notify在Object方法上？</h2><p>从一开始我们就说了：<code>wait()</code>和<code>notify()</code>是Java给我们提供线程之间通信的API，既然是线程的东西，那为什么是在Object类上定义，而不是在Thread类上定义呢？</p>
 <p>因为我们的锁是对象锁，每个对象都可以成为锁。让当前线程等待某个对象的锁，当然应该通过这个对象来操作了。</p>
 <ul>
 <li>锁对象是<strong>任意</strong>的，所以这些方法必须定义在Object类中</li>
@@ -846,7 +835,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Netty原理">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Netty原理">
                         
                         <span class="card-title">Netty原理</span>
                     </div>
@@ -888,7 +877,7 @@ Netty
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="软件开发六大设计原则">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="软件开发六大设计原则">
                         
                         <span class="card-title">软件开发六大设计原则</span>
                     </div>
@@ -1068,7 +1057,7 @@ public interface Course {
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">107.5k</span>
+            <span class="white-color">108.1k</span>
             
 
             <br>
