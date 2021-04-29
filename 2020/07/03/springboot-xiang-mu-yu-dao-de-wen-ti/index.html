@@ -455,7 +455,7 @@
             <div id="articleContent">
                 <p><strong>①Failed to configure a DataSource: ‘url’ attribute is not specified and no embedded datasource could be configured.Reason: Failed to determine a suitable driver class</strong></p>
 <h3 id="问题记录解决"><a href="#问题记录解决" class="headerlink" title="问题记录解决"></a>问题记录解决</h3><p>今天小组长让我加入一个新的工程项目,开开心心的把项目从公司内部gitlab上面clone下来,经过一段长时间处理maven依赖以后消除了idea里面所有的红线(感觉每次clone项目下来之后maven总是要出点幺蛾子然后解决掉才行),然后就开开心心的启动,刚启动就报如下错误:</p>
-<pre class="line-numbers language-复制代码"><code class="language-复制代码">***************************
+<pre class="line-numbers language-shell"><code class="language-shell">***************************
 APPLICATION FAILED TO START
 ***************************
 
@@ -512,12 +512,13 @@ puhlic <span class="token keyword">void</span> <span class="token function">calc
 
 <span class="token comment" spellcheck="true">//在Controller做如下调用</span>
 <span class="token keyword">new</span> <span class="token class-name">Test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2020/07/03/springboot-xiang-mu-yu-dao-de-wen-ti/D:%5CMyBlot%5Cbolt%5Csource_posts%5Cspringboot%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%5C1594362451200.png" alt="1594362451200"></p>
+<p><img src="/2020/07/03/springboot-xiang-mu-yu-dao-de-wen-ti/1594362451200.png" alt="1594362451200"></p>
 <p>结果还是不行,我想着是不是这个类没有注入进去,于是我加上@Component注解,发现依然不可以,最后我想着这个类还是原生类,不是经过代理产生的类,会不会是因为这个原因,我就把调用方式改了一下:</p>
-<pre><code>@Autowired
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Autowired</span>
 Test test
 
-test.test();</code></pre><p>这次终于成功了,进了代理的逻辑里面.总结一下SpringAOP的代理逻辑应该是在Bean类经过容器创建的时候加上去的,所以没有经过Spring容器的类,你对他设置了代理最后也用不上.</p>
+test<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这次终于成功了,进了代理的逻辑里面.总结一下SpringAOP的代理逻辑应该是在Bean类经过容器创建的时候加上去的,所以没有经过Spring容器的类,你对他设置了代理最后也用不上.</p>
 
             </div>
             <hr />
@@ -766,6 +767,32 @@ BIO 就是传统
 </div>
 
 
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+
 <script>
     $('#articleContent').on('copy', function (e) {
         // IE8 or earlier browser is 'undefined'
@@ -802,31 +829,6 @@ BIO 就是传统
         window.setTimeout(function () { bodyElement.removeChild(newdiv); }, 200);
     });
 </script>
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
-
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-<!-- 代码块折行 -->
-
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
 
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
