@@ -27,7 +27,12 @@
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
     <style type="text/css">
-        
+        code[class*="language-"],
+            pre[class*="language-"] {
+                white-space: pre !important;
+            }
+
+            
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
@@ -459,7 +464,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
         },
         xAxis: {
             type: 'category',
-            data: ["2019-07","2019-08","2019-09","2019-10","2019-11","2019-12","2020-01","2020-02","2020-03","2020-04","2020-05","2020-06","2020-07"]
+            data: ["2020-04","2020-05","2020-06","2020-07","2020-08","2020-09","2020-10","2020-11","2020-12","2021-01","2021-02","2021-03","2021-04"]
         },
         yAxis: {
             type: 'value',
@@ -469,7 +474,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,5,34,5,0,0,0,0,3],
+                data: [0,0,0,3,0,0,0,0,0,0,0,0,0],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -511,7 +516,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"tool","value":5},{"name":"计算机网络","value":4},{"name":"大数据","value":14},{"name":"java","value":15},{"name":"数据库","value":3},{"name":"数据结构","value":5}],
+                data: [{"name":"tool","value":5},{"name":"大数据","value":14},{"name":"计算机网络","value":4},{"name":"java","value":15},{"name":"数据库","value":3},{"name":"数据结构","value":5}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
