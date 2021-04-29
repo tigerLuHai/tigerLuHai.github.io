@@ -436,14 +436,14 @@ mongoDB download地址： download
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    4 分
                 </div>
                 
                 
@@ -478,8 +478,10 @@ mongoDB download地址： download
 <li>启动 mongoDB 数据库</li>
 </ol>
 <p>如果 <code>data</code> 目录创建在安装位置的盘符根目录下，直接打开命令行，敲入：</p>
-<pre><code> mongod</code></pre><p>如果是其他位置，则需要指定数据存放的位置:</p>
-<pre><code> mongod --dbpath 文件路径</code></pre><p>如果看到输出： <code>waiting for connections on port 27017</code> 说明启动数据库成功。</p>
+<pre class="line-numbers language-shell"><code class="language-shell"> mongod<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果是其他位置，则需要指定数据存放的位置:</p>
+<pre class="line-numbers language-shell"><code class="language-shell"> mongod --dbpath 文件路径<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果看到输出： <code>waiting for connections on port 27017</code> 说明启动数据库成功。</p>
 <ol>
 <li>连接数据库</li>
 </ol>
@@ -495,11 +497,13 @@ mongoDB download地址： download
 </ul>
 <p>它们之间是逐层包含的关系，一个集合可以包含多个文档，一个数据库可以有多个集合，下面听我逐一道来：</p>
 <p><code>文档</code> ： 文档是一个键值(<code>key-value</code>)对(即<code>BSON</code>)，本质类似于<code>json</code>对象 的键值对。</p>
-<pre><code>{&quot;name&quot;:&quot;pubdreamcc&quot;, &quot;age&quot;: 24}</code></pre><p><code>集合</code>：集合就是 MongoDB 文档组，实质上就是包含多个对象的数组。</p>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span><span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"pubdreamcc"</span><span class="token punctuation">,</span> <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">24</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><code>集合</code>：集合就是 MongoDB 文档组，实质上就是包含多个对象的数组。</p>
 <p>比如，我们可以将以下不同数据结构的文档插入到集合中：</p>
-<pre><code>{&quot;name&quot;:&quot;pubdreamcc&quot;}
-{&quot;name&quot;:&quot;pubdreamcc1&quot;,&quot;name&quot;:&quot;pubdreamcc2&quot;}
-{&quot;name&quot;:&quot;pubdreamcc3&quot;,&quot;name&quot;:&quot;pubdreamcc4&quot;,&quot;num&quot;:5}</code></pre><p><code>数据库（dataBase）</code></p>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span><span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"pubdreamcc"</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"pubdreamcc1"</span><span class="token punctuation">,</span><span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"pubdreamcc2"</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"pubdreamcc3"</span><span class="token punctuation">,</span><span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"pubdreamcc4"</span><span class="token punctuation">,</span><span class="token property">"num"</span><span class="token operator">:</span><span class="token number">5</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><code>数据库（dataBase）</code></p>
 <p>这里的数据库概念同 关系型数据库中的数据库概念一致，数据库可以包含多个集合。</p>
 <p>下面给出一张图用来表示 <code>mongoDB</code> 中的一些概念同 <code>SQL</code> 概念 的 对比，辅助理解。</p>
 <p><img src="/2020/02/17/mongodb-shi-yong-ji-di-ceng-yuan-li/1.png" alt></p>
@@ -523,28 +527,30 @@ mongoDB download地址： download
 <li><p>7.插入文档：<code>db.集合名称.insert(document)</code>。往指定集合插入文档，文档的数据结构和 <code>JSON</code> 基本一样。</p>
 </li>
 <li><p>8.更新文档： <code>update()</code> 方法用于更新已存在的文档，语法格式：</p>
-<pre><code>   db.collection.update(
-     &lt;query&gt;,
-     &lt;update&gt;,
+<pre class="line-numbers language-sql"><code class="language-sql">   <span class="token number">db</span><span class="token punctuation">.</span>collection<span class="token punctuation">.</span><span class="token keyword">update</span><span class="token punctuation">(</span>
+     <span class="token operator">&lt;</span>query<span class="token operator">></span><span class="token punctuation">,</span>
+     <span class="token operator">&lt;</span><span class="token keyword">update</span><span class="token operator">></span><span class="token punctuation">,</span>
      {
-       upsert: &lt;boolean&gt;,
-       multi: &lt;boolean&gt;,
-       writeConcern: &lt;document&gt;
+       upsert: <span class="token operator">&lt;</span><span class="token keyword">boolean</span><span class="token operator">></span><span class="token punctuation">,</span>
+       multi: <span class="token operator">&lt;</span><span class="token keyword">boolean</span><span class="token operator">></span><span class="token punctuation">,</span>
+       writeConcern: <span class="token operator">&lt;</span>document<span class="token operator">></span>
      }
-   )</code></pre><p><strong>参数说明</strong>：</p>
+   <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>参数说明</strong>：</p>
 <ul>
 <li><code>query</code> : update的查询条件，类似sql update查询内where后面的。</li>
-<li><code>update</code> : update的对象和一些更新的操作符（如<img src="https://juejin.im/equation?tex=%2C" alt=",">inc…）等，也可以理解为sql update查询内set后面的。</li>
+<li><code>update</code> : update的对象和一些更新的操作符（如inc），也可以理解为sql update查询内set后面的。</li>
 <li><code>upsert</code> : 可选，这个参数的意思是，如果不存在update的记录，是否插入objNew,true为插入，默认是false，不插入。</li>
 <li><code>multi</code> : 可选，mongodb 默认是false,只更新找到的第一条记录，如果这个参数为true,就把按条件查出来多条记录全部更新。</li>
 <li><code>writeConcern</code> :可选，抛出异常的级别。</li>
 </ul>
 </li>
 <li><p>9.删除文档：</p>
-<pre><code>db.collection.remove(
-  &lt;query&gt;,
-  &lt;justOne&gt;
-)</code></pre><p><strong>参数说明</strong></p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token number">db</span><span class="token punctuation">.</span>collection<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>query<span class="token operator">></span><span class="token punctuation">,</span>
+  <span class="token operator">&lt;</span>justOne<span class="token operator">></span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>参数说明</strong></p>
 <ul>
 <li><code>query</code> :（可选）删除的文档的条件。</li>
 <li><code>justOne</code> : （可选）如果设为 true 或 1，则只删除一个文档，如果不设置该参数，或使用默认值 false，则删除所有匹配条件的文档。</li>
@@ -559,12 +565,11 @@ mongoDB download地址： download
 <li><code>query</code> ：可选，使用查询操作符指定查询条件。</li>
 <li><code>projection</code> ：可选，使用投影操作符指定返回的键。查询时返回文档中所有键值， 只需省略该参数即可（默认省略）。</li>
 </ul>
-<p><code>PS</code>:</p>
-<pre><code>如果你需要以易读的方式来读取数据，可以使用 `pretty()` 方法，语法格式如下：
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 如果你需要以易读的方式来读取数据，可以使用 `pretty()` 方法，语法格式如下：</span>
 
- ```json
- db.col.find().pretty()</code></pre><pre><code>
-`pretty()` 方法以格式化的方式来显示所有文档。</code></pre></li>
+<span class="token number">db</span><span class="token punctuation">.</span>col<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>pretty<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><code>pretty()</code> 方法以格式化的方式来显示所有文档。</p>
+</li>
 <li><p>12.查询一个文档（匹配条件的第一个）：<code>db.collection.findOne()</code></p>
 </li>
 </ul>
@@ -816,7 +821,7 @@ mongoDB download地址： download
 
 
 <!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFunction.js"></script>
 
 <!-- 代码语言 -->
 
@@ -983,7 +988,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">108.1k</span>
+            <span class="white-color">108k</span>
             
 
             <br>

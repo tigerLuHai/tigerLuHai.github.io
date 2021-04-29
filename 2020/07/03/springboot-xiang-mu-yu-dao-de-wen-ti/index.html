@@ -512,7 +512,7 @@ puhlic <span class="token keyword">void</span> <span class="token function">calc
 
 <span class="token comment" spellcheck="true">//在Controller做如下调用</span>
 <span class="token keyword">new</span> <span class="token class-name">Test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2020/07/03/springboot-xiang-mu-yu-dao-de-wen-ti/1594362451200.png" alt="1594362451200"></p>
+<p><img src="/2020/07/03/springboot-xiang-mu-yu-dao-de-wen-ti/1594362451200.png" alt></p>
 <p>结果还是不行,我想着是不是这个类没有注入进去,于是我加上@Component注解,发现依然不可以,最后我想着这个类还是原生类,不是经过代理产生的类,会不会是因为这个原因,我就把调用方式改了一下:</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Autowired</span>
 Test test
@@ -768,7 +768,7 @@ BIO 就是传统
 
 
 <!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFunction.js"></script>
 
 <!-- 代码语言 -->
 
@@ -935,7 +935,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">108.1k</span>
+            <span class="white-color">108k</span>
             
 
             <br>
