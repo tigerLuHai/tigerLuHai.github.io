@@ -16,9 +16,6 @@ menu:
   About:
     url: /about
     icon:
-  Friends:
-    url: /friends
-    icon:
   Contact:
     url: /contact
     icon:
@@ -52,9 +49,9 @@ music:
   loop: 'all' # 音频循环播放, 可选值: 'all', 'one', 'none'
   order: 'list' # 音频循环顺序, 可选值: 'list', 'random'
   preload: 'auto' # 预加载，可选值: 'none', 'metadata', 'auto'
-  volume: 0.7 # 默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效
+  volume: 0.5 # 默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效
   listFolded: false # 列表默认折叠
-  listMaxHeight: #列表最大高度
+  listMaxHeight: 50#列表最大高度
 
 # Whether to display the videos.
 # 是否在首页显示视频.
@@ -89,17 +86,15 @@ indexbtn:
   enable: true
   name: Github
   icon: fa-github-alt
-  url: https://github.com/godweiyang
+  url: https://github.com/tigerLuHai
 
 # The configurations of the second line of home banner
 # icon/button will not show up if you leave the corresponding socialLink empty
 # 首页 banner 中的第二行个人信息配置，留空即不启用
 socialLink:
-  qq: 792321264
-  github: godweiyang
-  weibo: godweiyang
-  email: i@godweiyang.com
-  zhihu: godweiyang
+  qq: 1653319002
+  github: tigerLuHai
+  email: 1653319002@qq.com
 
 # Whether to activate the Post TOC, and Configure which title types are supported by TOC support.
 # You can add `toc: false` to the Front-matter of a post to turn off the TOC.
@@ -113,7 +108,10 @@ toc:
 # Whether the code is broken.
 # 代码是否折行
 code:
-  break: true
+  lang: true # 代码块是否显示名称
+  copy: true # 代码块是否可复制
+  shrink: true # 代码块是否可以收缩
+  break: false # 代码是否折行
 
 # 是否激活文章末尾的打赏功能，默认激活（你替换为的你自己的微信、支付宝二维码图片、或者使用网络图片也可以）.
 reward:
@@ -136,7 +134,7 @@ copyright:
 # 是否激活mathjax数学公式，这是全局配置，但文章仍然不会都开启mathjax渲染，
 # 考虑到mathjax加载比较耗时，你还需要在需要渲染的文章的Front-matter中再加上`mathjax: true`才行.
 mathjax:
-  enable: true
+  enable: false
   cdn: https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 # Post word count, reading duration, site total word count.
@@ -153,7 +151,7 @@ wordCount:
 # Whether to activate the 'love' effect of clicking on the page.
 # 是否激活点击页面的'爱心'效果，默认激活.
 clicklove:
-  enable: true
+  enable: false
 explosion:
   enable: false
 firework:
@@ -165,36 +163,18 @@ text:
 # 在”关于”页面中配置个人信息，包括头像、职业和个人介绍.
 profile:
   avatar: /medias/avatars/avatar.jpg
-  career: 华东师范大学 | 计算机科学与技术 | AntNLP
-  introduction: 我是华东师范大学计算机科学与技术专业2018级硕士研究生。直研进入本校计算机系攻读硕士，研究方向是深度学习与自然语言处理。我们实验室是AntNLP，欢迎大家报考！
+  career: 重庆大学 | 控制工程 | java&大数据
+  introduction: 我是一个喜欢敲代码的靓仔！
 
 # config my projects informations in about page.
 # If you don't want to display this `My Projects` content, you can deactivate or delete this configuration.
 # 在“关于”页面配置"我的项目"信息，如果你不需要这些信息则可以将其设置为不激活或者将其删除.
-myProjects:
-  enable: true
-  data:
-    hexo-matery-modified:
-      icon: fa-meetup
-      iconBackground: 'linear-gradient(to bottom right, #66BB6A 0%, #81C784 100%)'
-      url: https://github.com/godweiyang/hexo-matery-modified
-      desc: 我的个性化配置过的博客源码，即下即用。
-    ConParser:
-        icon: fa-database
-        iconBackground: 'linear-gradient(to bottom right, #F06292 0%, #EF5350 100%)'
-        url: https://github.com/godweiyang/ConParser
-        desc: 基于dynet的成分句法分析模型整合。
-    ECNU-BeamerTemplate:
-        icon: fa-file-text-o
-        iconBackground: 'linear-gradient(to bottom right, #29B6F6 0%, #1E88E5 100%)'
-        url: https://github.com/godweiyang/ECNU_BeamerTemplate
-        desc: 基于Latex Beamer的华东师范大学PPT模板。
 
 # config my skills informations in about page.
 # If you don't want to display this `My Skills` content, you can deactivate or delete this configuration.
 # 在“关于”页面配置"我的技能"信息，如果你不需要这些信息则可以将其设置为不激活或者将其删除.
 mySkills:
-  enable: true
+  enable: false
   data:
     Algorithm:
       background: 'linear-gradient(to right, #FF0066 0%, #FF00CC 100%)'
@@ -238,13 +218,13 @@ postCalendar: true
 # the Gitalk config，default disabled
 # Gitalk 评论模块的配置，默认为不激活
 gitalk:
-  enable: true
-  owner: godweiyang
-  repo: godweiyang.github.io
+  enable: false
+  owner: tigerLuHai
+  repo: tigerLuHai.github.io
   oauth:
-    clientId: 
-    clientSecret: 
-  admin: godweiyang
+    clientId: 52424b98fb27c2cf5f3a
+    clientSecret: 0b13a34441db0176018eebfebe19f75532f15e81
+  admin: tigerLuHai
 
 # the Gitment config，default disabled
 # Gitment 评论模块的配置，默认为不激活
@@ -272,7 +252,7 @@ livere:
 # To use it, activate the configuration item and set appId and appKey.
 # Valine 评论模块的配置，默认为不激活，如要使用，就请激活该配置项，并设置 appId 和 appKey.
 valine:
-  enable: true
+  enable: false
   appId: 
   appKey: 
   notify: false
@@ -286,7 +266,7 @@ valine:
 # 配置是否在 header 中显示 fork me on github 的图标，默认为true，你可以修改为你的仓库地址.
 githubLink:
   enable: true
-  url: https://github.com/godweiyang
+  url: https://github.com/tigerLuHai
   title: Fork Me
 
 # The password verification feature of read post. To use this feature,
@@ -356,7 +336,6 @@ featureImages:
 - /medias/featureimages/1.jpg
 - /medias/featureimages/2.jpg
 - /medias/featureimages/3.jpg
-- /medias/featureimages/4.jpg
 - /medias/featureimages/5.jpg
 - /medias/featureimages/6.jpg
 - /medias/featureimages/7.jpg
@@ -401,10 +380,10 @@ featureImages:
   # noreprint（不允许转载 not allowed to reprint）
   # pay（付费转载 pay for reprinting）
 reprint:
-  enable: true # whether enable reprint section 是否启用“转载规则限定模块”
+  enable: false # whether enable reprint section 是否启用“转载规则限定模块”
   default: cc_by
 
 
 # 雪花特效
 snow:
-  enable: false
+  enable: true

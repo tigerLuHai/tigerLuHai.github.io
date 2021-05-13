@@ -13,7 +13,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://tigerLuHai.github.io/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -40,15 +40,15 @@ relative_link: false
 future: true
 highlight:
   enable: false
-  line_number: false
-  auto_detect: false
-  tab_replace:
-
+  # line_number: false
+  # auto_detect: false
+  # tab_replace:
+# 添加prism_plugin配置项
 prism_plugin:
   mode: 'preprocess'    # realtime/preprocess
   theme: 'tomorrow'
   line_number: true    # default false
-  custom_css:
+  custom_css: 
 
 search:
   path: search.xml
